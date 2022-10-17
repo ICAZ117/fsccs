@@ -4,16 +4,16 @@
 			<div class="col-2 center icon h-100">
 				<i :class="icon + ' m-auto vertical-center'"></i>
 			</div>
-			<div class="col-10 px-4 py-2 h-100">
+			<div class="col-10 px-4 py-2 h-100" :style="hasDescription ? '' : 'transform: translateY(35px)'">
 				<h5>{{ title }}</h5>
 				<div class="row block-center">
-					<div class="my-0" style="width: fit-content">
+					<div class="my-0" style="width: fit-content" v-if="location">
 						<i class="fa-solid fa-location-dot me-2"></i> {{ location }}
 					</div>
-					<div style="width: fit-content"><i class="fa-solid fa-calendar me-2"></i> {{ date }}</div>
-					<div style="width: fit-content"><i class="fa-solid fa-clock me-2"></i> {{ time }}</div>
+					<div style="width: fit-content" v-if="date"><i class="fa-solid fa-calendar me-2"></i> {{ date }}</div>
+					<div style="width: fit-content" v-if="time"><i class="fa-solid fa-clock me-2"></i> {{ time }}</div>
 				</div>
-				<p style="max-height: 60px; overflow-y: auto; margin-top: 0.5rem">
+				<p v-if="hasDescription" style="max-height: 60px; overflow-y: auto; margin-top: 0.5rem">
 					<slot></slot>
 				</p>
 			</div>
@@ -23,7 +23,7 @@
 
 <script>
 	export default {
-		props: ["title", "icon", "location", "date", "time"],
+		props: ["title", "icon", "location", "date", "time", "hasDescription"],
 	};
 </script>
 

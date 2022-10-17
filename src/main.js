@@ -2,9 +2,9 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-// import axios from "axios";
 import { initializeApp } from "firebase/app";
 import Notifications from "@kyvg/vue3-notification";
+import Markdown from 'vue3-markdown-it';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -22,7 +22,6 @@ initializeApp(firebaseConfig);
 const app = createApp(App);
 app.use(store);
 app.use(router);
-// app.use(VueAxios);
-// app.use(axios);
+app.use(Markdown);
 app.use(Notifications);
 app.mount("#app");

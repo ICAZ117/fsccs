@@ -157,7 +157,7 @@ const store = createStore({
 			});
 			var config = {
 				method: "post",
-				url: "https://slack.com/api/conversations.history?channel=C3J6WM8KC",
+				url: "https://slack.com/api/conversations.history?channel=C3J6WM8KC&limit=20",
 				headers: {
 					"Content-Type": "application/x-www-form-urlencoded",
 				},
@@ -167,7 +167,7 @@ const store = createStore({
 			await axios(config)
 				.then(function (response) {
 					console.log("ANNOUNCEMENTS", response.data);
-                    commit("setAnnouncements", response.data);
+                    commit("setAnnouncements", response.data.messages);
 				})
 				.catch(function (error) {
 					console.log(error);

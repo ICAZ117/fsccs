@@ -63,87 +63,10 @@
 
                 <Carousel class="carousel" :wrap-around="true" :transition="600" :pauseAutoplayOnHover="true">
                     <template #slides>
-                        <Slide :key="0">
-                            <Announcement :pfp="'https://www.knack.com/images/about/default-profile.png'"
-                                :name="'John Doe'">
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam
-                                    facilis ad veritatis inventore cumque eaque ratione recusandae, beatae
-                                    earum repudiandae ab quaerat ullam est, ipsa dolorem soluta possimus
-                                    velit vitae. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Ullam temporibus tenetur, alias vero aspernatur atque inventore
-                                    dignissimos quia rerum debitis aperiam quibusdam veritatis beatae. Aut
-                                    repellendus expedita esse porro illum. Lorem ipsum dolor sit amet
-                                    consectetur adipisicing elit. Tempore nesciunt ratione totam dolores
-                                    quia voluptatibus officia, in illum maiores sunt, aliquid a doloremque
-                                    adipisci commodi accusantium omnis odit, delectus saepe.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam
-                                    facilis ad veritatis inventore cumque eaque ratione recusandae, beatae
-                                    earum repudiandae ab quaerat ullam est, ipsa dolorem soluta possimus
-                                    velit vitae. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Ullam temporibus tenetur, alias vero aspernatur atque inventore
-                                    dignissimos quia rerum debitis aperiam quibusdam veritatis beatae. Aut
-                                    repellendus expedita esse porro illum. Lorem ipsum dolor sit amet
-                                    consectetur adipisicing elit. Tempore nesciunt ratione totam dolores
-                                    quia voluptatibus officia, in illum maiores sunt, aliquid a doloremque
-                                    adipisci commodi accusantium omnis odit, delectus saepe.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam
-                                    facilis ad veritatis inventore cumque eaque ratione recusandae, beatae
-                                    earum repudiandae ab quaerat ullam est, ipsa dolorem soluta possimus
-                                    velit vitae. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Ullam temporibus tenetur, alias vero aspernatur atque inventore
-                                    dignissimos quia rerum debitis aperiam quibusdam veritatis beatae. Aut
-                                    repellendus expedita esse porro illum. Lorem ipsum dolor sit amet
-                                    consectetur adipisicing elit. Tempore nesciunt ratione totam dolores
-                                    quia voluptatibus officia, in illum maiores sunt, aliquid a doloremque
-                                    adipisci commodi accusantium omnis odit, delectus saepe.
-                                </p>
-                            </Announcement>
-                        </Slide>
-                        <Slide :key="1">
-                            <Announcement :pfp="'https://www.knack.com/images/about/default-profile.png'"
-                                :name="'John Doe'">
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam
-                                    facilis ad veritatis inventore cumque eaque ratione recusandae, beatae
-                                    earum repudiandae ab quaerat ullam est, ipsa dolorem soluta possimus
-                                    velit vitae. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Ullam temporibus tenetur, alias vero aspernatur atque inventore
-                                    dignissimos quia rerum debitis aperiam quibusdam veritatis beatae. Aut
-                                    repellendus expedita esse porro illum. Lorem ipsum dolor sit amet
-                                    consectetur adipisicing elit. Tempore nesciunt ratione totam dolores
-                                    quia voluptatibus officia, in illum maiores sunt, aliquid a doloremque
-                                    adipisci commodi accusantium omnis odit, delectus saepe.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam
-                                    facilis ad veritatis inventore cumque eaque ratione recusandae, beatae
-                                    earum repudiandae ab quaerat ullam est, ipsa dolorem soluta possimus
-                                    velit vitae. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Ullam temporibus tenetur, alias vero aspernatur atque inventore
-                                    dignissimos quia rerum debitis aperiam quibusdam veritatis beatae.
-                                </p>
-                            </Announcement>
-                        </Slide>
-                        <Slide :key="2">
-                            <Announcement :pfp="'https://www.knack.com/images/about/default-profile.png'"
-                                :name="'John Doe'">
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam
-                                    facilis ad veritatis inventore cumque eaque ratione recusandae, beatae
-                                    earum repudiandae ab quaerat ullam est, ipsa dolorem soluta possimus
-                                    velit vitae. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Ullam temporibus tenetur, alias vero aspernatur atque inventore
-                                    dignissimos quia rerum debitis aperiam quibusdam veritatis beatae. Aut
-                                    repellendus expedita esse porro illum. Lorem ipsum dolor sit amet
-                                    consectetur adipisicing elit. Tempore nesciunt ratione totam dolores
-                                    quia voluptatibus officia, in illum maiores sunt, aliquid a doloremque
-                                    adipisci commodi accusantium omnis odit, delectus saepe.
-                                </p>
+                        <Slide v-for="announcement in announcements" :key="announcement">
+                            <Announcement :pfp="announcement.pfp"
+                                :name="announcement.name">
+                                <Markdown :source="announcement.content" :breaks="true" />
                             </Announcement>
                         </Slide>
                     </template>
@@ -168,11 +91,8 @@
                 <div class="events white-scroll-bar"
                     style="max-height: 65vh !important; overflow-y: auto; width: 75%; margin: auto">
                     <Event v-for="(event, i) in events" :key="i" :title="event.title" :icon="event.icon"
-                        :location="event.location" :date="event.date" :time="event.time">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum, a
-                        praesentium, fugit beatae nihil similique impedit debitis harum architecto,
-                        quis odit voluptatem necessitatibus. Aliquam alias cum sit nisi enim
-                        voluptates.
+                        :location="event.location" :date="event.date" :time="event.time" :hasDescription="event.description">
+                        {{ event.description }}
                     </Event>
                 </div>
             </div>
@@ -226,6 +146,7 @@ import Announcement from "../components/Announcement.vue";
 import FacultyCard from "../components/FacultyCard.vue";
 import Event from "../components/Event.vue";
 import "vue3-carousel/dist/carousel.css";
+import Markdown from 'vue3-markdown-it';
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 import axios from "axios";
 
@@ -240,6 +161,7 @@ export default {
         Slide,
         Pagination,
         Navigation,
+        Markdown,
     },
     data() {
         return {
@@ -248,11 +170,27 @@ export default {
             windowHeight: 0,
             allEvents: [],
             professors: {},
+            announcements: [],
         };
     },
     methods: {
-        async getProfile() {
+        async getUser(userID) {
+            var qs = require("qs");
+			var data = qs.stringify({
+				token: process.env.VUE_APP_SLACK_TOKEN,
+			});
+			var config = {
+				method: "post",
+				url: "https://slack.com/api/users.profile.get?user=" + userID,
+				headers: {
+					"Content-Type": "application/x-www-form-urlencoded",
+				},
+				data: data,
+			};
 
+			const res = await axios(config);
+
+            return res.data.profile;				
         }
     },
     computed: {
@@ -271,11 +209,28 @@ export default {
 
         // Get announcements from store
         const storeAnnouncements = this.$store.getters.getAnnouncements;
+        var filteredAnnouncements = [];
 
         // Loop over announcements
-        storeAnnouncements.messages.forEach((message) => {
-            // console.log(message);
-        });
+        // storeAnnouncements.forEach((message) => {
+        //     console.log(message);
+        // });
+
+        for (let i = 0; i < 20; i++) {
+            if (storeAnnouncements[i].text.includes("<!channel>") && storeAnnouncements[i].text.length > 11) {
+                const user = await this.getUser(storeAnnouncements[i].user);
+
+                filteredAnnouncements.push({
+                    "pfp": user.image_1024,
+                    "name": (user.display_name) ? user.display_name : user.real_name,
+                    "content": storeAnnouncements[i].text.replace("<!channel>", "").trim(),
+                });
+            }
+        }
+
+        this.announcements = filteredAnnouncements;
+
+        console.log("ANNOUNCEMENTS2", this.announcements);
 
         // Get all faculty members in DB
         await this.$store.dispatch("fetchFaculty");
