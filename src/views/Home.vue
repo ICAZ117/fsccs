@@ -2,15 +2,15 @@
     <!-- Start Hero Section -->
     <div class="hero" style="width: width 100vw !important; overflow: hidden !important">
         <div class="" :style="'height: ' + 0.7 * windowHeight + 'px !important'">
-            <Carousel class="carousel" :wrap-around="true" :autoplay="5000000000" :transition="1500"
+            <Carousel class="carousel" :wrap-around="true" :autoplay="5000" :transition="1500"
                 :pauseAutoplayOnHover="true">
                 <Slide :key="0">
                     <SkewBox :rightBG="{
                     	backgroundImage: `url(${require('@/assets/img/WCS.jpg')})`,
                     	'background-position': 'center',
-                    }" :rightColor="'transparent'" :leftColor="'rgba(var(--FSCredRGB), 0.7); backdrop-filter: blur(5px);'"
-                        :height="windowHeight * 0.7" :padding="'70px 0 60px 0'">
-                        <template v-slot:left>
+                    }" :rightColor="'rgba(var(--FSCredRGB), 0.7); backdrop-filter: blur(5px);'"
+                        :leftColor="'transparent'" :height="windowHeight * 0.7" :padding="'70px 0 60px 0'">
+                        <template v-slot:right>
                             <div class="center vertical-center">
                                 <h4 class="white">Welcome to the</h4>
                                 <h1 class="white">Florida Southern College</h1>
@@ -20,14 +20,13 @@
                     </SkewBox>
                 </Slide>
                 <Slide :key="1">
-                    <SkewBox :leftBG="{
+                    <SkewBox :rightBG="{
                     	backgroundImage: `url(${require('@/assets/img/WCS.jpg')})`,
                     	'background-position': 'center',
-                    }" :leftColor="'transparent'" :rightColor="'rgba(var(--FSCblueRGB), 0.7); backdrop-filter: blur(5px);'"
-                        :height="windowHeight * 0.7" :padding="'70px 0 60px 0'">
-                        <template v-slot:left></template>
-                        <template v-slot:right>
-                            <h1 style="color: white">Content on the right side</h1>
+                    }" :leftColor="'rgba(var(--FSCblueRGB), 0.7); backdrop-filter: blur(5px);'"
+                        :rightColor="'transparent'" :height="windowHeight * 0.7" :padding="'70px 0 60px 0'">
+                        <template v-slot:left>
+                            <h1 style="color: white">Content on the Left side</h1>
                         </template>
                     </SkewBox>
                 </Slide>
@@ -64,8 +63,7 @@
                 <Carousel class="carousel" :wrap-around="true" :transition="600" :pauseAutoplayOnHover="true">
                     <template #slides>
                         <Slide v-for="announcement in announcements" :key="announcement">
-                            <Announcement :pfp="announcement.pfp"
-                                :name="announcement.name">
+                            <Announcement :pfp="announcement.pfp" :name="announcement.name" :date="announcement.date">
                                 <Markdown :source="announcement.content" :breaks="true" />
                             </Announcement>
                         </Slide>
@@ -91,7 +89,8 @@
                 <div class="events white-scroll-bar"
                     style="max-height: 65vh !important; overflow-y: auto; width: 75%; margin: auto">
                     <Event v-for="(event, i) in events" :key="i" :title="event.title" :icon="event.icon"
-                        :location="event.location" :date="event.date" :time="event.time" :hasDescription="event.description">
+                        :location="event.location" :date="event.date" :time="event.time"
+                        :hasDescription="event.description">
                         {{ event.description }}
                     </Event>
                 </div>
@@ -106,19 +105,21 @@
     	'background-position': 'left middle',
     }" :height="'0'" :opacity="0.2" :overlayColor="'0, 0, 0'" class="">
         <div class="h-100 pb-2">
-            <div class="faculty container py-5 h-100">
-                <h1 class="center FSCred mt-2 mb-4 pb-1 bold">Meet the Faculty</h1>
-                <Carousel :itemsToShow="3.5" :wrapAround="true">
-                    <Slide v-for="(professor, name) in professors" :key="name">
-                        <div class="carousel__item my-5">
-                            <FacultyCard :professor="professor" :name="name"></FacultyCard>
-                        </div>
-                    </Slide>
-                    <template #addons>
-                        <Navigation />
-                    </template>
-                </Carousel>
-            </div>
+            <center>
+                <div class="m-auto faculty container py-5 h-100">
+                    <h1 class="center FSCred mt-2 mb-4 pb-1 bold">Meet the Faculty</h1>
+                    <Carousel :itemsToShow="3.7" :wrapAround="true">
+                        <Slide v-for="(professor, name) in professors" :key="name">
+                            <div class="carousel__item my-5">
+                                <FacultyCard :professor="professor" :name="name"></FacultyCard>
+                            </div>
+                        </Slide>
+                        <template #addons>
+                            <Navigation />
+                        </template>
+                    </Carousel>
+                </div>
+            </center>
         </div>
     </Parallax>
     <!-- End Faculty Section -->
@@ -176,21 +177,21 @@ export default {
     methods: {
         async getUser(userID) {
             var qs = require("qs");
-			var data = qs.stringify({
-				token: process.env.VUE_APP_SLACK_TOKEN,
-			});
-			var config = {
-				method: "post",
-				url: "https://slack.com/api/users.profile.get?user=" + userID,
-				headers: {
-					"Content-Type": "application/x-www-form-urlencoded",
-				},
-				data: data,
-			};
+            var data = qs.stringify({
+                token: process.env.VUE_APP_SLACK_TOKEN,
+            });
+            var config = {
+                method: "post",
+                url: "https://slack.com/api/users.profile.get?user=" + userID,
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                data: data,
+            };
 
-			const res = await axios(config);
+            const res = await axios(config);
 
-            return res.data.profile;				
+            return res.data.profile;
         }
     },
     computed: {
@@ -211,23 +212,21 @@ export default {
         const storeAnnouncements = this.$store.getters.getAnnouncements;
         var filteredAnnouncements = [];
 
-        // Loop over announcements
-        // storeAnnouncements.forEach((message) => {
-        //     console.log(message);
-        // });
-
+        // Filter out select announcements to be displayed
         for (let i = 0; i < 20; i++) {
             if (storeAnnouncements[i].text.includes("<!channel>") && storeAnnouncements[i].text.length > 11) {
                 const user = await this.getUser(storeAnnouncements[i].user);
-
+                const dateTime = new Date(parseInt(storeAnnouncements[i].ts * 1000));
                 filteredAnnouncements.push({
                     "pfp": user.image_1024,
                     "name": (user.display_name) ? user.display_name : user.real_name,
                     "content": storeAnnouncements[i].text.replace("<!channel>", "").trim(),
+                    "date": dateTime.toLocaleDateString() + ', ' + ((dateTime.getHours() + 12) % 12) + ':' + dateTime.getMinutes() + ' ' + dateTime.toLocaleTimeString().split(" ")[1],
                 });
             }
         }
 
+        // Display filtered announcements
         this.announcements = filteredAnnouncements;
 
         console.log("ANNOUNCEMENTS2", this.announcements);
@@ -258,7 +257,7 @@ export default {
 
 <style>
 .carousel__pagination-button::after {
-    content: none!important;
+    content: none !important;
 }
 
 .carousel__pagination-button {
@@ -277,7 +276,7 @@ export default {
 .hero .carousel__pagination-button {
     height: calc(var(--vc-pgn-height) * 1.5) !important;
     width: calc(var(--vc-pgn-width) * 1.5) !important;
-    
+
 }
 
 .hero .carousel__pagination-button--active {
@@ -295,7 +294,7 @@ export default {
     background-color: transparent;
     width: calc(var(--vc-nav-width) * 2) !important;
     height: calc(var(--vc-nav-height) * 2) !important;
-    color: white!important;
+    color: white !important;
 }
 
 .hero .carousel__prev {
@@ -338,7 +337,7 @@ export default {
     background-color: transparent;
     width: calc(var(--vc-nav-width) * 2) !important;
     height: calc(var(--vc-nav-height) * 2) !important;
-    color: white!important;
+    color: white !important;
 }
 
 .announcements .carousel__prev {
@@ -382,7 +381,7 @@ export default {
     width: 50px !important;
     height: 50px !important;
     border-radius: 50% !important;
-    color: white!important;
+    color: white !important;
 }
 
 .faculty .carousel__prev {
@@ -394,25 +393,24 @@ export default {
 }
 
 .faculty .carousel__slide>.carousel__item {
-    transform: scale(1);
+    transform: scale(0.8);
     opacity: 0.5;
     transition: 0.5s;
 }
 
-.faculty .carousel__slide--visible>.carousel__item {
-    opacity: 1;
-    transform: rotateY(0);
-}
 
 .faculty .carousel__slide--next>.carousel__item {
-    transform: scale(0.9) translate(-10px);
+    opacity: 0.9;
+    transform: scale(0.9) translate(25px);
 }
 
 .faculty .carousel__slide--prev>.carousel__item {
-    transform: scale(0.9) translate(10px);
+    opacity: 0.9;
+    transform: scale(0.9) translate(-25px);
 }
 
 .faculty .carousel__slide--active>.carousel__item {
+    opacity: 1;
     transform: scale(1.1);
 }
 
