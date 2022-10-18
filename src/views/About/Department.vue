@@ -77,10 +77,10 @@
 			<div class="py-4 px-5">
 				<div class="inner_square">
 					<div class="textandimg">
-					<img src="@/assets/img/person_computer.jpg" alt="" class="degree_pic">
+					<img src="@/assets/img/person_computer.jpg" alt="" class="degree_pic mt-3">
 					<a href="/about/degree-and-concentrations">
 						<div class="py-5">
-							<h4 class="inner_square text">
+							<h4 class="sm_inner_square">
 								Explore the Degree<br>& Concentrations
 							</h4>
 						</div>
@@ -126,8 +126,31 @@
 		margin-left: 0;
 		margin-right: 0;
 		height: 375px;
+		position: relative;
 	}
 	.inner_square{
+		background-color: rgba(58, 64, 64, 0.63);
+		height: 300px;
+		display: inline;
+		position: absolute;
+		top: 10%;
+	}
+	.sm_inner_square{
+		background-color: rgba(121, 108, 108, 0.904) !important;
+		height: 80px;
+		width: 275px;
+		color: white;
+		text-align: center;
+		display: inline;
+		position: absolute;
+		transform: translate(-70%, -70%);
+		
+	}
+	.sm_inner_square:hover{
+		background-color: rgba(254, 254, 254, 0.786) !important;
+		color: var(--FSCred) !important;
+	}
+	/* .inner_square{
 		background-color: rgba(47, 79, 79, 0.515);
 		margin-left: 20%;
 		margin-right: 20%;
@@ -143,16 +166,14 @@
 		width: 260px;
 		margin-left: 1rem !important;
 		margin-bottom: 1rem;
-	}
-	.inner_square.text:hover{
-		background-color: rgba(254, 254, 254, 0.884) !important;
-		color: var(--FSCred) !important;
-	}
+	} */
+	
 	.degree_pic{
 		display: block;
-		width: 80%;
+		width: 85%;
   		margin-left: auto;
   		margin-right: auto;
+		transform: translate(5%, 5%);
 	}
 	.textandimg{
 		position: relative;

@@ -38,6 +38,13 @@
 						<h5 class="col-1"><i class="fa-solid fa-phone"></i></h5>
 						<h5 class="col-11">&nbsp;&nbsp;&nbsp;{{ professor.phone }}</h5>
 
+						<h5 class="col-1"><i class="fa-solid fa-calendar"></i></h5>
+						<h5 class="col-11">
+							&nbsp;&nbsp;&nbsp;<a :href="professor.appointment" class="white">{{
+								professor.appointment
+							}}</a>
+						</h5>
+
 						<h5 class="col-1"><i class="fa-solid fa-location-dot"></i></h5>
 						<h5 class="col-11">&nbsp;&nbsp;&nbsp;{{ professor.office }}</h5>
 					</div>
@@ -49,8 +56,18 @@
 				</template>
 			</SkewBox>
 
-			<div class="professor mx-5">
-				<h1 class="white center">Biography</h1>
+			<div class="professor mx-5 my-5">
+				<TabsWrapper>
+					<Tab title="Biography" v-html=professor.bio></Tab>
+					<Tab title="Interests" v-html=professor.interests></Tab>
+					<Tab title="Education" v-html=professor.education></Tab>
+					<Tab title="Honors/Awards" v-html=professor.awards></Tab>
+					<Tab title="Publications" v-html=professor.publications></Tab>
+				</TabsWrapper>
+
+
+
+				<!-- <h1 class="white center">Biography</h1>
 				<hr class="white-hr" />
 				<div class="white" v-html="professor.bio"></div>
 				
@@ -77,8 +94,9 @@
 				</center>
 				<h1 class="white">Publications</h1>
 				<hr class="white-hr" />
-				<div class="white" v-html="professor.publications"></div>
+				<div class="white" v-html="professor.publications"></div> -->
 			</div>
+
 		</div>
 	</Parallax>
 
@@ -119,6 +137,8 @@
 	import "vue3-carousel/dist/carousel.css";
 	import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 	import FacultyCard from "../components/FacultyCard.vue";
+	import TabsWrapper from "../components/TabsWrapper.vue";
+	import Tab from "../components/Tab.vue";
 
 	export default {
 		components: {
@@ -130,6 +150,8 @@
 			Slide,
 			Pagination,
 			Navigation,
+			TabsWrapper,
+			Tab,
 		},
 		data() {
 			return {
