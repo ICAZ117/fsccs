@@ -53,10 +53,10 @@
 
     <!-- Start Announcements Section -->
     <Parallax :image="{
-    	backgroundImage: `url(${require('@/assets/img/BG6.jpg')})`,
+    	backgroundImage: `url(${require('@/assets/img/Circuit2.jpg')})`,
     	'background-position': 'left top',
     }" :height="'70vh'" :opacity="0.3" :overlayColor="'0, 0, 0'" class="">
-        <div class="strong-blur h-100">
+        <div class="blur h-100">
             <div class="announcements container py-5 h-100">
                 <h1 class="center primary mt-2 mb-4 pb-1 bold">Announcements</h1>
 
@@ -101,10 +101,10 @@
 
     <!-- Start Faculty Section -->
     <Parallax :image="{
-    	backgroundImage: `url(${require('@/assets/img/BG4.jpg')}`,
+    	backgroundImage: `url(${require('@/assets/img/Circuit1.jpg')}`,
     	'background-position': 'left middle',
-    }" :height="'0'" :opacity="0.2" :overlayColor="'0, 0, 0'" class="">
-        <div class="h-100 pb-2">
+    }" :height="'0'" :opacity="0.5" :overlayColor="'0, 0, 0'" class="">
+        <div class=" blur h-100 pb-2">
             <center>
                 <div class="m-auto faculty container py-5 h-100">
                     <h1 class="center FSCred mt-2 mb-4 pb-1 bold">Meet the Faculty</h1>

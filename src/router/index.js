@@ -50,6 +50,14 @@ const routes = [
 			title: "About the CS Building | FSC CS",
 		},
 	},
+    {
+		path: "/about/cube-life",
+		name: "About the Cube Life",
+		component: () => import("../views/About/CubeLife.vue"),
+		meta: {
+			title: "About the Cube Life | FSC CS",
+		},
+	},
 	{
 		path: "/get-involved/cs-club",
 		name: "Computer Science Club",

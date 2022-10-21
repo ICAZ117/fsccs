@@ -213,13 +213,4 @@
 		outline: none;
 		height: 30px !important;
 	}
-
-	.success {
-		background-color: var(--secondary) !important;
-		border-left-color: var(--secondary) !important;
-		color: black !important;
-		padding: 0.5rem;
-		border-radius: 5px;
-		margin-bottom: 1rem;
-	}
 </style>

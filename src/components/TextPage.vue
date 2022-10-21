@@ -18,7 +18,7 @@
 		:opacity="opacity"
 		:overlayColor="overlay"
 	>
-		<div class="container page-text blur py-5 px-5">
+		<div class="container page-text  py-5 px-5">
 			<slot></slot>
 		</div>
 	</Parallax>
@@ -76,7 +76,7 @@
 
 <style>
     .page-text {
-		background-color: rgba(0, 0, 0, 0.5);
+		background-color: rgba(0, 0, 0, 0.7);
         color: white;
 	}
 </style>

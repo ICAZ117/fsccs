@@ -6,7 +6,7 @@
 				<component :is="Component"></component>
 			</div>
 		</router-view>
-		<notifications position="bottom right" />
+		<notifications position="bottom right"/>
 		<Footer></Footer>
 	</div>
 </template>
@@ -127,6 +127,10 @@
 		scrollbar-color: var(--red) transparent !important;
 		overflow-y: auto !important;
 		/* margin-right: 5px !important; */
+	}
+
+    .success {
+		transform: translateX(-10px);
 	}
 
 	/* Works on Chrome, Edge, and Safari */

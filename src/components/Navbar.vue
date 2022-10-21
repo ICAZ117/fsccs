@@ -66,6 +66,10 @@
 									path: '/about/cs-building',
 									title: 'About the CS Building',
 								},
+                                {
+                                    path: '/about/cube-life',
+                                    title: 'About the Cube Life',
+                                },
 								{
 									path: '/virtual-tour',
 									title: 'Virtual Tour',
