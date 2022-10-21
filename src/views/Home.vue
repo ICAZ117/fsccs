@@ -1,143 +1,238 @@
 <template>
-    <!-- Start Hero Section -->
-    <div class="hero" style="width: width 100vw !important; overflow: hidden !important">
-        <div class="" :style="'height: ' + 0.7 * windowHeight + 'px !important'">
-            <Carousel class="carousel" :wrap-around="true" :autoplay="5000" :transition="1500"
-                :pauseAutoplayOnHover="true">
-                <Slide :key="0">
-                    <SkewBox :rightBG="{
-                    	backgroundImage: `url(${require('@/assets/img/WCS.jpg')})`,
-                    	'background-position': 'center',
-                    }" :rightColor="'rgba(var(--FSCredRGB), 0.7); backdrop-filter: blur(5px);'"
-                        :leftColor="'transparent'" :height="windowHeight * 0.7" :padding="'70px 0 60px 0'">
-                        <template v-slot:right>
-                            <div class="center vertical-center">
-                                <h4 class="white">Welcome to the</h4>
-                                <h1 class="white">Florida Southern College</h1>
-                                <h4 class="white">Department of Computer Science</h4>
-                            </div>
-                        </template>
-                    </SkewBox>
-                </Slide>
-                <Slide :key="1">
-                    <SkewBox :rightBG="{
-                    	backgroundImage: `url(${require('@/assets/img/WCS.jpg')})`,
-                    	'background-position': 'center',
-                    }" :leftColor="'rgba(var(--FSCblueRGB), 0.7); backdrop-filter: blur(5px);'"
-                        :rightColor="'transparent'" :height="windowHeight * 0.7" :padding="'70px 0 60px 0'">
-                        <template v-slot:left>
-                            <h1 style="color: white">Content on the Left side</h1>
-                        </template>
-                    </SkewBox>
-                </Slide>
-                <Slide :key="2">
-                    <SkewBox :height="windowHeight * 0.7" :padding="'70px 0 60px 0'">
-                        <template v-slot:left>
-                            <h1 style="color: white">Content on the left side</h1>
-                        </template>
-                        <template v-slot:right>
-                            <h1 style="color: white">Content on the right side</h1>
-                        </template>
-                    </SkewBox>
-                </Slide>
+	<!-- Start Hero Section -->
+	<div
+		class="hero"
+		style="width: width 100vw !important; overflow: hidden !important"
+	>
+		<div
+			class=""
+			:style="'height: ' + 0.7 * windowHeight + 'px !important'"
+		>
+			<Carousel
+				class="carousel"
+				:wrap-around="true"
+				:autoplay="5000"
+				:transition="1500"
+				:pauseAutoplayOnHover="true"
+			>
+				<Slide :key="0">
+					<SkewBox
+						:rightBG="{
+							backgroundImage: `url(${require('@/assets/img/WCS.jpg')})`,
+							'background-position': 'center',
+						}"
+						:rightColor="'rgba(var(--FSCredRGB), 0.7); backdrop-filter: blur(5px);'"
+						:leftColor="'transparent'"
+						:height="windowHeight * 0.7"
+						:padding="'70px 0 60px 0'"
+					>
+						<template v-slot:right>
+							<div class="center vertical-center">
+								<h4 class="white">Welcome to the</h4>
+								<h1 class="white">Florida Southern College</h1>
+								<h4 class="white">
+									Department of Computer Science
+								</h4>
+							</div>
+						</template>
+					</SkewBox>
+				</Slide>
+				<Slide :key="1">
+					<SkewBox
+						:rightBG="{
+							backgroundImage: `url(${require('@/assets/img/WCS.jpg')})`,
+							'background-position': 'center',
+						}"
+						:leftColor="'rgba(var(--FSCblueRGB), 0.7); backdrop-filter: blur(5px);'"
+						:rightColor="'transparent'"
+						:height="windowHeight * 0.7"
+						:padding="'70px 0 60px 0'"
+					>
+						<template v-slot:left>
+							<h1 style="color: white">
+								Content on the Left side
+							</h1>
+						</template>
+					</SkewBox>
+				</Slide>
+				<Slide :key="2">
+					<SkewBox
+						:height="windowHeight * 0.7"
+						:padding="'70px 0 60px 0'"
+					>
+						<template v-slot:left>
+							<h1 style="color: white">
+								Content on the left side
+							</h1>
+						</template>
+						<template v-slot:right>
+							<h1 style="color: white">
+								Content on the right side
+							</h1>
+						</template>
+					</SkewBox>
+				</Slide>
 
-                <template #addons>
-                    <Navigation />
-                    <Pagination />
-                </template>
-            </Carousel>
-        </div>
-        <!-- End SkewBox Carousel -->
-    </div>
-    <!-- End Hero Section -->
+				<template #addons>
+					<Navigation />
+					<Pagination />
+				</template>
+			</Carousel>
+		</div>
+		<!-- End SkewBox Carousel -->
+	</div>
+	<!-- End Hero Section -->
 
-    <!-- Start Announcements Section -->
-    <Parallax :image="{
-    	backgroundImage: `url(${require('@/assets/img/Circuit2.jpg')})`,
-    	'background-position': 'left top',
-    }" :height="'70vh'" :opacity="0.3" :overlayColor="'0, 0, 0'" class="">
-        <div class="blur h-100">
-            <div class="announcements container py-5 h-100">
-                <h1 class="center primary mt-2 mb-4 pb-1 bold">Announcements</h1>
+	<!-- Start Announcements Section -->
+	<Parallax
+		:image="{
+			backgroundImage: `url(${require('@/assets/img/Circuit2.jpg')})`,
+			'background-position': 'left top',
+		}"
+		:height="'70vh'"
+		:opacity="0.3"
+		:overlayColor="'0, 0, 0'"
+		class=""
+	>
+		<div class="blur h-100">
+			<div class="announcements container py-5 h-100">
+				<h1 class="center primary mt-2 mb-4 pb-1 bold">
+					Announcements
+				</h1>
 
-                <Carousel class="carousel" :wrap-around="true" :transition="600" :pauseAutoplayOnHover="true">
-                    <template #slides>
-                        <Slide v-for="announcement in announcements" :key="announcement">
-                            <Announcement :pfp="announcement.pfp" :name="announcement.name" :date="announcement.date">
-                                <Markdown :source="announcement.content" :breaks="true" />
-                            </Announcement>
-                        </Slide>
-                    </template>
-                    <template #addons>
-                        <Navigation />
-                        <Pagination />
-                    </template>
-                </Carousel>
-            </div>
-        </div>
-    </Parallax>
-    <!-- End Announcements Section -->
+				<Carousel
+					class="carousel"
+					:wrap-around="true"
+					:transition="600"
+					:pauseAutoplayOnHover="true"
+				>
+					<template #slides>
+						<Slide
+							v-for="announcement in announcements"
+							:key="announcement"
+						>
+							<Announcement
+								:pfp="announcement.pfp"
+								:name="announcement.name"
+								:date="announcement.date"
+							>
+								<Markdown
+									:source="announcement.content"
+									:breaks="true"
+								/>
+							</Announcement>
+						</Slide>
+					</template>
+					<template #addons>
+						<Navigation />
+						<Pagination />
+					</template>
+				</Carousel>
+			</div>
+		</div>
+	</Parallax>
+	<!-- End Announcements Section -->
 
-    <!-- Start Events Section -->
-    <Parallax :image="{
-    	backgroundImage: `url(https://www.capgemini.com/dk-en/wp-content/uploads/sites/42/2019/06/Blockchain-2.gif)`,
-    	'background-position': 'left bottom',
-    }" :height="'0'" :opacity="0.5" :overlayColor="'0, 20, 30'" class="">
-        <div class="blur h-100 pb-2">
-            <div class="announcements container py-5 h-100">
-                <h1 class="center FSClightblue mt-2 mb-4 pb-1 bold">Events</h1>
-                <div class="events white-scroll-bar"
-                    style="max-height: 65vh !important; overflow-y: auto; width: 75%; margin: auto">
-                    <Event v-for="(event, i) in events" :key="i" :title="event.title" :icon="event.icon"
-                        :location="event.location" :date="event.date" :time="event.time"
-                        :hasDescription="event.description">
-                        {{ event.description }}
-                    </Event>
-                </div>
-            </div>
-        </div>
-    </Parallax>
-    <!-- End Events Section -->
+	<!-- Start Events Section -->
+	<Parallax
+		:image="{
+			backgroundImage: `url(https://www.capgemini.com/dk-en/wp-content/uploads/sites/42/2019/06/Blockchain-2.gif)`,
+			'background-position': 'left bottom',
+		}"
+		:height="'0'"
+		:opacity="0.5"
+		:overlayColor="'0, 20, 30'"
+		class=""
+	>
+		<div class="blur h-100 pb-2">
+			<div class="announcements container py-5 h-100">
+				<h1 class="center FSClightblue mt-2 mb-4 pb-1 bold">Events</h1>
+				<div
+					class="events white-scroll-bar"
+					style="
+						max-height: 65vh !important;
+						overflow-y: auto;
+						width: 75%;
+						margin: auto;
+					"
+				>
+					<Event
+						v-for="(event, i) in events"
+						:key="i"
+						:title="event.title"
+						:icon="event.icon"
+						:location="event.location"
+						:date="event.date"
+						:time="event.time"
+						:hasDescription="event.description"
+					>
+						{{ event.description }}
+					</Event>
+				</div>
+			</div>
+		</div>
+	</Parallax>
+	<!-- End Events Section -->
 
-    <!-- Start Faculty Section -->
-    <Parallax :image="{
-    	backgroundImage: `url(${require('@/assets/img/Circuit1.jpg')}`,
-    	'background-position': 'left middle',
-    }" :height="'0'" :opacity="0.5" :overlayColor="'0, 0, 0'" class="">
-        <div class=" blur h-100 pb-2">
-            <center>
-                <div class="m-auto faculty container py-5 h-100">
-                    <h1 class="center FSCred mt-2 mb-4 pb-1 bold">Meet the Faculty</h1>
-                    <Carousel :itemsToShow="3.7" :wrapAround="true">
-                        <Slide v-for="(professor, name) in professors" :key="name">
-                            <div class="carousel__item my-5">
-                                <FacultyCard :professor="professor" :name="name"></FacultyCard>
-                            </div>
-                        </Slide>
-                        <template #addons>
-                            <Navigation />
-                        </template>
-                    </Carousel>
-                </div>
-            </center>
-        </div>
-    </Parallax>
-    <!-- End Faculty Section -->
+	<!-- Start Faculty Section -->
+	<Parallax
+		:image="{
+			backgroundImage: `url(${require('@/assets/img/Circuit1.jpg')}`,
+			'background-position': 'left middle',
+		}"
+		:height="'0'"
+		:opacity="0.5"
+		:overlayColor="'0, 0, 0'"
+		class=""
+	>
+		<div class="blur h-100 pb-2">
+			<center>
+				<div class="m-auto faculty container py-5 h-100">
+					<h1 class="center FSCred mt-2 mb-4 pb-1 bold">
+						Meet the Faculty
+					</h1>
+					<Carousel :itemsToShow="3.7" :wrapAround="true">
+						<Slide
+							v-for="(professor, name) in professors"
+							:key="name"
+						>
+							<div class="carousel__item my-5">
+								<FacultyCard
+									:professor="professor"
+									:name="name"
+								></FacultyCard>
+							</div>
+						</Slide>
+						<template #addons>
+							<Navigation />
+						</template>
+					</Carousel>
+				</div>
+			</center>
+		</div>
+	</Parallax>
+	<!-- End Faculty Section -->
 
-    <!-- Start Tour Section -->
-    <Parallax :image="{
-    	background: 'var(--FSCgrey)',
-    	'background-position': 'left middle',
-    }" :height="'70vh'" :opacity="0.2" :overlayColor="'0, 0, 0'" class="">
-        <div class="container py-5 my-2" style="height: 70vh !important">
-            <div class="center vertical-center">
-                <router-link to="/virutal-tour" class="no-decor">
-                    <h1 class="bold tour-link">Take a Virtual Tour</h1>
-                </router-link>
-            </div>
-        </div>
-    </Parallax>
-    <!-- End Tour Section -->
+	<!-- Start Tour Section -->
+	<Parallax
+		:image="{
+			background: 'var(--FSCgrey)',
+			'background-position': 'left middle',
+		}"
+		:height="'70vh'"
+		:opacity="0.2"
+		:overlayColor="'0, 0, 0'"
+		class=""
+	>
+		<div class="container py-5 my-2" style="height: 70vh !important">
+			<div class="center vertical-center">
+				<router-link to="/virutal-tour" class="no-decor">
+					<h1 class="bold tour-link">Take a Virtual Tour</h1>
+				</router-link>
+			</div>
+		</div>
+	</Parallax>
+	<!-- End Tour Section -->
 </template>
 
 <script>
@@ -147,292 +242,312 @@ import Announcement from "../components/Announcement.vue";
 import FacultyCard from "../components/FacultyCard.vue";
 import Event from "../components/Event.vue";
 import "vue3-carousel/dist/carousel.css";
-import Markdown from 'vue3-markdown-it';
+import Markdown from "vue3-markdown-it";
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 import axios from "axios";
 
 export default {
-    components: {
-        Parallax,
-        SkewBox,
-        Announcement,
-        Event,
-        FacultyCard,
-        Carousel,
-        Slide,
-        Pagination,
-        Navigation,
-        Markdown,
-    },
-    data() {
-        return {
-            userInput: "",
-            announcementReload: 0,
-            windowHeight: 0,
-            allEvents: [],
-            professors: {},
-            announcements: [],
-        };
-    },
-    methods: {
-        async getUser(userID) {
-            var qs = require("qs");
-            var data = qs.stringify({
-                token: process.env.VUE_APP_SLACK_TOKEN,
-            });
-            var config = {
-                method: "post",
-                url: "https://slack.com/api/users.profile.get?user=" + userID,
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                },
-                data: data,
-            };
+	components: {
+		Parallax,
+		SkewBox,
+		Announcement,
+		Event,
+		FacultyCard,
+		Carousel,
+		Slide,
+		Pagination,
+		Navigation,
+		Markdown,
+	},
+	data() {
+		return {
+			userInput: "",
+			announcementReload: 0,
+			windowHeight: 0,
+			allEvents: [],
+			professors: {},
+			announcements: [],
+		};
+	},
+	methods: {
+		async getUser(userID) {
+			var qs = require("qs");
+			var data = qs.stringify({
+				token: process.env.VUE_APP_SLACK_TOKEN,
+			});
+			var config = {
+				method: "post",
+				url: "https://slack.com/api/users.profile.get?user=" + userID,
+				headers: {
+					"Content-Type": "application/x-www-form-urlencoded",
+				},
+				data: data,
+			};
 
-            const res = await axios(config);
+			const res = await axios(config);
 
-            return res.data.profile;
-        }
-    },
-    computed: {
-        events() {
-            return this.allEvents.slice(0, 20);
-        },
-    },
-    async beforeMount() {
-        // Get window height
-        this.windowHeight = window.innerHeight;
+			return res.data.profile;
+		},
+	},
+	computed: {
+		events() {
+			return this.allEvents.slice(0, 20);
+		},
+	},
+	async beforeMount() {
+		// Get window height
+		this.windowHeight = window.innerHeight;
 
-        this.allEvents = this.$store.getters.getEvents;
+		this.allEvents = this.$store.getters.getEvents;
 
-        // Fetch all slack announcements from API
-        await this.$store.dispatch("fetchAnnouncements");
+		// Fetch all slack announcements from API
+		await this.$store.dispatch("fetchAnnouncements");
 
-        // Get announcements from store
-        const storeAnnouncements = this.$store.getters.getAnnouncements;
-        var filteredAnnouncements = [];
+		// Get announcements from store
+		const storeAnnouncements = this.$store.getters.getAnnouncements;
+		var filteredAnnouncements = [];
 
-        // Filter out select announcements to be displayed
-        for (let i = 0; i < 20; i++) {
-            if (storeAnnouncements[i].text.includes("<!channel>") && storeAnnouncements[i].text.length > 11) {
-                const user = await this.getUser(storeAnnouncements[i].user);
-                const dateTime = new Date(parseInt(storeAnnouncements[i].ts * 1000));
-                filteredAnnouncements.push({
-                    "pfp": user.image_1024,
-                    "name": (user.display_name) ? user.display_name : user.real_name,
-                    "content": storeAnnouncements[i].text.replace("<!channel>", "").trim(),
-                    "date": dateTime.toLocaleDateString() + ', ' + ((dateTime.getHours() + 12) % 12) + ':' + dateTime.getMinutes() + ' ' + dateTime.toLocaleTimeString().split(" ")[1],
-                });
-            }
-        }
+		// Filter out select announcements to be displayed
+		for (let i = 0; i < 20; i++) {
+			if (
+				storeAnnouncements[i].text.includes("<!channel>") &&
+				storeAnnouncements[i].text.length > 11
+			) {
+				const user = await this.getUser(storeAnnouncements[i].user);
+				const dateTime = new Date(
+					parseInt(storeAnnouncements[i].ts * 1000)
+				);
+				filteredAnnouncements.push({
+					pfp: user.image_1024,
+					name: user.display_name
+						? user.display_name
+						: user.real_name,
+					content: storeAnnouncements[i].text
+						.replace("<!channel>", "")
+						.trim(),
+					date:
+						dateTime.toLocaleDateString() +
+						", " +
+						((dateTime.getHours() + 12) % 12) +
+						":" +
+						dateTime.getMinutes() +
+						" " +
+						dateTime.toLocaleTimeString().split(" ")[1],
+				});
+			}
+		}
 
-        // Display filtered announcements
-        this.announcements = filteredAnnouncements;
+		// Display filtered announcements
+		this.announcements = filteredAnnouncements;
 
-        console.log("ANNOUNCEMENTS2", this.announcements);
+		console.log("ANNOUNCEMENTS2", this.announcements);
 
-        // Get all faculty members in DB
-        await this.$store.dispatch("fetchFaculty");
+		// Get all faculty members in DB
+		await this.$store.dispatch("fetchFaculty");
 
-        // Get faculty members from store
-        const storeFaculty = this.$store.getters.getFaculty;
+		// Get faculty members from store
+		const storeFaculty = this.$store.getters.getFaculty;
 
-        // Push each professor's data to the professors array
-        storeFaculty.forEach((doc) => {
-            this.professors[doc.id] = doc.data();
-        });
+		// Push each professor's data to the professors array
+		storeFaculty.forEach((doc) => {
+			this.professors[doc.id] = doc.data();
+		});
 
-        this.professors = Object.fromEntries(
-            Object.entries(this.professors).sort(([, a], [, b]) => Math.random() - 0.5)
-        );
-        this.professors = Object.fromEntries(
-            Object.entries(this.professors).sort(([, a], [, b]) => Math.random() - 0.5)
-        );
-        this.professors = Object.fromEntries(
-            Object.entries(this.professors).sort(([, a], [, b]) => Math.random() - 0.5)
-        );
-    },
+		this.professors = Object.fromEntries(
+			Object.entries(this.professors).sort(
+				([, a], [, b]) => Math.random() - 0.5
+			)
+		);
+		this.professors = Object.fromEntries(
+			Object.entries(this.professors).sort(
+				([, a], [, b]) => Math.random() - 0.5
+			)
+		);
+		this.professors = Object.fromEntries(
+			Object.entries(this.professors).sort(
+				([, a], [, b]) => Math.random() - 0.5
+			)
+		);
+	},
 };
 </script>
 
 <style>
 .carousel__pagination-button::after {
-    content: none !important;
+	content: none !important;
 }
 
 .carousel__pagination-button {
-    background-color: darkgray;
-    margin: 0 5px;
-    border-radius: 10px;
+	background-color: darkgray;
+	margin: 0 5px;
+	border-radius: 10px;
 }
 
 /* HERO Carousel */
 .hero .carousel__pagination {
-    margin-bottom: 0;
-    padding-left: 0;
-    transform: translateY(-30px);
+	margin-bottom: 0;
+	padding-left: 0;
+	transform: translateY(-30px);
 }
 
 .hero .carousel__pagination-button {
-    height: calc(var(--vc-pgn-height) * 1.5) !important;
-    width: calc(var(--vc-pgn-width) * 1.5) !important;
-
+	height: calc(var(--vc-pgn-height) * 1.5) !important;
+	width: calc(var(--vc-pgn-width) * 1.5) !important;
 }
 
 .hero .carousel__pagination-button--active {
-    background-color: white !important;
+	background-color: white !important;
 }
 
 .hero .carousel__icon {
-    width: calc(var(--vc-icn-width) * 2) !important;
-    height: calc(var(--vc-icn-width) * 2) !important;
+	width: calc(var(--vc-icn-width) * 2) !important;
+	height: calc(var(--vc-icn-width) * 2) !important;
 }
 
 .hero .carousel__prev,
 .hero .carousel__next {
-    box-sizing: content-box;
-    background-color: transparent;
-    width: calc(var(--vc-nav-width) * 2) !important;
-    height: calc(var(--vc-nav-height) * 2) !important;
-    color: white !important;
+	box-sizing: content-box;
+	background-color: transparent;
+	width: calc(var(--vc-nav-width) * 2) !important;
+	height: calc(var(--vc-nav-height) * 2) !important;
+	color: white !important;
 }
 
 .hero .carousel__prev {
-    left: 30px !important;
+	left: 30px !important;
 }
 
 .hero .carousel__next {
-    right: 30px !important;
+	right: 30px !important;
 }
 
 /* ANNOUNCEMENT Carousel */
 .announcements .carousel {
-    text-align: left;
+	text-align: left;
 }
 
 .announcements .carousel__pagination {
-    margin-bottom: 0;
-    padding-left: 0;
-    transform: translateY(0px);
+	margin-bottom: 0;
+	padding-left: 0;
+	transform: translateY(0px);
 }
 
 .announcements .carousel__pagination-button {
-    height: calc(var(--vc-pgn-height) * 1.5) !important;
-    width: calc(var(--vc-pgn-width) * 1.5) !important;
-    background-color: darkgray;
+	height: calc(var(--vc-pgn-height) * 1.5) !important;
+	width: calc(var(--vc-pgn-width) * 1.5) !important;
+	background-color: darkgray;
 }
 
 .announcements .carousel__pagination-button--active {
-    background-color: white !important;
+	background-color: white !important;
 }
 
 .announcements .carousel__icon {
-    width: calc(var(--vc-icn-width) * 2) !important;
-    height: calc(var(--vc-icn-width) * 2) !important;
+	width: calc(var(--vc-icn-width) * 2) !important;
+	height: calc(var(--vc-icn-width) * 2) !important;
 }
 
 .announcements .carousel__prev,
 .announcements .carousel__next {
-    /* box-sizing: content-box; */
-    background-color: transparent;
-    width: calc(var(--vc-nav-width) * 2) !important;
-    height: calc(var(--vc-nav-height) * 2) !important;
-    color: white !important;
+	/* box-sizing: content-box; */
+	background-color: transparent;
+	width: calc(var(--vc-nav-width) * 2) !important;
+	height: calc(var(--vc-nav-height) * 2) !important;
+	color: white !important;
 }
 
 .announcements .carousel__prev {
-    left: 30px !important;
+	left: 30px !important;
 }
 
 .announcements .carousel__next {
-    right: 30px !important;
+	right: 30px !important;
 }
 
 /* FACULTY Carousel */
 .faculty .carousel {
-    text-align: left;
+	text-align: left;
 }
 
 .faculty .carousel__pagination {
-    margin-bottom: 0;
-    padding-left: 0;
-    transform: translateY(0px);
+	margin-bottom: 0;
+	padding-left: 0;
+	transform: translateY(0px);
 }
 
 .faculty .carousel__pagination-button {
-    height: calc(var(--vc-pgn-height) * 1.5) !important;
-    width: calc(var(--vc-pgn-width) * 1.5) !important;
-    background-color: darkgray;
+	height: calc(var(--vc-pgn-height) * 1.5) !important;
+	width: calc(var(--vc-pgn-width) * 1.5) !important;
+	background-color: darkgray;
 }
 
 .faculty .carousel__pagination-button--active {
-    background-color: white !important;
+	background-color: white !important;
 }
 
 .faculty .carousel__icon {
-    width: calc(var(--vc-icn-width) * 2) !important;
-    height: calc(var(--vc-icn-width) * 2) !important;
+	width: calc(var(--vc-icn-width) * 2) !important;
+	height: calc(var(--vc-icn-width) * 2) !important;
 }
 
 .faculty .carousel__prev,
 .faculty .carousel__next {
-    /* box-sizing: content-box; */
-    background-color: var(--FSCred);
-    width: 50px !important;
-    height: 50px !important;
-    border-radius: 50% !important;
-    color: white !important;
+	/* box-sizing: content-box; */
+	background-color: var(--FSCred);
+	width: 50px !important;
+	height: 50px !important;
+	border-radius: 50% !important;
+	color: white !important;
 }
 
 .faculty .carousel__prev {
-    left: 30px !important;
+	left: 30px !important;
 }
 
 .faculty .carousel__next {
-    right: 30px !important;
+	right: 30px !important;
 }
 
-.faculty .carousel__slide>.carousel__item {
-    transform: scale(0.8);
-    opacity: 0.5;
-    transition: 0.5s;
+.faculty .carousel__slide > .carousel__item {
+	transform: scale(0.8);
+	opacity: 0.5;
+	transition: 0.5s;
 }
 
-
-.faculty .carousel__slide--next>.carousel__item {
-    opacity: 0.9;
-    transform: scale(0.9) translate(25px);
+.faculty .carousel__slide--next > .carousel__item {
+	opacity: 0.9;
+	transform: scale(0.9) translate(25px);
 }
 
-.faculty .carousel__slide--prev>.carousel__item {
-    opacity: 0.9;
-    transform: scale(0.9) translate(-25px);
+.faculty .carousel__slide--prev > .carousel__item {
+	opacity: 0.9;
+	transform: scale(0.9) translate(-25px);
 }
 
-.faculty .carousel__slide--active>.carousel__item {
-    opacity: 1;
-    transform: scale(1.1);
+.faculty .carousel__slide--active > .carousel__item {
+	opacity: 1;
+	transform: scale(1.1);
 }
 
 .events .event-body {
-    margin: 3rem auto !important;
+	margin: 3rem auto !important;
 }
 
 .events .event-body:nth-of-type(1) {
-    margin: 1rem auto 3rem !important;
+	margin: 1rem auto 3rem !important;
 }
 
 .events .event-body:nth-last-of-type(1) {
-    margin: 0 auto 1rem !important;
+	margin: 0 auto 1rem !important;
 }
 
 .tour-link {
-    color: white;
-    transition: all 0.2s ease-in-out;
+	color: white;
+	transition: all 0.2s ease-in-out;
 }
 
 .tour-link:hover {
-    transform: scale(1.1);
+	transform: scale(1.1);
 }
 
 .btn-primary,
@@ -440,48 +555,48 @@ export default {
 .btn-primary:active,
 .btn-primary:focus,
 .btn-primary:active:focus {
-    background-color: var(--primary);
-    color: rgb(255, 255, 255);
-    border: none;
-    outline: none;
-    box-shadow: none;
-    transition: all 0.25s ease-in-out;
+	background-color: var(--primary);
+	color: rgb(255, 255, 255);
+	border: none;
+	outline: none;
+	box-shadow: none;
+	transition: all 0.25s ease-in-out;
 }
 
 .btn-primary:hover {
-    background-color: var(--secondary);
+	background-color: var(--primary-dark);
 }
 
 .section {
-    border-bottom: 5px solid var(--primary);
+	border-bottom: 5px solid var(--primary);
 }
 
 .large {
-    font-size: 3.5rem;
+	font-size: 3.5rem;
 }
 
 p.large {
-    font-size: 1.3rem;
+	font-size: 1.3rem;
 }
 
 .normal {
-    font-weight: normal;
+	font-weight: normal;
 }
 
 .center {
-    text-align: center;
+	text-align: center;
 }
 
 .italicized {
-    font-style: italic;
+	font-style: italic;
 }
 
 .primary {
-    color: var(--primary);
+	color: var(--primary);
 }
 
 .secondary {
-    color: var(--secondary);
+	color: var(--secondary);
 }
 
 .white,
@@ -490,44 +605,44 @@ p.large {
 .white:active:focus,
 .white:focus,
 .white:visited {
-    color: white !important;
+	color: white !important;
 }
 
 .FSCred {
-    color: var(--FSCred);
+	color: var(--FSCred);
 }
 
 .FSCblue {
-    color: var(--FSCblue);
+	color: var(--FSCblue);
 }
 
 .FSClightblue {
-    color: var(--FSClightblue);
+	color: var(--FSClightblue);
 }
 
 .FSCgrey {
-    color: var(--FSCgrey);
+	color: var(--FSCgrey);
 }
 
 hr.FSCred {
-    margin: 0 0 15px 0;
-    border-bottom: 4px solid var(--FSCred);
-    border-radius: 20px;
-    opacity: 1;
+	margin: 0 0 15px 0;
+	border-bottom: 4px solid var(--FSCred);
+	border-radius: 20px;
+	opacity: 1;
 }
 
 hr.FSCblue {
-    margin: 0 0 15px 0;
-    border-bottom: 4px solid var(--FSCblue);
-    border-radius: 20px;
-    opacity: 1;
+	margin: 0 0 15px 0;
+	border-bottom: 4px solid var(--FSCblue);
+	border-radius: 20px;
+	opacity: 1;
 }
 
 hr.FSClightblue {
-    margin: 0 0 15px 0;
-    border-bottom: 4px solid var(--FSClightblue);
-    border-radius: 20px;
-    opacity: 1;
+	margin: 0 0 15px 0;
+	border-bottom: 4px solid var(--FSClightblue);
+	border-radius: 20px;
+	opacity: 1;
 }
 
 .no-decor,
@@ -535,85 +650,85 @@ hr.FSClightblue {
 .no-decor:focus,
 .no-decor:active,
 .no-decor:visited {
-    text-decoration: none;
-    color: var(--primary);
+	text-decoration: none;
+	color: var(--primary);
 }
 
 .white-shadow {
-    text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px #fff, 0 0 4px #fff, 0 0 5px #fff,
-        0 0 6px #fff, 0 0 7px #fff;
+	text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px #fff, 0 0 4px #fff,
+		0 0 5px #fff, 0 0 6px #fff, 0 0 7px #fff;
 }
 
 .black-shadow {
-    text-shadow: 0 0 5px #000;
+	text-shadow: 0 0 5px #000;
 }
 
 .link,
 .link:focus,
 .link:active,
 .link:visited {
-    color: var(--primary);
-    font-weight: 500;
+	color: var(--primary);
+	font-weight: 500;
 }
 
 .link:hover {
-    color: var(--primary-dark);
+	color: var(--primary-dark);
 }
 
 .primary-hr {
-    margin: 0 0 15px 0;
-    border-bottom: 4px solid var(--primary);
-    border-radius: 20px;
-    opacity: 1;
+	margin: 0 0 15px 0;
+	border-bottom: 4px solid var(--primary);
+	border-radius: 20px;
+	opacity: 1;
 }
 
 .white-hr {
-    margin: 0 0 15px 0;
-    border-bottom: 4px solid white;
-    border-radius: 20px;
-    opacity: 1;
+	margin: 0 0 15px 0;
+	border-bottom: 4px solid white;
+	border-radius: 20px;
+	opacity: 1;
 }
 
 .row.block-center {
-    width: unset !important;
+	width: unset !important;
 }
 
 .nav-pad {
-    padding-top: 60px;
+	padding-top: 60px;
 }
 
 .vertical-center {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    justify-content: center;
-    flex-direction: column;
+	display: flex;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	justify-content: center;
+	flex-direction: column;
 }
 
 .mb-sm-4 {
-    margin-bottom: 0 !important;
+	margin-bottom: 0 !important;
 }
 
 .bold {
-    font-weight: bold;
+	font-weight: bold;
 }
 
 .blur {
-    backdrop-filter: blur(5px);
+	backdrop-filter: blur(5px);
 }
 
 .strong-blur {
-    backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
 }
 
 @media (max-width: 1199.98px) {
-    .large {
-        font-size: 2.5rem;
-    }
+	.large {
+		font-size: 2.5rem;
+	}
 
-    p.large {
-        font-size: 2.5vh !important;
-    }
+	p.large {
+		font-size: 2.5vh !important;
+	}
 }
 </style>

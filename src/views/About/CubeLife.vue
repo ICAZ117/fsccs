@@ -3,18 +3,19 @@
 	<SkewBox
 		:rightBG="{
 			backgroundImage: `url(${require('@/assets/img/WCS3.jpg')})`,
-			'background-position': 'bottom',
+			'background-position': 'left',
 			'background-size': 'cover',
+            width: '55vw!important',
 		}"
 		:rightColor="'transparent'"
-		:leftColor="'rgba(10, 10, 10, 0.7)'"
+		:leftColor="'var(--red-gradient)'"
 		:height="500"
 		:padding="'70px 0 60px 0'"
-        class="section"
+		class="section"
 	>
 		<template v-slot:left>
 			<div class="center vertical-center">
-				<h1 class="white">About the Cube Life</h1>
+				<h1 class="white">About The Cube Life</h1>
 			</div>
 		</template>
 	</SkewBox>
@@ -28,13 +29,13 @@
 		:height="'0'"
 		:opacity="0.8"
 		:overlayColor="'0, 0, 0'"
-        class="section"
+		class="section"
 	>
 		<div class="h-100 pb-2">
 			<center>
 				<div class="m-auto faculty container py-5 h-100">
 					<h1 class="center white mt-2 mb-4 pb-1">
-						Why the Cube Life?
+						Why thecube.life?
 					</h1>
 					<p
 						class="white"
@@ -76,7 +77,7 @@
 		:height="'0'"
 		:opacity="0"
 		:overlayColor="'0, 0, 0'"
-        class="section"
+		class="section"
 	>
 		<div class="h-100 pb-2">
 			<center>
@@ -87,7 +88,7 @@
 					<div class="mx-auto p-0 row block-center">
 						<div class="p-0 col-4">
 							<ProfileCard
-								:pfp="'https://avatars.githubusercontent.com/u/71295552?v=4'"
+								:pfp="`${require('@/assets/img/People/IbraheemCazalas.png')}`"
 								:name="'Ibraheem Cazalas'"
 								:role="'Full Stack Developer'"
 								:website="'http://icaz117.web.app'"
@@ -104,7 +105,7 @@
 						</div>
 						<div class="p-0 col-4">
 							<ProfileCard
-								:pfp="'https://www.knack.com/images/about/default-profile.png'"
+								:pfp="`${require('@/assets/img/People/Anonymous.png')}`"
 								:name="'Kira Freijo'"
 								:role="'Full Stack Developer'"
 								:linkedin="'https://www.linkedin.com/in/kira-freijo-4a1789162/'"
@@ -119,7 +120,7 @@
 						</div>
 						<div class="p-0 col-4">
 							<ProfileCard
-								:pfp="'https://fscmocs.com/images/2020/11/5//isaac_garay_esports_2019_20.jpg'"
+								:pfp="`${require('@/assets/img/People/IsaacGaray.jpg')}`"
 								:name="'Isaac Garay'"
 								:role="'Game Developer'"
 								:email="'isaac.garay.006@gmail.com'"
@@ -146,7 +147,7 @@
 		:height="'0'"
 		:opacity="0"
 		:overlayColor="'0, 0, 0'"
-        class="section"
+		class="section"
 	>
 		<div class="h-100 pb-2">
 			<center>
@@ -169,61 +170,36 @@
 					<div class="mx-auto p-0 inspiration row block-center">
 						<div class="p-0 col-3">
 							<ProfileCard
-								:pfp="'https://media-exp1.licdn.com/dms/image/C4D03AQEe7FCRWL4usA/profile-displayphoto-shrink_400_400/0/1517262906224?e=1671667200&v=beta&t=PaR4RsJkUElEHy0DcIwhuhC9gFWBzSFLTKbsFkfkB7M'"
+								:pfp="`${require('@/assets/img/People/ChrisHaynes.jpg')}`"
 								:name="'Chris Haynes'"
 								:role="'Full Stack Developer'"
 								:linkedin="'https://www.linkedin.com/in/christophernicolashaynes/'"
-							>
-								Lorem ipsum dolor sit amet consectetur,
-								adipisicing elit. Neque facilis odit error
-								molestias maiores. Lorem ipsum dolor sit amet
-								consectetur, adipisicing elit. Neque facilis
-								odit error molestias maiores.
-							</ProfileCard>
+							></ProfileCard>
 						</div>
 						<div class="p-0 col-3">
 							<ProfileCard
-								:pfp="'https://www.knack.com/images/about/default-profile.png'"
+								:pfp="`${require('@/assets/img/People/Anonymous.png')}`"
 								:name="'Joseph Saba'"
 								:role="'Full Stack Developer'"
 								:linkedin="'https://www.linkedin.com/in/joseph-saba-1b685320a/'"
-							>
-								Lorem ipsum dolor sit amet consectetur,
-								adipisicing elit. Neque facilis odit error
-								molestias maiores. Lorem ipsum dolor sit amet
-								consectetur, adipisicing elit. Neque facilis
-								odit error molestias maiores.
-							</ProfileCard>
+							></ProfileCard>
 						</div>
 						<div class="p-0 col-3">
 							<ProfileCard
-								:pfp="'https://media-exp1.licdn.com/dms/image/C4E03AQGCnhj0bDVetg/profile-displayphoto-shrink_800_800/0/1531317664684?e=1671667200&v=beta&t=KCXlpMDEdDq39c2gHVzz7__IKiCtT3BTr6ch5e8d4p8'"
+								:pfp="`${require('@/assets/img/People/EmmaStoverink.jpg')}`"
 								:name="'Emma Stoverink'"
 								:role="'Full Stack Developer'"
 								:linkedin="'https://www.linkedin.com/in/emmastoverink/'"
 								:github="'https://github.com/emmajs16'"
-							>
-								Lorem ipsum dolor sit amet consectetur,
-								adipisicing elit. Neque facilis odit error
-								molestias maiores. Lorem ipsum dolor sit amet
-								consectetur, adipisicing elit. Neque facilis
-								odit error molestias maiores.
-							</ProfileCard>
+							></ProfileCard>
 						</div>
 						<div class="p-0 col-3">
 							<ProfileCard
-								:pfp="'https://fscmocs.com/images/2020/11/5//isaac_garay_esports_2019_20.jpg'"
-								:name="'Isaac Garay'"
-								:role="'Game Developer'"
-								:linkedin="'https://www.linkedin.com/in/isaac-garay-b783a0228/'"
-								:github="'https://github.com/RockDevelop'"
-							>
-								Lorem ipsum dolor sit amet consectetur,
-								adipisicing elit. Neque facilis odit error
-								molestias maiores. Lorem ipsum dolor sit amet
-								consectetur, adipisicing elit. Neque facilis
-								odit error molestias maiores.
-							</ProfileCard>
+								:pfp="`${require('@/assets/img/People/MatthewWilliams.jpg')}`"
+								:name="'Matthew Williams'"
+								:role="'Full Stack Developer'"
+								:linkedin="'https://www.linkedin.com/in/matthew-williams-5842b6229/'"
+							></ProfileCard>
 						</div>
 					</div>
 				</div>
