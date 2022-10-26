@@ -12,8 +12,8 @@
 		}"
         :opacity="0.9"
 	>
-		<div class="wrapper_div">
-		<h1 class="col-2 small_pic"><i class="fa-solid fa-computer"></i></h1>
+		<div class="wrapper_div" style="position: relative;">
+		<h1 class="col-2 small_pic center"><i class="fa-solid fa-computer"></i></h1>
 		<p class="col-10 text_block" >
 			Computer science provides you with a sound theoretical background and 
 			the opportunities for individual and collaborative exploration of real-world 
@@ -26,6 +26,7 @@
 			graduate.
 		</p>
 		</div>
+		<div class="py-2"></div>
 
 		<div class="wrapper_div">
 		<p class="col-9 text_block" >
@@ -39,39 +40,84 @@
 		</p>
 		<h1 class="col-3 small_pic center"><i class="fa-solid fa-book-open"></i></h1>
 		</div>
-
-		<p>
-			Aliquam iaculis nec erat eu vehicula. Vivamus iaculis est at gravida vestibulum.
-			Pellentesque cursus tellus et aliquet mattis. Integer tristique interdum sem, vitae
-			pellentesque lacus iaculis id. Curabitur lorem dolor, convallis a pulvinar nec,
-			congue ut tortor. Etiam semper turpis ut ligula elementum, id sollicitudin quam
-			laoreet. Aliquam vel felis sit amet dui sollicitudin euismod in at purus. Vivamus
-			suscipit nec odio quis imperdiet. Cras nulla magna, pulvinar id leo ut, pretium
-			varius nisi. Ut nisl metus, sagittis vitae tempor vel, condimentum interdum orci.
-			Phasellus risus erat, molestie sit amet cursus sed, congue sollicitudin felis.
-		</p>
-
-		<p>
-			Nulla eu odio commodo dolor convallis porttitor dignissim at tortor. Ut feugiat nec
-			est ut ornare. Maecenas vitae viverra neque. Curabitur eget diam at nunc molestie
-			condimentum ut in leo. Cras sed vestibulum risus. Duis congue ipsum eget nisl
-			semper, sed tempor erat laoreet. Praesent ut eleifend purus, eget lacinia ante.
-		</p>
-
-		<p>
-			Curabitur aliquam, nisl et blandit sollicitudin, nisl turpis euismod dolor, nec
-			mattis augue neque sed nibh. Aenean in iaculis ligula. Nunc interdum purus vel erat
-			venenatis vestibulum. Pellentesque consequat nisl sed lacus accumsan aliquet.
-			Vestibulum gravida magna id sollicitudin commodo. Suspendisse vitae lacus a enim
-			scelerisque tristique non ac nulla. Nam elementum dictum nulla sed blandit. Nullam
-			vestibulum massa et aliquet suscipit. Donec placerat lectus in pellentesque maximus.
-			Proin risus augue, elementum in cursus semper, interdum id magna. Donec sollicitudin
-			non tellus sed ornare. Pellentesque habitant morbi tristique senectus et netus et
-			malesuada fames ac turpis egestas. Curabitur vestibulum nisi id est gravida, sit
-			amet elementum metus tincidunt. Aliquam sed vulputate ex, quis vestibulum tortor. In
-			aliquam ac massa ut laoreet.
-		</p>
 	</TextPage>
+
+	<!-- Carosel of community events?
+		Talk about why the community is so important
+		cards for: profs that care, engaging classes, convinent workspaces, active community-->
+
+	<Parallax
+		:image="{
+			backgroundImage: `url(${require('@/assets/img/Circuit7.jpg')}`,
+			'background-position': 'left middle',
+		}"
+		:height="'0'"
+		:opacity="0.3"
+		:overlayColor="'0, 0, 0'"
+		class="section"
+	>
+		<h1 class="my-3" style="color:white; text-align:center">A Community That Cares</h1>
+		<div class="community-pic-holder py-4">
+			<img src="@/assets/img/gaming_at_party.jpg" class="community-pic">
+		</div>
+		<div>
+			<h5 class="community-text">The CS department strives to be a welcoming and inclusive environment for 
+				students, both inside and outside of class. More than just a major, the 
+				department works hard to create an atmosphere that allows students to 
+				connect with each other and the material, as well as build skills that can 
+				be directly translated into the work force.</h5>
+		</div>
+
+	</Parallax>
+
+	<Parallax
+		:image="{
+			backgroundImage: `url(${require('@/assets/img/BG2.jpg')}`,
+			'background-position': 'left middle',
+		}"
+		:height="'0'"
+		:opacity="0.05"
+		:overlayColor="'0, 0, 0'"
+	>
+		<div class="h-100 pb-2">
+			<center>
+				<div class="m-auto container py-5 h-100">
+					<h1 class="center mt-2" style="color:white">What Makes Our Department Great</h1>
+					<div class="m-0 row g-5">
+						<div class="col-6">
+							<InfoCard
+								:title="'Professors that care'"
+							>
+							<p class="center">Meet the CS professors -></p>
+							</InfoCard>
+						</div>
+						<div class="col-6">
+							<InfoCard
+								:title="'Engaging classes'"
+							>
+							<p class="center">Look over the course requirements -></p>
+							</InfoCard>
+						</div>
+						<div class="col-6">
+							<InfoCard
+								:title="'Convinient workspaces'"
+							>
+							<p class="center">Explore Weinstien -></p>
+							</InfoCard>
+						</div>
+						<div class="col-6">
+							<InfoCard
+								:title="'Active Community'"
+							>
+							<p class="center">Get involved -></p>
+							</InfoCard>
+						</div>
+					</div>
+				</div>
+			</center>
+		</div>
+	</Parallax>
+
 	<div>
 		<div class="degree_square">
 			<div class="py-4 px-5">
@@ -95,10 +141,14 @@
 
 <script>
 	import TextPage from "../../components/TextPage.vue";
+	import Parallax from "@/components/Parallax.vue";
+	import InfoCard from "@/components/InfoCard.vue";
 
 	export default {
 		components: {
 			TextPage,
+			Parallax,
+			InfoCard,
 		},
 		data() {
 			return {
@@ -117,6 +167,7 @@
 <style>
 	.text_block{
 		display: inline-block;
+		line-height: 2;
 	}
 	.small_pic{
 		display: inline-block;
@@ -147,8 +198,24 @@
 		
 	}
 	.sm_inner_square:hover{
-		background-color: rgba(254, 254, 254, 0.786) !important;
+		background-color: rgb(254, 254, 254) !important;
 		color: var(--FSCred) !important;
+	}
+	.community-pic {
+		width: 70%;
+		display: block;
+		margin: auto;
+	}
+	.community-pic-holder {
+		position: relative;
+	}
+	.community-text {
+		color:white;
+		text-align:center;
+		margin-left: 20%;
+		margin-right: 20%;
+		margin-bottom: 2rem;
+		line-height: 1.5 !important;
 	}
 	/* .inner_square{
 		background-color: rgba(47, 79, 79, 0.515);

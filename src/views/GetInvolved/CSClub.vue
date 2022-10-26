@@ -1,84 +1,194 @@
 <template>
-	<TextPage
-		:title="'Computer Science Club'"
-		:heroImage="{
-			backgroundImage: `url(${require('@/assets/img/WCS3.jpg')})`,
-			'background-position': 'bottom',
+	<SkewBox
+		:rightBG="{
+			backgroundImage: `url(${require('@/assets/img/csclub1.png')})`,
+			'background-position': 'top',
 			'background-size': 'cover',
+			width: '54vw!important',
 		}"
-		:background="{
-			backgroundImage: `url(${require('@/assets/img/BG7.jpg')})`,
-			'background-position': 'center',
-		}"
-        :opacity="0.9"
+		:rightColor="'transparent'"
+		:leftColor="'var(--FSCblue)'"
+		:height="500"
+		:padding="'70px 0 60px 0'"
+		class="section"
 	>
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae mattis
-			magna. Maecenas ligula sapien, euismod vel tempor at, facilisis quis lacus. Etiam
-			accumsan odio tortor, non tristique ex laoreet eget. Ut aliquam, neque sed egestas
-			tincidunt, felis lectus euismod turpis, quis venenatis nisl est ac enim. Sed
-			venenatis nisi at orci imperdiet accumsan. Nam quis arcu dignissim, cursus odio non,
-			imperdiet urna. Quisque ac hendrerit lacus. Quisque dapibus laoreet augue, ut
-			convallis arcu rutrum ut. In quis metus mauris. Class aptent taciti sociosqu ad
-			litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum gravida velit
-			mi, at malesuada enim elementum quis. Aenean blandit pretium nulla at rhoncus.
-			Integer ut elit est. Morbi nec suscipit nunc, ut volutpat felis.
-		</p>
+		<template v-slot:left>
+			<div class="center vertical-center">
+				<h1 class="white">Computer Science Club</h1>
+			</div>
+		</template>
+	</SkewBox>
 
-		<p>
-			Aenean hendrerit fermentum urna at venenatis. Nullam tincidunt metus elit, quis
-			mollis nibh venenatis et. Vestibulum nec blandit massa. Sed vestibulum vestibulum
-			tellus ut varius. Maecenas consectetur sit amet neque eget ultricies. Mauris non
-			lorem ac metus fringilla ornare. Mauris commodo, tortor at efficitur condimentum,
-			orci lacus tempus sapien, ut blandit mi est in ex. Quisque vel auctor erat. Sed eget
-			interdum est, id fermentum quam. Etiam a tincidunt arcu, non porta leo. Vivamus
-			eleifend ipsum vulputate, mattis elit nec, ornare libero. Donec sollicitudin ante
-			nec risus tempus, eget porttitor risus tempus. Suspendisse consectetur lacus id
-			lectus laoreet fermentum.
-		</p>
+	<div class="center"
+		 style="background: lightcyan">
+		<h1 class="pt-5 pb-1">CS club: A place for everyone</h1>
+		
+		<h5 style="margin-left: 10%; margin-right: 10%; padding-bottom: 30px; color: var(--FSClightblue); line-height: 1.5 !important;">
+		We offer a wide variety events from educational seminars in relation to the 
+		major, to lighthearted video game tournaments. There is something for anybody 
+		with an affinity for STEM related topics and hobbies! Feel free to stop by and hang out.</h5>
 
-		<p>
-			Aliquam iaculis nec erat eu vehicula. Vivamus iaculis est at gravida vestibulum.
-			Pellentesque cursus tellus et aliquet mattis. Integer tristique interdum sem, vitae
-			pellentesque lacus iaculis id. Curabitur lorem dolor, convallis a pulvinar nec,
-			congue ut tortor. Etiam semper turpis ut ligula elementum, id sollicitudin quam
-			laoreet. Aliquam vel felis sit amet dui sollicitudin euismod in at purus. Vivamus
-			suscipit nec odio quis imperdiet. Cras nulla magna, pulvinar id leo ut, pretium
-			varius nisi. Ut nisl metus, sagittis vitae tempor vel, condimentum interdum orci.
-			Phasellus risus erat, molestie sit amet cursus sed, congue sollicitudin felis.
-		</p>
+		<hr>
+		<h2 class="py-2">
+			<strong>Meet the 2022-2023 Exec Members</strong>
+		</h2>
 
-		<p>
-			Nulla eu odio commodo dolor convallis porttitor dignissim at tortor. Ut feugiat nec
-			est ut ornare. Maecenas vitae viverra neque. Curabitur eget diam at nunc molestie
-			condimentum ut in leo. Cras sed vestibulum risus. Duis congue ipsum eget nisl
-			semper, sed tempor erat laoreet. Praesent ut eleifend purus, eget lacinia ante.
-		</p>
+		<div class="col-6 pic center">
+			<img src="@/assets/img/CS_department_pic3.png">
+		</div>
+		
+		<div class="py-4">
+			<div class="col-3 exec">
+				<h5>President</h5>
+				<center><hr class="primary-hr"/></center>
+				<i><p>Nickolas Bonner</p></i>
+			</div>
+			<div class="col-3 exec">
+				<h5>Vice President</h5>
+				<center><hr class="primary-hr"/></center>
+				<i><p>Johnathan Bailey</p></i>
+			</div>
+			<div class="col-3 exec">
+				<h5>Treasurer</h5>
+				<center><hr class="primary-hr"/></center>
+				<i><p>Will Davidson</p></i>
+			</div>
+			<div class="col-3 exec">
+				<h5>Secretary/Historian</h5>
+				<center><hr class="primary-hr"/></center>
+				<i><p>Chloe Hacker</p></i>
+			</div>
+		</div>
 
-		<p>
-			Curabitur aliquam, nisl et blandit sollicitudin, nisl turpis euismod dolor, nec
-			mattis augue neque sed nibh. Aenean in iaculis ligula. Nunc interdum purus vel erat
-			venenatis vestibulum. Pellentesque consequat nisl sed lacus accumsan aliquet.
-			Vestibulum gravida magna id sollicitudin commodo. Suspendisse vitae lacus a enim
-			scelerisque tristique non ac nulla. Nam elementum dictum nulla sed blandit. Nullam
-			vestibulum massa et aliquet suscipit. Donec placerat lectus in pellentesque maximus.
-			Proin risus augue, elementum in cursus semper, interdum id magna. Donec sollicitudin
-			non tellus sed ornare. Pellentesque habitant morbi tristique senectus et netus et
-			malesuada fames ac turpis egestas. Curabitur vestibulum nisi id est gravida, sit
-			amet elementum metus tincidunt. Aliquam sed vulputate ex, quis vestibulum tortor. In
-			aliquam ac massa ut laoreet.
-		</p>
-	</TextPage>
+	</div>
+
+	<!-- Carosel of pictures of club events -->
+	<Parallax
+		:image="{
+			backgroundImage: `url(${require('@/assets/img/Circuit6.jpg')}`,
+			'background-position': 'left middle',
+		}"
+		:height="'0'"
+		:opacity="0.6"
+		:overlayColor="'0, 0, 0'"
+		class="section"
+	>
+		<div class="h-100 pb-2">
+			<center>
+				<div class="m-auto faculty container py-5 h-75">
+					<h1 class="center white mt-2 mb-4 pb-1"
+						style="font-weight: bold">
+						Peruse Past Events
+					</h1>
+					<hr class="primary-hr" style="width: 50%" />
+					<Carousel
+						class="carousel"
+						:wrap-around="true"
+						:transition="600"
+						:pauseAutoplayOnHover="true"
+					>
+						<Slide :key="0">
+							<div class="w-100">
+								<img src="@/assets/img/Matrix2.jpg">
+							</div>
+						</Slide>
+						<Slide :key="1">
+							<div class="w-100">
+								<img src="@/assets/img/WCS.jpg">
+							</div>
+						</Slide>
+						<Slide :key="2">
+							<div class="w-100">
+								<img src="@/assets/img/Matrix1.jpg">
+							</div>
+						</Slide>
+						<template #addons>
+							<Navigation />
+							<Pagination />
+						</template>
+					</Carousel>
+				</div>
+			</center>
+		</div>
+		
+		<div class="link center mb-4">
+			<a style="color: white; text-decoration: none;" 
+				href="/resources/calendar">
+			Check out our department calendar for upcoming events!
+			</a>
+		</div>
+	</Parallax>
+
+	<!-- List of cool things about the club -->
+	<div class="pb-2" style="background-color: var(--FSCred); display: flex; align-items: center;">
+		<div class="text col-6" style="display: inline-block;">
+			<div class="top pt-3 px-5">
+				<em><h1>What does the CS club have to offer?</h1></em>
+			</div>
+			<div class="items center py-2">
+				<h4 class="item left col-7">Exploring engaging topics</h4>
+				<div class="pb-2"></div>
+
+				<h4 class="item right col-7">Spend time with other CS students</h4>
+				<div class="pb-2"></div>
+
+				<h4 class="item left col-8">Get to know your professors</h4>
+				<div class="pb-2"></div>
+
+				<h4 class="item right col-5">Enjoy fun events</h4>
+			</div>
+		</div>
+		<div class="pic col-6 center">
+			<img src="@/assets/img/CS_department_pic1.png">
+		</div>
+	</div>
+
 </template>
 
 <script>
-	import TextPage from "../../components/TextPage.vue";
-
+	import SkewBox from "@/components/SkewBox.vue";
+	import Parallax from "@/components/Parallax.vue";
+	import InfoCard from "@/components/InfoCard.vue";
+	import "vue3-carousel/dist/carousel.css";
+	import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
+	
 	export default {
 		components: {
-			TextPage,
+			SkewBox,
+			Parallax,
+			InfoCard,
+			Carousel,
+			Slide,
+			Pagination,
+			Navigation,
 		},
 	};
 </script>
 
-<style></style>
+<style>
+.item {
+	border: 2px solid white; 
+	background-color: var(--FSClightblue);
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+	padding-right: 2px;
+}
+.right {
+	margin-left: 40%;
+}
+.left {
+	margin-left: 8%;
+	color: white;
+}
+.pic {
+	display: inline-block;
+}
+.primary-hr {
+	width: 75%;
+}
+.exec {
+	display: inline-block;
+}
+
+</style>

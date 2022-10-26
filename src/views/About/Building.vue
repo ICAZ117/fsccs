@@ -12,7 +12,7 @@
 		}"
         :opacity="0.9"
 	>
-		<div class="intro">
+		<div class="intro mx-5 center">
 			<p>
 				The Weinstein Computer Sciences Center is located between the Sharon and Jim France 
 				Admissions Center and the Becker Business Building, was completed in spring 2020.
@@ -33,11 +33,32 @@
 				research lab, a cyber range, an auditorium, a maker space and conference rooms.
 			</p>
 		</div>
+		<div class="py-2"></div>
 		<div class="Title">
 			<h2>History</h2>
 		</div>
 		<div class="py-2"></div>
-		<p>
+		<SkewBox
+			:leftBG="{
+				backgroundImage: `url(${require('@/assets/img/Weinstein-Groundbreaking.jpg')})`,
+				'background-position': 'top',
+				'background-size': 'cover',
+				width: '54vw!important',
+			}"
+			:leftColor="'transparent'"
+			:rightColor="'var(--FSCblue)'"
+			:height="500"
+			:padding="'70px 0 60px 0'"
+			class="section"
+		>
+			<template v-slot:right>
+				<div class="vertical-center">
+					<h1 class="white">Groundbreaking Weinstein</h1>
+				</div>
+			</template>
+		</SkewBox>
+		<div class="py-2"></div>
+		<p class="mx-4 my-3">
 			Shortly after the widely acclaimed success of the nearby France Family Admissions 
 			Center, completed in 2017, Florida Southern College retained Mesick Cohen Wilson 
 			Baker Architects to develop an exciting and dynamic design for the new Weinstein 
@@ -50,33 +71,45 @@
 			on campus.
 		</p>
 
-		<p>
-			Dean of Arts and Sciences, Dr. Brad Hollingshead, stressed the importance of 
+		<div class="quote col-9 mb-2">
+			<p>
+				<i>" </i>Florida Southern has been steadily expanding its computer science program over 
+				the past few years, with concentrations in web and cloud computing, AI and machine 
+				learning, and cybersecurity. The generous gift from Dr. and Mrs. Weinstein 
+				will help meet the needs of this growth, allow us to grow the 
+				program further, and prepare students for high-demand areas that require the 
+				expertise that they develop through our program.<i> "</i>
+			</p>
+			<p class="speaker"><i>— Dr. Brad Hollingshead, Dean of Arts and Sciences</i></p>
+		</div>
+
+		<p class="mx-4 mt-4">
+			Dr. Hollingshead stressed the importance of 
 			creating a “new home” for students in the computer science department, an 
 			academic environment that “will inspire, stimulate, and bring out the best in 
 			our students,” he said. “It is being designed, in the end, to empower them.”
 		</p>
 
-		<p>
-			Florida Southern has been steadily expanding its computer science program over 
-			the past few years, with concentrations in web and cloud computing, AI and machine 
-			learning, and cybersecurity,” said Dr. Hollingshead. “The generous gift from Dr. 
-			and Mrs. Weinstein will help meet the needs of this growth, allow us to grow the 
-			program further, and prepare students for high-demand areas that require the 
-			expertise that they develop through our program.”
-		</p>
-
-		<p>
-			“We are really excited for the new space. It will give us room to continue to 
-			grow the program and have the space to provide students with more hands-on 
-			learning opportunities and chances to get involved in undergraduate research,” 
-			Dr. Christian Roberson, the Department Chair of Computer Science, stated. 
-		</p>
-
-		<p>
+		<p class="mx-4 my-4">
 			The process took a few years, but the Weinstien building is complete and students 
 			will be able to use it for many years to come.
 		</p>
+
+		<div class="second-quote" style="position: relative;">
+			<div class="col-6 second-pic">
+				<img src="@/assets/img/CS_department_pic2.png">
+			</div>
+
+			<div class="quote2 col-6 mb-2">
+				<p>
+					<i>" </i>We are really excited for the new space. It will give us room to 
+					continue to grow the program and have the space to provide students with 
+					more hands-on learning opportunities and chances to get involved in 
+					undergraduate research.<i> "</i>
+				</p>
+				<p class="speaker"><i>— Dr. Christian Roberson, the Department Chair of Computer Science</i></p>
+			</div>
+		</div>
 
 		<div class="Title">
 			<h2>Features</h2>
@@ -84,16 +117,22 @@
 		<div class="py-2"></div>
 		<div class="features">
 			<div class="feature col-4">
+			<center>
 				<h1 class="small_pic"><i class="fa-solid fa-cube"></i></h1>
 				<h3>Distinct Cube Structure</h3>
+			</center>
 			</div>
 			<div class="feature col-4">
+			<center>
 				<h1 class="small_pic"><i class="fa-solid fa-bullhorn"></i></h1>
-				<h3>Personal Auditorium</h3>
+				<h3>CS-specific Auditorium</h3>
+			</center>
 			</div>
 			<div class="feature col-4">
+			<center>
 				<h1 class="small_pic"><i class="fa-solid fa-utensils"></i></h1>
 				<h3>Pretzel<br>Restraunt</h3>
+			</center>
 			</div>
 		</div>
 		<div class="py-4"></div>
@@ -111,10 +150,14 @@
 
 <script>
 	import TextPage from "../../components/TextPage.vue";
+	import SkewBox from "@/components/SkewBox.vue";
+	import Parallax from "@/components/Parallax.vue";
 
 	export default {
 		components: {
 			TextPage,
+			SkewBox,
+			Parallax,
 		},
 	};
 </script>
@@ -161,5 +204,27 @@
 	.inner_square:hover{
 		background-color: rgba(255, 255, 255, 0.826);
 		color: var(--FSCred)
+	}
+	.quote {
+		font-weight: bolder;
+		background-color: var(--FSCblue);
+		padding: 2%;
+		padding-bottom: .5% !important;
+		transform: translate(-10%);
+	}
+	.speaker {
+		text-align: right;
+	}
+	.quote2 {
+		font-weight: bolder;
+		background-color: var(--FSCblue);
+		padding: 2%;
+		padding-bottom: .5% !important;
+		transform: translate(15%);
+		display: inline-block;
+	}
+	.second-pic {
+		display: inline-block;
+		margin-bottom: 5%
 	}
 </style>
