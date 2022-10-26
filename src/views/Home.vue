@@ -1,85 +1,75 @@
 <template>
 	<!-- Start Hero Section -->
-	<div
-		class="hero"
-		style="width: width 100vw !important; overflow: hidden !important"
-	>
-		<div
-			class=""
-			:style="'height: ' + 0.7 * windowHeight + 'px !important'"
+	<div class="hero">
+		<Carousel
+			class="carousel"
+			:wrap-around="true"
+			:autoplay="50000000"
+			:transition="1500"
+			:pauseAutoplayOnHover="true"
+            :key="reloadHero"
 		>
-			<Carousel
-				class="carousel"
-				:wrap-around="true"
-				:autoplay="5000"
-				:transition="1500"
-				:pauseAutoplayOnHover="true"
-			>
-				<Slide :key="0">
-					<SkewBox
-						:rightBG="{
-							backgroundImage: `url(${require('@/assets/img/WCS.jpg')})`,
-							'background-position': 'center',
-						}"
-						:rightColor="'rgba(var(--FSCredRGB), 0.7); backdrop-filter: blur(5px);'"
-						:leftColor="'transparent'"
-						:height="windowHeight * 0.7"
-						:padding="'70px 0 60px 0'"
-					>
-						<template v-slot:right>
-							<div class="center vertical-center">
-								<h4 class="white">Welcome to the</h4>
-								<h1 class="white">Florida Southern College</h1>
-								<h4 class="white">
-									Department of Computer Science
-								</h4>
-							</div>
-						</template>
-					</SkewBox>
-				</Slide>
-				<Slide :key="1">
-					<SkewBox
-						:rightBG="{
-							backgroundImage: `url(${require('@/assets/img/WCS.jpg')})`,
-							'background-position': 'center',
-						}"
-						:leftColor="'rgba(var(--FSCblueRGB), 0.7); backdrop-filter: blur(5px);'"
-						:rightColor="'transparent'"
-						:height="windowHeight * 0.7"
-						:padding="'70px 0 60px 0'"
-					>
-						<template v-slot:left>
-							<h1 style="color: white">
-								Content on the Left side
-							</h1>
-						</template>
-					</SkewBox>
-				</Slide>
-				<Slide :key="2">
-					<SkewBox
-						:height="windowHeight * 0.7"
-						:padding="'70px 0 60px 0'"
-					>
-						<template v-slot:left>
-							<h1 style="color: white">
-								Content on the left side
-							</h1>
-						</template>
-						<template v-slot:right>
-							<h1 style="color: white">
-								Content on the right side
-							</h1>
-						</template>
-					</SkewBox>
-				</Slide>
+			<Slide :key="0">
+				<SkewBox
+					:rightBG="{
+						backgroundImage: `url(${require('@/assets/img/WCS.jpg')})`,
+						'background-position': 'center',
+						'background-size': 'cover',
+						'background-repeat': 'none',
+					}"
+					:rightColor="'rgba(var(--FSCredRGB), 0.7); backdrop-filter: blur(5px);'"
+					:leftColor="'transparent'"
+					:height="windowHeight * 0.7"
+					:padding="'70px 0 30px 0'"
+				>
+					<template v-slot:right>
+						<div class="center vertical-center">
+							<h4 class="white">Welcome to the</h4>
+							<h1 class="white">Florida Southern College</h1>
+							<h4 class="white">
+								Department of Computer Science
+							</h4>
+						</div>
+					</template>
+				</SkewBox>
+			</Slide>
+			<Slide :key="1">
+				<SkewBox
+					:rightBG="{
+						backgroundImage: `url(${require('@/assets/img/WCS.jpg')})`,
+						'background-position': 'center',
+						'background-size': 'cover',
+						'background-repeat': 'none',
+					}"
+					:leftColor="'rgba(var(--FSCblueRGB), 0.7); backdrop-filter: blur(5px);'"
+					:rightColor="'transparent'"
+					:height="windowHeight * 0.7"
+					:padding="'70px 0 30px 0'"
+				>
+					<template v-slot:left>
+						<h1 style="color: white">Content on the Left side</h1>
+					</template>
+				</SkewBox>
+			</Slide>
+			<Slide :key="2">
+				<SkewBox
+					:height="windowHeight * 0.7"
+					:padding="'70px 0 30px 0'"
+				>
+					<template v-slot:left>
+						<h1 style="color: white">Content on the left side</h1>
+					</template>
+					<template v-slot:right>
+						<h1 style="color: white">Content on the right side</h1>
+					</template>
+				</SkewBox>
+			</Slide>
 
-				<template #addons>
-					<Navigation />
-					<Pagination />
-				</template>
-			</Carousel>
-		</div>
-		<!-- End SkewBox Carousel -->
+			<template #addons>
+				<Navigation />
+				<Pagination />
+			</template>
+		</Carousel>
 	</div>
 	<!-- End Hero Section -->
 
@@ -105,6 +95,7 @@
 					:wrap-around="true"
 					:transition="600"
 					:pauseAutoplayOnHover="true"
+                    style="max-width: 1000px; margin: auto"
 				>
 					<template #slides>
 						<Slide
@@ -267,6 +258,7 @@ export default {
 			allEvents: [],
 			professors: {},
 			announcements: [],
+            reloadHero: 0,
 		};
 	},
 	methods: {
@@ -288,15 +280,26 @@ export default {
 
 			return res.data.profile;
 		},
+		getWindowSize() {
+            console.log("RESIZE");
+			this.windowHeight = window.innerHeight;
+            this.reloadHero++;
+		},
 	},
 	computed: {
 		events() {
 			return this.allEvents.slice(0, 20);
 		},
 	},
+	created() {
+		window.addEventListener("resize", this.getWindowSize);
+	},
+	destroyed() {
+		window.removeEventListener("resize", this.getWindowSize);
+	},
 	async beforeMount() {
 		// Get window height
-		this.windowHeight = window.innerHeight;
+		this.getWindowSize();
 
 		this.allEvents = this.$store.getters.getEvents;
 
@@ -383,7 +386,19 @@ export default {
 	border-radius: 10px;
 }
 
-/* HERO Carousel */
+/*
+██   ██ ███████ ██████   ██████  
+██   ██ ██      ██   ██ ██    ██ 
+███████ █████   ██████  ██    ██ 
+██   ██ ██      ██   ██ ██    ██ 
+██   ██ ███████ ██   ██  ██████  
+*/
+.hero {
+	width: width 100vw !important;
+	overflow: hidden !important;
+	height: 70vh;
+}
+
 .hero .carousel__pagination {
 	margin-bottom: 0;
 	padding-left: 0;
@@ -421,7 +436,13 @@ export default {
 	right: 30px !important;
 }
 
-/* ANNOUNCEMENT Carousel */
+/*
+█████   ███    ██ ███    ██  ██████  ██    ██ ███    ██  ██████ ███████ ███    ███ ███████ ███    ██ ████████ ███████ 
+██   ██ ████   ██ ████   ██ ██    ██ ██    ██ ████   ██ ██      ██      ████  ████ ██      ████   ██    ██    ██      
+███████ ██ ██  ██ ██ ██  ██ ██    ██ ██    ██ ██ ██  ██ ██      █████   ██ ████ ██ █████   ██ ██  ██    ██    ███████ 
+██   ██ ██  ██ ██ ██  ██ ██ ██    ██ ██    ██ ██  ██ ██ ██      ██      ██  ██  ██ ██      ██  ██ ██    ██         ██ 
+██   ██ ██   ████ ██   ████  ██████   ██████  ██   ████  ██████ ███████ ██      ██ ███████ ██   ████    ██    ███████ 
+*/
 .announcements .carousel {
 	text-align: left;
 }
@@ -457,14 +478,20 @@ export default {
 }
 
 .announcements .carousel__prev {
-	left: 30px !important;
+	left: -60px !important;
 }
 
 .announcements .carousel__next {
-	right: 30px !important;
+	right: -60px !important;
 }
 
-/* FACULTY Carousel */
+/*
+███████  █████   ██████ ██    ██ ██      ████████ ██    ██ 
+██      ██   ██ ██      ██    ██ ██         ██     ██  ██  
+█████   ███████ ██      ██    ██ ██         ██      ████   
+██      ██   ██ ██      ██    ██ ██         ██       ██    
+██      ██   ██  ██████  ██████  ███████    ██       ██    
+*/
 .faculty .carousel {
 	text-align: left;
 }
@@ -529,6 +556,13 @@ export default {
 	transform: scale(1.1);
 }
 
+/*
+███████ ██    ██ ███████ ███    ██ ████████ ███████ 
+██      ██    ██ ██      ████   ██    ██    ██      
+█████   ██    ██ █████   ██ ██  ██    ██    ███████ 
+██       ██  ██  ██      ██  ██ ██    ██         ██ 
+███████   ████   ███████ ██   ████    ██    ███████ 
+*/
 .events .event-body {
 	margin: 3rem auto !important;
 }
@@ -541,6 +575,13 @@ export default {
 	margin: 0 auto 1rem !important;
 }
 
+/*
+████████  ██████  ██    ██ ██████  
+   ██    ██    ██ ██    ██ ██   ██ 
+   ██    ██    ██ ██    ██ ██████  
+   ██    ██    ██ ██    ██ ██   ██ 
+   ██     ██████   ██████  ██   ██ 
+*/
 .tour-link {
 	color: white;
 	transition: all 0.2s ease-in-out;
@@ -550,185 +591,55 @@ export default {
 	transform: scale(1.1);
 }
 
-.btn-primary,
-.btn-primary:visited,
-.btn-primary:active,
-.btn-primary:focus,
-.btn-primary:active:focus {
-	background-color: var(--primary);
-	color: rgb(255, 255, 255);
-	border: none;
-	outline: none;
-	box-shadow: none;
-	transition: all 0.25s ease-in-out;
-}
-
-.btn-primary:hover {
-	background-color: var(--primary-dark);
-}
-
-.section {
-	border-bottom: 5px solid var(--primary);
-}
-
-.large {
-	font-size: 3.5rem;
-}
-
-p.large {
-	font-size: 1.3rem;
-}
-
-.normal {
-	font-weight: normal;
-}
-
-.center {
-	text-align: center;
-}
-
-.italicized {
-	font-style: italic;
-}
-
-.primary {
-	color: var(--primary);
-}
-
-.secondary {
-	color: var(--secondary);
-}
-
-.white,
-.white:hover,
-.white:active,
-.white:active:focus,
-.white:focus,
-.white:visited {
-	color: white !important;
-}
-
-.FSCred {
-	color: var(--FSCred);
-}
-
-.FSCblue {
-	color: var(--FSCblue);
-}
-
-.FSClightblue {
-	color: var(--FSClightblue);
-}
-
-.FSCgrey {
-	color: var(--FSCgrey);
-}
-
-hr.FSCred {
-	margin: 0 0 15px 0;
-	border-bottom: 4px solid var(--FSCred);
-	border-radius: 20px;
-	opacity: 1;
-}
-
-hr.FSCblue {
-	margin: 0 0 15px 0;
-	border-bottom: 4px solid var(--FSCblue);
-	border-radius: 20px;
-	opacity: 1;
-}
-
-hr.FSClightblue {
-	margin: 0 0 15px 0;
-	border-bottom: 4px solid var(--FSClightblue);
-	border-radius: 20px;
-	opacity: 1;
-}
-
-.no-decor,
-.no-decor:hover,
-.no-decor:focus,
-.no-decor:active,
-.no-decor:visited {
-	text-decoration: none;
-	color: var(--primary);
-}
-
-.white-shadow {
-	text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px #fff, 0 0 4px #fff,
-		0 0 5px #fff, 0 0 6px #fff, 0 0 7px #fff;
-}
-
-.black-shadow {
-	text-shadow: 0 0 5px #000;
-}
-
-.link,
-.link:focus,
-.link:active,
-.link:visited {
-	color: var(--primary);
-	font-weight: 500;
-}
-
-.link:hover {
-	color: var(--primary-dark);
-}
-
-.primary-hr {
-	margin: 0 0 15px 0;
-	border-bottom: 4px solid var(--primary);
-	border-radius: 20px;
-	opacity: 1;
-}
-
-.white-hr {
-	margin: 0 0 15px 0;
-	border-bottom: 4px solid white;
-	border-radius: 20px;
-	opacity: 1;
-}
-
-.row.block-center {
-	width: unset !important;
-}
-
-.nav-pad {
-	padding-top: 60px;
-}
-
-.vertical-center {
-	display: flex;
-	align-items: center;
-	height: 100%;
-	width: 100%;
-	justify-content: center;
-	flex-direction: column;
-}
-
-.mb-sm-4 {
-	margin-bottom: 0 !important;
-}
-
-.bold {
-	font-weight: bold;
-}
-
-.blur {
-	backdrop-filter: blur(5px);
-}
-
-.strong-blur {
-	backdrop-filter: blur(10px);
-}
-
-@media (max-width: 1199.98px) {
-	.large {
-		font-size: 2.5rem;
+/*
+███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
+████  ████ ██      ██   ██ ██ ██   ██     ██    ██ ██    ██ ██      ██   ██ ██ ██      ██      
+██ ████ ██ █████   ██   ██ ██ ███████     ██    ██ ██    ██ █████   ██████  ██ █████   ███████ 
+██  ██  ██ ██      ██   ██ ██ ██   ██     ██ ▄▄ ██ ██    ██ ██      ██   ██ ██ ██           ██ 
+██      ██ ███████ ██████  ██ ██   ██      ██████   ██████  ███████ ██   ██ ██ ███████ ███████ 
+*/
+/* 
+BOOTSTRAP BREAKPOINTS:
+  xs: 0px
+  sm: 576px
+  md: 768px
+  lg: 992px
+  xl: 1200px
+  xxl: 1400px
+*/
+@media (max-width: 1199.9px) {
+	.hero {
+		height: calc(49vh - 1px);
 	}
 
-	p.large {
-		font-size: 2.5vh !important;
+    .hero .carousel__prev, .hero .carousel__next {
+        scale: 0.85;
+	}
+
+	.hero .carousel__prev {
+		left: -10px !important;
+	}
+
+	.hero .carousel__next {
+		right: -10px !important;
+	}
+}
+
+@media (max-width: 575.9px) {
+	.hero {
+		height: calc(35vh - 1px);
+	}
+
+	.hero .carousel__prev, .hero .carousel__next {
+        scale: 0.75;
+	}
+
+    .hero .carousel__prev {
+		left: -25px !important;
+	}
+
+	.hero .carousel__next {
+		right: -25px !important;
 	}
 }
 </style>

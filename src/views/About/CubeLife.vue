@@ -5,7 +5,7 @@
 			backgroundImage: `url(${require('@/assets/img/WCS3.jpg')})`,
 			'background-position': 'left',
 			'background-size': 'cover',
-            width: '55vw!important',
+			width: '55vw!important',
 		}"
 		:rightColor="'transparent'"
 		:leftColor="'var(--red-gradient)'"
@@ -105,17 +105,19 @@
 						</div>
 						<div class="p-0 col-4">
 							<ProfileCard
-								:pfp="`${require('@/assets/img/People/Anonymous.png')}`"
+								:pfp="`${require('@/assets/img/People/KiraFreijo.jpg')}`"
 								:name="'Kira Freijo'"
 								:role="'Full Stack Developer'"
+                                :email="'kirafreijo@yahoo.com'"
 								:linkedin="'https://www.linkedin.com/in/kira-freijo-4a1789162/'"
 								:github="'https://github.com/kfreijo'"
+                                :discord="'wanderingstardust#6926'"
 							>
-								Lorem ipsum dolor sit amet consectetur,
-								adipisicing elit. Neque facilis odit error
-								molestias maiores. Lorem ipsum dolor sit amet
-								consectetur, adipisicing elit. Neque facilis
-								odit error molestias maiores.
+								I am a Computer Science, Psychology, and
+								Criminology triple major with experience
+								development in software, VR, machine learning,
+								and now full stack. I would love to develop
+								interesting AIs in the future.
 							</ProfileCard>
 						</div>
 						<div class="p-0 col-4">
