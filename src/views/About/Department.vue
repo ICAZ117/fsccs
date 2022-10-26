@@ -118,24 +118,6 @@
 		</div>
 	</Parallax>
 
-	<div>
-		<div class="degree_square">
-			<div class="py-4 px-5">
-				<div class="inner_square">
-					<div class="textandimg">
-					<img src="@/assets/img/person_computer.jpg" alt="" class="degree_pic mt-3">
-					<a href="/about/degree-and-concentrations">
-						<div class="py-5">
-							<h4 class="sm_inner_square">
-								Explore the Degree<br>& Concentrations
-							</h4>
-						</div>
-					</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
 </template>
 
