@@ -179,6 +179,13 @@ const store = createStore({
 		async addFaculty({ state }, name) {
 			await setDoc(doc(db, "faculty", name), state.payload);
 		},
+        async initUser({ state }) {
+            console.log("INIT USER");
+            await setDoc(doc(db, "users", state.auth.email), {
+				registrationComplete: false,
+			});
+            console.log("INITED USER");
+        },
 		async createUser({ state }) {
 			// Create new user in users table
 			await setDoc(doc(db, "users", state.auth.email), {
@@ -193,12 +200,13 @@ const store = createStore({
 		async fetchUser({ commit, state }) {
 			// Get user from users table
 			const data = await getDoc(doc(db, "users", state.auth.email));
-			commit("setUsername", data.data().username);
-			commit("setFname", data.data().fname);
-			commit("setLname", data.data().lname);
-			commit("setPFP", data.data().pfp);
-			commit("setPrivilege", data.data().privilege);
-			commit("setID", data.data().id);
+            commit("setAuth", data.data());
+			// commit("setUsername", data.data().username);
+			// commit("setFname", data.data().fname);
+			// commit("setLname", data.data().lname);
+			// commit("setPFP", data.data().pfp);
+			// commit("setPrivilege", data.data().privilege);
+			// commit("setID", data.data().id);
 		},
 		// async fetchAboutPage({ commit }) {
 		// 	const data = await getDoc(doc(db, "pageData", "aboutPage"));
