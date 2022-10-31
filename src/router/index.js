@@ -75,11 +75,11 @@ const routes = [
 		},
 	},
 	{
-		path: "/get-involved/ctf-team",
-		name: "CTF Team",
-		component: () => import("../views/GetInvolved/CTFTeam.vue"),
+		path: "/get-involved/boardgame-lunch",
+		name: "Boardgame Lunch",
+		component: () => import("../views/GetInvolved/BoardgameLunch.vue"),
 		meta: {
-			title: "CTF Team | FSC CS",
+			title: "Boardgame Lunch | FSC CS",
 		},
 	},
 	{

@@ -47,11 +47,15 @@ const store = createStore({
 		events: [],
 		payload: {},
         announcements: {},
+		officers: {},
 	},
 	mutations: {
 
 		setFaculty(state, payload) {
 			state.faculty = payload;
+		},
+		setOfficers(state, payload) {
+			state.officers = payload;
 		},
 		setEvents(state, payload) {
 			const months = [
@@ -200,6 +204,10 @@ const store = createStore({
 			commit("setPrivilege", data.data().privilege);
 			commit("setID", data.data().id);
 		},
+		async fetchOfficers({ commit }) {
+			const data = await getDocs(collection(db, "CS-club-officers"));
+			commit("setOfficers", data);
+		},
 		// async fetchAboutPage({ commit }) {
 		// 	const data = await getDoc(doc(db, "pageData", "aboutPage"));
 		// 	commit("setAboutPage", data.data());
@@ -234,6 +242,9 @@ const store = createStore({
         },
 		getUser(state) {
 			return state.auth;
+		},
+		getOfficers(state) {
+			return state.officers;
 		},
 	},
 });
