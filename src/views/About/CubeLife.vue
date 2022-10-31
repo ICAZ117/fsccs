@@ -37,32 +37,52 @@
 					<h1 class="center white mt-2 mb-4 pb-1">
 						Why thecube.life?
 					</h1>
-					<p
+					<div
 						class="white"
 						style="text-align: justify; line-height: 2 !important"
 					>
-						Lorem ipsum dolor sit, amet consectetur adipisicing
-						elit. Laudantium, assumenda eaque nobis fugit nisi
-						debitis adipisci. Voluptatem nemo nam, ut blanditiis
-						quaerat accusamus modi iure debitis sit qui itaque
-						officiis? Lorem ipsum dolor sit, amet consectetur
-						adipisicing elit. Laudantium, assumenda eaque nobis
-						fugit nisi debitis adipisci. Voluptatem nemo nam, ut
-						blanditiis quaerat accusamus modi iure debitis sit qui
-						itaque officiis? Lorem ipsum dolor sit, amet consectetur
-						adipisicing elit. Laudantium, assumenda eaque nobis
-						fugit nisi debitis adipisci. Voluptatem nemo nam, ut
-						blanditiis quaerat accusamus modi iure debitis sit qui
-						itaque officiis? Lorem ipsum dolor sit, amet consectetur
-						adipisicing elit. Laudantium, assumenda eaque nobis
-						fugit nisi debitis adipisci. Voluptatem nemo nam, ut
-						blanditiis quaerat accusamus modi iure debitis sit qui
-						itaque officiis? Lorem ipsum dolor sit, amet consectetur
-						adipisicing elit. Laudantium, assumenda eaque nobis
-						fugit nisi debitis adipisci. Voluptatem nemo nam, ut
-						blanditiis quaerat accusamus modi iure debitis sit qui
-						itaque officiis?
-					</p>
+						<p>
+							Since its inception (and in fact since the initial
+							building plans and mockups were shown to students),
+							the Weinstein Computer Sciences Center was
+							affectionately, and appropriately, coined "The
+							Cube." Visible even from across Lake Hollingsworth,
+							The Cube is a Lakeland icon, and its bold, inspiring
+							stature is a quintessential representation of both
+							our amazing students, as well as the unique, engaged
+							learning experience you find here at Florida
+							Southern College.
+						</p>
+						<h4 class="center white">
+							So why "The Cube Life" (thecube.life)?
+						</h4>
+						<p>
+							Life as a Moc is an incredible experience of
+							personal growth and development. Life in The Cube,
+							however, takes it to another level completely: CS
+							Club meetups and parties, the ever-popular weekly
+							board game lunches with social-deduction gaming
+							marathons, where you are calling both your peers and
+							professors filthy liars, intramural All-Sports
+							domination, bowling and movie nights, annual Chili
+							Contests, and even our Annual Non-Denominational
+							Holiday Fun-Time ExtravaganzaTM. In short, Life in
+							The Cube is fun, is stressful at times, but most of
+							all, is an incredibly gratifying experience.
+						</p>
+						<h4 class="center white">
+							So once more, why The Cube Life?
+						</h4>
+						<p class="center">
+							As the saying goes, you don't choose The Cube Life,
+							The Cube Life chooses you!
+						</p>
+						<div class="center">
+							<button class="btn btn-md btn-primary">
+								Enable Cube Life Mode!
+							</button>
+						</div>
+					</div>
 				</div>
 			</center>
 		</div>
@@ -108,10 +128,10 @@
 								:pfp="`${require('@/assets/img/People/KiraFreijo.jpg')}`"
 								:name="'Kira Freijo'"
 								:role="'Full Stack Developer'"
-                                :email="'kirafreijo@yahoo.com'"
+								:email="'kirafreijo@yahoo.com'"
 								:linkedin="'https://www.linkedin.com/in/kira-freijo-4a1789162/'"
 								:github="'https://github.com/kfreijo'"
-                                :discord="'wanderingstardust#6926'"
+								:discord="'wanderingstardust#6926'"
 							>
 								I am a Computer Science, Psychology, and
 								Criminology triple major with experience
@@ -159,15 +179,15 @@
 						class="container"
 						style="text-align: justify; line-height: 2 !important"
 					>
-						Lorem ipsum dolor sit, amet consectetur adipisicing
-						elit. Laudantium, assumenda eaque nobis fugit nisi
-						debitis adipisci. Voluptatem nemo nam, ut blanditiis
-						quaerat accusamus modi iure debitis sit qui itaque
-						officiis? Lorem ipsum dolor sit, amet consectetur
-						adipisicing elit. Laudantium, assumenda eaque nobis
-						fugit nisi debitis adipisci. Voluptatem nemo nam, ut
-						blanditiis quaerat accusamus modi iure debitis sit qui
-						itaque officiis?
+						A group of four talented students, now alumni, first
+						tackled this project in 2021 and made great headway,
+						leaving big shoes to fill. During their final
+						presentation, they expressed a hope that another group
+						would take up the reigns, add more functionality to the
+						project, and provide both a usable and sustainable web
+						application for the department. We are grateful for
+						their efforts and feel privileged to continue
+						development of this project.
 					</p>
 					<div class="mx-auto p-0 inspiration row block-center">
 						<div class="p-0 col-3">

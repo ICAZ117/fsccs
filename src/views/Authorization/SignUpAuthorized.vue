@@ -3,24 +3,10 @@
 	<div class="sign-up">
 		<div class="sign-up-container">
 			<div class="sign-up-header">
-				<h1>Sign Up</h1>
+				<h1>Complete Registration</h1>
 			</div>
 			<div class="sign-up-body">
 				<form @submit.prevent="signUp" class="row block-center g-4">
-                    <div class="form-group col-6">
-						<label for="email">FSC Email</label>
-						<input
-							type="email"
-							name="email"
-							id="email"
-							class="form-control"
-							placeholder="FSC Email"
-                            v-model="email"
-                            autocomplete
-                            required
-						/>
-					</div>
-					<br />
                     <div class="form-group col-6">
 						<label for="username">Username</label>
 						<input
@@ -75,28 +61,8 @@
 						/>
 					</div>
 					<br />
-					<div class="form-group col-6">
-						<label for="password">Confirm Password</label>
-						<input
-							type="password"
-							name="confirm"
-							id="confirm"
-							class="form-control"
-							placeholder="Confirm Password"
-                            v-model="confirm"
-                            autocomplete
-                            required
-						/>
-					</div>
-					<br />
 					<div class="form-group">
-						<button type="submit" class="btn btn-primary submitButton">Sign Up</button>
-					</div>
-					<div class="form-group mt-3">
-						<center>
-							Already have an account?
-							<router-link to="/login" class="primary link">Log in!</router-link>
-						</center>
+						<button type="submit" class="btn btn-primary submitButton">Finish</button>
 					</div>
 				</form>
 			</div>

@@ -6,12 +6,12 @@
 		</div>
 		<div class="poly--holder">
 			<div class="poly-item" :style="'background: ' + leftColor">
-				<div class="poly-content poly-left white-scroll-bar">
+				<div class="poly-content poly-left">
 					<slot name="left"></slot>
 				</div>
 			</div>
 			<div class="poly-item" :style="'background: ' + rightColor">
-				<div class="poly-content poly-right white-scroll-bar">
+				<div class="poly-content poly-right">
 					<slot name="right"></slot>
 				</div>
 			</div>
@@ -158,8 +158,7 @@ export default {
 	transform: skewX(10deg);
 	padding: 1rem;
 	margin-left: 2rem;
-	overflow-y: auto;
-    overflow-x: hidden;
+	overflow: hidden;
 	height: 100%;
 }
 
