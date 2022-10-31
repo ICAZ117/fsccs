@@ -7,7 +7,7 @@
 			:autoplay="50000000"
 			:transition="1500"
 			:pauseAutoplayOnHover="true"
-            :key="reloadHero"
+			:key="reloadHero"
 		>
 			<Slide :key="0">
 				<SkewBox
@@ -77,16 +77,16 @@
 	<Parallax
 		:image="{
 			backgroundImage: `url(${require('@/assets/img/Circuit2.jpg')})`,
-			'background-position': 'left top',
+			'background-position': 'center',
 		}"
 		:height="'70vh'"
-		:opacity="0.3"
-		:overlayColor="'0, 0, 0'"
+		:opacity="0.1"
+		:overlayColor="'100, 100, 100'"
 		class=""
 	>
-		<div class="blur h-100">
+		<div class="h-100">
 			<div class="announcements container py-5 h-100">
-				<h1 class="center primary mt-2 mb-4 pb-1 bold">
+				<h1 class="center primary mt-2 pb-1 bold">
 					Announcements
 				</h1>
 
@@ -95,7 +95,6 @@
 					:wrap-around="true"
 					:transition="600"
 					:pauseAutoplayOnHover="true"
-                    style="max-width: 1000px; margin: auto"
 				>
 					<template #slides>
 						<Slide
@@ -106,6 +105,7 @@
 								:pfp="announcement.pfp"
 								:name="announcement.name"
 								:date="announcement.date"
+								class="announcementComponent"
 							>
 								<Markdown
 									:source="announcement.content"
@@ -182,7 +182,10 @@
 					<h1 class="center FSCred mt-2 mb-4 pb-1 bold">
 						Meet the Faculty
 					</h1>
-					<Carousel :itemsToShow="3.7" :wrapAround="true">
+					<Carousel
+						:itemsToShow="numVisibleProfessors"
+						:wrapAround="true"
+					>
 						<Slide
 							v-for="(professor, name) in professors"
 							:key="name"
@@ -196,6 +199,7 @@
 						</Slide>
 						<template #addons>
 							<Navigation />
+                            <Pagination class="show-576"/>
 						</template>
 					</Carousel>
 				</div>
@@ -255,10 +259,11 @@ export default {
 			userInput: "",
 			announcementReload: 0,
 			windowHeight: 0,
+			windowWidth: 0,
 			allEvents: [],
 			professors: {},
 			announcements: [],
-            reloadHero: 0,
+			reloadHero: 0,
 		};
 	},
 	methods: {
@@ -281,14 +286,39 @@ export default {
 			return res.data.profile;
 		},
 		getWindowSize() {
-            console.log("RESIZE");
+			console.log("RESIZE");
 			this.windowHeight = window.innerHeight;
-            this.reloadHero++;
+			this.windowWidth = window.innerWidth;
+			this.reloadHero++;
 		},
 	},
 	computed: {
 		events() {
 			return this.allEvents.slice(0, 20);
+		},
+		numVisibleProfessors() {
+			// xs: 0px
+			// sm: 576px
+			// md: 768px
+			// lg: 992px
+			// xl: 1200px
+			// xxl: 1400px
+
+			console.log(this.windowWidth);
+
+			if (this.windowWidth > 1399.9) {
+				return 3.7;
+			} else if (this.windowWidth > 1199.9) {
+				return 3.5;
+			} else if (this.windowWidth > 991.9) {
+				return 3;
+			} else if (this.windowWidth > 767.9) {
+				return 2;
+			} else if (this.windowWidth > 575.9) {
+				return 1.5;
+			} else {
+				return 1;
+			}
 		},
 	},
 	created() {
@@ -386,6 +416,10 @@ export default {
 	border-radius: 10px;
 }
 
+.show-576 {
+    display: none;
+}
+
 /*
 ██   ██ ███████ ██████   ██████  
 ██   ██ ██      ██   ██ ██    ██ 
@@ -445,6 +479,8 @@ export default {
 */
 .announcements .carousel {
 	text-align: left;
+	max-width: 1000px;
+	margin: auto;
 }
 
 .announcements .carousel__pagination {
@@ -483,6 +519,10 @@ export default {
 
 .announcements .carousel__next {
 	right: -60px !important;
+}
+
+.announcementComponent {
+    width: 90%!important;
 }
 
 /*
@@ -612,8 +652,9 @@ BOOTSTRAP BREAKPOINTS:
 		height: calc(49vh - 1px);
 	}
 
-    .hero .carousel__prev, .hero .carousel__next {
-        scale: 0.85;
+	.hero .carousel__prev,
+	.hero .carousel__next {
+		scale: 0.85;
 	}
 
 	.hero .carousel__prev {
@@ -623,6 +664,42 @@ BOOTSTRAP BREAKPOINTS:
 	.hero .carousel__next {
 		right: -10px !important;
 	}
+
+	.announcements .carousel__prev {
+		left: -30px !important;
+	}
+
+	.announcements .carousel__next {
+		right: -30px !important;
+	}
+}
+
+@media (max-width: 991.9px) {
+	.announcements .carousel__prev {
+		left: -40px !important;
+	}
+
+	.announcements .carousel__next {
+		right: -40px !important;
+	}
+}
+
+@media (max-width: 767.9px) {
+    .announcements.container {
+        width: 100vw!important;
+    }
+
+	.announcements .carousel__prev {
+		left: -20px !important;
+	}
+
+	.announcements .carousel__next {
+		right: -20px !important;
+	}
+
+    .announcementComponent {
+        width: 80%!important;
+    }
 }
 
 @media (max-width: 575.9px) {
@@ -630,16 +707,20 @@ BOOTSTRAP BREAKPOINTS:
 		height: calc(35vh - 1px);
 	}
 
-	.hero .carousel__prev, .hero .carousel__next {
-        scale: 0.75;
+	.carousel__prev,
+	.carousel__next {
+		display: none;
 	}
 
-    .hero .carousel__prev {
-		left: -25px !important;
-	}
+	.show-576 {
+        display: flex;
+    }
 
-	.hero .carousel__next {
-		right: -25px !important;
-	}
+    .announcementComponent {
+        width: 100%!important;
+    }
+}
+
+@media (max-width: 399.9px) {
 }
 </style>
