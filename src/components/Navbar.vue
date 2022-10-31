@@ -103,8 +103,8 @@
 									title: 'Programming Team',
 								},
 								{
-									path: '/get-involved/ctf-team',
-									title: 'CTF Team',
+									path: '/get-involved/boardgame-lunch',
+									title: 'Boardgame Lunch',
 								},
 							]"
 						/>

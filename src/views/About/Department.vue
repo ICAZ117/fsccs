@@ -85,32 +85,44 @@
 					<h1 class="center mt-2" style="color:white">What Makes Our Department Great</h1>
 					<div class="m-0 row g-5">
 						<div class="col-6">
-							<InfoCard
-								:title="'Professors that care'"
-							>
-							<p class="center">Meet the CS professors -></p>
-							</InfoCard>
+							<a href="/about/faculty" style="text-decoration: none !important;">
+								<InfoCard
+									:title="'Professors that care'"
+								>
+								<p class="center card_text">Every professor in the CS department is responsive, thoughtful, and cares about their students.</p>
+								<p class="center card_text">Meet the CS professors -></p>
+								</InfoCard>
+							</a>
 						</div>
 						<div class="col-6">
-							<InfoCard
-								:title="'Engaging classes'"
-							>
-							<p class="center">Look over the course requirements -></p>
-							</InfoCard>
+							<a href="/about/degree-and-concentrations" style="text-decoration: none;">
+								<InfoCard
+									:title="'Engaging classes'"
+								>
+								<p class="center card_text">Classes in this department are exciting and capture your attention from start to finish.</p>
+								<p class="center card_text">Look over the course requirements -></p>
+								</InfoCard>
+							</a>
 						</div>
 						<div class="col-6">
-							<InfoCard
-								:title="'Convinient workspaces'"
-							>
-							<p class="center">Explore Weinstien -></p>
-							</InfoCard>
+							<a href="/virtual-tour" style="text-decoration: none;">
+								<InfoCard
+									:title="'Convinient workspaces'"
+								>
+								<p class="center card_text">The CS building features a large work area directly next to the professor's offices, which makes asking questions quick and easy for all of your assignments.</p>
+								<p class="center card_text">Explore Weinstien -></p>
+								</InfoCard>
+							</a>
 						</div>
 						<div class="col-6">
-							<InfoCard
-								:title="'Active Community'"
-							>
-							<p class="center">Get involved -></p>
-							</InfoCard>
+							<a href="/get-involved/cs-club" style="text-decoration: none;">
+								<InfoCard
+									:title="'Active Community'"
+								>
+								<p class="center card_text">With programming team, CS club, boardgame lunch, and intramural activites, there are tons of opporunities to get involved in the department.</p>
+								<p class="center card_text">Get involved -></p>
+								</InfoCard>
+							</a>
 						</div>
 					</div>
 				</div>
@@ -199,33 +211,19 @@
 		margin-bottom: 2rem;
 		line-height: 1.5 !important;
 	}
-	/* .inner_square{
-		background-color: rgba(47, 79, 79, 0.515);
-		margin-left: 20%;
-		margin-right: 20%;
-		height: 300px;
-		padding-top: 1rem;
-	}
-	.inner_square.text{
-		position: absolute;
-		background-color: rgba(81, 65, 65, 0.884) !important;
-		color: white !important;
-		bottom: 15px;
-		height: 100px !important;
-		width: 260px;
-		margin-left: 1rem !important;
-		margin-bottom: 1rem;
-	} */
 	
-	.degree_pic{
+	.degree_pic {
 		display: block;
 		width: 85%;
   		margin-left: auto;
   		margin-right: auto;
 		transform: translate(5%, 5%);
 	}
-	.textandimg{
+	.textandimg {
 		position: relative;
   		text-align: center;
+	}
+	a, a:visited, a:hover, a:active, a:focus {
+		color: black;
 	}
 </style>

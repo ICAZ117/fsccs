@@ -33,11 +33,28 @@
 			<strong>Meet the 2022-2023 Exec Members</strong>
 		</h2>
 
-		<div class="col-6 pic center">
+		<!-- <div class="col-6 pic center">
 			<img src="@/assets/img/CS_department_pic3.png">
+		</div> -->
+		
+		<div class="py-4 row">
+			<div class="col-3" v-for="(officer, name) in officers" :key="name">
+				<div class="exec">
+					<ProfileCard
+						:pfp="`${require('@/assets/img/People/Anonymous.png')}`"
+						:name="officer.name"
+						:role="officer.position"
+					></ProfileCard>
+				</div>
+				<!-- <div class="exec">
+					<h5>{{officer.position}}</h5>
+					<center><hr class="primary-hr"/></center>
+					<i><p>{{officer.name}}</p></i>
+				</div> -->
+			</div>
 		</div>
 		
-		<div class="py-4">
+		<!-- <div class="py-4">
 			<div class="col-3 exec">
 				<h5>President</h5>
 				<center><hr class="primary-hr"/></center>
@@ -58,7 +75,7 @@
 				<center><hr class="primary-hr"/></center>
 				<i><p>Chloe Hacker</p></i>
 			</div>
-		</div>
+		</div> -->
 
 	</div>
 
@@ -151,6 +168,7 @@
 	import InfoCard from "@/components/InfoCard.vue";
 	import "vue3-carousel/dist/carousel.css";
 	import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
+	import ProfileCard from "../../components/ProfileCard.vue";
 	
 	export default {
 		components: {
@@ -161,6 +179,24 @@
 			Slide,
 			Pagination,
 			Navigation,
+			ProfileCard,
+		},
+		data() {
+			return {
+				officers: {},
+			};
+		},
+		async beforeMount() {
+			// Get all cs officers
+			await this.$store.dispatch("fetchOfficers")
+
+			// Retrieve the officers 
+			const res = this.$store.getters.getOfficers;
+
+			// Push each officer's data to the array
+			res.forEach((doc) => {
+				this.officers[doc.id] = doc.data();
+			});
 		},
 	};
 </script>

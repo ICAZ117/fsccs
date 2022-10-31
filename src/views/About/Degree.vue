@@ -143,7 +143,7 @@
 		<Slide :key="1">
 			<SkewBox
 				:rightBG="{
-					backgroundImage: `url(${require('@/assets/img/AI.jpg')})`,
+					backgroundImage: `url(${require('@/assets/img/ai.jpg')})`,
 					'background-position': 'center',
 					'background-size': 'cover',
 					width: '55vw!important',
