@@ -13,9 +13,9 @@ import Login from "../views/Authorization/Login.vue";
 import SignUp from "../views/Authorization/SignUp.vue";
 import SignUpAuthorized from "../views/Authorization/SignUpAuthorized.vue";
 import ResetPassword from "../views/Authorization/ResetPassword.vue";
+import ResendEmail from "../views/Authorization/ResendEmail.vue";
 import Logout from "../views/Authorization/Logout.vue";
 import Profile from "../views/Profile.vue";
-import EmailVerified from "../views/Authorization/EmailVerified.vue";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -181,7 +181,6 @@ const routes = [
         component: Logout,
         meta: {
             title: "Logout | FSC CS",
-            requiresAuth: true
         },
     },
     {
@@ -191,15 +190,6 @@ const routes = [
         meta: {
             title: "Profile | FSC CS",
             requiresAuth: true
-        },
-    },
-    {
-        path: "/auth",
-        name: "Email Verified",
-        component: EmailVerified,
-        meta: {
-            title: "Email Verified | FSC CS",
-            requiresAuth: false
         },
     },
     {
@@ -243,13 +233,17 @@ const getCurrentUser = () => {
 router.beforeEach(async (to, from, next) => {
     window.document.title = to.meta && to.meta.title ? to.meta.title : "FSC CS";
 
+    // IF THE ROUTE REQUIRES AUTH
     if (to.matched.some((record) => record.meta.requiresAuth)) {
-        if (await getCurrentUser()) {
+        // IF THE USER IS LOGGED IN AND THEIR EMAIL IS VERIFIED
+        if (await getCurrentUser() && getAuth().currentUser.emailVerified) {
+            // IF THE ROUTE REQUIRES A FINALIZED ACCOUNT
             if (to.matched.some((record) => record.meta.requiresCompletion)) {
                 // Fetch the user's account
                 const res = await getDoc(doc(db, "users", getAuth().currentUser.email));
 
-                if (getAuth().currentUser.emailVerified && !res.data().registrationComplete) {
+                // IF THE USER'S ACCOUNT IS NOT FINALIZED
+                if (!res.data().registrationComplete) {
                     next();
                 }
                 else {
@@ -263,6 +257,7 @@ router.beforeEach(async (to, from, next) => {
             next("/login");
         }
     }
+    // ELSE, THE ROUTE IS PUBLIC
     else if (to.matched.some(record => record.meta.hideForAuth)) {
         if (await getCurrentUser()) {
             next("/");

@@ -225,7 +225,7 @@ export default {
 
 		onAuthStateChanged(getAuth(), (user) => {
 			console.log("USER", user);
-			if (user) {
+			if (user && user.emailVerified) {
 				this.isLoggedIn = true;
 				this.$store.commit("setEmail", user.email);
 				this.$store.dispatch("fetchUser");
