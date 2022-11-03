@@ -19,8 +19,8 @@
 					}"
 					:rightColor="'rgba(var(--FSCredRGB), 0.7); backdrop-filter: blur(5px);'"
 					:leftColor="'transparent'"
-					:height="windowHeight * 0.7"
-					:padding="'70px 0 30px 0'"
+					:height="500"
+					:padding="'60px 0 0 0'"
 				>
 					<template v-slot:right>
 						<div class="center vertical-center">
@@ -43,8 +43,8 @@
 					}"
 					:leftColor="'rgba(var(--FSCblueRGB), 0.7); backdrop-filter: blur(5px);'"
 					:rightColor="'transparent'"
-					:height="windowHeight * 0.7"
-					:padding="'70px 0 30px 0'"
+					:height="500"
+					:padding="'60px 0 0 0'"
 				>
 					<template v-slot:left>
 						<h1 style="color: white">Content on the Left side</h1>
@@ -52,10 +52,7 @@
 				</SkewBox>
 			</Slide>
 			<Slide :key="2">
-				<SkewBox
-					:height="windowHeight * 0.7"
-					:padding="'70px 0 30px 0'"
-				>
+				<SkewBox :height="500" :padding="'60px 0 0 0'">
 					<template v-slot:left>
 						<h1 style="color: white">Content on the left side</h1>
 					</template>
@@ -86,9 +83,7 @@
 	>
 		<div class="h-100">
 			<div class="announcements container py-5 h-100">
-				<h1 class="center primary mt-2 pb-1 bold">
-					Announcements
-				</h1>
+				<h1 class="center primary mt-2 pb-1 bold">Announcements</h1>
 
 				<Carousel
 					class="carousel"
@@ -136,29 +131,53 @@
 		class=""
 	>
 		<div class="blur h-100 pb-2">
-			<div class="announcements container py-5 h-100">
+			<div class="container-xl py-5 h-100">
 				<h1 class="center FSClightblue mt-2 mb-4 pb-1 bold">Events</h1>
-				<div
-					class="events white-scroll-bar"
-					style="
-						max-height: 65vh !important;
-						overflow-y: auto;
-						width: 75%;
-						margin: auto;
-					"
-				>
-					<Event
-						v-for="(event, i) in events"
-						:key="i"
-						:title="event.title"
-						:icon="event.icon"
-						:location="event.location"
-						:date="event.date"
-						:time="event.time"
-						:hasDescription="event.description"
-					>
-						{{ event.description }}
-					</Event>
+				<div class="events white-scroll-bar">
+					<div v-if="windowWidth >= 1200">
+						<Event
+							v-for="(event, i) in events"
+							:key="i"
+							:title="event.title"
+							:icon="event.icon"
+							:location="event.location"
+							:date="event.date"
+							:time="event.time"
+							:hasDescription="event.description"
+							class="mx-auto"
+						>
+							{{ event.description }}
+						</Event>
+					</div>
+					<div v-if="windowWidth < 1200">
+						<Carousel
+							class="carousel"
+							:wrap-around="true"
+							:transition="600"
+							:pauseAutoplayOnHover="true"
+							:itemsToShow="1"
+						>
+							<template #slides>
+								<Slide v-for="(event, i) in events" :key="i">
+									<Event
+										:title="event.title"
+										:icon="event.icon"
+										:location="event.location"
+										:date="event.date"
+										:time="event.time"
+										:hasDescription="event.description"
+										class="mx-auto"
+									>
+										{{ event.description }}
+									</Event>
+								</Slide>
+							</template>
+							<template #addons>
+								<Navigation />
+								<Pagination />
+							</template>
+						</Carousel>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -175,6 +194,7 @@
 		:opacity="0.5"
 		:overlayColor="'0, 0, 0'"
 		class=""
+		:key="mountReload"
 	>
 		<div class="blur h-100 pb-2">
 			<center>
@@ -199,7 +219,7 @@
 						</Slide>
 						<template #addons>
 							<Navigation />
-                            <Pagination class="show-576"/>
+							<Pagination class="show-576" />
 						</template>
 					</Carousel>
 				</div>
@@ -260,10 +280,12 @@ export default {
 			announcementReload: 0,
 			windowHeight: 0,
 			windowWidth: 0,
+			initHeight: 0,
 			allEvents: [],
 			professors: {},
 			announcements: [],
 			reloadHero: 0,
+			mountReload: 0,
 		};
 	},
 	methods: {
@@ -294,7 +316,9 @@ export default {
 	},
 	computed: {
 		events() {
-			return this.allEvents.slice(0, 20);
+			return this.windowWidth >= 1200
+				? this.allEvents.slice(0, 20)
+				: this.allEvents.slice(0, 10);
 		},
 		numVisibleProfessors() {
 			// xs: 0px
@@ -327,9 +351,19 @@ export default {
 	destroyed() {
 		window.removeEventListener("resize", this.getWindowSize);
 	},
+	mounted() {
+		document.onreadystatechange = () => {
+			if (document.readyState === "complete") {
+				setTimeout(() => {
+                    this.mountReload++;
+                }, 500);
+			}
+		};
+	},
 	async beforeMount() {
 		// Get window height
 		this.getWindowSize();
+		this.initHeight = window.innerHeight;
 
 		this.allEvents = this.$store.getters.getEvents;
 
@@ -371,7 +405,7 @@ export default {
 		}
 
 		// Display filtered announcements
-		this.announcements = filteredAnnouncements;
+		this.announcements = filteredAnnouncements.splice(0, 5);
 
 		console.log("ANNOUNCEMENTS2", this.announcements);
 
@@ -383,6 +417,7 @@ export default {
 
 		// Push each professor's data to the professors array
 		storeFaculty.forEach((doc) => {
+			console.log("PROFESSORS HERE", doc.data());
 			this.professors[doc.id] = doc.data();
 		});
 
@@ -417,7 +452,7 @@ export default {
 }
 
 .show-576 {
-    display: none;
+	display: none;
 }
 
 /*
@@ -430,7 +465,7 @@ export default {
 .hero {
 	width: width 100vw !important;
 	overflow: hidden !important;
-	height: 70vh;
+	height: 500px;
 }
 
 .hero .carousel__pagination {
@@ -522,7 +557,7 @@ export default {
 }
 
 .announcementComponent {
-    width: 90%!important;
+	width: 90% !important;
 }
 
 /*
@@ -603,6 +638,17 @@ export default {
 ██       ██  ██  ██      ██  ██ ██    ██         ██ 
 ███████   ████   ███████ ██   ████    ██    ███████ 
 */
+.events {
+	max-height: 65vh !important;
+	overflow-y: auto;
+	width: 75%;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2rem;
+}
+
 .events .event-body {
 	margin: 3rem auto !important;
 }
@@ -613,6 +659,55 @@ export default {
 
 .events .event-body:nth-last-of-type(1) {
 	margin: 0 auto 1rem !important;
+}
+
+.events .carousel {
+	text-align: left;
+	width: 100vw;
+	max-width: 500px;
+	margin: auto;
+}
+
+.events .carousel__pagination {
+	margin-bottom: 0;
+	padding-left: 0;
+	transform: translateY(0px);
+}
+
+.events .carousel__viewport {
+	padding: 1.5rem 0;
+}
+
+.events .carousel__pagination-button {
+	height: calc(var(--vc-pgn-height) * 1.5) !important;
+	width: calc(var(--vc-pgn-width) * 1.5) !important;
+	background-color: darkgray;
+}
+
+.events .carousel__pagination-button--active {
+	background-color: white !important;
+}
+
+.events .carousel__icon {
+	width: calc(var(--vc-icn-width) * 2) !important;
+	height: calc(var(--vc-icn-width) * 2) !important;
+}
+
+.events .carousel__prev,
+.events .carousel__next {
+	/* box-sizing: content-box; */
+	background-color: transparent;
+	width: calc(var(--vc-nav-width) * 2) !important;
+	height: calc(var(--vc-nav-height) * 2) !important;
+	color: white !important;
+}
+
+.events .carousel__prev {
+	left: -20px !important;
+}
+
+.events .carousel__next {
+	right: -20px !important;
 }
 
 /*
@@ -649,7 +744,7 @@ BOOTSTRAP BREAKPOINTS:
 */
 @media (max-width: 1199.9px) {
 	.hero {
-		height: calc(49vh - 1px);
+		height: calc(500px * 0.7);
 	}
 
 	.hero .carousel__prev,
@@ -672,6 +767,12 @@ BOOTSTRAP BREAKPOINTS:
 	.announcements .carousel__next {
 		right: -30px !important;
 	}
+
+	.events {
+		width: 100%;
+		overflow: hidden;
+		max-height: unset !important;
+	}
 }
 
 @media (max-width: 991.9px) {
@@ -685,9 +786,9 @@ BOOTSTRAP BREAKPOINTS:
 }
 
 @media (max-width: 767.9px) {
-    .announcements.container {
-        width: 100vw!important;
-    }
+	.announcements.container {
+		width: 100vw !important;
+	}
 
 	.announcements .carousel__prev {
 		left: -20px !important;
@@ -697,14 +798,14 @@ BOOTSTRAP BREAKPOINTS:
 		right: -20px !important;
 	}
 
-    .announcementComponent {
-        width: 80%!important;
-    }
+	.announcementComponent {
+		width: 80% !important;
+	}
 }
 
 @media (max-width: 575.9px) {
 	.hero {
-		height: calc(35vh - 1px);
+		height: calc(500px * 0.6);
 	}
 
 	.carousel__prev,
@@ -713,12 +814,12 @@ BOOTSTRAP BREAKPOINTS:
 	}
 
 	.show-576 {
-        display: flex;
-    }
+		display: flex;
+	}
 
-    .announcementComponent {
-        width: 100%!important;
-    }
+	.announcementComponent {
+		width: 100% !important;
+	}
 }
 
 @media (max-width: 399.9px) {

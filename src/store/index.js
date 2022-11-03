@@ -190,15 +190,16 @@ const store = createStore({
 			});
             console.log("INITED USER");
         },
-		async createUser({ state }) {
+		async finalizeUser({ state }) {
 			// Create new user in users table
 			await setDoc(doc(db, "users", state.auth.email), {
 				username: state.auth.username,
-				pfp: state.auth.pfp,
-				privilege: state.auth.privilege,
-				id: state.auth.id,
+				pfp: "https://www.knack.com/images/about/default-profile.png",
+				privilege: 1,
+				id: "",
 				fname: state.auth.fname,
 				lname: state.auth.lname,
+                registrationComplete: true,
 			});
 		},
 		async fetchUser({ commit, state }) {

@@ -45,10 +45,14 @@
 					</div>
 					<div class="form-group mt-3">
 						<center>
-							Don't have an account?
-							<router-link to="/sign-up" class="primary link"
-								>Sign Up!</router-link
-							>
+							<div style="display: flex; justify-content: center">
+								<router-link to="/sign-up" class="me-5 primary link"
+									>Sign Up!</router-link
+								>
+								<router-link to="/reset-password" class="primary link"
+									>Reset password</router-link
+								>
+							</div>
 						</center>
 					</div>
 				</form>
@@ -90,7 +94,7 @@ export default {
 					if (this.auth.registrationComplete) {
 						this.$router.push("/");
 					} else {
-                        console.log("CURRENT USER", getAuth().currentUser);
+						console.log("CURRENT USER", getAuth().currentUser);
 						if (getAuth().currentUser.emailVerified) {
 							this.$router.push("/sign-up/finalize");
 						} else {

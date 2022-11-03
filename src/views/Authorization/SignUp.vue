@@ -108,11 +108,18 @@ export default {
 				this.password
 			)
 				.then(async () => {
-                    this.$store.commit("setEmail", this.email);
-                    await this.$store.dispatch('initUser');
+					this.$store.commit("setEmail", this.email);
+					await this.$store.dispatch("initUser");
 
-					await sendEmailVerification(getAuth().currentUser).then(
-						async () => {
+					var actionCodeSettings = {
+						url: "https://www.thecube.life/",
+					};
+
+					await sendEmailVerification(
+						getAuth().currentUser,
+						actionCodeSettings
+					)
+						.then(async () => {
 							await signOut(getAuth()).then(() => {
 								this.$notify({
 									title: "Account Created!",
@@ -120,8 +127,10 @@ export default {
 									type: "success",
 								});
 							});
-						}
-					);
+						})
+						.catch((error) => {
+							console.log("EMAIL ERROR", error);
+						});
 				})
 				.catch((error) => {
 					console.log("SIGN UP ERROR", error);
