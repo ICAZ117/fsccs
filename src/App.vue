@@ -1,13 +1,17 @@
 <template>
-	<div class="applicationDisplay dark-scroll-bar">
+	<div class="applicationDisplay dark-scroll-bar" v-show="pageLoaded">
 		<Navbar></Navbar>
 		<router-view v-slot="{ Component, route }">
-			<div :key="route.name" id="routerView">
+			<div :key="route.name + pageLoaded" id="routerView">
 				<component :is="Component"></component>
 			</div>
 		</router-view>
 		<notifications position="bottom right" />
 		<Footer></Footer>
+	</div>
+	<div id="loadingScreen" v-show="!pageLoaded">
+		<!-- <Matrix></Matrix> -->
+		<Loader style="scale: 2"></Loader>
 	</div>
 	<div class="small-screen">
 		Why yo screen so smol??????
@@ -15,17 +19,39 @@
 			src="http://68.media.tumblr.com/d8b5607260731dbce2374230850913e3/tumblr_o0qrwgZWlR1tbt5dxo1_400.gif"
 			style="width: 100%"
 		/>
+		Fr tho, your screen has to be at least 350px wide in order for us to
+		display the website :/
 	</div>
 </template>
 
 <script>
 import Navbar from "./components/Navbar.vue";
 import Footer from "./components/Footer.vue";
+import Loader from "./components/Loader.vue";
 
 export default {
 	components: {
 		Navbar,
 		Footer,
+		Loader,
+	},
+	data() {
+		return {
+			pageLoaded: false, // SET TO FALSE TO DISPLAY LOADER
+		};
+	},
+	async mounted() {
+		// document.onreadystatechange = () => {
+		// 	if (document.readyState === "complete") {
+		// 		this.pageLoaded = true;
+		// 	}
+		// };
+		let stateCheck = setInterval(() => {
+			if (document.readyState === "complete") {
+				clearInterval(stateCheck);
+				this.pageLoaded = true;
+			}
+		}, 100);
 	},
 	async beforeMount() {
 		await this.$store.dispatch("fetchEvents");
@@ -167,6 +193,12 @@ h6 {
 	height: 100vh;
 	overflow-y: scroll;
 	overflow-x: hidden;
+}
+
+#loadingScreen {
+	height: 100vh;
+	width: 100vw;
+	overflow: hidden;
 }
 
 .small-screen {
@@ -500,7 +532,7 @@ hr.FSClightblue {
 	}
 }
 
-@media (max-width: 279.9px) {
+@media (max-width: 349.9px) {
 	.applicationDisplay {
 		display: none;
 	}
