@@ -55,7 +55,7 @@ export default {
 		padding: {
 			type: String,
 			required: false,
-			default: "60px 0 60px 0",
+			default: "0 0 0 0",
 		},
 		opacity: {
 			type: Number,
@@ -222,7 +222,7 @@ export default {
 
 @media (max-width: 575.9px) {
 	.skewbox-parent {
-		--propHeight: calc(0.5 * v-bind(cssHeight));
+		--propHeight: calc(0.6 * v-bind(cssHeight));
 	}
 
     .poly-right {

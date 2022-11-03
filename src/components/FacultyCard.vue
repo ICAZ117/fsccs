@@ -1,7 +1,7 @@
 <template>
 	<div class="team-member" @click="redirect">
 		<div class="team-member-img">
-			<img :src="professor.pfp" alt="" width="325" />
+			<img :src="professor.pfp" alt="" style="width: 100%" />
 			<div class="social-icons">
 				<a
 					@click="disableRedirect()"
@@ -115,7 +115,8 @@
 		background-color: white;
 		color: var(--FSCred);
 		transition: all ease 0.5s;
-		width: 325px;
+		width: 90vw;
+        max-width: 325px!important; 
 	}
 
 	.team-member:hover {

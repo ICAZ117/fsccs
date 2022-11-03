@@ -186,8 +186,11 @@ export default {
 				this.$emit("close");
 			}
 		},
-		useHamburger: function () {},
+		$route(to, from) {
+			this.isOpen = false;
+		},
 	},
+
 	data() {
 		return {
 			isOpen: false,
