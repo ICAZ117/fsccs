@@ -8,7 +8,11 @@
 		:overlayColor="'25, 25, 25'"
 	>
 		<form @submit.prevent autocomplete="off" id="main-form"></form>
-		<form @submit.prevent autocomplete="off" id="change-password-form"></form>
+		<form
+			@submit.prevent="changePassword"
+			autocomplete="off"
+			id="change-password-form"
+		></form>
 		<div class="row nav-pad my-5">
 			<div class="col-4 ps-5">
 				<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
@@ -118,9 +122,13 @@
 									class="form-control"
 									id="currentPassword"
 									autocomplete="new-password"
+									required
 									form="change-password-form"
+									v-model="oldPassword"
 								/>
-								<label for="currentPassword">Current Password</label>
+								<label for="currentPassword"
+									>Current Password</label
+								>
 							</div>
 							<div class="form-floating mb-3">
 								<input
@@ -128,7 +136,9 @@
 									class="form-control"
 									id="newPassword"
 									autocomplete="new-password"
+									required
 									form="change-password-form"
+									v-model="newPassword"
 								/>
 								<label for="newPassword">New Password</label>
 							</div>
@@ -138,11 +148,21 @@
 									class="form-control"
 									id="repeatPassword"
 									autocomplete="new-password"
+									required
 									form="change-password-form"
+									v-model="confirmPassword"
 								/>
-								<label for="repeatPassword">Repeat New Password</label>
+								<label for="repeatPassword"
+									>Repeat New Password</label
+								>
 							</div>
-							<button class="btn btn-primary btn-md w-100">Submit</button>
+							<button
+								class="btn btn-primary btn-md w-100"
+								type="submit"
+								form="change-password-form"
+							>
+								Submit
+							</button>
 						</div>
 					</div>
 				</div>
@@ -155,125 +175,178 @@
 </template>
 
 <script>
-	import Parallax from "../components/Parallax.vue";
-	import SkewBox from "../components/SkewBox.vue";
-	import { getAuth, onAuthStateChanged } from "firebase/auth";
+import Parallax from "../components/Parallax.vue";
+import SkewBox from "../components/SkewBox.vue";
+import {
+	getAuth,
+	onAuthStateChanged,
+	EmailAuthProvider,
+    updatePassword,
+	reauthenticateWithCredential,
+} from "firebase/auth";
 
-	export default {
-		components: {
-			Parallax,
-			SkewBox,
+export default {
+	components: {
+		Parallax,
+		SkewBox,
+	},
+	data() {
+		return {
+			authUser: {},
+			oldPassword: "",
+			newPassword: "",
+			confirmPassword: "",
+		};
+	},
+	methods: {
+		async changePassword() {
+			if (this.newPassword !== this.confirmPassword) {
+				this.$notify({
+					title: "Error!",
+					text: "Passwords do not match.",
+					type: "error",
+				});
+			} else {
+				reauthenticateWithCredential(
+					getAuth().currentUser,
+					EmailAuthProvider.credential(
+						getAuth().currentUser.email,
+						this.oldPassword
+					)
+				)
+					.then(() => {
+						updatePassword(getAuth().currentUser, this.newPassword)
+							.then(() => {
+								this.$notify({
+									title: "Success!",
+									text: "Password changed successfully.",
+									type: "success",
+								});
+							})
+							.catch((error) => {
+                                console.log(error);
+								this.$notify({
+									title: "Error!",
+									text: "We're encountering a server error. Please try again later.",
+									type: "error",
+								});
+							});
+					})
+					.catch((error) => {
+                        console.log(error);
+						this.$notify({
+							title: "Error!",
+							text: "Incorrect password.",
+							type: "error",
+						});
+					});
+			}
 		},
-		data() {
-			return {
-				authUser: {},
-			};
-		},
-		beforeMount() {
-			onAuthStateChanged(getAuth(), async (user) => {
-				console.log("AUTH STATE CHANGED");
-				if (user) {
-					this.$store.commit("setEmail", user.email);
-					await this.$store.dispatch("fetchUser");
-					this.authUser = { ...this.$store.getters.getUser };
-					console.log("AUTH USER", temp);
-				} else {
-					this.authUser = {};
-				}
-			});
-		},
-	};
+	},
+	beforeMount() {
+		onAuthStateChanged(getAuth(), async (user) => {
+			console.log("AUTH STATE CHANGED");
+			if (user) {
+				this.$store.commit("setEmail", user.email);
+				await this.$store.dispatch("fetchUser");
+				this.authUser = { ...this.$store.getters.getUser };
+			} else {
+				this.authUser = {};
+			}
+		});
+	},
+};
 </script>
 
 <style scoped>
-	.sub-form {
-		border: 2px solid var(--FSCgrey);
-		padding: 2rem;
-		border-radius: 1rem;
-	}
-	.form-floating > .form-control:focus,
-	.form-floating > .form-control:not(:placeholder-shown) {
-		padding-top: 2rem !important;
-	}
+.sub-form {
+	border: 2px solid var(--FSCgrey);
+	padding: 2rem;
+	border-radius: 1rem;
+}
+.form-floating > .form-control:focus,
+.form-floating > .form-control:not(:placeholder-shown) {
+	padding-top: 2rem !important;
+}
 
-	.form-control {
-		background-color: transparent;
-		border: none;
-		color: white;
-	}
+.form-control {
+	background-color: transparent;
+	border: none;
+	color: white;
+}
 
-	:focus-visible {
-		outline: none !important;
-	}
+:focus-visible {
+	outline: none !important;
+}
 
-	/* Change the white to any color */
-	input:-webkit-autofill,
-	input:-webkit-autofill:hover,
-	input:-webkit-autofill:focus,
-	input:-webkit-autofill:active {
-		transition: all ease 0s;
-		-webkit-box-shadow: 0 0 0 30px rgb(50, 50, 50) inset !important;
-	}
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	transition: all ease 0s;
+	-webkit-box-shadow: 0 0 0 30px rgb(50, 50, 50) inset !important;
+}
 
-	input:-webkit-autofill,
-	input:-webkit-autofill::first-line {
-		-webkit-text-fill-color: white !important;
-		font-family: "Montserrat" !important;
-	}
+input:-webkit-autofill,
+input:-webkit-autofill::first-line {
+	-webkit-text-fill-color: white !important;
+	font-family: "Montserrat" !important;
+}
 
-	input,
-	input:focus,
-	input:active {
-		outline: none;
-		border-bottom: 3px solid darkgray !important;
-		border-radius: 0;
-		width: 100% !important;
-	}
+input,
+input:focus,
+input:active {
+	outline: none;
+	border-bottom: 3px solid darkgray !important;
+	border-radius: 0;
+	width: 100% !important;
+}
 
-	.form-control:focus {
-		border: none;
-		box-shadow: none !important;
-	}
+.form-control:focus {
+	border: none;
+	box-shadow: none !important;
+}
 
-	label {
-		font-size: 110%;
-		margin-right: 0.5rem;
-		color: white;
-		float: left;
-		white-space: nowrap;
-	}
+label {
+	font-size: 110%;
+	margin-right: 0.5rem;
+	color: white;
+	float: left;
+	white-space: nowrap;
+}
 
-	.largePic {
-		height: 300px;
-		width: 300px;
-		background-color: var(--FSCgrey);
-		border-radius: 50%;
-		margin: auto;
-	}
+.largePic {
+	height: 300px;
+	width: 300px;
+	background-color: var(--FSCgrey);
+	border-radius: 50%;
+	margin: auto;
+}
 
-	img.largePic {
-		border: 5px solid var(--FSCred);
-	}
+img.largePic {
+	border: 5px solid var(--FSCred);
+}
 
-	.title {
-		display: inline-block;
-		font-size: 2rem;
-		color: blue;
-		padding-left: 10%;
-		width: 60%;
-		/* margin-right: 10%; */
-		padding-top: 10%;
-	}
-	.secondary {
-		display: inline-block;
-		font-size: 1.6rem;
-		color: blue;
-		padding-left: 50px;
-		width: 10em;
-		margin-right: 10%;
-	}
-	.picture {
-		display: inline-block;
-		border-radius: 10px;
-	}
+.title {
+	display: inline-block;
+	font-size: 2rem;
+	color: blue;
+	padding-left: 10%;
+	width: 60%;
+	/* margin-right: 10%; */
+	padding-top: 10%;
+}
+.secondary {
+	display: inline-block;
+	font-size: 1.6rem;
+	color: blue;
+	padding-left: 50px;
+	width: 10em;
+	margin-right: 10%;
+}
+.picture {
+	display: inline-block;
+	border-radius: 10px;
+}
 </style>
