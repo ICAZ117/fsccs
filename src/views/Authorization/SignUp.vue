@@ -1,8 +1,8 @@
 <template>
 	<!-- Create login page -->
-	<div class="sign-up">
+	<div class="sign-up" v-if="!showCheckEmail">
 		<div class="sign-up-container">
-			<div class="sign-up-header">
+			<div class="sign-up-header center">
 				<h1>Sign Up</h1>
 			</div>
 			<div class="sign-up-body">
@@ -69,6 +69,17 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="check-email" v-else>
+		<div class="check-email-container">
+			<h3>Check your email!</h3>
+			<p class="fs-5 lh-lg center">
+				Thank's for signing up! We've sent a link confirm your email
+				address. If you don't see the email at first, please check your
+				spam box!
+			</p>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -85,6 +96,7 @@ export default {
 			email: "",
 			password: "",
 			confirm: "",
+			showCheckEmail: false,
 		};
 	},
 	methods: {
@@ -121,11 +133,7 @@ export default {
 					)
 						.then(async () => {
 							await signOut(getAuth()).then(() => {
-								this.$notify({
-									title: "Account Created!",
-									text: "Please check your email for a verification link. It may be in your spam folder!",
-									type: "success",
-								});
+								this.showCheckEmail = true;
 							});
 						})
 						.catch((error) => {
@@ -136,7 +144,7 @@ export default {
 					console.log("SIGN UP ERROR", error);
 					this.$notify({
 						title: "Error",
-						text: "Registration failed",
+						text: "An account with that email address already exists!",
 						type: "error",
 					});
 				});
@@ -146,6 +154,53 @@ export default {
 </script>
 
 <style scoped>
+.check-email {
+	width: calc(100vw - 5px);
+	height: 100vh;
+	background-color: rgb(55, 55, 60);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: white;
+}
+
+.check-email .btn:hover {
+	background-color: var(--primary-dark);
+}
+
+.check-email-container {
+	width: 550px;
+	height: 350px;
+	padding: 30px;
+	border-radius: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: 5px solid var(--FSCred);
+	box-shadow: 0 0 20px var(--FSCred);
+	background-color: rgb(55, 55, 62);
+	animation: expand 1s;
+}
+
+@keyframes expand {
+	0% {
+		width: 350px;
+		height: 525px;
+		color: transparent;
+	}
+
+	50% {
+		color: transparent;
+	}
+
+	100% {
+		width: 550px;
+		height: 350px;
+	}
+}
+
 .sign-up {
 	width: calc(100vw - 5px);
 	height: 100vh;
