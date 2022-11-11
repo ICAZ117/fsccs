@@ -137,11 +137,11 @@ export default {
 							});
 						})
 						.catch((error) => {
-							console.log("EMAIL ERROR", error);
+							console.error("EMAIL_VERIFICATION_ERROR", error);
 						});
 				})
 				.catch((error) => {
-					console.log("SIGN UP ERROR", error);
+					console.error("CREATE_USER_ERROR", error);
 					this.$notify({
 						title: "Error",
 						text: "An account with that email address already exists!",

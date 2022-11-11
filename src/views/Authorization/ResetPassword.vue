@@ -60,9 +60,7 @@ export default {
 					});
 				})
 				.catch((error) => {
-					const errorCode = error.code;
-					const errorMessage = error.message;
-					console.log("AY BRUH");
+					console.error("PASSWORD_RESET_ERROR", error);
 				});
 		},
 	},

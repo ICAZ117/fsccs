@@ -308,7 +308,6 @@ export default {
 			return res.data.profile;
 		},
 		getWindowSize() {
-			console.log("RESIZE");
 			this.windowHeight = window.innerHeight;
 			this.windowWidth = window.innerWidth;
 			this.reloadHero++;
@@ -327,8 +326,6 @@ export default {
 			// lg: 992px
 			// xl: 1200px
 			// xxl: 1400px
-
-			console.log(this.windowWidth);
 
 			if (this.windowWidth > 1399.9) {
 				return 3.7;
@@ -355,8 +352,8 @@ export default {
 		document.onreadystatechange = () => {
 			if (document.readyState === "complete") {
 				setTimeout(() => {
-                    this.mountReload++;
-                }, 500);
+					this.mountReload++;
+				}, 500);
 			}
 		};
 	},
@@ -407,8 +404,6 @@ export default {
 		// Display filtered announcements
 		this.announcements = filteredAnnouncements.splice(0, 5);
 
-		console.log("ANNOUNCEMENTS2", this.announcements);
-
 		// Get all faculty members in DB
 		await this.$store.dispatch("fetchFaculty");
 
@@ -417,7 +412,6 @@ export default {
 
 		// Push each professor's data to the professors array
 		storeFaculty.forEach((doc) => {
-			console.log("PROFESSORS HERE", doc.data());
 			this.professors[doc.id] = doc.data();
 		});
 

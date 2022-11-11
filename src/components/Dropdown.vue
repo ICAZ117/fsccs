@@ -69,8 +69,6 @@
 		methods: {
 			toggleDropdown() {
 				this.isOpen = !this.isOpen;
-				console.log("toggleDropdown");
-				console.log(this.isOpen);
 			},
 		},
 	};

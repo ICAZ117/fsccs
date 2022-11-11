@@ -39,7 +39,7 @@ const routes = [
         name: "Home",
         component: Home,
         meta: {
-            title: "Home | FSC CS",
+            title: "Home - The Cube Life",
         },
     },
     {
@@ -47,7 +47,7 @@ const routes = [
         name: "About the Department",
         component: () => import("../views/About/Department.vue"),
         meta: {
-            title: "About the Department | FSC CS",
+            title: "About the Department - The Cube Life",
         },
     },
     {
@@ -55,7 +55,7 @@ const routes = [
         name: "Meet the Faculty",
         component: () => import("../views/About/Faculty.vue"),
         meta: {
-            title: "Meet the Faculty | FSC CS",
+            title: "Meet the Faculty - The Cube Life",
         },
     },
     {
@@ -63,7 +63,7 @@ const routes = [
         name: "Degree & Concentrations",
         component: () => import("../views/About/Degree.vue"),
         meta: {
-            title: "Degree & Concentrations | FSC CS",
+            title: "Degree & Concentrations - The Cube Life",
         },
     },
     {
@@ -71,7 +71,7 @@ const routes = [
         name: "About the CS Building",
         component: () => import("../views/About/Building.vue"),
         meta: {
-            title: "About the CS Building | FSC CS",
+            title: "About the CS Building - The Cube Life",
         },
     },
     {
@@ -79,7 +79,7 @@ const routes = [
         name: "About the Cube Life",
         component: () => import("../views/About/CubeLife.vue"),
         meta: {
-            title: "About the Cube Life | FSC CS",
+            title: "About the Cube Life - The Cube Life",
         },
     },
     {
@@ -87,7 +87,7 @@ const routes = [
         name: "Computer Science Club",
         component: () => import("../views/GetInvolved/CSClub.vue"),
         meta: {
-            title: "CS Club | FSC CS",
+            title: "CS Club - The Cube Life",
         },
     },
     {
@@ -95,7 +95,7 @@ const routes = [
         name: "Programming Team",
         component: () => import("../views/GetInvolved/ProgrammingTeam.vue"),
         meta: {
-            title: "Programming Team | FSC CS",
+            title: "Programming Team - The Cube Life",
         },
     },
     {
@@ -103,7 +103,7 @@ const routes = [
         name: "Boardgame Lunch",
         component: () => import("../views/GetInvolved/BoardgameLunch.vue"),
         meta: {
-            title: "Boardgame Lunch | FSC CS",
+            title: "Boardgame Lunch - The Cube Life",
         },
     },
     {
@@ -111,7 +111,7 @@ const routes = [
         name: "Advising",
         component: () => import("../views/Resources/Advising.vue"),
         meta: {
-            title: "Advising | FSC CS",
+            title: "Advising - The Cube Life",
         },
     },
     {
@@ -119,7 +119,7 @@ const routes = [
         name: "Tutor Lab",
         component: () => import("../views/Resources/TutorLab.vue"),
         meta: {
-            title: "Tutor Lab | FSC CS",
+            title: "Tutor Lab - The Cube Life",
         },
     },
     {
@@ -127,7 +127,18 @@ const routes = [
         name: "Department Calendar",
         component: () => import("../views/Resources/Calendar.vue"),
         meta: {
-            title: "Department Calendar | FSC CS",
+            title: "Department Calendar - The Cube Life",
+        },
+    },
+    {
+        path: "/resources/manage-courses",
+        name: "Manage Courses",
+        component: () => import("../views/DegreeAudit/ManageCourses.vue"),
+        meta: {
+            title: "Manage Courses - The Cube Life",
+            requiresAuth: true,
+            requiresCompletion: true,
+            requiresAdmin: true,
         },
     },
     {
@@ -135,7 +146,7 @@ const routes = [
         name: "Virtual Tour",
         component: Tour,
         meta: {
-            title: "Virtual Tour | FSC CS",
+            title: "Virtual Tour - The Cube Life",
         },
     },
     {
@@ -143,7 +154,7 @@ const routes = [
         name: "Login",
         component: Login,
         meta: {
-            title: "Login | FSC CS",
+            title: "Login - The Cube Life",
             hideForAuth: true,
         },
     },
@@ -152,7 +163,7 @@ const routes = [
         name: "Sign Up",
         component: SignUp,
         meta: {
-            title: "Sign Up | FSC CS",
+            title: "Sign Up - The Cube Life",
             hideForAuth: true,
         },
     },
@@ -161,9 +172,9 @@ const routes = [
         name: "Sign Up Authorized",
         component: SignUpAuthorized,
         meta: {
-            title: "Complete Registration | FSC CS",
+            title: "Complete Registration - The Cube Life",
             requiresAuth: true,
-            requiresCompletion: true,
+            requiresIncompletion: true,
         },
     },
     {
@@ -171,7 +182,7 @@ const routes = [
         name: "Reset Password",
         component: ResetPassword,
         meta: {
-            title: "Reset Password | FSC CS",
+            title: "Reset Password - The Cube Life",
             hideForAuth: true,
         },
     },
@@ -180,7 +191,7 @@ const routes = [
         name: "Logout",
         component: Logout,
         meta: {
-            title: "Logout | FSC CS",
+            title: "Logout - The Cube Life",
         },
     },
     {
@@ -188,7 +199,7 @@ const routes = [
         name: "Profile",
         component: Profile,
         meta: {
-            title: "Profile | FSC CS",
+            title: "Profile - The Cube Life",
             requiresAuth: true
         },
     },
@@ -204,7 +215,7 @@ const routes = [
             },
         ],
         meta: {
-            title: "Faculty | FSC CS",
+            title: "Faculty - The Cube Life",
         },
     },
 ];
@@ -231,17 +242,39 @@ const getCurrentUser = () => {
 };
 
 router.beforeEach(async (to, from, next) => {
-    window.document.title = to.meta && to.meta.title ? to.meta.title : "FSC CS";
+    window.document.title = to.meta && to.meta.title ? to.meta.title : "The Cube Life";
 
     // IF THE ROUTE REQUIRES AUTH
     if (to.matched.some((record) => record.meta.requiresAuth)) {
         // IF THE USER IS LOGGED IN AND THEIR EMAIL IS VERIFIED
         if (await getCurrentUser() && getAuth().currentUser.emailVerified) {
+            // Fetch the user's account
+            const res = await getDoc(doc(db, "users", getAuth().currentUser.email));
+
             // IF THE ROUTE REQUIRES A FINALIZED ACCOUNT
             if (to.matched.some((record) => record.meta.requiresCompletion)) {
-                // Fetch the user's account
-                const res = await getDoc(doc(db, "users", getAuth().currentUser.email));
-
+                // IF THE USER'S ACCOUNT IS FINALIZED
+                if (res.data().registrationComplete) {
+                    // IF THE ROUTE REQUIRES ADMIN
+                    if (to.matched.some((record) => record.meta.requiresAdmin)) {
+                        // IF THE USER'S ACCOUNT HAS ADMIN PERMS
+                        if (res.data().privilege == 3) {
+                            next();
+                        }
+                        else {
+                            next("/");
+                        }
+                    }
+                    else {
+                        next();
+                    }
+                }
+                else {
+                    next("/sign-up/finalize");
+                }
+            }
+            // ELSE IF THE ROUTE REQUIRES AN UNFINALIZED ACCOUNT
+            else if (to.matched.some((record) => record.meta.requiresIncompletion)) {
                 // IF THE USER'S ACCOUNT IS NOT FINALIZED
                 if (!res.data().registrationComplete) {
                     next();
@@ -253,7 +286,8 @@ router.beforeEach(async (to, from, next) => {
             else {
                 next();
             }
-        } else {
+        }
+        else {
             next("/login");
         }
     }

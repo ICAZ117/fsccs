@@ -181,7 +181,7 @@ import {
 	getAuth,
 	onAuthStateChanged,
 	EmailAuthProvider,
-    updatePassword,
+	updatePassword,
 	reauthenticateWithCredential,
 } from "firebase/auth";
 
@@ -190,6 +190,7 @@ export default {
 		Parallax,
 		SkewBox,
 	},
+	watch: {},
 	data() {
 		return {
 			authUser: {},
@@ -224,7 +225,7 @@ export default {
 								});
 							})
 							.catch((error) => {
-                                console.log(error);
+								console.error("UPDATE_PASSWORD_ERROR", error);
 								this.$notify({
 									title: "Error!",
 									text: "We're encountering a server error. Please try again later.",
@@ -233,7 +234,7 @@ export default {
 							});
 					})
 					.catch((error) => {
-                        console.log(error);
+						console.error("REAUTHENTICATION_ERROR", error);
 						this.$notify({
 							title: "Error!",
 							text: "Incorrect password.",
@@ -244,16 +245,7 @@ export default {
 		},
 	},
 	beforeMount() {
-		onAuthStateChanged(getAuth(), async (user) => {
-			console.log("AUTH STATE CHANGED");
-			if (user) {
-				this.$store.commit("setEmail", user.email);
-				await this.$store.dispatch("fetchUser");
-				this.authUser = { ...this.$store.getters.getUser };
-			} else {
-				this.authUser = {};
-			}
-		});
+		this.authUser = { ...this.$store.getters.getUser };
 	},
 };
 </script>

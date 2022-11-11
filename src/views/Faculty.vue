@@ -133,10 +133,8 @@ export default {
         });
 
         // Redirect to home page if
-        if (this.professor == "") {
-            // this.$router.push("/");
-        } else {
-            console.log(this.professor);
+        if (!this.professor) {
+            this.$router.push("/");
         }
 
         this.professors = Object.fromEntries(

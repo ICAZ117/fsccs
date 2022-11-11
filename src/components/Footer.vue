@@ -82,10 +82,10 @@
 								</li>
 								<li>
 									<router-link
-										to="/get-involved/ctf-team"
+										to="/get-involved/boardgame-lunch"
 										class="primary link"
 									>
-										CTF Team
+										Boardgame Lunch
 									</router-link>
 								</li>
 							</ul>

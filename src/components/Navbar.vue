@@ -28,7 +28,9 @@
 					<i
 						style="
 							font-size: 1.5em !important;
+
 							width: 30px !important;
+
 							margin: auto;
 						"
 						v-if="isOpen"
@@ -63,26 +65,37 @@
 							:dropContent="[
 								{
 									path: '/about/department',
+
 									title: 'About the Department',
 								},
+
 								{
 									path: '/about/faculty',
+
 									title: 'Meet the Faculty',
 								},
+
 								{
 									path: '/about/degree-and-concentrations',
+
 									title: 'Degree & Concentrations',
 								},
+
 								{
 									path: '/about/cs-building',
+
 									title: 'About the CS Building',
 								},
+
 								{
 									path: '/about/cube-life',
+
 									title: 'About the Cube Life',
 								},
+
 								{
 									path: '/virtual-tour',
+
 									title: 'Virtual Tour',
 								},
 							]"
@@ -96,14 +109,19 @@
 							:dropContent="[
 								{
 									path: '/get-involved/cs-club',
+
 									title: 'CS Club',
 								},
+
 								{
 									path: '/get-involved/programming-team',
+
 									title: 'Programming Team',
 								},
+
 								{
 									path: '/get-involved/boardgame-lunch',
+
 									title: 'Boardgame Lunch',
 								},
 							]"
@@ -114,20 +132,55 @@
 							:useRouterLinks="true"
 							:width="'220px'"
 							:pageWidth="width"
-							:dropContent="[
-								{
-									path: '/resources/advising',
-									title: 'Advising',
-								},
-								{
-									path: '/resources/tutor-lab',
-									title: 'Tutor Lab',
-								},
-								{
-									path: '/resources/calendar',
-									title: 'Department Calendar',
-								},
-							]"
+							:dropContent="
+								authUser &&
+								authUser.registrationComplete &&
+								authUser.privilege == 3
+									? [
+											{
+												path: '/resources/manage-courses',
+
+												title: 'Manage Courses',
+											},
+
+											{
+												path: '/resources/advising',
+
+												title: 'Advising',
+											},
+
+											{
+												path: '/resources/tutor-lab',
+
+												title: 'Tutor Lab',
+											},
+
+											{
+												path: '/resources/calendar',
+
+												title: 'Department Calendar',
+											},
+									  ]
+									: [
+											{
+												path: '/resources/advising',
+
+												title: 'Advising',
+											},
+
+											{
+												path: '/resources/tutor-lab',
+
+												title: 'Tutor Lab',
+											},
+
+											{
+												path: '/resources/calendar',
+
+												title: 'Department Calendar',
+											},
+									  ]
+							"
 						/>
 
 						<div class="nav-item" v-if="!isLoggedIn">
@@ -139,7 +192,7 @@
 						<div class="nav-item" v-if="isLoggedIn">
 							<Dropdown
 								:header="`<img src='${
-									authUser.pfp
+									authUser && authUser.pfp
 										? authUser.pfp
 										: 'https://www.knack.com/images/about/default-profile.png'
 								}' style='height: 40px; border: 2px solid var(--FSCred); border-radius: 50%; background-color: var(--FSCgrey)'>`"
@@ -149,10 +202,13 @@
 								:dropContent="[
 									{
 										path: '/profile',
+
 										title: 'Profile',
 									},
+
 									{
 										path: '/logout',
+
 										title: 'Log Out',
 									},
 								]"
@@ -169,11 +225,11 @@
 </template>
 
 <script>
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Dropdown from "./Dropdown.vue";
 
 export default {
 	name: "Navbar",
+    props: ["authUser"],
 	components: {
 		Dropdown,
 	},
@@ -189,6 +245,9 @@ export default {
 		$route(to, from) {
 			this.isOpen = false;
 		},
+		authUser: function(newVal, oldVal) {
+            this.isLoggedIn = (newVal != null) ? true : false;
+        }
 	},
 
 	data() {
@@ -197,7 +256,6 @@ export default {
 			useHamburger: false,
 			width: 0,
 			isLoggedIn: false,
-			authUser: {},
 		};
 	},
 	methods: {
@@ -209,32 +267,14 @@ export default {
 			} else {
 				this.$emit("close");
 			}
-			console.log("toggleNav");
-			console.log(this.isOpen);
 		},
 	},
-	mounted() {
+	async mounted() {
 		window.addEventListener("resize", () => {
 			this.width = window.innerWidth;
 		});
 
 		this.width = window.innerWidth;
-
-		console.log("useHamburger: " + this.useHamburger);
-		console.log("isOpen: " + this.isOpen);
-
-		onAuthStateChanged(getAuth(), (user) => {
-			console.log("USER", user);
-			if (user && user.emailVerified) {
-				this.isLoggedIn = true;
-				this.$store.commit("setEmail", user.email);
-				this.$store.dispatch("fetchUser");
-				this.authUser = this.$store.getters.getUser;
-			} else {
-				this.isLoggedIn = false;
-				this.authUser = {};
-			}
-		});
 	},
 };
 </script>
@@ -278,9 +318,12 @@ nav,
 }
 
 /* .navbar-brand img {
-		filter: invert(72%) sepia(54%) saturate(296%) hue-rotate(1deg) brightness(96%)
-			contrast(86%);
-	} */
+
+filter: invert(72%) sepia(54%) saturate(296%) hue-rotate(1deg) brightness(96%)
+
+contrast(86%);
+
+} */
 
 .nav-link {
 	width: fit-content !important;

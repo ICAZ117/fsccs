@@ -55,20 +55,16 @@
 						</div>
 					</div>
 					<div class="form-group mt-3">
-						<center>
-							<div style="display: flex; justify-content: center">
-								<router-link
-									to="/sign-up"
-									class="me-5 primary link"
-									>Sign Up!</router-link
-								>
-								<router-link
-									to="/reset-password"
-									class="primary link"
-									>Reset password</router-link
-								>
-							</div>
-						</center>
+						<div style="display: flex; justify-content: center">
+							<router-link to="/sign-up" class="me-5 primary link"
+								>Sign Up!</router-link
+							>
+							<router-link
+								to="/reset-password"
+								class="primary link"
+								>Forgot Password</router-link
+							>
+						</div>
 					</div>
 				</form>
 			</div>
@@ -85,7 +81,6 @@ import {
 } from "firebase/auth";
 
 export default {
-	components: {},
 	data() {
 		return {
 			email: "",
@@ -116,7 +111,6 @@ export default {
 					if (this.auth.registrationComplete) {
 						this.$router.push("/");
 					} else {
-						console.log("CURRENT USER", getAuth().currentUser);
 						if (getAuth().currentUser.emailVerified) {
 							this.$router.push("/sign-up/finalize");
 						} else {
@@ -186,7 +180,7 @@ export default {
 							});
 						})
 						.catch((error) => {
-							console.log("EMAIL ERROR", error);
+							console.error("EMAIL_VERIFICATION_ERROR", error);
 						});
 					signOut(getAuth());
 				})

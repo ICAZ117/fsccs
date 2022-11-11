@@ -1,56 +1,13 @@
 <template>
-	<div class="event-body white" id="largeEvent">
-		<div class="m-0 row block-center h-100">
-			<div class="col-2 center icon h-100">
-				<i :class="icon + ' m-auto vertical-center'"></i>
-			</div>
-			<div
-				class="col-10 px-4 py-2 h-100"
-				:style="hasDescription ? '' : 'transform: translateY(35px)'"
-			>
-				<h5>{{ title }}</h5>
-				<div class="row block-center">
-					<div
-						class="my-0"
-						style="width: fit-content"
-						v-if="location"
-					>
-						<i class="fa-solid fa-location-dot me-2"></i>
-						{{ location }}
-					</div>
-					<div style="width: fit-content" v-if="date">
-						<i class="fa-solid fa-calendar me-2"></i> {{ date }}
-					</div>
-					<div style="width: fit-content" v-if="time">
-						<i class="fa-solid fa-clock me-2"></i> {{ time }}
-					</div>
-				</div>
-				<p
-					v-if="hasDescription"
-					style="
-						max-height: 60px;
-						overflow-y: auto;
-						margin-top: 0.5rem;
-					"
-				>
-					<slot></slot>
-				</p>
-			</div>
-		</div>
-	</div>
-
-	<div id="smallEvent">
-		<div class="card white">
-			<div class="m-0 h-100">
-				<div
-					class="icon card-img-top center py-5"
-					style="height: 200px"
-				>
+	<div>
+		<div class="event-body white" id="largeEvent">
+			<div class="m-0 row block-center h-100">
+				<div class="col-2 center icon h-100">
 					<i :class="icon + ' m-auto vertical-center'"></i>
 				</div>
 				<div
-					class="card-body px-4 py-4"
-					:style="hasDescription ? '' : 'transform: translateY(30px)'"
+					class="col-10 px-4 py-2 h-100"
+					:style="hasDescription ? '' : 'transform: translateY(35px)'"
 				>
 					<h5>{{ title }}</h5>
 					<div class="row block-center">
@@ -79,6 +36,55 @@
 					>
 						<slot></slot>
 					</p>
+				</div>
+			</div>
+		</div>
+
+		<div id="smallEvent">
+			<div class="card white">
+				<div class="m-0 h-100">
+					<div
+						class="icon card-img-top center py-5"
+						style="height: 200px"
+					>
+						<i :class="icon + ' m-auto vertical-center'"></i>
+					</div>
+					<div
+						class="card-body px-4 py-4"
+						:style="
+							hasDescription ? '' : 'transform: translateY(30px)'
+						"
+					>
+						<h5>{{ title }}</h5>
+						<div class="row block-center">
+							<div
+								class="my-0"
+								style="width: fit-content"
+								v-if="location"
+							>
+								<i class="fa-solid fa-location-dot me-2"></i>
+								{{ location }}
+							</div>
+							<div style="width: fit-content" v-if="date">
+								<i class="fa-solid fa-calendar me-2"></i>
+								{{ date }}
+							</div>
+							<div style="width: fit-content" v-if="time">
+								<i class="fa-solid fa-clock me-2"></i>
+								{{ time }}
+							</div>
+						</div>
+						<p
+							v-if="hasDescription"
+							style="
+								max-height: 60px;
+								overflow-y: auto;
+								margin-top: 0.5rem;
+							"
+						>
+							<slot></slot>
+						</p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -159,9 +165,9 @@ export default {
 	.card {
 		background-color: rgb(24, 44, 56);
 		width: 77vw;
-        max-width: 400px;
+		max-width: 400px;
 		height: 400px;
-        transition: all ease-in-out 0.3s;
+		transition: all ease-in-out 0.3s;
 	}
 
 	.card:hover {

@@ -68,12 +68,6 @@ export default {
 			required: false,
 		},
 	},
-	watch: {
-		height: function (newVal, oldVal) {
-			// watch it
-			console.log("Prop changed: ", newVal, " | was: ", oldVal);
-		},
-	},
 	data() {
 		return {
 			x: 0,
