@@ -38,7 +38,27 @@
 		</div> -->
 		
 		<div class="py-4 row">
-			<div class="col-3" v-for="(officer, name) in officers" :key="name">
+			<Carousel
+				:itemsToShow="4"
+				:wrapAround="true"
+			>
+				<Slide
+					v-for="(officer, name) in officers" :key="name"
+				>
+					<div class="exec">
+						<ProfileCard
+						:pfp="officer.picture"
+						:name="officer.name"
+						:role="officer.position"
+						></ProfileCard>
+					</div>
+				</Slide>
+				<template #addons>
+					<Navigation />
+					<Pagination class="show-576" />
+				</template>
+			</Carousel>
+			<!-- <div class="col-3" v-for="(officer, name) in officers" :key="name">
 				<div class="exec">
 					<ProfileCard
 						:pfp="`${require('@/assets/img/People/Anonymous.png')}`"
@@ -46,12 +66,12 @@
 						:role="officer.position"
 					></ProfileCard>
 				</div>
-				<!-- <div class="exec">
+				<div class="exec">
 					<h5>{{officer.position}}</h5>
 					<center><hr class="primary-hr"/></center>
 					<i><p>{{officer.name}}</p></i>
-				</div> -->
-			</div>
+				</div>
+			</div> -->
 		</div>
 		
 		<!-- <div class="py-4">
