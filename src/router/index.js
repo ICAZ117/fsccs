@@ -142,6 +142,16 @@ const routes = [
         },
     },
     {
+        path: "/resources/degree-audit",
+        name: "Degree Audit",
+        component: () => import("../views/DegreeAudit/DegreeAudit.vue"),
+        meta: {
+            title: "Degree Audit - The Cube Life",
+            requiresAuth: true,
+            requiresCompletion: true,
+        },
+    },
+    {
         path: "/virtual-tour",
         name: "Virtual Tour",
         component: Tour,

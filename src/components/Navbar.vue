@@ -150,6 +150,12 @@
 											},
 
 											{
+												path: '/resources/degree-audit',
+
+												title: 'Degree Audit',
+											},
+
+											{
 												path: '/resources/tutor-lab',
 
 												title: 'Tutor Lab',
@@ -166,6 +172,12 @@
 												path: '/resources/advising',
 
 												title: 'Advising',
+											},
+
+											{
+												path: '/resources/degree-audit',
+
+												title: 'Degree Audit',
 											},
 
 											{
@@ -229,7 +241,7 @@ import Dropdown from "./Dropdown.vue";
 
 export default {
 	name: "Navbar",
-    props: ["authUser"],
+	props: ["authUser"],
 	components: {
 		Dropdown,
 	},
@@ -245,9 +257,9 @@ export default {
 		$route(to, from) {
 			this.isOpen = false;
 		},
-		authUser: function(newVal, oldVal) {
-            this.isLoggedIn = (newVal != null) ? true : false;
-        }
+		authUser: function (newVal, oldVal) {
+			this.isLoggedIn = newVal != null ? true : false;
+		},
 	},
 
 	data() {

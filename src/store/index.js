@@ -14,6 +14,7 @@ import {
     query,
     orderBy,
     where,
+    updateDoc,
 } from "firebase/firestore";
 
 // Your web app's Firebase configuration
@@ -49,6 +50,7 @@ const store = createStore({
         announcements: {},
         officers: {},
         courses: {},
+        authEmail: "",
     },
     mutations: {
 
@@ -114,6 +116,7 @@ const store = createStore({
         },
         setEmail(state, payload) {
             state.auth.email = payload;
+            state.authEmail = payload;
         },
         setUsername(state, payload) {
             state.auth.username = payload;
@@ -146,6 +149,8 @@ const store = createStore({
                 fname: "",
                 lname: "",
             };
+
+            state.authEmail = "";
         },
         setAnnouncements(state, payload) {
             state.announcements = payload;
@@ -201,6 +206,11 @@ const store = createStore({
                 registrationComplete: false,
             });
         },
+        async updateUserCourses({ state }, courses) {
+            await updateDoc(doc(db, "users", state.authEmail), {
+                coursesTaken: courses,
+            });
+        },
         async finalizeUser({ state }) {
             // Create new user in users table
             await setDoc(doc(db, "users", state.auth.email), {
@@ -210,12 +220,13 @@ const store = createStore({
                 id: "",
                 fname: state.auth.fname,
                 lname: state.auth.lname,
+                coursesTaken: [],
                 registrationComplete: true,
             });
         },
         async fetchUser({ commit, state }) {
             // Get user from users table
-            const data = await getDoc(doc(db, "users", state.auth.email));
+            const data = await getDoc(doc(db, "users", state.authEmail));
             commit("setAuth", data.data());
         },
         async fetchOfficers({ commit }) {

@@ -729,7 +729,7 @@ export default {
 */
 /* 
 BOOTSTRAP BREAKPOINTS:
-  xs: 0px
+  xs: 475px
   sm: 576px
   md: 768px
   lg: 992px
