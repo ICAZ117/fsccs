@@ -83,6 +83,7 @@
 												<option value="B">B</option>
 												<option value="C">C</option>
 												<option value="D">D</option>
+												<option value="P">P</option>
 												<option value="F">F</option>
 											</select>
 										</div>
@@ -211,7 +212,30 @@
 			</div>
 
 			<div class="degreeAuditOutput" v-if="showOutput">
-				<div id="computerScience">
+				<div class="container px-5">
+					<div
+						class="px-5 row"
+						style="
+							text-align: center;
+							width: 75% !important;
+							margin: auto !important;
+						"
+					>
+						<div class="col-4">
+							Name: {{ authUser.fname }} {{ authUser.lname }}
+						</div>
+						<div class="col-4">
+							Cumulative GPA:
+							{{ Math.round(cumulativeGPA * 100) / 100 }}
+						</div>
+						<div class="col-4">
+							Cumulative GPA:
+							{{ Math.round(majorGPA * 100) / 100 }}
+						</div>
+					</div>
+					<hr class="white-hr w-75 center mx-auto" />
+				</div>
+				<div id="computerScience" class="mt-4 pt-1">
 					<div style="display: flex; flex-direction: row">
 						<h3>Computer science</h3>
 						<div class="ms-4">
@@ -291,8 +315,15 @@
 					</div>
 				</div>
 
-				<div class="mt-5 pt-1" id="geneds">
-					<h3>General Education</h3>
+				<div id="geneds" class="mt-5 pt-1">
+					<div style="display: flex; flex-direction: row">
+						<h3>General Education</h3>
+						<div class="ms-4">
+							Required Credits: 42
+							<br />
+							Completed Credits: {{ geneds.credits }}
+						</div>
+					</div>
 					<hr class="primary-hr" />
 					<div class="mx-0 row gy-4">
 						<div class="col-4">
@@ -378,8 +409,15 @@
 					</div>
 				</div>
 
-				<div class="mt-5 pt-1" id="bs" v-if="degreeType == 'BS'">
-					<h3>Bachelors of Science</h3>
+				<div id="bs" class="mt-5 pt-1" v-if="degreeType == 'BS'">
+					<div style="display: flex; flex-direction: row">
+						<h3>Bachelors of Science</h3>
+						<div class="ms-4">
+							Required Credits: 12
+							<br />
+							Completed Credits: {{ bs.credits }}
+						</div>
+					</div>
 					<hr class="primary-hr" />
 					<div class="mx-0 row gy-4">
 						<div class="col-4">
@@ -408,6 +446,95 @@
 						</div>
 					</div>
 				</div>
+
+				<div id="bs" class="mt-5 pt-1" v-if="degreeType == 'BA'">
+					<div style="display: flex; flex-direction: row">
+						<h3>Bachelors of Arts</h3>
+						<div class="ms-4">
+							Required Credits: 20
+							<br />
+							Completed Credits: {{ ba.credits }}
+						</div>
+					</div>
+					<hr class="primary-hr" />
+					<div class="mx-0 row gy-4">
+						<div class="col-4">
+							<Bucket
+								:courses="courses"
+								:title="'Foreign Language'"
+								:coursesTaken="ba.foreignLanguage"
+								:credits="12"
+							/>
+						</div>
+						<h3 class="mt-4 pt-2">
+							Must complete two of the following:
+						</h3>
+						<div class="col-4">
+							<Bucket
+								:courses="courses"
+								:title="'Communication'"
+								:coursesTaken="ba.communication"
+								:credits="4"
+							/>
+						</div>
+						<div class="col-4">
+							<Bucket
+								:courses="courses"
+								:title="'English'"
+								:coursesTaken="ba.english"
+								:credits="4"
+							/>
+						</div>
+						<div class="col-4">
+							<Bucket
+								:courses="courses"
+								:title="'Latin Studies'"
+								:coursesTaken="ba.latinStudies"
+								:credits="4"
+							/>
+						</div>
+						<div class="col-4">
+							<Bucket
+								:courses="courses"
+								:title="'Humanities'"
+								:coursesTaken="ba.humanities"
+								:credits="4"
+							/>
+						</div>
+						<div class="col-4">
+							<Bucket
+								:courses="courses"
+								:title="'Music'"
+								:coursesTaken="ba.music"
+								:credits="4"
+							/>
+						</div>
+						<div class="col-4">
+							<Bucket
+								:courses="courses"
+								:title="'Philosophy'"
+								:coursesTaken="ba.philosophy"
+								:credits="4"
+							/>
+						</div>
+						<div class="col-4">
+							<Bucket
+								:courses="courses"
+								:title="'Religion'"
+								:coursesTaken="ba.religion"
+								:credits="4"
+							/>
+						</div>
+						<div class="col-4">
+							<Bucket
+								:courses="courses"
+								:title="'Theology'"
+								:coursesTaken="ba.theology"
+								:credits="4"
+							/>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -427,6 +554,9 @@ export default {
 			coursesTaken: [],
 			degreeType: "",
 			showOutput: false,
+			authUser: {},
+			cumulativeGPA: 0,
+			majorGPA: 0,
 			cs: {
 				core: [],
 				ai: [],
@@ -453,6 +583,17 @@ export default {
 				quantitative: [],
 				naturalScience: [],
 				socialScience: [],
+			},
+			ba: {
+				foreignLanguage: [],
+				communication: [],
+				english: [],
+				latinStudies: [],
+				humanities: [],
+				music: [],
+				philosophy: [],
+				religion: [],
+				theology: [],
 			},
 		};
 	},
@@ -539,6 +680,18 @@ export default {
 				socialScience: [],
 			};
 
+			this.ba = {
+				foreignLanguage: [],
+				communication: [],
+				english: [],
+				latinStudies: [],
+				humanities: [],
+				music: [],
+				philosophy: [],
+				religion: [],
+				theology: [],
+			};
+
 			// Loop over all of the courses the student has taken. For EACH course,
 			// push them to every single gened bucket they apply to. Additionally,
 			// push them to every CS bucket they apply to.
@@ -593,11 +746,12 @@ export default {
 				// ██      ██    ██ ██  ██  ██ ██               ██ ██      ██
 				//  ██████  ██████  ██      ██ ██          ███████  ██████ ██
 
-				// If the course is an MATor CSCcourse, check if it applies to the major
+				// If the course is an MAT or CSC course, check if it applies to the major
 				if (
 					(course.code.startsWith("MAT") ||
 						course.code.startsWith("CSC")) &&
-					this.coursesTaken[i].grade.charCodeAt(0) <= 67
+					(this.coursesTaken[i].grade.charCodeAt(0) <= 67 ||
+						this.coursesTaken[i].grade.charCodeAt(0) == 80)
 				) {
 					if (CS_CURRICULUM.core.includes(course.code)) {
 						this.cs.core.push(course.code);
@@ -609,7 +763,6 @@ export default {
 
 					if (CS_CURRICULUM.web.includes(course.code)) {
 						this.cs.web.push(course.code);
-						console.log("ADDED " + course.code);
 					}
 
 					if (CS_CURRICULUM.cyber.includes(course.code)) {
@@ -768,17 +921,29 @@ export default {
 				for (let i = 0; i < this.coursesTaken.length; i++) {
 					// Get the course from the master course list
 					const course = this.courses[this.coursesTaken[i].code];
-					var BSbucket;
+					var BAbucket;
 
 					// Loop over the buckets in the course
 					for (let j = 0; j < course.buckets.length; j++) {
 						// Add the course to the buckets it fills
-						if (course.buckets[j] == "BSQuan") {
-							BSbucket = "quantitative";
-						} else if (course.buckets[j] == "BSNS") {
-							BSbucket = "naturalScience";
-						} else if (course.buckets[j] == "BSSS") {
-							BSbucket = "socialScience";
+						if (course.buckets[j] == "BAFL") {
+							BAbucket = "quantitative";
+						} else if (course.buckets[j] == "BACOM") {
+							BAbucket = "communication";
+						} else if (course.buckets[j] == "BAENG") {
+							BAbucket = "english";
+						} else if (course.buckets[j] == "BALAS") {
+							BAbucket = "latinStudies";
+						} else if (course.buckets[j] == "BAHA") {
+							BAbucket = "humanities";
+						} else if (course.buckets[j] == "BAMUS") {
+							BAbucket = "music";
+						} else if (course.buckets[j] == "BAPHI") {
+							BAbucket = "philosophy";
+						} else if (course.buckets[j] == "BAREL") {
+							BAbucket = "religion";
+						} else if (course.buckets[j] == "BATHE") {
+							BAbucket = "theology";
 						} else {
 							continue;
 						}
@@ -822,7 +987,7 @@ export default {
 						// Check if the course is not in any gened buckets. If so,
 						// push it to the BS bucket.
 						if (genedBucketsFilled.length == 0) {
-							this.bs[BSbucket].push(course.code);
+							this.ba[BAbucket].push(course.code);
 						}
 						// Else, the courses is in one or more gened buckets. As
 						// such, we need to push to the BS bucket ONLY IF all of
@@ -830,7 +995,7 @@ export default {
 						// even if the course were to be removed.
 						else {
 							// Create a flag
-							var applicableToBS = true;
+							var applicableToBA = true;
 
 							// For EACH bucket the course is in...
 							genedBucketsFilled.forEach((bucket) => {
@@ -847,11 +1012,11 @@ export default {
 									credits < 8 &&
 									(bucket == "MV" || bucket == "SW")
 								) {
-									applicableToBS = false;
+									applicableToBA = false;
 								} else if (credits < 2 && bucket == "PW") {
-									applicableToBS = false;
+									applicableToBA = false;
 								} else if (credits < 4) {
-									applicableToBS = false;
+									applicableToBA = false;
 								}
 							});
 
@@ -859,7 +1024,7 @@ export default {
 							// will remain filled should the course be removed, remove
 							// the course from all the gened buckets it's in and instead
 							// push it into the BS bucket
-							if (applicableToBS) {
+							if (applicableToBA) {
 								// Loop over all the buckets the course is in
 								for (
 									let i = 0;
@@ -874,7 +1039,7 @@ export default {
 								}
 
 								// Add the course to the BS bucket
-								this.bs[BSbucket].push(course.code);
+								this.ba[BSbucket].push(course.code);
 							}
 						}
 					}
@@ -887,77 +1052,255 @@ export default {
 			// ██      ██   ██ ██      ██   ██ ██    ██         ██
 			//  ██████ ██   ██ ███████ ██████  ██    ██    ███████
 
-			// CS
-			const csSet = new Set();
+			//  ██████        ██████ ███████
+			// ██            ██      ██
+			// ██      █████ ██      ███████
+			// ██            ██           ██
+			//  ██████        ██████ ███████
+			{
+				const csSet = new Set();
 
-			this.cs.core.forEach((code) => {
-				csSet.add(code);
-			});
-			this.cs.math1.forEach((code) => {
-				csSet.add(code);
-			});
-			this.cs.math2.forEach((code) => {
-				csSet.add(code);
-			});
-			this.cs.math3.forEach((code) => {
-				csSet.add(code);
-			});
-			this.cs.electives.forEach((code) => {
-				csSet.add(code);
-			});
-			this.cs.ai.forEach((code) => {
-				csSet.add(code);
-			});
-			this.cs.web.forEach((code) => {
-				csSet.add(code);
-			});
-			this.cs.cyber.forEach((code) => {
-				csSet.add(code);
-			});
+				this.cs.core.forEach((code) => {
+					csSet.add(code);
+				});
+				this.cs.math1.forEach((code) => {
+					csSet.add(code);
+				});
+				this.cs.math2.forEach((code) => {
+					csSet.add(code);
+				});
+				this.cs.math3.forEach((code) => {
+					csSet.add(code);
+				});
+				this.cs.electives.forEach((code) => {
+					csSet.add(code);
+				});
+				this.cs.ai.forEach((code) => {
+					csSet.add(code);
+				});
+				this.cs.web.forEach((code) => {
+					csSet.add(code);
+				});
+				this.cs.cyber.forEach((code) => {
+					csSet.add(code);
+				});
 
-			this.cs.credits = 0;
+				this.cs.credits = 0;
 
-			csSet.forEach((code) => {
-				this.cs.credits += parseInt(this.courses[code].credits);
-			});
+				csSet.forEach((code) => {
+					this.cs.credits += parseInt(this.courses[code].credits);
+				});
+			}
 
-			// Geneds
-			const genedSet = new Set();
+			//  ██████        ██████  ███████ ███    ██ ███████ ██████  ███████
+			// ██            ██       ██      ████   ██ ██      ██   ██ ██
+			// ██      █████ ██   ███ █████   ██ ██  ██ █████   ██   ██ ███████
+			// ██            ██    ██ ██      ██  ██ ██ ██      ██   ██      ██
+			//  ██████        ██████  ███████ ██   ████ ███████ ██████  ███████
+			{
+				const genedSet = new Set();
 
-			this.cs.core.forEach((code) => {
-				genedSet.add(code);
-			});
-			this.cs.math1.forEach((code) => {
-				genedSet.add(code);
-			});
-			this.cs.math2.forEach((code) => {
-				genedSet.add(code);
-			});
-			this.cs.math3.forEach((code) => {
-				genedSet.add(code);
-			});
-			this.cs.electives.forEach((code) => {
-				genedSet.add(code);
-			});
-			this.cs.ai.forEach((code) => {
-				genedSet.add(code);
-			});
-			this.cs.web.forEach((code) => {
-				genedSet.add(code);
-			});
-			this.cs.cyber.forEach((code) => {
-				genedSet.add(code);
-			});
+				this.geneds.fineArts.forEach((code) => {
+					genedSet.add(code);
+				});
+				this.geneds.socialWorld.forEach((code) => {
+					genedSet.add(code);
+				});
+				this.geneds.meaningValue.forEach((code) => {
+					genedSet.add(code);
+				});
+				this.geneds.naturalWorld.forEach((code) => {
+					genedSet.add(code);
+				});
+				this.geneds.creativeQuan.forEach((code) => {
+					genedSet.add(code);
+				});
+				this.geneds.creativeQual.forEach((code) => {
+					genedSet.add(code);
+				});
+				this.geneds.effCommA.forEach((code) => {
+					genedSet.add(code);
+				});
+				this.geneds.effCommB.forEach((code) => {
+					genedSet.add(code);
+				});
+				this.geneds.effCommC.forEach((code) => {
+					genedSet.add(code);
+				});
 
-			this.cs.credits = 0;
+				this.geneds.personalWellness.forEach((code) => {
+					genedSet.add(code);
+				});
 
-			genedSet.forEach((code) => {
-				this.cs.credits += parseInt(this.courses[code].credits);
-			});
+				this.geneds.credits = 0;
+
+				genedSet.forEach((code) => {
+					this.geneds.credits += parseInt(this.courses[code].credits);
+				});
+			}
+
+			//  ██████       ██████  ███████
+			// ██            ██   ██ ██
+			// ██      █████ ██████  ███████
+			// ██            ██   ██      ██
+			//  ██████       ██████  ███████
+			if (this.degreeType == "BS") {
+				const bsSet = new Set();
+
+				this.bs.quantitative.forEach((code) => {
+					bsSet.add(code);
+				});
+				this.bs.naturalScience.forEach((code) => {
+					bsSet.add(code);
+				});
+				this.bs.socialScience.forEach((code) => {
+					bsSet.add(code);
+				});
+
+				this.bs.credits = 0;
+
+				bsSet.forEach((code) => {
+					this.bs.credits += parseInt(this.courses[code].credits);
+				});
+			}
+			//  ██████       ██████   █████
+			// ██            ██   ██ ██   ██
+			// ██      █████ ██████  ███████
+			// ██            ██   ██ ██   ██
+			//  ██████       ██████  ██   ██
+			else {
+				const baSet = new Set();
+
+				this.ba.foreignLanguage.forEach((code) => {
+					baSet.add(code);
+				});
+				this.ba.communication.forEach((code) => {
+					baSet.add(code);
+				});
+				this.ba.english.forEach((code) => {
+					baSet.add(code);
+				});
+				this.ba.latinStudies.forEach((code) => {
+					baSet.add(code);
+				});
+				this.ba.humanities.forEach((code) => {
+					baSet.add(code);
+				});
+				this.ba.music.forEach((code) => {
+					baSet.add(code);
+				});
+				this.ba.philosophy.forEach((code) => {
+					baSet.add(code);
+				});
+				this.ba.religion.forEach((code) => {
+					baSet.add(code);
+				});
+				this.ba.theology.forEach((code) => {
+					baSet.add(code);
+				});
+
+				this.ba.credits = 0;
+
+				baSet.forEach((code) => {
+					this.ba.credits += parseInt(this.courses[code].credits);
+				});
+			}
+
+			//  ██████  ██████   █████
+			// ██       ██   ██ ██   ██
+			// ██   ███ ██████  ███████
+			// ██    ██ ██      ██   ██
+			//  ██████  ██      ██   ██
+			this.calcGPA();
+            this.calcMajorGPA(CS_CURRICULUM);
 
 			console.log("CS", this.cs);
-			console.log("Geneds", this.geneds);
+			console.log("Geneds", this.bs);
 			console.log("BS", this.bs);
+		},
+		calcGPA() {
+			var credits = 0,
+				gradePoints = 0;
+
+			this.coursesTaken.forEach((course) => {
+				if (course.grade != "P") {
+					credits += parseInt(this.courses[course.code].credits);
+
+					switch (course.grade) {
+						case "A":
+							gradePoints +=
+								4 * parseInt(this.courses[course.code].credits);
+							break;
+						case "B":
+							gradePoints +=
+								3 * parseInt(this.courses[course.code].credits);
+							break;
+						case "C":
+							gradePoints +=
+								2 * parseInt(this.courses[course.code].credits);
+							break;
+						case "D":
+							gradePoints +=
+								1 * parseInt(this.courses[course.code].credits);
+							break;
+					}
+				}
+			});
+
+			this.cumulativeGPA = gradePoints / credits;
+		},
+		calcMajorGPA(CS_CURRICULUM) {
+			var credits = 0,
+				gradePoints = 0;
+
+			// Loop over all courses taken
+			this.coursesTaken.forEach((course) => {
+				// If the course is either a CSC or MAT course, and it's not a P
+				if (
+					(course.code.startsWith("MAT") ||
+						course.code.startsWith("CSC")) &&
+					course.grade != "P"
+				) {
+					// If the courses is within the CS curriculum
+					if (
+						CS_CURRICULUM.core.includes(course.code) ||
+						CS_CURRICULUM.ai.includes(course.code) ||
+						CS_CURRICULUM.web.includes(course.code) ||
+						CS_CURRICULUM.cyber.includes(course.code) ||
+						CS_CURRICULUM.math1.includes(course.code) ||
+						CS_CURRICULUM.math2.includes(course.code) ||
+						CS_CURRICULUM.math3.includes(course.code) ||
+						CS_CURRICULUM.electives.includes(course.code)
+					) {
+						credits += parseInt(this.courses[course.code].credits);
+
+						switch (course.grade) {
+							case "A":
+								gradePoints +=
+									4 *
+									parseInt(this.courses[course.code].credits);
+								break;
+							case "B":
+								gradePoints +=
+									3 *
+									parseInt(this.courses[course.code].credits);
+								break;
+							case "C":
+								gradePoints +=
+									2 *
+									parseInt(this.courses[course.code].credits);
+								break;
+							case "D":
+								gradePoints +=
+									1 *
+									parseInt(this.courses[course.code].credits);
+								break;
+						}
+					}
+				}
+			});
+
+			this.majorGPA = gradePoints / credits;
 		},
 		calcCredits(list) {
 			var credits = 0;
@@ -992,7 +1335,6 @@ export default {
 				);
 			}
 		},
-		hasCourseBeenTaken(code) {},
 	},
 	computed: {
 		filteredCourses() {
@@ -1043,6 +1385,7 @@ export default {
 		await this.$store.dispatch("fetchUser");
 
 		const res = this.$store.getters.getUser;
+		this.authUser = res;
 		this.coursesTaken = res.coursesTaken;
 	},
 };

@@ -15,7 +15,7 @@
 			>
 				<div
 					:style="
-						'color: ' + (creditsTaken >= credit)
+						'color: ' + (creditsTaken >= credits)
 							? '#00FF44'
 							: 'white'
 					"
