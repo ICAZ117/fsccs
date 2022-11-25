@@ -229,7 +229,7 @@
 							{{ Math.round(cumulativeGPA * 100) / 100 }}
 						</div>
 						<div class="col-4">
-							Cumulative GPA:
+							Major GPA:
 							{{ Math.round(majorGPA * 100) / 100 }}
 						</div>
 					</div>
@@ -1212,7 +1212,7 @@ export default {
 			// ██    ██ ██      ██   ██
 			//  ██████  ██      ██   ██
 			this.calcGPA();
-            this.calcMajorGPA(CS_CURRICULUM);
+			this.calcMajorGPA(CS_CURRICULUM);
 
 			console.log("CS", this.cs);
 			console.log("Geneds", this.bs);
@@ -1247,7 +1247,9 @@ export default {
 				}
 			});
 
-			this.cumulativeGPA = gradePoints / credits;
+			if (this.credits == 0) {
+				this.cumulativeGPA = gradePoints / credits;
+			}
 		},
 		calcMajorGPA(CS_CURRICULUM) {
 			var credits = 0,
@@ -1299,8 +1301,9 @@ export default {
 					}
 				}
 			});
-
-			this.majorGPA = gradePoints / credits;
+			if (this.credits == 0) {
+				this.majorGPA = gradePoints / credits;
+			}
 		},
 		calcCredits(list) {
 			var credits = 0;
