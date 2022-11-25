@@ -33,10 +33,7 @@
 	>
 		<div class="h-100 pb-2">
 			<center>
-				<div class="m-auto faculty container py-5 h-100">
-					<h1 class="center white mt-2 mb-4 pb-1">
-						Why thecube.life?
-					</h1>
+				<div class="m-auto container py-5 h-100">
 					<div
 						class="white"
 						style="text-align: justify; line-height: 2 !important"
@@ -54,7 +51,7 @@
 							Southern College.
 						</p>
 						<h4 class="center white">
-							So why "The Cube Life" (thecube.life)?
+							Why "The Cube Life" (thecube.life)?
 						</h4>
 						<p>
 							Life as a Moc is an incredible experience of
@@ -78,7 +75,7 @@
 							The Cube Life chooses you!
 						</p>
 						<div class="center">
-							<button class="btn btn-md btn-primary">
+							<button class="btn btn-md btn-primary" @click="activateCubeLife">
 								Enable Cube Life Mode!
 							</button>
 						</div>
@@ -101,7 +98,7 @@
 	>
 		<div class="h-100 pb-2">
 			<center>
-				<div class="m-auto faculty container py-5 h-100">
+				<div class="m-auto container py-5 h-100">
 					<h1 class="center white mt-2 mb-4 pb-1">
 						Meet the Developers
 					</h1>
@@ -173,12 +170,9 @@
 	>
 		<div class="h-100 pb-2">
 			<center>
-				<div class="m-auto faculty py-5 h-100">
+				<div class="m-auto py-5 h-100 container">
 					<h1 class="center mt-2 mb-4 pb-1">Inspiration</h1>
-					<p
-						class="container"
-						style="text-align: justify; line-height: 2 !important"
-					>
+					<p style="text-align: justify; line-height: 2 !important">
 						A group of four talented students, now alumni, first
 						tackled this project in 2021 and made great headway,
 						leaving big shoes to fill. During their final
@@ -189,40 +183,47 @@
 						their efforts and feel privileged to continue
 						development of this project.
 					</p>
-					<div class="mx-auto p-0 inspiration row block-center">
-						<div class="p-0 col-3">
-							<ProfileCard
-								:pfp="`${require('@/assets/img/People/ChrisHaynes.jpg')}`"
-								:name="'Chris Haynes'"
-								:role="'Full Stack Developer'"
-								:linkedin="'https://www.linkedin.com/in/christophernicolashaynes/'"
-							></ProfileCard>
-						</div>
-						<div class="p-0 col-3">
-							<ProfileCard
-								:pfp="`${require('@/assets/img/People/Anonymous.png')}`"
-								:name="'Joseph Saba'"
-								:role="'Full Stack Developer'"
-								:linkedin="'https://www.linkedin.com/in/joseph-saba-1b685320a/'"
-							></ProfileCard>
-						</div>
-						<div class="p-0 col-3">
-							<ProfileCard
-								:pfp="`${require('@/assets/img/People/EmmaStoverink.jpg')}`"
-								:name="'Emma Stoverink'"
-								:role="'Full Stack Developer'"
-								:linkedin="'https://www.linkedin.com/in/emmastoverink/'"
-								:github="'https://github.com/emmajs16'"
-							></ProfileCard>
-						</div>
-						<div class="p-0 col-3">
-							<ProfileCard
-								:pfp="`${require('@/assets/img/People/MatthewWilliams.jpg')}`"
-								:name="'Matthew Williams'"
-								:role="'Full Stack Developer'"
-								:linkedin="'https://www.linkedin.com/in/matthew-williams-5842b6229/'"
-							></ProfileCard>
-						</div>
+					<div class="inspiration">
+						<Carousel :itemsToShow="2.5" :wrapAround="true">
+							<Slide :key="1">
+								<ProfileCard
+									:pfp="`${require('@/assets/img/People/ChrisHaynes.jpg')}`"
+									:name="'Chris Haynes'"
+									:role="'Full Stack Developer'"
+									:linkedin="'https://www.linkedin.com/in/christophernicolashaynes/'"
+								></ProfileCard>
+							</Slide>
+							<Slide :key="2">
+								<ProfileCard
+									:pfp="`${require('@/assets/img/People/Anonymous.png')}`"
+									:name="'Joseph Saba'"
+									:role="'Full Stack Developer'"
+									:linkedin="'https://www.linkedin.com/in/joseph-saba-1b685320a/'"
+								></ProfileCard>
+							</Slide>
+							<Slide :key="3">
+								<ProfileCard
+									:pfp="`${require('@/assets/img/People/EmmaStoverink.jpg')}`"
+									:name="'Emma Stoverink'"
+									:role="'Full Stack Developer'"
+									:linkedin="'https://www.linkedin.com/in/emmastoverink/'"
+									:github="'https://github.com/emmajs16'"
+								></ProfileCard>
+							</Slide>
+							<Slide :key="4">
+								<ProfileCard
+									:pfp="`${require('@/assets/img/People/MatthewWilliams.jpg')}`"
+									:name="'Matthew Williams'"
+									:role="'Full Stack Developer'"
+									:linkedin="'https://www.linkedin.com/in/matthew-williams-5842b6229/'"
+								></ProfileCard>
+							</Slide>
+
+							<template #addons>
+								<Navigation />
+								<Pagination />
+							</template>
+						</Carousel>
 					</div>
 				</div>
 			</center>
@@ -408,18 +409,98 @@
 import SkewBox from "@/components/SkewBox.vue";
 import Parallax from "@/components/Parallax.vue";
 import ProfileCard from "../../components/ProfileCard.vue";
+import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
+import "vue3-carousel/dist/carousel.css";
 
 export default {
 	components: {
 		SkewBox,
 		Parallax,
 		ProfileCard,
+		Carousel,
+		Slide,
+		Pagination,
+		Navigation,
+	},
+	methods: {
+		activateCubeLife() {
+			this.$store.commit("activateCubeLife");
+			this.$notify({
+				title: "Cube Life Mode Activated!",
+				text: "Can you find all of the easter eggs?",
+				type: "success",
+			});
+		},
 	},
 };
 </script>
 
-<style scoped>
+<style>
 .inspiration {
-	width: 1400px !important;
+	margin: 0 7rem;
+	padding: 0 5rem;
+}
+.inspiration .carousel {
+	text-align: left;
+}
+
+.inspiration .carousel__pagination {
+	margin-bottom: 0;
+	padding-left: 0;
+	transform: translateY(0px);
+}
+
+.inspiration .carousel__pagination-button {
+	height: calc(var(--vc-pgn-height) * 1.5) !important;
+	width: calc(var(--vc-pgn-width) * 1.5) !important;
+	background-color: darkgray;
+}
+
+.inspiration .carousel__pagination-button--active {
+	background-color: var(--FSCred) !important;
+}
+
+.inspiration .carousel__icon {
+	width: calc(var(--vc-icn-width) * 2) !important;
+	height: calc(var(--vc-icn-width) * 2) !important;
+}
+
+.inspiration .carousel__prev,
+.inspiration .carousel__next {
+	/* box-sizing: content-box; */
+	background-color: var(--FSCred);
+	width: 50px !important;
+	height: 50px !important;
+	border-radius: 50% !important;
+	color: white !important;
+}
+
+.inspiration .carousel__prev {
+	left: -80px !important;
+}
+
+.inspiration .carousel__next {
+	right: -80px !important;
+}
+
+.inspiration .carousel__slide > .carousel__item {
+	transform: scale(0.8);
+	opacity: 0.5;
+	transition: 0.5s;
+}
+
+.inspiration .carousel__slide--next > .carousel__item {
+	opacity: 0.9;
+	transform: scale(0.9) translate(25px);
+}
+
+.inspiration .carousel__slide--prev > .carousel__item {
+	opacity: 0.9;
+	transform: scale(0.9) translate(-25px);
+}
+
+.inspiration .carousel__slide--active > .carousel__item {
+	opacity: 1;
+	transform: scale(1.1);
 }
 </style>

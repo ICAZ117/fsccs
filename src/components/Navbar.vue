@@ -90,7 +90,7 @@
 								{
 									path: '/about/cube-life',
 
-									title: 'About the Cube Life',
+									title: 'About The Cube Life',
 								},
 
 								{

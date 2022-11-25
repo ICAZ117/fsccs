@@ -53,6 +53,7 @@ const store = createStore({
         advisingresources: {},
         tutors: {},
         authEmail: "",
+        cubeLifeMode: false,
     },
     mutations: {
 
@@ -165,6 +166,9 @@ const store = createStore({
         },
         setTutors(state, payload) {
             state.tutors = payload;
+        },
+        activateCubeLife(state) {
+            state.cubeLifeMode = true;
         },
     },
     actions: {
