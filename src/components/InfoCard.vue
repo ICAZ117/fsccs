@@ -18,7 +18,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .card, .card .primary-hr, .card .card-title, .card a {
     transition: all ease 0.5s;
 }

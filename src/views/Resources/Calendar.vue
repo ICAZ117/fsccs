@@ -26,20 +26,35 @@
 	>
 		<div
 			class="container px-0"
-			style="display: flex; justify-content: flex-end; transform: translateX(-3px)"
+			style="
+				display: flex;
+				justify-content: flex-end;
+				transform: translateX(-3px);
+			"
 			v-show="!showCalendar"
 		>
-			<button class="btn btn-md btn-primary my-4" @click="showCalendar = !showCalendar">
+			<button
+				class="btn btn-md btn-primary my-4"
+				@click="showCalendar = !showCalendar"
+			>
 				Toggle Calendar View
 			</button>
 		</div>
 
 		<div
 			class="px-0"
-			style="display: flex; justify-content: flex-end; width: 90%; margin: auto"
+			style="
+				display: flex;
+				justify-content: flex-end;
+				width: 90%;
+				margin: auto;
+			"
 			v-show="showCalendar"
 		>
-			<button class="btn btn-md btn-primary my-4" @click="showCalendar = !showCalendar">
+			<button
+				class="btn btn-md btn-primary my-4"
+				@click="showCalendar = !showCalendar"
+			>
 				Toggle Calendar View
 			</button>
 		</div>
@@ -47,7 +62,10 @@
 		<div class="container py-4" v-show="!showCalendar">
 			<div class="row g-5 block-center">
 				<div
-					class="five-col col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12"
+					class="
+						five-col
+						col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12
+					"
 					v-for="(event, i) in events"
 					:key="i"
 				>
@@ -82,7 +100,7 @@
                     }
 
                     .event {
-                        color: #ba0c2f; background-color: transparent!important;
+                        color: white; background-color: transparent!important;
                     }
 
                     .dhx_body, .dhx_event_move.dhx_title, .dhx_cal_event .dhx_body {
@@ -93,13 +111,16 @@
                     .dhx_scale_holder .dhx_cal_event .dhx_body {
                         overflow: hidden;
                     }
+                    table, .dhx_month_head, .dhx_month_body {
+                        border-color: #ba0c2f;
+                    }
                 LOADING ANIMATION: no loader
                 VIEWS: Month, Week, Day, Next, Previous, Today, Date
              -->
 			<center>
 				<iframe
 					id="open-web-calendar"
-					src="https://open-web-calendar.herokuapp.com/calendar.html?url=https%3A%2F%2Fcalendar.google.com%2Fcalendar%2Fical%2Fcc30htqt39ddepsbm0e5358qgo%2540group.calendar.google.com%2Fpublic%2Fbasic.ics&amp;title=Department%20Calendar&amp;css=.dhx_cal_navline%2C%20.dhx_scale_bar%2C%20.dhx_cal_container%2C%20.dhx_cal_header%20%7Bbackground-color%3A%20rgba(20%2C%2020%2C%2020%2C%200.3)%3B%20color%3A%20white%3B%3B%7D%0A.event%2C%20.dhx_cal_tab.active%2C%20.dhx_cal_tab.active%3Ahover%20%7Bbackground-color%3A%20%23ba0c2f%3B%7D%20.dhx_month_head%2C%20.dhx_cal_tab%2C%20.dhx_cal_today_button%20%7Bcolor%3A%20%23ba0c2f%3B%7D%20.dhx_cal_tab%2C%20.dhx_cal_tab.active%20%7Bborder-color%3A%20%23ba0c2f%3B%7D%0A.dhx_scale_holder_now%2C%20.dhx_now%20.dhx_month_head%2C%20.dhx_now%20.dhx_month_body%20%7B%20background-color%3A%20%23eee%3B%20color%3A%20black%3B%3B%7D%0A.dhx_month_body%2C%20.dhx_month_head%2C%20.dhx_cal_container%20%7B%20background-color%3A%20rgba(20%2C%2020%2C%2020%2C%200.3)%3B%20color%3A%20white%3B%3B%20%7D%0A.dhx_after%20.dhx_month_body%2C%20.dhx_before%20.dhx_month_body%2C%20.dhx_after%20.dhx_month_head%2C%20.dhx_before%20.dhx_month_head%20%7B%20background-color%3A%20rgba(70%2C%2070%2C%2070%2C%200.3)%3B%20color%3A%20white%3B%3B%20%7D%0A.dhx_cal_date%20%7B%0Acolor%3A%20white!important%3B%0A%7D%0A%0A.dhx_cal_prev_button%2C%20.dhx_cal_next_button%20%7B%0Afilter%3A%20brightness(0)%20saturate(100%25)%20invert(13%25)%20sepia(92%25)%20saturate(4490%25)%20hue-rotate(340deg)%20brightness(77%25)%20contrast(99%25)%3B%0A%7D%0A%0A.event%20%7B%0Acolor%3A%20%23ba0c2f%3B%20background-color%3A%20transparent!important%3B%0A%7D%0A%0A.dhx_body%2C%20.dhx_event_move.dhx_title%2C%20.dhx_cal_event%20.dhx_body%20%7B%0Abackground-color%3A%20%23ba0c2f%3B%0Aoverflow-y%3A%20hidden%3B%0A%7D%0A%0A.dhx_scale_holder%20.dhx_cal_event%20.dhx_body%20%7B%0A%20%20%20%20overflow%3A%20hidden%3B%0A%7D%0A&amp;target=_blank&amp;loader="
+					src="https://open-web-calendar.herokuapp.com/calendar.html?url=https%3A%2F%2Fcalendar.google.com%2Fcalendar%2Fical%2Fcc30htqt39ddepsbm0e5358qgo%2540group.calendar.google.com%2Fpublic%2Fbasic.ics&amp;title=Department%20Calendar&amp;css=.dhx_cal_navline%2C%20.dhx_scale_bar%2C%20.dhx_cal_container%2C%20.dhx_cal_header%20%7Bbackground-color%3A%20rgba(20%2C%2020%2C%2020%2C%200.3)%3B%20color%3A%20white%3B%3B%7D%0A.event%2C%20.dhx_cal_tab.active%2C%20.dhx_cal_tab.active%3Ahover%20%7Bbackground-color%3A%20%23ba0c2f%3B%7D%20.dhx_month_head%2C%20.dhx_cal_tab%2C%20.dhx_cal_today_button%20%7Bcolor%3A%20%23ba0c2f%3B%7D%20.dhx_cal_tab%2C%20.dhx_cal_tab.active%20%7Bborder-color%3A%20%23ba0c2f%3B%7D%0A.dhx_scale_holder_now%2C%20.dhx_now%20.dhx_month_head%2C%20.dhx_now%20.dhx_month_body%20%7B%20background-color%3A%20%23eee%3B%20color%3A%20black%3B%3B%7D%0A.dhx_month_body%2C%20.dhx_month_head%2C%20.dhx_cal_container%20%7B%20background-color%3A%20rgba(20%2C%2020%2C%2020%2C%200.3)%3B%20color%3A%20white%3B%3B%20%7D%0A.dhx_after%20.dhx_month_body%2C%20.dhx_before%20.dhx_month_body%2C%20.dhx_after%20.dhx_month_head%2C%20.dhx_before%20.dhx_month_head%20%7B%20background-color%3A%20rgba(70%2C%2070%2C%2070%2C%200.3)%3B%20color%3A%20white%3B%3B%20%7D%0A.dhx_cal_date%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20white!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.dhx_cal_prev_button%2C%20.dhx_cal_next_button%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20filter%3A%20brightness(0)%20saturate(100%25)%20invert(13%25)%20sepia(92%25)%20saturate(4490%25)%20hue-rotate(340deg)%20brightness(77%25)%20contrast(99%25)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.event%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20white%3B%20background-color%3A%20transparent!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.dhx_body%2C%20.dhx_event_move.dhx_title%2C%20.dhx_cal_event%20.dhx_body%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20background-color%3A%20%23ba0c2f%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20overflow-y%3A%20hidden%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.dhx_scale_holder%20.dhx_cal_event%20.dhx_body%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20overflow%3A%20hidden%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0Atable%2C%20.dhx_month_head%2C%20.dhx_month_body%20%7B%0Aborder-color%3A%20%23ba0c2f%3B%0A%7D&amp;target=_blank&amp;loader="
 					sandbox="allow-scripts allow-same-origin allow-popups"
 					allowTransparency="true"
 					scrolling="no"
@@ -113,47 +134,54 @@
 </template>
 
 <script>
-	import Parallax from "../../components/Parallax.vue";
-	import CalendarCard from "../../components/CalendarCard.vue";
-	import SkewBox from "../../components/SkewBox.vue";
+import Parallax from "../../components/Parallax.vue";
+import CalendarCard from "../../components/CalendarCard.vue";
+import SkewBox from "../../components/SkewBox.vue";
 
-	export default {
-		components: {
-			Parallax,
-			CalendarCard,
-			SkewBox,
+export default {
+	components: {
+		Parallax,
+		CalendarCard,
+		SkewBox,
+	},
+	data() {
+		return {
+			allEvents: [],
+			colors: [
+				"#d60000",
+				"#4643fa",
+				"#f6c026",
+				"#f5511d",
+				"#039be5",
+				"#6e24aa",
+			],
+			showCalendar: false,
+		};
+	},
+	computed: {
+		events() {
+			return this.allEvents.slice(0, 20);
 		},
-		data() {
-			return {
-				allEvents: [],
-				colors: ["#d60000", "#4643fa", "#f6c026", "#f5511d", "#039be5", "#6e24aa"],
-				showCalendar: false,
-			};
-		},
-		computed: {
-			events() {
-				return this.allEvents.slice(0, 20);
-			},
-		},
-		async beforeMount() {
-			this.allEvents = this.$store.getters.getEvents;
-		},
-	};
+	},
+	async beforeMount() {
+		this.allEvents = this.$store.getters.getEvents;
+	},
+};
 </script>
 
 <style scoped>
-	.st-bg-td-last {
-		background: red;
-	}
+.st-bg-td-last {
+	background: red;
+}
 
-	.row > * {
-		padding: 0;
-	}
+.row > * {
+	padding: 0;
+}
 
-	@media (min-width: 1400px) {
-		.five-col {
-			flex: 0 0 auto;
-			width: 20%;
-		}
+@media (min-width: 1400px) {
+	.five-col {
+		flex: 0 0 auto;
+		width: 20%;
 	}
+}
 </style>
