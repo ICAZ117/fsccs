@@ -1,19 +1,19 @@
 <template>
 	<!-- HERO -->
 	<SkewBox
-		:rightBG="{
+		:leftBG="{
 			backgroundImage: `url(${require('@/assets/img/PT_Medals.jpg')})`,
 			'background-position': 'top',
 			'background-size': 'cover',
 			width: '54vw!important',
 		}"
-		:rightColor="'transparent'"
-		:leftColor="'var(--red-gradient)'"
+		:leftColor="'transparent'"
+		:rightColor="'var(--red-gradient-right)'"
 		:height="500"
 		:padding="'70px 0 60px 0'"
 		class="section"
 	>
-		<template v-slot:left>
+		<template v-slot:right>
 			<div class="center vertical-center">
 				<h1 class="white">Programming Team</h1>
 			</div>
@@ -57,19 +57,19 @@
 
 	<!-- ACM ICPC -->
 	<SkewBox
-		:leftBG="{
+		:rightBG="{
 			backgroundImage: `url(${require('@/assets/img/PT_Dinner.jpg')})`,
-			'background-position': 'center',
+			'background-position': 'left',
 			'background-size': 'cover',
 			width: '55vw!important',
 		}"
-		:leftColor="'transparent'"
-		:rightColor="'var(--FSCgrey)'"
+		:rightColor="'transparent'"
+		:leftColor="'var(--FSCgrey)'"
 		:height="500"
 		class="section"
 	>
-		<template v-slot:right>
-			<div class="h-100 pb-2">
+		<template v-slot:left>
+			<div class="h-100 pb-2 vertical-center">
 				<center>
 					<div class="m-auto container h-100">
 						<h1 class="center white mt-2 mb-4 pb-1">ACM ICPC</h1>

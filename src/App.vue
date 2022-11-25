@@ -5115,8 +5115,14 @@ export default {
 	--secondary: var(--FSCgrey);
 	--primary-dark: rgb(128, 8, 32) !important;
 
-	--red-gradient: linear-gradient(
+	--red-gradient-left: linear-gradient(
 		to left,
+		var(--primary),
+		var(--primary-dark) 45%
+	);
+
+    --red-gradient-right: linear-gradient(
+		to right,
 		var(--primary),
 		var(--primary-dark) 45%
 	);
