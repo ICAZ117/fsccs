@@ -3,7 +3,7 @@
 		<div class="applicationDisplay dark-scroll-bar" v-show="pageLoaded">
 			<Navbar :authUser="authUser"></Navbar>
 			<router-view v-slot="{ Component, route }">
-				<div :key="route.name + pageLoaded" id="routerView">
+				<div :key="route.name + pageLoaded + $route.fullPath" id="routerView">
 					<component :is="Component"></component>
 				</div>
 			</router-view>
