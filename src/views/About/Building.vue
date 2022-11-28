@@ -1,18 +1,33 @@
 <template>
-	<TextPage
-		:title="'About the CS Building'"
-		:heroImage="{
+	<SkewBox
+		:rightBG="{
 			backgroundImage: `url(${require('@/assets/img/WCS3.jpg')})`,
-			'background-position': 'bottom',
+			'background-position': 'right',
 			'background-size': 'cover',
+			width: '53vw!important',
 		}"
-		:background="{
-			backgroundImage: `url(${require('@/assets/img/BG7.jpg')})`,
-			'background-position': 'center',
-		}"
-        :opacity="0.9"
+		:rightColor="'transparent'"
+		:leftColor="'var(--FSCgrey)'"
+		:height="500"
+		:padding="'70px 0 60px 0'"
 	>
-		<div class="intro mx-5 center">
+		<template v-slot:left>
+			<div class="center vertical-center">
+				<h1 class="white">About the CS building</h1>
+			</div>
+		</template>
+	</SkewBox>
+
+	<Parallax
+		:image="{
+			backgroundImage: `url(${require('@/assets/img/Circuit1.jpg')}`,
+			'background-position': 'left middle',
+		}"
+		:height="'0'"
+		:opacity="0.7"
+		:overlayColor="'0, 0, 0'"
+	>
+		<div class="intro col-10 my-5 center">
 			<p>
 				The Weinstein Computer Sciences Center is located between the Sharon and Jim France 
 				Admissions Center and the Becker Business Building, was completed in spring 2020.
@@ -20,7 +35,7 @@
 				Weinstein building provides approximately 10,000 square feet of academic space, 
 				with an additional 3,000-square-foot auditorium and food venue. On top of being 
 				a cohesive learning environment, CS students can find all of their professors' 
-				offices convinently located just feet away from the classrooms. If that isn't 
+				offices convinently located just feet away from the classrooms. If 7that isn't 
 				enough, the building also includes an area of seating for students to do 
 				homework, chat with professors, and get to know other CS majors.
 			</p>
@@ -33,11 +48,10 @@
 				research lab, a cyber range, an auditorium, a maker space and conference rooms.
 			</p>
 		</div>
-		<div class="py-2"></div>
+	</Parallax>
 		<div class="Title">
 			<h2>History</h2>
 		</div>
-		<div class="py-2"></div>
 		<SkewBox
 			:leftBG="{
 				backgroundImage: `url(${require('@/assets/img/Weinstein-Groundbreaking.jpg')})`,
@@ -57,8 +71,17 @@
 				</div>
 			</template>
 		</SkewBox>
-		<div class="py-2"></div>
-		<p class="mx-4 my-3">
+	<Parallax
+		:image="{
+			backgroundImage: `url(${require('@/assets/img/BG3.jpg')}`,
+			'background-position': 'left middle',
+		}"
+		:height="'0'"
+		:opacity="0.4"
+		:overlayColor="'0, 0, 0'"
+	> 
+		<div class="col-10 middle white">
+		<p class="mx-4 my-3" style="font-size: larger; text-align: justify; line-height: 1.75;">
 			Shortly after the widely acclaimed success of the nearby France Family Admissions 
 			Center, completed in 2017, Florida Southern College retained Mesick Cohen Wilson 
 			Baker Architects to develop an exciting and dynamic design for the new Weinstein 
@@ -83,14 +106,14 @@
 			<p class="speaker"><i>— Dr. Brad Hollingshead, Dean of Arts and Sciences</i></p>
 		</div>
 
-		<p class="mx-4 mt-4">
+		<p class="mx-4 mt-4" style="font-size: larger; text-align: justify; line-height: 1.75;">
 			Dr. Hollingshead stressed the importance of 
 			creating a “new home” for students in the computer science department, an 
 			academic environment that “will inspire, stimulate, and bring out the best in 
 			our students,” he said. “It is being designed, in the end, to empower them.”
 		</p>
 
-		<p class="mx-4 my-4">
+		<p class="mx-4 my-4" style="font-size: larger; text-align: justify; line-height: 1.75;">
 			The process took a few years, but the Weinstien building is complete and students 
 			will be able to use it for many years to come.
 		</p>
@@ -110,22 +133,32 @@
 				<p class="speaker"><i>— Dr. Christian Roberson, the Department Chair of Computer Science</i></p>
 			</div>
 		</div>
+		</div>
+	</Parallax>
 
 		<div class="Title">
 			<h2>Features</h2>
 		</div>
-		<div class="py-2"></div>
-		<div class="features">
+	<Parallax
+		:image="{
+			backgroundImage: `url(${require('@/assets/img/BG7.jpg')}`,
+			'background-position': 'left middle',
+		}"
+		:height="'0'"
+		:opacity="0.2"
+		:overlayColor="'0, 0, 0'"
+	> 
+		<div class="features my-4">
 			<div class="feature col-4">
 			<center>
 				<h1 class="small_pic"><i class="fa-solid fa-cube"></i></h1>
-				<h3>Distinct Cube Structure</h3>
+				<h3>Distinct Cube<br>Structure</h3>
 			</center>
 			</div>
 			<div class="feature col-4">
 			<center>
 				<h1 class="small_pic"><i class="fa-solid fa-bullhorn"></i></h1>
-				<h3>CS-specific Auditorium</h3>
+				<h3>CS-specific<br>Auditorium</h3>
 			</center>
 			</div>
 			<div class="feature col-4">
@@ -135,12 +168,11 @@
 			</center>
 			</div>
 		</div>
-		<div class="py-4"></div>
+	</Parallax>
 		<div class="Title">
 			<h2>Take a Virtual Tour</h2>
 		</div>
 
-	</TextPage>
 	<div class="tour_section">
 		<img src="@/assets/img/explore.jpg" alt="" class="tour_pic">
 		<a href="/virtual-tour"><h2 class="inner_square col-5">Explore Weinstein<br>for yourself!</h2></a>
@@ -211,6 +243,7 @@
 		padding: 2%;
 		padding-bottom: .5% !important;
 		transform: translate(-10%);
+		color: black;
 	}
 	.speaker {
 		text-align: right;
@@ -222,9 +255,22 @@
 		padding-bottom: .5% !important;
 		transform: translate(15%);
 		display: inline-block;
+		color: black;
 	}
 	.second-pic {
 		display: inline-block;
 		margin-bottom: 5%
+	}
+	.middle {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.intro {
+		margin-left: auto;
+		margin-right: auto;
+		font-size: larger;
+		text-align: justify;
+		line-height: 1.75;
+		color:white;
 	}
 </style>

@@ -1,46 +1,66 @@
 <template>
-	<TextPage
-		:title="'About the Department'"
-		:heroImage="{
+	
+	<SkewBox
+		:rightBG="{
 			backgroundImage: `url(${require('@/assets/img/WCS3.jpg')})`,
-			'background-position': 'bottom',
+			'background-position': 'left',
 			'background-size': 'cover',
+			width: '53vw!important',
 		}"
-		:background="{
-			backgroundImage: `url(${require('@/assets/img/BG7.jpg')})`,
-			'background-position': 'center',
-		}"
-        :opacity="0.9"
+		:rightColor="'transparent'"
+		:leftColor="'var(--red-gradient)'"
+		:height="500"
+		:padding="'70px 0 60px 0'"
 	>
-		<div class="wrapper_div" style="position: relative;">
-		<h1 class="col-2 small_pic center"><i class="fa-solid fa-computer"></i></h1>
-		<p class="col-10 text_block" >
-			Computer science provides you with a sound theoretical background and 
-			the opportunities for individual and collaborative exploration of real-world 
-			computing problems. Whether you choose to pursue a B.S. or a B.A. in Computer 
-			Science, you'll find yourself working in state-of-the-art labs while mastering 
-			programming languages like Python and Java. Once you've built a foundation, 
-			your coursework will center on creating solutions. You'll develop robotics 
-			applications, create websites, and engineer software. You'll also take courses 
-			in a specific niche preparing you for more specialized opportunities when you 
-			graduate.
-		</p>
-		</div>
-		<div class="py-2"></div>
+		<template v-slot:left>
+			<div class="center vertical-center">
+				<h1 class="white">About the Department</h1>
+			</div>
+		</template>
+	</SkewBox>
 
-		<div class="wrapper_div">
-		<p class="col-9 text_block" >
-			The program gives students the opportunity for hands-on experience while they 
-			explore and apply the theoretical underpinnings of the discipline. Students have 
-			the option to choose from three different concentrations: <b>AI and Machine 
-			Learning</b>, <b>Cybersecurity</b>, and <b>Web & Cloud Computing</b>. Choosing 
-			a concentration allows students to get a more specialized look into their interests. 
-			Those with extra time in their schedule can pick up more than one for a broader view 
-			of what the Computer Science department has to offer!
-		</p>
-		<h1 class="col-3 small_pic center"><i class="fa-solid fa-book-open"></i></h1>
+	<Parallax
+		:image="{
+			backgroundImage: `url(${require('@/assets/img/Circuit6.jpg')}`,
+			'background-position': 'left middle',
+		}"
+		:height="'0'"
+		:opacity="0.7"
+		:overlayColor="'0, 0, 0'"
+	>
+		<div class="h-100 pb-2 white">
+			<center>
+				<div class="container py-5 h-100">
+					<div class="topbackground">
+						<p class="col-9 text_block" >
+							Computer science provides you with a sound theoretical background and 
+							the opportunities for individual and collaborative exploration of real-world 
+							computing problems. Whether you choose to pursue a B.S. or a B.A. in Computer 
+							Science, you'll find yourself working in state-of-the-art labs while mastering 
+							programming languages like Python and Java. Once you've built a foundation, 
+							your coursework will center on creating solutions. You'll develop robotics 
+							applications, create websites, and engineer software. You'll also take courses 
+							in a specific niche preparing you for more specialized opportunities when you 
+							graduate.
+						</p>
+						<i class="fa-solid fa-computer col-3" style="font-size: 60px; margin:1rem; margin-bottom: 2rem"></i>
+						<i class="fa-solid fa-book-open col-3" style="font-size: 60px; margin:1rem; margin-bottom: 2rem"></i>
+						<p class="col-9 text_block" >
+							The program gives students the opportunity for hands-on experience while they 
+							explore and apply the theoretical underpinnings of the discipline. Students have 
+							the option to choose from three different concentrations: <b>AI and Machine 
+							Learning</b>, <b>Cybersecurity</b>, and <b>Web & Cloud Computing</b>. Choosing 
+							a concentration allows students to get a more specialized look into their interests. 
+							Those with extra time in their schedule can pick up more than one for a broader view 
+							of what the Computer Science department has to offer!
+						</p>
+						
+					</div>
+				</div>
+			</center>
 		</div>
-	</TextPage>
+	</Parallax>
+
 
 	<!-- Carosel of community events?
 		Talk about why the community is so important
@@ -48,7 +68,7 @@
 
 	<Parallax
 		:image="{
-			backgroundImage: `url(${require('@/assets/img/Circuit7.jpg')}`,
+			backgroundImage: `url(${require('@/assets/img/BG5.jpg')}`,
 			'background-position': 'left middle',
 		}"
 		:height="'0'"
@@ -58,7 +78,7 @@
 	>
 		<h1 class="my-3" style="color:white; text-align:center">A Community That Cares</h1>
 		<div class="community-pic-holder py-4">
-			<img src="@/assets/img/gaming_at_party.jpg" class="community-pic">
+			<img src="@/assets/img/gaming_at_party2.png" class="community-pic" style="">
 		</div>
 		<div>
 			<h5 class="community-text">The CS department strives to be a welcoming and inclusive environment for 
@@ -83,14 +103,14 @@
 			<center>
 				<div class="m-auto container py-5 h-100">
 					<h1 class="center mt-2" style="color:white">What Makes Our Department Great</h1>
-					<div class="m-0 row g-5">
+					<div class="row">
 						<div class="col-6">
 							<a href="/about/faculty" style="text-decoration: none !important;">
 								<InfoCard
 									:title="'Professors that care'"
 								>
 								<p class="center card_text">Every professor in the CS department is responsive, thoughtful, and cares about their students.</p>
-								<p class="center card_text">Meet the CS professors -></p>
+								<p class="center card_text">Meet the CS professors<i class="ms-2 fa-solid fa-arrow-right"></i></p>
 								</InfoCard>
 							</a>
 						</div>
@@ -100,7 +120,7 @@
 									:title="'Engaging classes'"
 								>
 								<p class="center card_text">Classes in this department are exciting and capture your attention from start to finish.</p>
-								<p class="center card_text">Look over the course requirements -></p>
+								<p class="center card_text">Look over the course requirements<i class="ms-2 fa-solid fa-arrow-right"></i></p>
 								</InfoCard>
 							</a>
 						</div>
@@ -110,17 +130,17 @@
 									:title="'Convinient workspaces'"
 								>
 								<p class="center card_text">The CS building features a large work area directly next to the professor's offices, which makes asking questions quick and easy for all of your assignments.</p>
-								<p class="center card_text">Explore Weinstien -></p>
+								<p class="center card_text">Explore Weinstien<i class="ms-2 fa-solid fa-arrow-right"></i></p>
 								</InfoCard>
 							</a>
 						</div>
 						<div class="col-6">
 							<a href="/get-involved/cs-club" style="text-decoration: none;">
 								<InfoCard
-									:title="'Active Community'"
+									:title="'Active community'"
 								>
 								<p class="center card_text">With programming team, CS club, boardgame lunch, and intramural activites, there are tons of opporunities to get involved in the department.</p>
-								<p class="center card_text">Get involved -></p>
+								<p class="center card_text">Get involved<i class="ms-2 fa-solid fa-arrow-right"></i></p>
 								</InfoCard>
 							</a>
 						</div>
@@ -137,12 +157,14 @@
 	import TextPage from "../../components/TextPage.vue";
 	import Parallax from "@/components/Parallax.vue";
 	import InfoCard from "@/components/InfoCard.vue";
+	import SkewBox from "@/components/SkewBox.vue";
 
 	export default {
 		components: {
 			TextPage,
 			Parallax,
 			InfoCard,
+			SkewBox,
 		},
 		data() {
 			return {
@@ -162,6 +184,8 @@
 	.text_block{
 		display: inline-block;
 		line-height: 2;
+		text-align: justify;
+		font-size: larger;
 	}
 	.small_pic{
 		display: inline-block;
@@ -196,8 +220,9 @@
 		color: var(--FSCred) !important;
 	}
 	.community-pic {
-		width: 70%;
+		width: 50%;
 		display: block;
+		transform: scale(1) !important;
 		margin: auto;
 	}
 	.community-pic-holder {
