@@ -1,6 +1,6 @@
 <template>
 	<div v-if="!firestoreAdmin">
-		<div class="applicationDisplay dark-scroll-bar" v-show="pageLoaded">
+		<div class="applicationDisplay dark-scroll-bar" id="THIS_IS_THE_ROOT_OF_THE_PAGE" v-show="pageLoaded">
 			<Navbar :authUser="authUser"></Navbar>
 			<router-view v-slot="{ Component, route }">
 				<div :key="route.name + pageLoaded + $route.fullPath" id="routerView">

@@ -233,9 +233,13 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
     routes,
-    scrollBehavior: (to, from, savedPosition) => {
-        return { x: 0, y: 500 };
-    },
+    scrollBehavior: function (to, _from, savedPosition) {
+        const layoutId = document.getElementById('THIS_IS_THE_ROOT_OF_THE_PAGE');
+
+        if (layoutId) {
+            layoutId.scrollTop = 0;
+        }
+    }
 });
 
 const getCurrentUser = () => {

@@ -8,7 +8,7 @@
 			width: '53vw!important',
 		}"
 		:rightColor="'transparent'"
-		:leftColor="'var(--red-gradient)'"
+		:leftColor="'var(--red-gradient-left)'"
 		:height="500"
 		:padding="'70px 0 60px 0'"
 	>
