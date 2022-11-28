@@ -116,8 +116,8 @@
 			<div class="vertical-center" style="transform: scaleY(-1); text-align: justify !important">
 				<h1 class="white">What?</h1>
 				<h5 class="white">The classes offered this semester are:</h5>
-				<div v-for="offeredclass in classes">
-					<h5 class="white">{{offeredclass}}</h5>
+				<div v-for="offeredclass in tutorcourses">
+					<h5 class="white" v-html="offeredclass.coursenames"></h5>
 				</div>
 			</div>
 		</template>
@@ -137,8 +137,8 @@
 		<template v-slot:left>
 			<div class="vertical-center">
 				<h1 class="white">When?</h1>
-				<div v-for="(time, day) in times" :key="day">
-					<h5 class="white">{{day}}:&nbsp;{{time}}</h5>
+				<div v-for="(data, day) in tutortimes" :key="day">
+					<h5 class="white">{{data.day}}:&nbsp;{{data.time}}</h5>
 				</div>
 			</div>
 		</template>
@@ -187,21 +187,46 @@
 		data() {
 			return {
 				tutors: {},
-				times: {Monday: "4pm-6pm", Tuesday: "4pm-6pm", Wednesday: "4pm-6pm", Thursday: "4pm-6pm", Friday: "4pm-6pm"},
-				classes: ["CSC 2100", "CSC 2280", "CSC 2290", "CSC 3280", "CSC 3310", "CSC 3380", ],
+				// times: {Monday: "4pm-6pm", Tuesday: "4pm-6pm", Wednesday: "4pm-6pm", Thursday: "4pm-6pm", Friday: "4pm-6pm"},
+				// classes: ["CSC 2100", "CSC 2280", "CSC 2290", "CSC 3280", "CSC 3310", "CSC 3380", ],
+				tutorcourses: {},
+				tutortimes: {},
 			};
 		},
 		async beforeMount() {
-			// Get all resources
+			//GET TUTORS SECTION
 			await this.$store.dispatch("fetchTutors")
 
-			// Retrieve resources 
+			// Retrieve tutors 
 			const res = this.$store.getters.getTutors;
 
-			// Push each resource's data to the array
+			// Push each tutors's data to the array
 			res.forEach((doc) => {
 				this.tutors[doc.id] = doc.data();
 			});
+
+
+			//GET COURSES SECTION
+			await this.$store.dispatch("fetchTutorCourses")
+
+			// Retrieve courses 
+			const res2 = this.$store.getters.getTutorCourses;
+
+			// Push the course data to the array
+			this.tutorcourses[0] = res2;
+
+
+			//GET TIMES SECTION
+			await this.$store.dispatch("fetchTutorTimes")
+
+			// Retrieve times 
+			const res3 = this.$store.getters.getTutorTimes;
+
+			// Push each day's data to the array
+			res3.forEach((doc) => {
+				this.tutortimes[doc.id] = doc.data();
+			});
+
 		},
 	};
 </script>
