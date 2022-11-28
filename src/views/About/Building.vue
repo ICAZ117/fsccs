@@ -136,7 +136,7 @@
 		</div>
 	</Parallax>
 
-		<div class="Title">
+		<div class="Title2">
 			<h2>Features</h2>
 		</div>
 	<Parallax
@@ -148,7 +148,7 @@
 		:opacity="0.2"
 		:overlayColor="'0, 0, 0'"
 	> 
-		<div class="features my-4">
+		<!-- <div class="features my-4">
 			<div class="feature col-4">
 			<center>
 				<h1 class="small_pic"><i class="fa-solid fa-cube"></i></h1>
@@ -167,11 +167,126 @@
 				<h3>Pretzel<br>Restraunt</h3>
 			</center>
 			</div>
-		</div>
+		</div> -->
+	<SkewBox
+		:rightBG="{
+			backgroundImage: `url(${require('@/assets/img/WCS2.jpg')})`,
+			'background-position': 'right top',
+			'background-size': 'cover',
+			width: '54vw!important',
+		}"
+		:rightColor="'transparent'"
+		:leftColor="'var(--FSCred)'"
+		:height="500"
+		:padding="'70px 0 60px 0'"
+	>
+		<template v-slot:left>
+			<div class="vertical-center">
+				<h1 class="">AI Lab</h1>
+			</div>
+		</template>
+	</SkewBox>
+	<SkewBox
+		:leftBG="{
+			backgroundImage: `url(https://th.bing.com/th/id/OIP.udrE6z4jI5Vdb3_VZo0l5QHaEK?w=274&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7)`,
+			'background-position': 'right top',
+			'background-size': 'cover',
+			width: '54vw!important',
+			transform: 'scaleY(-1)',
+		}"
+		:leftColor="'transparent'"
+		:rightColor="'rgb(225,128,0)'"
+		:height="500"
+		:padding="'70px 0 60px 0'"
+		style="transform: scaleY(-1)"
+	>
+		<template v-slot:right>
+			<div class="vertical-center" style="transform: scaleY(-1); text-align: justify !important">
+				<h1 class="white">Cyber Range</h1>
+			</div>
+		</template>
+	</SkewBox>
+	<SkewBox
+		:rightBG="{
+			backgroundImage: `url(${require('@/assets/img/WCS2.jpg')})`,
+			'background-position': 'right top',
+			'background-size': 'cover',
+			width: '54vw!important',
+		}"
+		:rightColor="'transparent'"
+		:leftColor="'yellow'"
+		:height="500"
+		:padding="'70px 0 60px 0'"
+	>
+		<template v-slot:left>
+			<div class="vertical-center">
+				<h1 class="">Maker Space</h1>
+			</div>
+		</template>
+	</SkewBox>
+	<SkewBox
+		:leftBG="{
+			backgroundImage: `url(https://th.bing.com/th/id/OIP.udrE6z4jI5Vdb3_VZo0l5QHaEK?w=274&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7)`,
+			'background-position': 'right top',
+			'background-size': 'cover',
+			width: '54vw!important',
+			transform: 'scaleY(-1)',
+		}"
+		:leftColor="'transparent'"
+		:rightColor="'green'"
+		:height="500"
+		:padding="'70px 0 60px 0'"
+		style="transform: scaleY(-1)"
+	>
+		<template v-slot:right>
+			<div class="vertical-center" style="transform: scaleY(-1); text-align: center;">
+				<h1 class="white">Advanced Computing Lab</h1>
+			</div>
+		</template>
+	</SkewBox>
+	<SkewBox
+		:rightBG="{
+			backgroundImage: `url(${require('@/assets/img/WCS2.jpg')})`,
+			'background-position': 'right top',
+			'background-size': 'cover',
+			width: '54vw!important',
+		}"
+		:rightColor="'transparent'"
+		:leftColor="'var(--FSCblue)'"
+		:height="500"
+		:padding="'70px 0 60px 0'"
+	>
+		<template v-slot:left>
+			<div class="vertical-center">
+				<h1 class="">Garage</h1>
+			</div>
+		</template>
+	</SkewBox>
+	<SkewBox
+		:leftBG="{
+			backgroundImage: `url(${require('@/assets/img/FreshTwist.png')})`,
+			'background-position': 'left',
+			'background-size': 'cover',
+			width: '54vw!important',
+			transform: 'scaleY(-1)',
+		}"
+		:leftColor="'transparent'"
+		:rightColor="'purple'"
+		:height="500"
+		:padding="'70px 0 60px 0'"
+		style="transform: scaleY(-1)"
+	>
+		<template v-slot:right>
+			<div class="vertical-center" style="transform: scaleY(-1); text-align: justify !important">
+				<h1 class="white">Fresh Twist</h1>
+			</div>
+		</template>
+	</SkewBox>
 	</Parallax>
-		<div class="Title">
-			<h2>Take a Virtual Tour</h2>
-		</div>
+
+	<div class="Title">
+		<h2>Take a Virtual Tour</h2>
+	</div>
 
 	<div class="tour_section">
 		<img src="@/assets/img/explore.jpg" alt="" class="tour_pic">
@@ -201,6 +316,14 @@
 		margin-right: 0;
 		height: 60px;
 		text-align: center;
+	}
+	.Title2{
+		background-color: var(--FSCblue);
+		margin-left: 0;
+		margin-right: 0;
+		height: 60px;
+		text-align: center;
+		color: white
 	}
 	.small_pic{
 		display: inline-block;

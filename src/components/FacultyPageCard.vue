@@ -1,6 +1,25 @@
 <template>
     <div class="outside">
-        <Parallax
+        <div class="row">
+            <img :src="professor.teachingimg" alt="" class="faculty_pic"> 
+            <div class="overlay"></div>
+            <div class="card" style="transform: scale(.8);">
+                <div class="card-body" style="display: inline-block !important;">
+                    <img :src="professor.pfp" alt="" style="float: left; border: 5px solid white; border-radius: 10px;" class="me-3" />
+                    <h2 class="card-title primary bold">
+                        {{ professor.name }}
+                    </h2>
+                    <h3 class="card-title primary mb-4" v-html="title"></h3>
+                    <p class="card-title primary">
+                        <i class="fa-solid fa-quote-left"></i> {{ quote }} <i class="fa-solid fa-quote-right"></i>
+                    </p>
+                    <div class="card-text" style="text-align: left">
+                        <slot></slot>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <Parallax
             :image="{
                 backgroundImage: `url(${professor.teachingimg})`,
                 'background-position': 'left middle',
@@ -26,7 +45,7 @@
                     </div>
                 </div>
             </div>
-        </Parallax>
+        </Parallax> -->
     </div>
 </template>
 
@@ -62,14 +81,50 @@ export default {
 </script>
 
 <style>
+.outside {
+    position: relative;
+    object-position: center;
+}
+
+.faculty_pic {
+    width: 100%;
+	display: block;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(7, 10, 99, 0.596);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.card {
+    top: 18%;
+    left: 10%;
+    right: 20%;
+    width: 80%;
+    color: white !important;
+    background-color: var(--FSCred);
+    display: inline;
+	position: absolute;
+}
+
 .card, .card .primary-hr, .card .card-title, .card a {
     transition: all ease 0.5s;
+    color: white;
 }
 
 .card:hover {
     color: white!important;
     background-color: white;
-    transform: scale(1.05);
+    transform: scale(.9) !important;
+}
+
+.card:hover img {
+    border: 5px solid var(--FSCred) !important;
+    border-radius: 10px;
 }
 
 .card:hover .card-title {
@@ -80,20 +135,21 @@ export default {
     border-color: white!important;
 }
 
+.card a {
+    background-color: white !important;
+    color: var(--FSCred) !important;
+    font-weight: bolder;
+}
+
 .card:hover a {
     color: white!important;
+    background-color: var(--FSCred) !important;
+    font-weight: bolder;
 }
 
 .card-title {
     position: relative;
     margin-bottom: 0;
-}
-
-.card {
-    margin-left: 10rem;
-    margin-right: 10rem;
-    margin-top: 4rem;
-    margin-bottom: 4rem;
 }
 
 .prof-img {

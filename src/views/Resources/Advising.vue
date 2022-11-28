@@ -43,7 +43,7 @@
 						pick your classes.
 					</h5>
 					<p class="white mt-4 mx-3">
-						Look on portal to find your advisor, or find out how to connect <a href="/about/faculty" class="faculty_link"><strong>here -></strong></a>
+						Look on portal to find your advisor, or find out how to connect <a href="/about/faculty" class="faculty_link"><strong>here<i class="ms-1 fa-solid fa-arrow-right"></i></strong></a>
 					</p>
 				</div>
 			</center>
@@ -60,9 +60,9 @@
 		:overlayColor="'0, 0, 0'"
 		class=""
 	>
-		<div class="blur h-100 pb-2">
+		<div class="pb-2">
 			<center>
-				<div class="m-auto faculty container py-5 h-100">
+				<div class="faculty container py-5">
 					<h1 class="center FSCred mt-2 pb-1 bold">
 						What should I do to prepare?
 					</h1>
@@ -79,22 +79,24 @@
 								<h5 class="py-4" style="line-height: 1.5 !important;">
 									Do you have multiple majors? Make sure you know who your 
 									advisor is for all of them <i>and</i> that you can contact 
-									them. Portal will have that information listed.
+									them. Portal will have that information listed.<br><br>If 
+									you don't know how to contact your CS advisor, check out 
+									their faculty page!
 								</h5>
 							</center>
 						</div>
 					</Slide>
 					<Slide :key="1">
 						<div class="w-50 mb-4">
-							<h2 class="center bold pt-4 pb-2">Schedule your advising appointments</h2>
+							<h3 class="center bold pt-4 pb-2">Schedule your advising appointments</h3>
 							<center>
-								<h5 class="py-4" style="line-height: 1.5 !important;">
+								<h6 class="py-4" style="line-height: 1.5 !important;">
 									When your advisor reaches out, remember to schedule an 
 									appointment to meet with them to go over your schedule. 
 									Most professors will have a lot of advisees so make sure 
 									to make your appointment early!<br><br>If you have multiple advisors, 
 									don't forget to schedule one for each advisor.
-								</h5>
+								</h6>
 							</center>
 						</div>
 					</Slide>
@@ -102,12 +104,12 @@
 						<div class="w-50 mb-4">
 							<h2 class="center bold pt-4 pb-2">Start thinking about classes you need</h2>
 							<center>
-								<h6 class="py-4" style="line-height: 1.5 !important;">
+								<h5 class="py-4" style="line-height: 1.5 !important;">
 									It's a good idea to know what you want to take before your appointment. 
 									If you can, look over the classes available the upcoming semester before 
 									you see your advisor so they know which ones you want. This will save time 
 									and help your advisor map those classes to your remaining requirements.
-								</h6>
+								</h5>
 							</center>
 						</div>
 					</Slide>
@@ -144,7 +146,7 @@
 									:title="resource.name"
 								>
 								<p class="center card_text">{{resource.description}}</p>
-								<p class="center card_text">Click here to view the document -></p>
+								<p class="center card_text">Click here to view the document<i class="ms-2 fa-solid fa-arrow-right"></i></p>
 								</InfoCard>
 							</a>
 						</div>
@@ -153,6 +155,12 @@
 			</center>
 		</div>
 	</Parallax>
+
+	<div class="audit_section">
+		<img src="https://th.bing.com/th/id/R.909d87d12951015ba5e5b6b0af6584e2?rik=FJ2xOmZq1h0S4Q&pid=ImgRaw&r=0" alt="" class="audit_pic">
+		<a href="/degree-audit"><h3 class="inner_square col-3">Explore the department degree audit tool</h3></a>
+	</div>
+	<div class="py-1"></div>
 
 </template>
 
@@ -205,6 +213,31 @@
 	}
 	.doc_card {
 		display: inline-block;
+	}
+	.audit_section{
+		position: relative;
+		overflow: hidden;
+		height: 500px;
+	}
+	.audit_pic{
+		width: 100%;
+		display: block;
+	}
+	.inner_square{
+		background-color: rgba(141, 13, 13, 0.656);
+		left: 50%;
+		top: 50%;
+		/* color: white; */
+		text-align: center;
+		display: inline;
+		position: absolute;
+		transform: translate(-50%, -50%);
+		padding: 5px;
+		font-weight: bolder;
+	}
+	.inner_square:hover{
+		background-color: rgba(255, 255, 255, 0.826);
+		color: var(--FSCred)
 	}
 
 </style>
