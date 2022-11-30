@@ -107,6 +107,14 @@ const routes = [
         },
     },
     {
+        path: "/get-involved/intramurals",
+        name: "Intramurals",
+        component: () => import("../views/GetInvolved/Intramurals.vue"),
+        meta: {
+            title: "Intramural Sports - The Cube Life",
+        },
+    },
+    {
         path: "/resources/advising",
         name: "Advising",
         component: () => import("../views/Resources/Advising.vue"),
@@ -214,6 +222,17 @@ const routes = [
         },
     },
     {
+        path: "/admin",
+        name: "Admin",
+        component: () => import("../views/Admin.vue"),
+        meta: {
+            title: "Admin - The Cube Life",
+            requiresAuth: true,
+            requiresCompletion: true,
+            requiresAdmin: true,
+        },
+    },
+    {
         path: "/faculty",
         name: "Faculty",
         component: Faculty,
@@ -272,7 +291,7 @@ router.beforeEach(async (to, from, next) => {
                     // IF THE ROUTE REQUIRES ADMIN
                     if (to.matched.some((record) => record.meta.requiresAdmin)) {
                         // IF THE USER'S ACCOUNT HAS ADMIN PERMS
-                        if (res.data().privilege == 3) {
+                        if (res.data().privilege == 4) {
                             next();
                         }
                         else {

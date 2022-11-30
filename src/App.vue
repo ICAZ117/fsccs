@@ -1,9 +1,16 @@
 <template>
 	<div v-if="!firestoreAdmin">
-		<div class="applicationDisplay dark-scroll-bar" id="THIS_IS_THE_ROOT_OF_THE_PAGE" v-show="pageLoaded">
+		<div
+			class="applicationDisplay dark-scroll-bar"
+			id="THIS_IS_THE_ROOT_OF_THE_PAGE"
+			v-show="pageLoaded"
+		>
 			<Navbar :authUser="authUser"></Navbar>
 			<router-view v-slot="{ Component, route }">
-				<div :key="route.name + pageLoaded + $route.fullPath" id="routerView">
+				<div
+					:key="route.name + pageLoaded + $route.fullPath"
+					id="routerView"
+				>
 					<component :is="Component"></component>
 				</div>
 			</router-view>
@@ -5075,6 +5082,7 @@ export default {
 				await this.$store.dispatch("fetchUser");
 				this.$store.commit("setEmail", user.email);
 				this.authUser = this.$store.getters.getUser;
+				console.log("STORE USER HAS EMAIL:", this.authUser.email);
 			} else {
 				console.log("LOGGED OUT");
 				this.$store.commit("resetAuth");
@@ -5121,10 +5129,18 @@ export default {
 		var(--primary-dark) 45%
 	);
 
-    --red-gradient-right: linear-gradient(
+	--red-gradient-right: linear-gradient(
 		to right,
 		var(--primary),
 		var(--primary-dark) 45%
+	);
+
+	--blue-gradient-left: linear-gradient(to left, var(--FSCblue), #004377 45%);
+
+	--blue-gradient-right: linear-gradient(
+		to right,
+		var(--FSCblue),
+		#004377 45%
 	);
 
 	--off-white: #fafafa;

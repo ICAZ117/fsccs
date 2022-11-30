@@ -40,7 +40,6 @@ const store = createStore({
             username: "",
             pfp: "",
             privilege: 1, // 1 = Student, 2 = Editor (CS club officer?), 3 = Admin (Professors only)
-            id: "",
             fname: "",
             lname: "",
         },
@@ -132,9 +131,6 @@ const store = createStore({
         setPrivilege(state, payload) {
             state.auth.privilege = payload;
         },
-        setID(state, payload) {
-            state.auth.id = payload;
-        },
         setFname(state, payload) {
             state.auth.fname = payload;
         },
@@ -150,7 +146,6 @@ const store = createStore({
                 username: "",
                 pfp: "",
                 privilege: 1, // 1 = Student, 2 = Editor (CS club officer?), 3 = Admin (Professors only)
-                id: "",
                 fname: "",
                 lname: "",
             };
@@ -231,13 +226,24 @@ const store = createStore({
                 coursesTaken: courses,
             });
         },
+        async updateUser({ state }) {
+            // Create new user in users table
+            await setDoc(doc(db, "users", state.auth.email), {
+                username: state.auth.username,
+                pfp: state.auth.pfp,
+                privilege: state.auth.privilege,
+                fname: state.auth.fname,
+                lname: state.auth.lname,
+                coursesTaken: state.auth.coursesTaken,
+                registrationComplete: state.auth.registrationComplete,
+            });
+        },
         async finalizeUser({ state }) {
             // Create new user in users table
             await setDoc(doc(db, "users", state.auth.email), {
                 username: state.auth.username,
                 pfp: "https://www.knack.com/images/about/default-profile.png",
                 privilege: 1,
-                id: "",
                 fname: state.auth.fname,
                 lname: state.auth.lname,
                 coursesTaken: [],
@@ -246,8 +252,10 @@ const store = createStore({
         },
         async fetchUser({ commit, state }) {
             // Get user from users table
+            const temp = state.authEmail;
             const data = await getDoc(doc(db, "users", state.authEmail));
             commit("setAuth", data.data());
+            commit("setEmail", temp);
         },
         async fetchOfficers({ commit }) {
             const data = await getDocs(collection(db, "CS-club-officers"));
