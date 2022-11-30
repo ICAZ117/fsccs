@@ -107,22 +107,21 @@
 							:width="'220px'"
 							:pageWidth="width"
 							:dropContent="[
+                                {
+									path: '/get-involved/boardgame-lunch',
+									title: 'Boardgame Lunch',
+								},
 								{
 									path: '/get-involved/cs-club',
-
 									title: 'CS Club',
 								},
-
+                                {
+									path: '/get-involved/intramurals',
+									title: 'Intramural Sports',
+								},
 								{
 									path: '/get-involved/programming-team',
-
 									title: 'Programming Team',
-								},
-
-								{
-									path: '/get-involved/boardgame-lunch',
-
-									title: 'Boardgame Lunch',
 								},
 							]"
 						/>
@@ -135,7 +134,7 @@
 							:dropContent="
 								authUser &&
 								authUser.registrationComplete &&
-								authUser.privilege == 3
+								authUser.privilege == 4
 									? [
 											{
 												path: '/resources/manage-courses',
@@ -211,19 +210,40 @@
 								:useRouterLinks="true"
 								:width="'120px'"
 								:pageWidth="width"
-								:dropContent="[
-									{
-										path: '/profile',
+								:dropContent="
+									authUser &&
+									authUser.registrationComplete &&
+									authUser.privilege == 4
+										? [
+												{
+													path: '/profile',
 
-										title: 'Profile',
-									},
+													title: 'Profile',
+												},
+												{
+													path: '/admin',
 
-									{
-										path: '/logout',
+													title: 'Admin',
+												},
+												{
+													path: '/logout',
 
-										title: 'Log Out',
-									},
-								]"
+													title: 'Log Out',
+												},
+										  ]
+										: [
+												{
+													path: '/profile',
+
+													title: 'Profile',
+												},
+												{
+													path: '/logout',
+
+													title: 'Log Out',
+												},
+										  ]
+								"
 								:useArrow="false"
 							/>
 						</div>

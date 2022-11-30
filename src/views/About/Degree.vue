@@ -23,11 +23,11 @@
 	<!-- ABOUT THE DEGREE -->
 	<Parallax
 		:image="{
-			backgroundImage: `url(${require('@/assets/img/WCS.jpg')}`,
+			backgroundImage: `url(${require('@/assets/img/backgrounds/Graduation.jpg')}`,
 			'background-position': 'left middle',
 		}"
 		:height="'0'"
-		:opacity="0.8"
+		:opacity="0.7"
 		:overlayColor="'0, 0, 0'"
 		class="section"
 	>

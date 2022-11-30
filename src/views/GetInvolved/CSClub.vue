@@ -221,7 +221,7 @@
 	};
 </script>
 
-<style>
+<style scoped>
 .item {
 	border: 2px solid white; 
 	background-color: var(--FSClightblue);

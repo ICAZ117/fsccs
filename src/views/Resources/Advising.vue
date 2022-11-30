@@ -158,7 +158,7 @@
 
 	<div class="audit_section">
 		<img src="https://th.bing.com/th/id/R.909d87d12951015ba5e5b6b0af6584e2?rik=FJ2xOmZq1h0S4Q&pid=ImgRaw&r=0" alt="" class="audit_pic">
-		<a href="/degree-audit"><h3 class="inner_square col-3">Explore the department degree audit tool</h3></a>
+		<a href="/resources/degree-audit"><h3 class="inner_square col-3">Explore the department degree audit tool</h3></a>
 	</div>
 	<div class="py-1"></div>
 

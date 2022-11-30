@@ -1,6 +1,6 @@
 <template>
 	<!-- Start Hero Section -->
-	<div class="hero">
+	<div class="hero section">
 		<Carousel
 			class="carousel"
 			:wrap-around="true"
@@ -12,8 +12,8 @@
 			<Slide :key="0">
 				<SkewBox
 					:rightBG="{
-						backgroundImage: `url(${require('@/assets/img/WCS.jpg')})`,
-						'background-position': 'center',
+						backgroundImage: `url(${require('@/assets/img/cube-pics/DSC00017a.jpg')})`,
+						'background-position': 'left',
 						'background-size': 'cover',
 						'background-repeat': 'none',
 					}"
@@ -73,13 +73,13 @@
 	<!-- Start Announcements Section -->
 	<Parallax
 		:image="{
-			backgroundImage: `url(${require('@/assets/img/Circuit2.jpg')})`,
+			backgroundImage: `url(${require('@/assets/img/backgrounds/Circuit2.jpg')})`,
 			'background-position': 'center',
 		}"
 		:height="'70vh'"
-		:opacity="0.1"
-		:overlayColor="'100, 100, 100'"
-		class=""
+		:opacity="0"
+		:overlayColor="'0, 0, 0'"
+		class="section"
 	>
 		<div class="h-100">
 			<div class="announcements container py-5 h-100">
@@ -122,17 +122,17 @@
 	<!-- Start Events Section -->
 	<Parallax
 		:image="{
-			backgroundImage: `url(https://www.capgemini.com/dk-en/wp-content/uploads/sites/42/2019/06/Blockchain-2.gif)`,
+			backgroundImage: `url(${require('@/assets/img/backgrounds/BlueMatrix2.jpg')})`,
 			'background-position': 'left bottom',
 		}"
 		:height="'0'"
-		:opacity="0.5"
-		:overlayColor="'0, 20, 30'"
-		class=""
+		:opacity="0.2"
+		:overlayColor="'0, 0, 0'"
+		class="section"
 	>
-		<div class="blur h-100 pb-2">
+		<div class="h-100 pb-2">
 			<div class="container-xl py-5 h-100">
-				<h1 class="center FSClightblue mt-2 mb-4 pb-1 bold">Events</h1>
+				<h1 class="center white mt-2 mb-4 pb-1 bold">Events</h1>
 				<div class="events white-scroll-bar">
 					<div v-if="windowWidth >= 1200">
 						<Event
@@ -187,16 +187,16 @@
 	<!-- Start Faculty Section -->
 	<Parallax
 		:image="{
-			backgroundImage: `url(${require('@/assets/img/Circuit1.jpg')}`,
-			'background-position': 'left middle',
+			backgroundImage: `url(${require('@/assets/img/cube-pics/DSC00038.jpg')}`,
+			'background-position': 'top',
 		}"
 		:height="'0'"
-		:opacity="0.5"
+		:opacity="0.3"
 		:overlayColor="'0, 0, 0'"
-		class=""
+		class="section"
 		:key="mountReload"
 	>
-		<div class="blur h-100 pb-2">
+		<div class="h-100 pb-2">
 			<center>
 				<div class="m-auto faculty container py-5 h-100">
 					<h1 class="center FSCred mt-2 mb-4 pb-1 bold">

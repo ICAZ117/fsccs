@@ -124,7 +124,7 @@ export default {
 	display: none;
 }
 .event-body {
-	background-color: rgb(24, 44, 56);
+	background-color: rgb(36, 73, 97);
 	width: 90%;
 	margin: auto;
 	height: 150px;
@@ -150,7 +150,7 @@ export default {
 }
 
 .icon {
-	background-color: rgba(67, 73, 119, 0.2);
+	background-color: rgba(75, 83, 149, 0.2);
 }
 
 @media (max-width: 1199.9px) {
