@@ -1,6 +1,6 @@
 <template>
 	<div class="adminPage">
-		<div class="container my-5">
+		<div class="container py-5">
 			<div id="officers">
 				<div
 					class=""
@@ -20,13 +20,16 @@
 					</button>
 				</div>
 				<hr class="primary-hr" />
-				<div class="mx-0 px-0 row block-center">
+				<div class="mx-0 px-0 row gy-4 block-center">
 					<div
 						class="col-3"
 						v-for="(officer, id) in officers"
 						:key="id"
 					>
-						<div class="px-0 card">
+						<div
+							class="px-0 card"
+							@click="openEditOfficerModal(officer, id)"
+						>
 							<img
 								:src="officer.picture"
 								alt=""
@@ -43,9 +46,9 @@
 				</div>
 			</div>
 
-			<div id="advising-resources">
+			<div id="officers">
 				<div
-					class="mt-5"
+					class=""
 					style="
 						display: flex;
 						align-items: center;
@@ -56,20 +59,33 @@
 					<button
 						class="h-75 btn btn-md btn-primary"
 						style="margin-left: auto; order: 2"
+						@click="showAddOfficerModal = true"
 					>
 						Add Officer
 					</button>
 				</div>
 				<hr class="primary-hr" />
-				<div class="mx-0 px-0 row block-center">
+				<div class="mx-0 px-0 row gy-4 block-center">
 					<div
 						class="col-3"
 						v-for="(officer, id) in officers"
 						:key="id"
 					>
-						<div class="px-0 card">
-							<img :src="officer.picture" alt="" />
-							<div class="card-body">{{ id }}</div>
+						<div
+							class="px-0 card"
+							@click="openEditOfficerModal(officer, id)"
+						>
+							<img
+								:src="officer.picture"
+								alt=""
+								height="300"
+								style="object-fit: cover"
+							/>
+							<div class="card-body">
+								Name: {{ officer.name }}
+								<br />
+								Position: {{ officer.position }}
+							</div>
 						</div>
 					</div>
 				</div>
@@ -164,17 +180,17 @@
 			<button class="modal__close" @click="showEditOfficerModal = false">
 				<i class="fa-solid fa-x"></i>
 			</button>
-			<span class="modal__title ps-1">Add Officer</span>
+			<span class="modal__title ps-1">Edit Officer</span>
 			<div class="modal__content">
-				<form @submit.prevent id="officerForm"></form>
+				<form @submit.prevent id="editOfficerForm"></form>
 				<div class="m-0 row">
 					<div class="form-floating p-1 col-6">
 						<input
 							type="text"
 							class="form-control"
 							id="name"
-							v-model="officer.name"
-							form="officerForm"
+							v-model="editOfficer.name"
+							form="editOfficerForm"
 						/>
 						<label for="name">Name</label>
 					</div>
@@ -183,8 +199,8 @@
 							type="text"
 							class="form-control"
 							id="position"
-							v-model="officer.position"
-							form="officerForm"
+							v-model="editOfficer.position"
+							form="editOfficerForm"
 						/>
 						<label for="position">Position</label>
 					</div>
@@ -193,28 +209,32 @@
 							type="text"
 							class="form-control"
 							id="image"
-							v-model="officer.picture"
-							form="officerForm"
+							v-model="editOfficer.picture"
+							form="editOfficerForm"
 						/>
 						<label for="image">Image Link</label>
 					</div>
 				</div>
 			</div>
 			<div class="modal__action">
-				<button class="btn btn-md btn-primary me-2" @click="addOfficer">
+				<button
+					class="btn btn-md btn-primary me-2"
+					@click="updateOfficer"
+				>
 					Save
 				</button>
-				<!-- <button
+                <button
 					class="btn btn-md btn-primary me-2"
-					highlight
-					@click="showConfirmModal = true"
-					v-if="modalCourse.originalCode"
+					@click="deleteOfficer"
 				>
 					Delete
-				</button> -->
+				</button>
 				<button
 					class="btn btn-md btn-primary"
-					@click="showEditOfficerModal = false"
+					@click="
+						showEditOfficerModal = false;
+						editOfficer = {};
+					"
 				>
 					Cancel
 				</button>
@@ -239,6 +259,7 @@ import {
 	orderBy,
 	where,
 	updateDoc,
+    deleteDoc,
 } from "firebase/firestore";
 
 export default {
@@ -248,13 +269,55 @@ export default {
 	},
 	data() {
 		return {
+			db: {},
 			officers: {},
 			showAddOfficerModal: false,
-            showEditOfficerModal: false,
+			showEditOfficerModal: false,
 			officer: {},
+			editOfficer: {},
 		};
 	},
-	methods: {},
+	methods: {
+        async addOfficer() {
+			this.showAddOfficerModal = false;
+			await addDoc(collection(this.db, "CS-club-officers"), {
+				name: this.officer.name,
+				position: this.officer.position,
+				picture: this.officer.picture,
+			});
+			this.officer = {};
+            await this.getOfficers();
+		},
+		openEditOfficerModal(currentOfficer, id) {
+			this.editOfficer = currentOfficer;
+			this.editOfficer.id = id;
+			this.showEditOfficerModal = true;
+		},
+		async updateOfficer() {
+			this.showEditOfficerModal = false;
+			await setDoc(doc(this.db, "CS-club-officers", this.editOfficer.id), {
+				name: this.editOfficer.name,
+				position: this.editOfficer.position,
+				picture: this.editOfficer.picture,
+			});
+			this.editOfficer = {};
+            await this.getOfficers();
+		},
+        async deleteOfficer() {
+            this.showEditOfficerModal = false;
+			await deleteDoc(doc(this.db, "CS-club-officers", this.editOfficer.id));
+            delete this.officers[this.editOfficer.id];
+			this.editOfficer = {};
+        },
+		async getOfficers() {
+			const data = await getDocs(collection(this.db, "CS-club-officers"));
+
+			// Push each officer's data to the array
+			data.forEach((doc) => {
+				this.officers[doc.id] = doc.data();
+			});
+		},
+	},
 	async mounted() {
 		// Your web app's Firebase configuration
 		const firebaseConfig = {
@@ -270,14 +333,9 @@ export default {
 		const app = initializeApp(firebaseConfig);
 
 		// Connect to firestore and get database
-		const db = getFirestore(app);
+		this.db = getFirestore(app);
 
-		const data = await getDocs(collection(db, "CS-club-officers"));
-
-		// Push each officer's data to the array
-		data.forEach((doc) => {
-			this.officers[doc.id] = doc.data();
-		});
+        await this.getOfficers();
 	},
 };
 </script>
@@ -359,6 +417,11 @@ export default {
 }
 .card {
 	color: black;
+	transition: all ease-in-out 0.3s;
+}
+
+.card:hover {
+	scale: 1.05;
 }
 
 h2 {

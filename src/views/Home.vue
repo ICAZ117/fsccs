@@ -187,8 +187,8 @@
 	<!-- Start Faculty Section -->
 	<Parallax
 		:image="{
-			backgroundImage: `url(${require('@/assets/img/cube-pics/DSC00038.jpg')}`,
-			'background-position': 'top',
+			backgroundImage: `url(${require('@/assets/img/BG4.jpg')}`,
+			'background-position': 'bottom right',
 		}"
 		:height="'0'"
 		:opacity="0.3"
