@@ -112,7 +112,7 @@
 							v-model="modalCourse.name"
 							form="courseForm"
 						/>
-						<label for="code">Course Name</label>
+						<label for="name">Course Name</label>
 					</div>
 					<div class="form-floating p-1 col-2">
 						<input
@@ -122,19 +122,19 @@
 							v-model="modalCourse.credits"
 							form="courseForm"
 						/>
-						<label for="code">Credits</label>
+						<label for="credits">Credits</label>
 					</div>
 					<div class="form-floating p-1 col-12">
 						<textarea
 							type="text"
 							class="form-control"
-							id="credits"
+							id="buckets"
 							v-model="modalCourse.buckets"
 							form="courseForm"
 							contenteditable="true"
 						>
 						</textarea>
-						<label for="code">Buckets</label>
+						<label for="buckets">Buckets</label>
 					</div>
 				</div>
 			</div>

@@ -44,7 +44,14 @@
 					</div>
 				</div>
 				<hr class="primary-hr" />
-				<div class="px-4"></div>
+				<div class="px-4">
+					<button
+						class="btn btn-md btn-primary w-100"
+						@click="updateProfile"
+					>
+						Save
+					</button>
+				</div>
 				<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 				<!-- <<<<< END LEFT SECTION <<<<< -->
 				<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
@@ -77,11 +84,11 @@
 								type="text"
 								class="form-control"
 								id="id"
-								v-model="authUser.id"
+								v-model="authUser.email"
 								disabled
 								form="main-form"
 							/>
-							<label for="id">Student ID</label>
+							<label for="id">Email</label>
 						</div>
 					</div>
 					<div class="col-6 px-4">
@@ -190,16 +197,49 @@ export default {
 		Parallax,
 		SkewBox,
 	},
-	watch: {},
+	watch: {
+		authUser: {
+			handler(newValue, oldValue) {
+				if (
+					!(
+						this.authUser.email ==
+							this.$store.getters.getUser.email &&
+						this.authUser.username ==
+							this.$store.getters.getUser.username &&
+						this.authUser.fname ==
+							this.$store.getters.getUser.fname &&
+						this.authUser.lname ==
+							this.$store.getters.getUser.lname &&
+						this.authUser.pfp == this.$store.getters.getUser.pfp
+					)
+				) {
+					this.unsavedChanges = true;
+					console.log("YOU GOT UNSAVED CHANGES", this.unsavedChanges);
+				}
+			},
+			deep: true,
+		},
+	},
 	data() {
 		return {
 			authUser: {},
 			oldPassword: "",
 			newPassword: "",
 			confirmPassword: "",
+			unsavedChanges: false,
 		};
 	},
 	methods: {
+		async updateProfile() {
+			this.$store.commit("setAuth", this.authUser);
+			this.$store.dispatch("updateUser");
+			this.unsavedChanges = false;
+			this.$notify({
+				title: "Success!",
+				text: "Your information has been updated",
+				type: "success",
+			});
+		},
 		async changePassword() {
 			if (this.newPassword !== this.confirmPassword) {
 				this.$notify({
@@ -246,6 +286,21 @@ export default {
 	},
 	beforeMount() {
 		this.authUser = { ...this.$store.getters.getUser };
+	},
+	beforeRouteLeave(to, from, next) {
+		if (this.unsavedChanges) {
+			const answer = window.confirm(
+				"Do you really want to leave? You have unsaved changes!"
+			);
+
+			if (answer) {
+				next();
+			} else {
+				next(false);
+			}
+		} else {
+			next();
+		}
 	},
 };
 </script>
