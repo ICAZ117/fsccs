@@ -35,10 +35,12 @@
             :title="professor.title"
             :quote="professor.quote"
             :image="professor.teachingimg"
+            :overlay="overlay"
             class="section"
             >
                 <a :href="`/faculty?name=${name}`" class="btn btn-primary btn-md mt-2">Learn more<i class="ms-2 fa-solid fa-arrow-right"></i></a>
             </FacultyPageCard>
+            {{updateIndex()}}
         </div>
     </div>
     </div>
@@ -75,7 +77,24 @@ export default {
     data() {
         return {
             professors: {},
+            index: 0,
+            overlay: "overlay1",
         };
+    },
+    methods: {
+        updateIndex() {
+            this.index += 1
+            this.updateOverlay()
+        },
+        updateOverlay() {
+            if (this.index % 2 == 0) {
+                this.overlay = "overlay1"
+            }
+            else {
+                this.overlay = "overlay2"
+            }
+            
+        },
     },
     async beforeMount() {
         // Get all faculty members in DB
@@ -89,6 +108,7 @@ export default {
             this.professors[doc.id] = doc.data();
         });
     },
+    
 };
 </script>
 

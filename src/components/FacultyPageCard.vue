@@ -2,7 +2,7 @@
     <div class="outside">
         <div class="vertical-center">
             <img :src="professor.teachingimg" alt="" class="faculty_pic"> 
-            <div class="overlay"></div>
+            <div :class="overlay"></div>
             <div class="card vertical-center" style="transform: scale(.8);">
                 <div class="card-body" style="display: inline-block !important;">
                     <img :src="professor.pfp" alt="" style="float: left; border: 5px solid white; border-radius: 10px;" class="me-3" />
@@ -53,7 +53,7 @@
 import Parallax from "../components/Parallax.vue";
 
 export default {
-	props: ["professor", "name", "title", "quote", "image"],
+	props: ["professor", "name", "title", "quote", "image", "overlay"],
     components: {
 		Parallax,
 	},
@@ -91,13 +91,34 @@ export default {
 	display: block;
 }
 
-.overlay {
+.overlay1 {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
     position: absolute;
     top: 0;
     left: 0;
+    transition: all ease 0.5s;
+}
+
+.overlay2 {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all ease 0.5s;
+}
+
+.overlay1:hover {
+    transition: all ease 0.5s;
+    background-color: rgba(var(--FSCredRGB), 0.7);
+}
+
+.overlay2:hover {
+    transition: all ease 0.5s;
+    background-color: rgba(var(--FSCblueRGB), 0.7);
 }
 
 .card {
@@ -120,6 +141,7 @@ export default {
     color: white!important;
     background-color: white;
     transform: scale(.9) !important;
+    transition: all ease 0.5s;
 }
 
 .card:hover img {
