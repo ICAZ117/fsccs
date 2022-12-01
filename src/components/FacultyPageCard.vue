@@ -1,9 +1,9 @@
 <template>
     <div class="outside">
-        <div class="row">
+        <div class="vertical-center">
             <img :src="professor.teachingimg" alt="" class="faculty_pic"> 
             <div class="overlay"></div>
-            <div class="card" style="transform: scale(.8);">
+            <div class="card vertical-center" style="transform: scale(.8);">
                 <div class="card-body" style="display: inline-block !important;">
                     <img :src="professor.pfp" alt="" style="float: left; border: 5px solid white; border-radius: 10px;" class="me-3" />
                     <h2 class="card-title primary bold">
@@ -94,24 +94,24 @@ export default {
 .overlay {
     width: 100%;
     height: 100%;
-    background-color: rgba(7, 10, 99, 0.596);
+    background-color: rgba(0, 0, 0, 0.8);
     position: absolute;
     top: 0;
     left: 0;
 }
 
 .card {
-    top: 18%;
     left: 10%;
     right: 20%;
     width: 80%;
+    height: auto !important;
     color: white !important;
     background-color: var(--FSCred);
     display: inline;
 	position: absolute;
 }
 
-.card, .card .primary-hr, .card .card-title, .card a {
+.card, .card .primary-hr, .card .card-title, .card a .card img{
     transition: all ease 0.5s;
     color: white;
 }
@@ -125,6 +125,7 @@ export default {
 .card:hover img {
     border: 5px solid var(--FSCred) !important;
     border-radius: 10px;
+    transition: all ease 0.5s;
 }
 
 .card:hover .card-title {

@@ -157,7 +157,7 @@
 	</Parallax>
 
 	<div class="audit_section">
-		<img src="https://th.bing.com/th/id/R.909d87d12951015ba5e5b6b0af6584e2?rik=FJ2xOmZq1h0S4Q&pid=ImgRaw&r=0" alt="" class="audit_pic">
+		<img src="https://drscdn.500px.org/photo/1057546414/m%3D900/v2?sig=987f4482e7d6e75bf9aac64fecdbff1d8ed5aef08bcb4ace40d353ef4802f078" alt="" class="audit_pic">
 		<a href="/resources/degree-audit"><h3 class="inner_square col-3">Explore the department degree audit tool</h3></a>
 	</div>
 	<div class="py-1"></div>

@@ -104,7 +104,7 @@
 				<div class="m-auto container py-5 h-100">
 					<h1 class="center mt-2" style="color:white">What Makes Our Department Great</h1>
 					<div class="row">
-						<div class="col-6">
+						<div class="col-6 mb-4">
 							<a href="/about/faculty" style="text-decoration: none !important;">
 								<InfoCard
 									:title="'Professors that care'"

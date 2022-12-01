@@ -120,10 +120,10 @@
 
 		<div class="second-quote" style="position: relative;">
 			<div class="col-6 second-pic">
-				<img src="@/assets/img/CS_department_pic2.png">
+				<img src="@/assets/img/makingWCS.jpg">
 			</div>
 
-			<div class="quote2 col-6 mb-2">
+			<div class="quote2 col-6 mb-4">
 				<p>
 					<i>" </i>We are really excited for the new space. It will give us room to 
 					continue to grow the program and have the space to provide students with 
@@ -137,7 +137,7 @@
 	</Parallax>
 
 		<div class="Title2">
-			<h2>Features</h2>
+			<h2>Labs & Other Spaces</h2>
 		</div>
 	<Parallax
 		:image="{
@@ -170,7 +170,7 @@
 		</div> -->
 	<SkewBox
 		:rightBG="{
-			backgroundImage: `url(${require('@/assets/img/WCS2.jpg')})`,
+			backgroundImage: `url(${require('@/assets/img/insideWCS3.jpg')})`,
 			'background-position': 'right top',
 			'background-size': 'cover',
 			width: '54vw!important',
@@ -188,7 +188,7 @@
 	</SkewBox>
 	<SkewBox
 		:leftBG="{
-			backgroundImage: `url(https://th.bing.com/th/id/OIP.udrE6z4jI5Vdb3_VZo0l5QHaEK?w=274&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7)`,
+			backgroundImage: `url(${require('@/assets/img/insideWCS2.jpg')})`,
 			'background-position': 'right top',
 			'background-size': 'cover',
 			width: '54vw!important',
@@ -208,7 +208,7 @@
 	</SkewBox>
 	<SkewBox
 		:rightBG="{
-			backgroundImage: `url(${require('@/assets/img/WCS2.jpg')})`,
+			backgroundImage: `url(${require('@/assets/img/insideWCS5.jpg')})`,
 			'background-position': 'right top',
 			'background-size': 'cover',
 			width: '54vw!important',
@@ -226,7 +226,7 @@
 	</SkewBox>
 	<SkewBox
 		:leftBG="{
-			backgroundImage: `url(https://th.bing.com/th/id/OIP.udrE6z4jI5Vdb3_VZo0l5QHaEK?w=274&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7)`,
+			backgroundImage: `url(${require('@/assets/img/insideWCS1.jpg')})`,
 			'background-position': 'right top',
 			'background-size': 'cover',
 			width: '54vw!important',
@@ -246,7 +246,7 @@
 	</SkewBox>
 	<SkewBox
 		:rightBG="{
-			backgroundImage: `url(${require('@/assets/img/WCS2.jpg')})`,
+			backgroundImage: `url(${require('@/assets/img/insideWCS2.jpg')})`,
 			'background-position': 'right top',
 			'background-size': 'cover',
 			width: '54vw!important',
@@ -292,7 +292,6 @@
 		<img src="@/assets/img/explore.jpg" alt="" class="tour_pic">
 		<a href="/virtual-tour"><h2 class="inner_square col-5">Explore Weinstein<br>for yourself!</h2></a>
 	</div>
-	<div class="py-1"></div>
 </template>
 
 <script>
@@ -382,8 +381,16 @@
 	}
 	.second-pic {
 		display: inline-block;
-		margin-bottom: 5%
+		margin-top: 0;
+		margin-bottom: 0;
+		max-height: 75%;
+		overflow: hidden;
 	}
+	.second-pic img {
+		width: 100%;
+		height: 100%;
+	}
+
 	.middle {
 		margin-left: auto;
 		margin-right: auto;
