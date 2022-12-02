@@ -73,7 +73,7 @@
 			redirect() {
 				setTimeout(() => {
 					if (this.doRedirect) {
-						this.$router.push("/faculty?name=" + this.name);
+						this.$router.push("/faculty?id=" + this.name);
                         this.$emit("redirectPage");
 					}
 				}, 50);

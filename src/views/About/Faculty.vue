@@ -39,7 +39,7 @@
 					class="section"
 				>
 					<a
-						:href="`/faculty?name=${name}`"
+						:href="`/faculty?id=${name}`"
 						class="btn btn-primary btn-md mt-2"
 						>Learn more<i class="ms-2 fa-solid fa-arrow-right"></i
 					></a>
@@ -56,7 +56,7 @@
                 <h2 class="white">{{ professor.name }}</h2>
                 <hr class="primary-hr">
                 <div v-html="professor.bio"></div>
-                <a :href="`/faculty?name=${name}`" class="btn btn-primary btn-md">Learn more<i class="ms-2 fa-solid fa-arrow-right"></i></a>
+                <a :href="`/faculty?id=${name}`" class="btn btn-primary btn-md">Learn more<i class="ms-2 fa-solid fa-arrow-right"></i></a>
             </div>
         </div>
     </div> -->

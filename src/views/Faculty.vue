@@ -200,7 +200,7 @@ export default {
 	},
 	async beforeMount() {
 		// Get name from URL param
-		this.name = this.$route.query.name;
+		this.name = this.$route.query.id;
 
 		// Get window height
 		this.windowHeight = window.innerHeight;
