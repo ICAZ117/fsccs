@@ -39,7 +39,7 @@ const store = createStore({
             email: "",
             username: "",
             pfp: "",
-            privilege: 1, // 1 = Student, 2 = Editor (CS club officer?), 3 = Admin (Professors only)
+            privilege: 1, // 1 = Student, 2 = Editor (CS club officer?), 3 = Professor, 4 = Admin
             fname: "",
             lname: "",
         },
@@ -51,8 +51,7 @@ const store = createStore({
         courses: {},
         advisingresources: {},
         tutors: {},
-        tutorcourses: {},
-        tutortimes: {},
+        tutorInfo: {},
         authEmail: "",
         cubeLifeMode: false,
     },
@@ -164,11 +163,8 @@ const store = createStore({
         setTutors(state, payload) {
             state.tutors = payload;
         },
-        setTutorCourses(state, payload) {
-            state.tutorcourses = payload;
-        },
-        setTutorTimes(state, payload) {
-            state.tutortimes = payload;
+        setTutorInfo(state, payload) {
+            state.tutorInfo = payload;
         },
         activateCubeLife(state) {
             state.cubeLifeMode = true;
@@ -269,13 +265,9 @@ const store = createStore({
             const data = await getDocs(collection(db, "cs-tutors"));
             commit("setTutors", data);
         },
-        async fetchTutorCourses({ commit }) {
-            const data = await getDoc(doc(db, "tutor-info", "courses"));
-            commit("setTutorCourses", data.data());
-        },
-        async fetchTutorTimes({ commit }) {
-            const data = await getDocs(collection(db, "tutor-info", "offered-times/times"));
-            commit("setTutorTimes", data);
+        async fetchTutorInfo({ commit }) {
+            const data = await getDoc(doc(db, "tutor-info", "data"));
+            commit("setTutorInfo", data.data());
         },
         async fetchCourses({ commit }) {
             const data = await getDoc(doc(db, "courses", "courses"));
@@ -311,11 +303,8 @@ const store = createStore({
         getTutors(state) {
             return state.tutors;
         },
-        getTutorCourses(state) {
-            return state.tutorcourses;
-        },
-        getTutorTimes(state) {
-            return state.tutortimes;
+        getTutorInfo(state) {
+            return state.tutorInfo;
         },
     },
 });
