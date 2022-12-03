@@ -21,40 +21,28 @@
 
 	<Parallax
 		:image="{
-			backgroundImage: `url(${require('@/assets/img/Circuit6.jpg')}`,
+			backgroundImage: `url(${require('@/assets/img/cube-pics/DSC00031.jpg')}`,
 			'background-position': 'left middle',
 		}"
 		:height="'0'"
 		:opacity="0.7"
 		:overlayColor="'0, 0, 0'"
 	>
-		<div class="h-100 pb-2 white">
+		<div class="h-100 pb-2">
 			<center>
 				<div class="container py-5 h-100">
-					<div class="topbackground">
-						<p class="col-9 text_block" >
+					<div class="topbackground2">
+						<p class="col-10 text_block white" >
 							Computer science provides you with a sound theoretical background and 
 							the opportunities for individual and collaborative exploration of real-world 
-							computing problems. Whether you choose to pursue a B.S. or a B.A. in Computer 
-							Science, you'll find yourself working in state-of-the-art labs while mastering 
-							programming languages like Python and Java. Once you've built a foundation, 
-							your coursework will center on creating solutions. You'll develop robotics 
-							applications, create websites, and engineer software. You'll also take courses 
-							in a specific niche preparing you for more specialized opportunities when you 
-							graduate.
-						</p>
-						<i class="fa-solid fa-computer col-3" style="font-size: 60px; margin:1rem; margin-bottom: 2rem"></i>
-						<i class="fa-solid fa-book-open col-3" style="font-size: 60px; margin:1rem; margin-bottom: 2rem"></i>
-						<p class="col-9 text_block" >
-							The program gives students the opportunity for hands-on experience while they 
+							computing problems. The program gives students the opportunity for hands-on experience while they 
 							explore and apply the theoretical underpinnings of the discipline. Students have 
 							the option to choose from three different concentrations: <b>AI and Machine 
 							Learning</b>, <b>Cybersecurity</b>, and <b>Web & Cloud Computing</b>. Choosing 
 							a concentration allows students to get a more specialized look into their interests. 
-							Those with extra time in their schedule can pick up more than one for a broader view 
-							of what the Computer Science department has to offer!
-						</p>
-						
+							In addition to being committed to providing a quality education, the CS department 
+							is a place for all students to belong, as you can explore below!
+							</p>
 					</div>
 				</div>
 			</center>
@@ -62,34 +50,172 @@
 	</Parallax>
 
 
-	<!-- Carosel of community events?
-		Talk about why the community is so important
-		cards for: profs that care, engaging classes, convinent workspaces, active community-->
-
+	<!-- Talk about why the community is so important-->
 	<Parallax
 		:image="{
-			backgroundImage: `url(${require('@/assets/img/BG5.jpg')}`,
+			backgroundImage: `url(${require('@/assets/img/backgrounds/Geometric1.jpg')}`,
 			'background-position': 'left middle',
 		}"
 		:height="'0'"
-		:opacity="0.3"
+		:opacity="0.05"
 		:overlayColor="'0, 0, 0'"
-		class="section"
 	>
-		<h1 class="my-3" style="color:white; text-align:center">A Community That Cares</h1>
-		<div class="community-pic-holder py-4">
-			<img src="@/assets/img/gaming_at_party2.png" class="community-pic" style="">
+		<div class="mx-5 py-5 h-75 faculty">
+			<div class="carouseltitle mb-3 ">
+				<h2>Why we are awesome</h2>
+			</div>
+			<Carousel
+				:wrapAround="true"
+				:transition="600"
+				:pauseAutoplayOnHover="true"
+				style=""
+			>
+			<Slide :key="0">
+				<SkewBox
+					:leftBG="{
+						backgroundImage: `url(${require('@/assets/img/CS\ pictures/CS\ pictures/Department/Bowling_Fall18.jpg')})`,
+						'background-position': 'right top',
+						'background-size': 'cover',
+						width: '54vw!important',
+						transform: 'scaleY(-1)',
+					}"
+					:leftColor="'transparent'"
+					:rightColor="'var(--red-gradient-right)'"
+					:height="500"
+					:padding="'70px 0 60px 0'"
+					style="transform: scaleY(-1);"
+				>
+					<template v-slot:right>
+						<div class="vertical-center" style="transform: scaleY(-1); text-align: center;">
+							<h1 class="white">The department bowling team</h1>
+						</div>
+					</template>
+				</SkewBox>
+			</Slide>
+			<Slide :key="1">
+				<SkewBox
+					:rightBG="{
+						backgroundImage: `url(${require('@/assets/img/CS\ pictures/CS\ pictures/Department/ChiliContest.png')})`,
+						'background-position': 'center',
+						'background-size': '',
+						width: '54vw!important',
+					}"
+					:rightColor="'transparent'"
+					:leftColor="'var(--blue-gradient-left)'"
+					:height="500"
+					:padding="'70px 0 60px 0'"
+				>
+					<template v-slot:left>
+						<div class="vertical-center white">
+							<h1 class="">Cool events, like this chili contest</h1>
+						</div>
+					</template>
+				</SkewBox>
+			</Slide>
+			<Slide :key="2">
+				<SkewBox
+					:leftBG="{
+						backgroundImage: `url(${require('@/assets/img/EngagedLearning2.jpg')})`,
+						'background-position': 'right center',
+						'background-size': 'cover',
+						width: '54vw!important',
+						transform: 'scaleY(-1)',
+					}"
+					:leftColor="'transparent'"
+					:rightColor="'var(--FSCgrey)'"
+					:height="500"
+					:padding="'70px 0 60px 0'"
+					style="transform: scaleY(-1)"
+				>
+					<template v-slot:right>
+						<div class="vertical-center" style="transform: scaleY(-1); text-align: center;">
+							<h1 class="white">Engaged learning, which makes classes interesting!</h1>
+						</div>
+					</template>
+				</SkewBox>
+			</Slide>
+			<Slide :key="3">
+				<SkewBox
+					:rightBG="{
+						backgroundImage: `url(${require('@/assets/img/BoardGameLunch.png')})`,
+						'background-position': 'center',
+						'background-size': 'cover',
+						width: '54vw!important',
+					}"
+					:rightColor="'transparent'"
+					:leftColor="'var(--red-gradient-left)'"
+					:height="500"
+					:padding="'70px 0 60px 0'"
+				>
+					<template v-slot:left>
+						<div class="vertical-center white">
+							<h1 class="">Weekly boardgame lunches</h1>
+						</div>
+					</template>
+				</SkewBox>
+			</Slide>
+			<Slide :key="4">
+				<SkewBox
+					:leftBG="{
+						backgroundImage: `url(${require('@/assets/img/CS\ pictures/CS\ pictures/Department/EicholtzGaming.jpg')})`,
+						'background-position': 'right top',
+						'background-size': 'cover',
+						width: '54vw!important',
+						transform: 'scaleY(-1)',
+					}"
+					:leftColor="'transparent'"
+					:rightColor="'var(--blue-gradient-right)'"
+					:height="500"
+					:padding="'70px 0 60px 0'"
+					style="transform: scaleY(-1)"
+				>
+					<template v-slot:right>
+						<div class="vertical-center" style="transform: scaleY(-1); text-align: center;">
+							<h1 class="white">Everyone has fun!</h1>
+						</div>
+					</template>
+				</SkewBox>
+			</Slide>
+				<template #addons>
+					<Navigation />
+					<Pagination />
+				</template>
+			</Carousel>
 		</div>
-		<div>
-			<h5 class="community-text">The CS department strives to be a welcoming and inclusive environment for 
-				students, both inside and outside of class. More than just a major, the 
-				department works hard to create an atmosphere that allows students to 
-				connect with each other and the material, as well as build skills that can 
-				be directly translated into the work force.</h5>
-		</div>
-
 	</Parallax>
 
+
+	<SkewBox
+		:leftBG="{
+			backgroundImage: `url(${require('@/assets/img/gaming_at_party2.png')})`,
+			'background-position': 'top',
+			'background-size': 'cover',
+			width: '54vw!important',
+		}"
+		:leftColor="'transparent'"
+		:rightColor="'var(--FSCblue)'"
+		:height="500"
+		:padding="'60px 0 60px 20px'"
+	>
+		<template v-slot:right>
+			<div class="vertical-center">
+				<div class="center mb-4">
+					<h3 style="font-weight: bold;">A Community That Cares</h3>
+				</div>
+				<div>
+					<h5 class="community-text">The CS department strives to be a welcoming and inclusive environment for 
+						students, both inside and outside of class. More than just a major, the 
+						department works hard to create an atmosphere that allows students to 
+						connect with each other and the material, as well as build skills that can 
+						be directly translated into the work force.</h5>
+				</div>
+			</div>
+		</template>
+	</SkewBox>
+	
+	
+
+	<!-- cards for: profs that care, engaging classes, convinent workspaces, active community -->
 	<Parallax
 		:image="{
 			backgroundImage: `url(${require('@/assets/img/BG2.jpg')}`,
@@ -158,6 +284,8 @@
 	import Parallax from "@/components/Parallax.vue";
 	import InfoCard from "@/components/InfoCard.vue";
 	import SkewBox from "@/components/SkewBox.vue";
+	import "vue3-carousel/dist/carousel.css";
+	import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 
 	export default {
 		components: {
@@ -165,6 +293,10 @@
 			Parallax,
 			InfoCard,
 			SkewBox,
+			Carousel,
+			Slide,
+			Pagination,
+			Navigation,
 		},
 		data() {
 			return {
@@ -185,7 +317,7 @@
 		display: inline-block;
 		line-height: 2;
 		text-align: justify;
-		font-size: larger;
+		font-size: x-large;
 	}
 	.small_pic{
 		display: inline-block;
@@ -231,9 +363,6 @@
 	.community-text {
 		color:white;
 		text-align:center;
-		margin-left: 20%;
-		margin-right: 20%;
-		margin-bottom: 2rem;
 		line-height: 1.5 !important;
 	}
 	
@@ -251,4 +380,20 @@
 	a, a:visited, a:hover, a:active, a:focus {
 		color: black;
 	}
+	.carouseltitle{
+		background-color: var(--FSCblue) !important;
+		margin-left: 0;
+		margin-right: 0;
+		height: 60px;
+		text-align: center;
+		color: white;
+		border: 4px solid var(--FSClightblue);
+	}
+	.topbackground2 {
+		background-color: rgba(21, 127, 143, 0);
+		padding: 1rem;
+		/* margin-left: 5%;
+		margin-right: 5%; */
+	}
+	
 </style>

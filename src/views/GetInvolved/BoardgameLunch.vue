@@ -48,18 +48,18 @@
 
 	<Parallax
 		:image="{
-			backgroundImage: `url(${require('@/assets/img/Circuit3.jpg')}`,
-			'background-position': 'left middle',
+			backgroundImage: `url(${require('@/assets/img//backgrounds/Fountain.jpg')}`,
+			'background-position': 'top',
 		}"
 		:height="'0'"
-		:opacity="0.7"
+		:opacity="0"
 		:overlayColor="'0, 0, 0'"
 		class="section"
 	>
 		<div class="h-100 pb-2">
 			<center>
 				<div class="container py-5">
-					<h2 class="center white mt-2 mb-4 pb-1 col-9">
+					<h2 class="center mt-2 mb-4 pb-1 col-9 bold">
 						Take a break from your normal schedule and come play games!
 					</h2>
 					<div class="center mt-3 mb-3 pb-1 mx-2">
@@ -232,10 +232,10 @@
 .info {
 	display: inline-block;
 	border: 2px solid white;
-	background-color: rgba(62, 61, 61, 0.444);
+	background-color: rgba(61, 60, 60, 0.763);
 	font-weight: bold;
 	line-height: 1.5 !important;
-	color: var(--FSCred);
+	color: white;
 	padding: 1rem;
 }
 .pic {

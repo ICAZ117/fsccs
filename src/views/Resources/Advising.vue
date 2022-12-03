@@ -52,31 +52,31 @@
 
 	<Parallax
 		:image="{
-			backgroundImage: `url(${require('@/assets/img/BG7.jpg')}`,
-			'background-position': 'left middle',
+			backgroundImage: `url(${require('@/assets/img/cube-pics/DSC00038.jpg')}`,
+			'background-position': 'top',
 		}"
 		:height="'0'"
-		:opacity="0.3"
-		:overlayColor="'0, 0, 0'"
+		:opacity="0.8"
+		:overlayColor="'68, 61, 199'"
 		class=""
 	>
 		<div class="pb-2">
 			<center>
-				<div class="faculty container py-5">
+				<div class="faculty container py-3">
 					<h1 class="center FSCred mt-2 pb-1 bold">
 						What should I do to prepare?
 					</h1>
-					<hr class="primary-hr mb-4" style="width: 80%;" />
+					<hr class="primary-hr mb-2" style="width: 80%;" />
 					<Carousel
 						:wrapAround="true"
 						:transition="600"
 						:pauseAutoplayOnHover="true"
 					>
 					<Slide :key="0">
-						<div class="w-50 mb-4">
-							<h2 class="center bold pt-4 pb-2">Know who your advisor is</h2>
+						<div class="w-50 mb-4 white">
+							<h3 class="center bold pt-4 pb-1">Know who your advisor is</h3>
 							<center>
-								<h5 class="py-4" style="line-height: 1.5 !important;">
+								<h5 class="py-2" style="line-height: 1.5 !important;">
 									Do you have multiple majors? Make sure you know who your 
 									advisor is for all of them <i>and</i> that you can contact 
 									them. Portal will have that information listed.<br><br>If 
@@ -87,24 +87,24 @@
 						</div>
 					</Slide>
 					<Slide :key="1">
-						<div class="w-50 mb-4">
-							<h3 class="center bold pt-4 pb-2">Schedule your advising appointments</h3>
+						<div class="w-50 mb-4 white">
+							<h3 class="center bold pt-4 pb-1">Schedule your advising appointments</h3>
 							<center>
-								<h6 class="py-4" style="line-height: 1.5 !important;">
+								<h5 class="py-2" style="line-height: 1.5 !important;">
 									When your advisor reaches out, remember to schedule an 
 									appointment to meet with them to go over your schedule. 
 									Most professors will have a lot of advisees so make sure 
 									to make your appointment early!<br><br>If you have multiple advisors, 
 									don't forget to schedule one for each advisor.
-								</h6>
+								</h5>
 							</center>
 						</div>
 					</Slide>
 					<Slide :key="2">
-						<div class="w-50 mb-4">
-							<h2 class="center bold pt-4 pb-2">Start thinking about classes you need</h2>
+						<div class="w-50 mb-4 white">
+							<h3 class="center bold pt-4 pb-1">Start thinking about classes you need</h3>
 							<center>
-								<h5 class="py-4" style="line-height: 1.5 !important;">
+								<h5 class="py-2" style="line-height: 1.5 !important;">
 									It's a good idea to know what you want to take before your appointment. 
 									If you can, look over the classes available the upcoming semester before 
 									you see your advisor so they know which ones you want. This will save time 
@@ -128,7 +128,6 @@
 			backgroundImage: `url(${require('@/assets/img/Circuit1.jpg')}`,
 			'background-position': 'left middle',
 		}"
-		:height="'0'"
 		:opacity="0.05"
 		:overlayColor="'0, 0, 0'"
 	>
@@ -157,10 +156,21 @@
 	</Parallax>
 
 	<div class="audit_section">
-		<img src="https://drscdn.500px.org/photo/1057546414/m%3D900/v2?sig=987f4482e7d6e75bf9aac64fecdbff1d8ed5aef08bcb4ace40d353ef4802f078" alt="" class="audit_pic">
-		<a href="/resources/degree-audit"><h3 class="inner_square col-3">Explore the department degree audit tool</h3></a>
+		<Parallax
+			:image="{
+				backgroundImage: `url(https://drscdn.500px.org/photo/1057546414/m%3D900/v2?sig=987f4482e7d6e75bf9aac64fecdbff1d8ed5aef08bcb4ace40d353ef4802f078)`,
+				'background-position': 'top',
+			}"
+			:opacity="0"
+			:overlayColor="'0, 0, 0'"
+			class="audit_pic"
+		>
+			<a href="/resources/degree-audit">
+				<h3 class="inner_square col-4" style="">Explore the department degree audit tool</h3>
+			</a>
+			
+		</Parallax>
 	</div>
-	<div class="py-1"></div>
 
 </template>
 
@@ -224,20 +234,25 @@
 		display: block;
 	}
 	.inner_square{
-		background-color: rgba(141, 13, 13, 0.656);
+		transition: all ease 0.5s;
+		background-color: rgba(186, 12, 47, 0.701);
 		left: 50%;
 		top: 50%;
+		transform: translate(-50%, -50%);
 		/* color: white; */
 		text-align: center;
 		display: inline;
 		position: absolute;
-		transform: translate(-50%, -50%);
-		padding: 5px;
+		padding: 2%;
 		font-weight: bolder;
+		color: black;
+		border: 4px solid black;
 	}
 	.inner_square:hover{
+		transition: all ease 0.5s;
 		background-color: rgba(255, 255, 255, 0.826);
-		color: var(--FSCred)
+		color: var(--FSCred);
+		border: 4px solid var(--FSCred);
 	}
 
 </style>

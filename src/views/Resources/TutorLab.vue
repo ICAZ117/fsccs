@@ -23,7 +23,7 @@
 	<!-- SECTION -->
 	<Parallax
 		:image="{
-			backgroundImage: `url(${require('@/assets/img/WCS.jpg')}`,
+			backgroundImage: `url(${require('@/assets/img/cube-pics/DSC00032.jpg')}`,
 			'background-position': 'left middle',
 		}"
 		:height="'0'"
@@ -31,18 +31,18 @@
 		:overlayColor="'0, 0, 0'"
 		class="section"
 	>
-		<div class="h-100 pb-2">
+		<div class="h-100 pb-4 pt-4">
 			<center>
 				<div class="container py-5 h-100">
 					<div class="col-9 topbackground">
-						<h1 class="white mt-2 mb-2">
+						<h1 class="mt-2 mb-2">
 							Need help with your classes?
 						</h1>
-						<h2 class="white mt-2 mb-2 pb-1 bold">
+						<h2 class="mt-2 mb-2 pb-1 bold">
 							Ask a peer tutor!
 						</h2>
 						<h5
-							class="white mt-4 mb-2"
+							class="mt-4 mb-2 bold"
 							style="line-height: 2 !important"
 						>
 							The CS department offers a <i>free</i> tutoring
@@ -60,18 +60,17 @@
 	<!-- TUTORS -->
 	<Parallax
 		:image="{
-			backgroundImage: `url(${require('@/assets/img/BG7.jpg')}`,
+			backgroundImage: `url(${require('@/assets/img/backgrounds/RedCircuit.jpg')}`,
 			'background-position': 'left middle',
 		}"
 		:height="'0'"
-		:opacity="0.2"
+		:opacity="0.4"
 		:overlayColor="'0, 0, 0'"
-		class="section"
 	>
 		<div class="h-100 pb-2">
 			<center>
 				<div class="container py-5">
-					<h1 class="mt-2 mb-4 bold">This Semester's Tutors</h1>
+					<h1 class="mt-2 mb-4 bold white">This Semester's Tutors</h1>
 					<div
 						class="col-5 tutorbackground"
 						v-for="tutor in tutors"
@@ -239,7 +238,7 @@ export default {
 
 <style>
 .topbackground {
-	background-color: rgba(0, 0, 0, 0.773);
+	background-color: rgba(255, 255, 255, 0.69);
 	padding: 1rem;
 }
 .tutorbackground {

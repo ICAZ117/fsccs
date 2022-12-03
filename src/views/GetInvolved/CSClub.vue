@@ -10,7 +10,6 @@
 		:leftColor="'var(--FSCblue)'"
 		:height="500"
 		:padding="'70px 0 60px 0'"
-		class="section"
 	>
 		<template v-slot:left>
 			<div class="center vertical-center">
@@ -102,18 +101,17 @@
 	<!-- Carosel of pictures of club events -->
 	<Parallax
 		:image="{
-			backgroundImage: `url(${require('@/assets/img/Circuit6.jpg')}`,
+			backgroundImage: `url(${require('@/assets/img/backgrounds/Geometric3.jpg')}`,
 			'background-position': 'left middle',
 		}"
 		:height="'0'"
 		:opacity="0.6"
 		:overlayColor="'0, 0, 0'"
-		class="section"
 	>
 		<div class="h-100 pb-2">
 			<center>
 				<div class="m-auto faculty container py-5 h-75">
-					<h1 class="center white mt-2 mb-4 pb-1"
+					<h1 class="center white mt-2 mb-2 pb-1"
 						style="font-weight: bold">
 						Peruse Past Events
 					</h1>
@@ -125,18 +123,18 @@
 						:pauseAutoplayOnHover="true"
 					>
 						<Slide :key="0">
-							<div class="w-100">
-								<img src="@/assets/img/Matrix2.jpg">
+							<div class="pic2">
+								<img src="@/assets/img/BGlunch.png">
 							</div>
 						</Slide>
 						<Slide :key="1">
-							<div class="w-100">
-								<img src="@/assets/img/WCS.jpg">
+							<div class="pic2">
+								<img src="@/assets/img/BGlunch3.png">
 							</div>
 						</Slide>
 						<Slide :key="2">
-							<div class="w-100">
-								<img src="@/assets/img/Matrix1.jpg">
+							<div class="pic2">
+								<img src="@/assets/img/BGlunch5-3.png">
 							</div>
 						</Slide>
 						<template #addons>
@@ -149,7 +147,7 @@
 		</div>
 		
 		<div class="link center mb-4">
-			<a style="color: white; text-decoration: none;" 
+			<a style="color: white; text-decoration: none;"
 				href="/resources/calendar">
 			Check out our department calendar for upcoming events!
 			</a>
@@ -157,7 +155,39 @@
 	</Parallax>
 
 	<!-- List of cool things about the club -->
-	<div class="pb-2" style="background-color: var(--FSCred); display: flex; align-items: center;">
+	<SkewBox
+		:leftBG="{
+			backgroundImage: `url(${require('@/assets/img/CS_department_pic1.png')})`,
+			'background-position': 'top',
+			'background-size': 'cover',
+			width: '54vw!important',
+		}"
+		:leftColor="'transparent'"
+		:rightColor="'var(--FSCred)'"
+		:height="500"
+		:padding="'70px 0 60px 0'"
+	>
+		<template v-slot:right>
+			<div class="" style="display: inline-block; transform: translate(0, -5%);">
+				<div class="white center">
+					<em><h3>What does the CS club have to offer?</h3></em>
+				</div>
+				<div class="items center pt-2">
+					<h4 class="item left col-10">Exploring engaging topics</h4>
+					<div class="pb-1"></div>
+
+					<h4 class="item right col-8">Spend time with other CS students</h4>
+					<div class="pb-1"></div>
+
+					<h4 class="item left col-10">Get to know your professors</h4>
+					<div class="pb-1"></div>
+
+					<h4 class="item right col-8">Enjoy fun events</h4>
+				</div>
+			</div>
+		</template>
+	</SkewBox>
+	<!-- <div class="pb-2" style="background-color: var(--FSCred); display: flex; align-items: center;">
 		<div class="text col-6" style="display: inline-block;">
 			<div class="top pt-3 px-5">
 				<em><h1>What does the CS club have to offer?</h1></em>
@@ -178,7 +208,7 @@
 		<div class="pic col-6 center">
 			<img src="@/assets/img/CS_department_pic1.png">
 		</div>
-	</div>
+	</div> -->
 
 </template>
 
@@ -231,10 +261,10 @@
 	padding-right: 2px;
 }
 .right {
-	margin-left: 40%;
+	margin-left: 35%;
 }
 .left {
-	margin-left: 8%;
+	/* margin-left: 8%; */
 	color: white;
 }
 .pic {
@@ -245,6 +275,20 @@
 }
 .exec {
 	display: inline-block;
+}
+.items h4:hover {
+	transition: all ease 0.5s;
+	scale: 1.1;
+	font-style: italic;
+}
+.items h4.left:hover {
+	margin-left: 15%;
+}
+.items h4.right:hover {
+	margin-left: 10%;
+}
+.items h4 {
+	transition: all ease 0.5s;
 }
 
 </style>

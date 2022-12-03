@@ -36,7 +36,6 @@
 					:quote="professor.quote"
 					:image="professor.teachingimg"
 					:overlay="(index % 2 == 0) ? 'overlay1' : 'overlay2'"
-					class="section"
 				>
 					<a
 						:href="`/faculty?id=${name}`"
