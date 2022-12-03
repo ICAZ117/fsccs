@@ -120,7 +120,7 @@
 	<!-- End Announcements Section -->
 
 	<!-- Start Events Section -->
-	<!-- <Parallax
+	<Parallax
 		:image="{
 			backgroundImage: `url(${require('@/assets/img/backgrounds/BlueMatrix2.jpg')})`,
 			'background-position': 'left bottom',
@@ -128,13 +128,6 @@
 		:height="'0'"
 		:opacity="0.2"
 		:overlayColor="'0, 0, 0'"
-		class="section"
-	> -->
-    <div
-		:style="{
-			backgroundImage: `url(${require('@/assets/img/backgrounds/BlueMatrix2.jpg')})`,
-			'background-position': 'left bottom',
-        }"
 		class="section"
 	>
 		<div class="h-100 pb-2">
@@ -188,13 +181,13 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</Parallax>
 	<!-- End Events Section -->
 
 	<!-- Start Faculty Section -->
 	<Parallax
 		:image="{
-			backgroundImage: `url(${require('@/assets/img/backgrounds/Geometric4.jpg')}`,
+			backgroundImage: `url(${require('@/assets/img/BG4.jpg')}`,
 			'background-position': 'top',
 		}"
 		:height="'0'"
@@ -203,7 +196,7 @@
 		class="section"
 		:key="mountReload"
 	>
-		<div class="blur h-100 pb-2">
+		<div class="h-100 pb-2">
 			<center>
 				<div class="m-auto faculty container py-5 h-100">
 					<h1 class="center FSCred mt-2 mb-4 pb-1 bold">

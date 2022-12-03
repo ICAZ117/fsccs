@@ -18,16 +18,25 @@
 		</template>
 	</SkewBox>
 
-	<div class="center"
-		 style="background: lightcyan">
+	<div class="center" style="background: lightcyan">
 		<h1 class="pt-5 pb-1">CS club: A place for everyone</h1>
-		
-		<h5 style="margin-left: 10%; margin-right: 10%; padding-bottom: 30px; color: var(--FSClightblue); line-height: 1.5 !important;">
-		We offer a wide variety events from educational seminars in relation to the 
-		major, to lighthearted video game tournaments. There is something for anybody 
-		with an affinity for STEM related topics and hobbies! Feel free to stop by and hang out.</h5>
 
-		<hr>
+		<h5
+			style="
+				margin-left: 10%;
+				margin-right: 10%;
+				padding-bottom: 30px;
+				color: var(--FSClightblue);
+				line-height: 1.5 !important;
+			"
+		>
+			We offer a wide variety events from educational seminars in relation
+			to the major, to lighthearted video game tournaments. There is
+			something for anybody with an affinity for STEM related topics and
+			hobbies! Feel free to stop by and hang out.
+		</h5>
+
+		<hr />
 		<h2 class="py-2">
 			<strong>Meet the 2022-2023 Exec Members</strong>
 		</h2>
@@ -35,29 +44,24 @@
 		<!-- <div class="col-6 pic center">
 			<img src="@/assets/img/CS_department_pic3.png">
 		</div> -->
-		
-		<div class="py-4 row">
-			<Carousel
-				:itemsToShow="4"
-				:wrapAround="true"
-			>
-				<Slide
-					v-for="(officer, name) in officers" :key="name"
-				>
-					<div class="exec">
-						<ProfileCard
-						:pfp="officer.picture"
-						:name="officer.name"
-						:role="officer.position"
-						></ProfileCard>
-					</div>
-				</Slide>
-				<template #addons>
-					<Navigation />
-					<Pagination class="show-576" />
-				</template>
-			</Carousel>
-			<!-- <div class="col-3" v-for="(officer, name) in officers" :key="name">
+		<div class="container">
+			<div class="py-4 px-5 mx-5 cs-club">
+				<Carousel :itemsToShow="2.5" :wrapAround="true">
+					<Slide v-for="(officer, name) in officers" :key="name">
+						<div class="exec">
+							<ProfileCard
+								:pfp="officer.picture"
+								:name="officer.name"
+								:role="officer.position"
+							></ProfileCard>
+						</div>
+					</Slide>
+					<template #addons>
+						<Navigation />
+						<Pagination class="show-576" />
+					</template>
+				</Carousel>
+				<!-- <div class="col-3" v-for="(officer, name) in officers" :key="name">
 				<div class="exec">
 					<ProfileCard
 						:pfp="`${require('@/assets/img/People/Anonymous.png')}`"
@@ -71,8 +75,9 @@
 					<i><p>{{officer.name}}</p></i>
 				</div>
 			</div> -->
+			</div>
 		</div>
-		
+
 		<!-- <div class="py-4">
 			<div class="col-3 exec">
 				<h5>President</h5>
@@ -95,7 +100,6 @@
 				<i><p>Chloe Hacker</p></i>
 			</div>
 		</div> -->
-
 	</div>
 
 	<!-- Carosel of pictures of club events -->
@@ -110,46 +114,52 @@
 	>
 		<div class="h-100 pb-2">
 			<center>
-				<div class="m-auto faculty container py-5 h-75">
-					<h1 class="center white mt-2 mb-2 pb-1"
-						style="font-weight: bold">
-						Peruse Past Events
-					</h1>
-					<hr class="primary-hr" style="width: 50%" />
-					<Carousel
-						class="carousel"
-						:wrap-around="true"
-						:transition="600"
-						:pauseAutoplayOnHover="true"
-					>
-						<Slide :key="0">
-							<div class="pic2">
-								<img src="@/assets/img/BGlunch.png">
-							</div>
-						</Slide>
-						<Slide :key="1">
-							<div class="pic2">
-								<img src="@/assets/img/BGlunch3.png">
-							</div>
-						</Slide>
-						<Slide :key="2">
-							<div class="pic2">
-								<img src="@/assets/img/BGlunch5-3.png">
-							</div>
-						</Slide>
-						<template #addons>
-							<Navigation />
-							<Pagination />
-						</template>
-					</Carousel>
+				<div class="m-auto cs-club container py-5 h-75">
+					<div class="mx-5 px-5">
+						<h1
+							class="center white mt-2 mb-2 pb-1"
+							style="font-weight: bold"
+						>
+							Peruse Past Events
+						</h1>
+						<hr class="primary-hr" style="width: 50%" />
+						<Carousel
+							class="carousel"
+							:wrap-around="true"
+							:transition="600"
+							:pauseAutoplayOnHover="true"
+						>
+							<Slide :key="0">
+								<div class="pic2">
+									<img src="@/assets/img/BGlunch.png" />
+								</div>
+							</Slide>
+							<Slide :key="1">
+								<div class="pic2">
+									<img src="@/assets/img/BGlunch3.png" />
+								</div>
+							</Slide>
+							<Slide :key="2">
+								<div class="pic2">
+									<img src="@/assets/img/BGlunch5-3.png" />
+								</div>
+							</Slide>
+							<template #addons>
+								<Navigation />
+								<Pagination />
+							</template>
+						</Carousel>
+					</div>
 				</div>
 			</center>
 		</div>
-		
+
 		<div class="link center mb-4">
-			<a style="color: white; text-decoration: none;"
-				href="/resources/calendar">
-			Check out our department calendar for upcoming events!
+			<a
+				style="color: white; text-decoration: none"
+				href="/resources/calendar"
+			>
+				Check out our department calendar for upcoming events!
 			</a>
 		</div>
 	</Parallax>
@@ -168,7 +178,10 @@
 		:padding="'70px 0 60px 0'"
 	>
 		<template v-slot:right>
-			<div class="" style="display: inline-block; transform: translate(0, -5%);">
+			<div
+				class=""
+				style="display: inline-block; transform: translate(0, -5%)"
+			>
 				<div class="white center">
 					<em><h3>What does the CS club have to offer?</h3></em>
 				</div>
@@ -176,10 +189,14 @@
 					<h4 class="item left col-10">Exploring engaging topics</h4>
 					<div class="pb-1"></div>
 
-					<h4 class="item right col-8">Spend time with other CS students</h4>
+					<h4 class="item right col-8">
+						Spend time with other CS students
+					</h4>
 					<div class="pb-1"></div>
 
-					<h4 class="item left col-10">Get to know your professors</h4>
+					<h4 class="item left col-10">
+						Get to know your professors
+					</h4>
 					<div class="pb-1"></div>
 
 					<h4 class="item right col-8">Enjoy fun events</h4>
@@ -209,51 +226,93 @@
 			<img src="@/assets/img/CS_department_pic1.png">
 		</div>
 	</div> -->
-
 </template>
 
 <script>
-	import SkewBox from "@/components/SkewBox.vue";
-	import Parallax from "@/components/Parallax.vue";
-	import InfoCard from "@/components/InfoCard.vue";
-	import "vue3-carousel/dist/carousel.css";
-	import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
-	import ProfileCard from "../../components/ProfileCard.vue";
-	
-	export default {
-		components: {
-			SkewBox,
-			Parallax,
-			InfoCard,
-			Carousel,
-			Slide,
-			Pagination,
-			Navigation,
-			ProfileCard,
-		},
-		data() {
-			return {
-				officers: {},
-			};
-		},
-		async beforeMount() {
-			// Get all cs officers
-			await this.$store.dispatch("fetchOfficers")
+import SkewBox from "@/components/SkewBox.vue";
+import Parallax from "@/components/Parallax.vue";
+import InfoCard from "@/components/InfoCard.vue";
+import "vue3-carousel/dist/carousel.css";
+import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
+import ProfileCard from "../../components/ProfileCard.vue";
 
-			// Retrieve the officers 
-			const res = this.$store.getters.getOfficers;
+export default {
+	components: {
+		SkewBox,
+		Parallax,
+		InfoCard,
+		Carousel,
+		Slide,
+		Pagination,
+		Navigation,
+		ProfileCard,
+	},
+	data() {
+		return {
+			officers: {},
+		};
+	},
+	async beforeMount() {
+		// Get all cs officers
+		await this.$store.dispatch("fetchOfficers");
 
-			// Push each officer's data to the array
-			res.forEach((doc) => {
-				this.officers[doc.id] = doc.data();
-			});
-		},
-	};
+		// Retrieve the officers
+		const res = this.$store.getters.getOfficers;
+
+		// Push each officer's data to the array
+		res.forEach((doc) => {
+			this.officers[doc.id] = doc.data();
+		});
+	},
+};
 </script>
 
 <style scoped>
+.cs-club :deep(.carousel) {
+	text-align: left;
+}
+
+.cs-club :deep(.carousel__pagination) {
+	margin-bottom: 0;
+	padding-left: 0;
+	transform: translateY(0px);
+}
+
+.cs-club :deep(.carousel__pagination-button) {
+	height: calc(var(--vc-pgn-height) * 1.5) !important;
+	width: calc(var(--vc-pgn-width) * 1.5) !important;
+	background-color: darkgray;
+}
+
+.cs-club :deep(.carousel__pagination-button--active) {
+	background-color: white !important;
+}
+
+.cs-club :deep(.carousel__icon) {
+	width: calc(var(--vc-icn-width) * 2) !important;
+	height: calc(var(--vc-icn-width) * 2) !important;
+}
+
+.cs-club :deep(.carousel__pre)v,
+.cs-club :deep(.carousel__next) {
+	/* box-sizing: content-box; */
+	background-color: var(--FSCred);
+	width: 50px !important;
+	height: 50px !important;
+	border-radius: 50% !important;
+	color: white !important;
+}
+
+.cs-club :deep(.carousel__prev) {
+	left: -90px !important;
+}
+
+.cs-club :deep(.carousel__next) {
+	right: -90px !important;
+}
+
 .item {
-	border: 2px solid white; 
+	border: 2px solid white;
 	background-color: var(--FSClightblue);
 	padding-top: 2px;
 	padding-bottom: 2px;
@@ -290,5 +349,4 @@
 .items h4 {
 	transition: all ease 0.5s;
 }
-
 </style>
