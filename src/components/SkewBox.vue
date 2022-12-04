@@ -108,7 +108,7 @@ export default {
 		},
 		mobileColor: {
 			type: String,
-			default: "rgba(0, 0, 0, 0.6)",
+			default: "0, 0%, 0%, 0.6",
 			required: false,
 		},
 	},
