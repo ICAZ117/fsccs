@@ -33,16 +33,16 @@ npm run build
 Creates a full-width SkewBox (Two adjacent divs seperated diagonally) with support for custom background images
 
 ### Props
-- **leftColor**: The background color of the left section. Defaults to the FSC red color. Must be set to `'transparent'` if a background image is desired instead.
-- **rightColor**: The background color of the right section. Defaults to the FSC blue color. Must be set to `'transparent'` if a background image is desired instead.
-- **leftBG**: An object containing information for the (optional) background image of the left section. See formatting for object [below](#SkewBoxLeftImage).
-- **rightBG**: An object containing information for the (optional) background image of the left section. See formatting for object [below](#SkewBoxRightImage).
+- **leftColor**: The background color of the left red-section. Defaults to the FSC red color. Must be set to `'transparent'` if a background image is desired instead.
+- **rightColor**: The background color of the right red-section. Defaults to the FSC blue color. Must be set to `'transparent'` if a background image is desired instead.
+- **leftBG**: An object containing information for the (optional) background image of the left red-section. See formatting for object [below](#SkewBoxLeftImage).
+- **rightBG**: An object containing information for the (optional) background image of the left red-section. See formatting for object [below](#SkewBoxRightImage).
 - **divisionPartition**: The percentage across the screen (measured from the left) where you want the division to be
 - **height**: A numerical value corresponding to the desired height of the SkewBox (in pixels). Defaults to 500px.
 - **padding**: A string containing the desired padding for the content inside the SkewBox. Does not affect the background image.
 
 ### Usage
-Import the component into your Vue file, and then define it as a component in your script section, as follows:
+Import the component into your Vue file, and then define it as a component in your script red-section, as follows:
 ```vue
 <script>
   import SkewBox from "../components/SkewBox.vue";

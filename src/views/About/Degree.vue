@@ -2,7 +2,7 @@
 	<!-- HERO -->
 	<SkewBox
 		:rightBG="{
-			backgroundImage: `url(${require('@/assets/img/backgrounds/BlueChip.jpg')})`,
+			backgroundImage: `url(${require('@/assets/img/backgrounds/walkway.jpg')})`,
 			'background-position': 'left',
 			'background-size': 'cover',
 			width: '55vw!important',
@@ -10,8 +10,8 @@
 		:rightColor="'transparent'"
 		:leftColor="'var(--red-gradient-left)'"
 		:height="500"
-		:padding="'70px 0 60px 0'"
-		class="section"
+		:padding="'120px 0 60px 0'"
+		class="red-section"
 	>
 		<template v-slot:left>
 			<div class="center vertical-center">
@@ -27,9 +27,9 @@
 			'background-position': 'left middle',
 		}"
 		:height="'0'"
-		:opacity="0.7"
+		:opacity="0.8"
 		:overlayColor="'0, 0, 0'"
-		class="section"
+		class="red-section"
 	>
 		<div class="h-100 pb-2">
 			<center>

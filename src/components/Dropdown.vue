@@ -75,6 +75,10 @@
 </script>
 
 <style scoped>
+    .dropdown-content::after {
+        filter: blur(20px);
+    }
+
     .dropdown-content .nav-link {
         padding: 0!important;
     }
@@ -108,7 +112,7 @@
 		color: white;
 		text-decoration: none;
 		display: flex;
-		background-color: rgba(0, 0, 0, 0.7);
+		background-color: rgba(0, 0, 0, 0.85);
 		z-index: -500 !important;
 		position: relative !important;
 		height: 60px !important;

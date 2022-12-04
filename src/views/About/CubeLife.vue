@@ -2,7 +2,7 @@
 	<!-- HERO -->
 	<SkewBox
 		:rightBG="{
-			backgroundImage: `url(${require('@/assets/img/WCS3.jpg')})`,
+			backgroundImage: `url(${require('@/assets/img/cube-pics/CubeBallsRed.jpg')})`,
 			'background-position': 'left',
 			'background-size': 'cover',
 			width: '55vw!important',
@@ -10,8 +10,8 @@
 		:rightColor="'transparent'"
 		:leftColor="'var(--red-gradient-left)'"
 		:height="500"
-		:padding="'70px 0 60px 0'"
-		class="section"
+		:padding="'120px 0 60px 0'"
+		class="red-section"
 	>
 		<template v-slot:left>
 			<div class="center vertical-center">
@@ -29,7 +29,7 @@
 		:height="'0'"
 		:opacity="0.8"
 		:overlayColor="'0, 0, 0'"
-		class="section"
+		class="red-section"
 	>
 		<div class="h-100 pb-2">
 			<center>
@@ -94,7 +94,7 @@
 		:height="'0'"
 		:opacity="0"
 		:overlayColor="'0, 0, 0'"
-		class="section"
+		class="red-section"
 	>
 		<div class="h-100 pb-2">
 			<center>
@@ -166,7 +166,7 @@
 		:height="'0'"
 		:opacity="0"
 		:overlayColor="'0, 0, 0'"
-		class="section"
+		class="red-section"
 	>
 		<div class="h-100 pb-2">
 			<center>
@@ -195,7 +195,7 @@
 							</Slide>
 							<Slide :key="2">
 								<ProfileCard
-									:pfp="`${require('@/assets/img/People/Anonymous.png')}`"
+									:pfp="`${require('@/assets/img/People/JosephSaba.png')}`"
 									:name="'Joseph Saba'"
 									:role="'Full Stack Developer'"
 									:linkedin="'https://www.linkedin.com/in/joseph-saba-1b685320a/'"

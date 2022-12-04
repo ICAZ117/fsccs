@@ -2,7 +2,7 @@
 	<!-- HERO -->
 	<SkewBox
 		:rightBG="{
-			backgroundImage: `url(${require('@/assets/img/intramurals/Banner.jpg')})`,
+			backgroundImage: `url(${require('@/assets/img/intramurals/BannerBlur.jpg')})`,
 			'background-position': 'right',
 			'background-size': 'cover',
 			width: '55vw!important',
@@ -11,7 +11,7 @@
 		:leftColor="'var(--blue-gradient-left)'"
 		:height="500"
 		:padding="'120px 0 60px 0'"
-		class="section"
+		class="red-section"
 	>
 		<template v-slot:left>
 			<div class="center vertical-center">
@@ -20,7 +20,7 @@
 		</template>
 	</SkewBox>
 
-	<!-- ABOUT THE CUBE LIFE -->
+	<!-- ABOUT IMS -->
 	<Parallax
 		:image="{
 			backgroundImage: `url(${require('@/assets/img/intramurals/Cornhole.jpg')}`,
@@ -29,7 +29,7 @@
 		:height="'0'"
 		:opacity="0.6"
 		:overlayColor="'0, 0, 0'"
-		class="section"
+		class="red-section"
 	>
 		<div class="h-100 pb-2">
 			<center>
@@ -65,7 +65,7 @@
 		</div>
 	</Parallax>
 
-	<!-- gallery -->
+	<!-- GALLERY -->
 	<Parallax
 		:image="{
 			backgroundImage: `url(${require('@/assets/img/BG7.jpg')}`,
@@ -82,23 +82,9 @@
 
 					<div class="gallery">
 						<Carousel :itemsToShow="1" :wrapAround="true">
-							<Slide :key="1">
+                            <Slide :key="0">
 								<img
-									src="@/assets/img/intramurals/bowling-2021-mens-champions.jpg"
-									height="500"
-									style="object-fit: cover"
-								/>
-							</Slide>
-							<Slide :key="1">
-								<img
-									src="@/assets/img/intramurals/bowling-dept-2021.jpg"
-									height="500"
-									style="object-fit: cover"
-								/>
-							</Slide>
-							<Slide :key="1">
-								<img
-									src="@/assets/img/intramurals/im_bouldering_2021.png"
+									src="@/assets/img/intramurals/im_bowling_2022.jpg"
 									height="500"
 									style="object-fit: cover"
 								/>
@@ -110,35 +96,49 @@
 									style="object-fit: cover"
 								/>
 							</Slide>
-							<Slide :key="1">
+							<Slide :key="2">
 								<img
-									src="@/assets/img/intramurals/im_bowling_2022.jpg"
+									src="@/assets/img/intramurals/bowling-dept-2021.jpg"
 									height="500"
 									style="object-fit: cover"
 								/>
 							</Slide>
-							<Slide :key="1">
+							<Slide :key="3">
+								<img
+									src="@/assets/img/intramurals/im_bouldering_2021.png"
+									height="500"
+									style="object-fit: cover"
+								/>
+							</Slide>
+							<Slide :key="4">
+								<img
+									src="@/assets/img/intramurals/bowling-2021-mens-champions.jpg"
+									height="500"
+									style="object-fit: cover"
+								/>
+							</Slide>
+							<Slide :key="5">
 								<img
 									src="@/assets/img/intramurals/im_softball_f21_03.jpg"
 									height="500"
 									style="object-fit: cover"
 								/>
 							</Slide>
-							<Slide :key="1">
+							<Slide :key="6">
 								<img
 									src="@/assets/img/intramurals/OldChampPic.jpg"
 									height="500"
 									style="object-fit: cover"
 								/>
 							</Slide>
-							<Slide :key="1">
+							<Slide :key="7">
 								<img
 									src="@/assets/img/intramurals/Bouldering3.png"
 									height="500"
 									style="object-fit: cover"
 								/>
 							</Slide>
-							<Slide :key="1">
+							<Slide :key="8">
 								<img
 									src="@/assets/img/intramurals/IMG_0033.jpg"
 									height="500"

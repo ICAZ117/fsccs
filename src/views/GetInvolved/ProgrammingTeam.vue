@@ -8,10 +8,10 @@
 			width: '54vw!important',
 		}"
 		:leftColor="'transparent'"
-		:rightColor="'var(--red-gradient-right)'"
+		:rightColor="'var(--blue-gradient-right)'"
 		:height="500"
-		:padding="'70px 0 60px 0'"
-		class="section"
+		:padding="'120px 0 60px 0'"
+		class="red-section"
 	>
 		<template v-slot:right>
 			<div class="center vertical-center">
@@ -29,7 +29,7 @@
 		:height="'0'"
 		:opacity="0.6"
 		:overlayColor="'0, 0, 0'"
-		class="section"
+		class="red-section"
 	>
 		<div class="h-100 pb-2">
 			<center>
@@ -64,9 +64,9 @@
 			width: '55vw!important',
 		}"
 		:rightColor="'transparent'"
-		:leftColor="'var(--FSCgrey)'"
+		:leftColor="'var(--red-gradient-left)'"
 		:height="500"
-		class="section"
+		class="red-section"
 	>
 		<template v-slot:left>
 			<div class="h-100 pb-2 vertical-center">
@@ -105,7 +105,7 @@
 		:height="'0'"
 		:opacity="0.6"
 		:overlayColor="'0, 0, 0'"
-		class="section"
+		class="red-section"
 	>
 		<div class="h-100 pb-2">
 			<center>

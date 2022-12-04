@@ -2,13 +2,15 @@
 	<SkewBox
 		:rightBG="{
 			backgroundImage: `url(${require('@/assets/img/WCS3.jpg')})`,
-			'background-position': 'bottom',
+			'background-position': 'top',
 			'background-size': 'cover',
+			width: '54vw!important',
 		}"
 		:rightColor="'transparent'"
-		:leftColor="'rgba(10, 10, 10, 0.7)'"
+		:leftColor="'var(--grey-gradient-left)'"
 		:height="500"
-		:padding="'70px 0 60px 0'"
+		:padding="'120px 0 60px 0'"
+		class="red-section"
 	>
 		<template v-slot:left>
 			<div class="center vertical-center">

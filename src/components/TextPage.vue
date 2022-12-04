@@ -4,7 +4,7 @@
 		:rightColor="'transparent'"
 		:leftColor="leftColor"
 		:height="500"
-		:padding="'70px 0 60px 0'"
+		:padding="'120px 0 60px 0'"
 	>
 		<template v-slot:left>
 			<div class="center vertical-center">

@@ -7,10 +7,10 @@
 			width: '54vw!important',
 		}"
 		:rightColor="'transparent'"
-		:leftColor="'grey'"
+		:leftColor="'var(--blue-gradient-left)'"
 		:height="500"
-		:padding="'70px 0 60px 0'"
-		class="section"
+		:padding="'120px 0 60px 0'"
+		class="red-section"
 	>
 		<template v-slot:left>
 			<div class="center vertical-center">
@@ -27,7 +27,7 @@
 		:height="'0'"
 		:opacity="0.3"
 		:overlayColor="'0, 0, 0'"
-		class="section"
+		class="red-section"
 	>
 		<div class="h-100 pb-2">
 			<center>
@@ -48,13 +48,13 @@
 
 	<Parallax
 		:image="{
-			backgroundImage: `url(${require('@/assets/img//backgrounds/Fountain.jpg')}`,
+			backgroundImage: `url(${require('@/assets/img/BG7.jpg')}`,
 			'background-position': 'top',
 		}"
 		:height="'0'"
 		:opacity="0"
 		:overlayColor="'0, 0, 0'"
-		class="section"
+		class="red-section"
 	>
 		<div class="h-100 pb-2">
 			<center>
@@ -67,7 +67,7 @@
 							The CS department hosts a weekly event where 
 							you are invited to play games with your faculty and peers!
 						</h5>
-						<h5 class="info col-3 mx-4 my-2" style="transform: translate(0, 10%)">
+						<h5 class="info col-3 mx-4 my-2" style="transform: translate(-2%)">
 							There are a plethora of games available to play! Feel free to come by and join the fun.
 						</h5>
 						<h5 class="info col-3 mx-4 my-2" style="transform: translate(2%)">
@@ -82,7 +82,7 @@
 
 	<SkewBox
 		:leftBG="{
-			backgroundImage: `url(${require('@/assets/img/BGlunch4.png')})`,
+			backgroundImage: `url(${require('@/assets/img/Department/BoardGames.jpg')})`,
 			'background-position': 'top',
 			'background-size': 'cover',
 			width: '54vw!important',
@@ -91,7 +91,7 @@
 		:leftColor="'transparent'"
 		:height="500"
 		:padding="'70px 0 60px 0'"
-		class="section"
+		class="red-section"
 	>
 		<template v-slot:right>
 			<div class="center vertical-center">

@@ -137,7 +137,7 @@ export default {
 
 	--primary: var(--FSCred);
 	--secondary: var(--FSCgrey);
-	--primary-dark: rgb(128, 8, 32) !important;
+	--primary-dark: #800820 !important;
 
 	--red-gradient-left: linear-gradient(
 		to left,
@@ -159,9 +159,9 @@ export default {
 		#004377 45%
 	);
 
-    --gray-gradient-left: linear-gradient(to left, var(--FSCgrey), #353535 45%);
+    --grey-gradient-left: linear-gradient(to left, var(--FSCgrey), #353535 45%);
 
-	--gray-gradient-right: linear-gradient(
+	--grey-gradient-right: linear-gradient(
 		to right,
 		var(--FSCgrey),
 		#353535 45%
@@ -316,8 +316,16 @@ h6 {
 	background-color: var(--primary-dark);
 }
 
-.section {
-	border-bottom: 5px solid var(--primary);
+.red-section {
+	border-bottom: 5px solid var(--FSCred);
+}
+
+.blue-section {
+	border-bottom: 5px solid var(--FSCblue);
+}
+
+.grey-section {
+	border-bottom: 5px solid var(--FSCgrey);
 }
 
 .large {

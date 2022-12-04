@@ -2,16 +2,16 @@
 	<!-- HERO -->
 	<SkewBox
 		:leftBG="{
-			backgroundImage: `url(https://www.nsu.edu/NSU/media/Photos/2017/09/Miscellaneous/IMG_4608-C_1.jpg)`,
+			backgroundImage: `url(https://media.istockphoto.com/id/935964092/photo/adding-modifications-to-their-latest-code.jpg?s=612x612&w=0&k=20&c=r8koXFYqrZo_fQdV47foqg_9mbSdmL1Q1amd-l9DvOs=)`,
 			'background-position': 'top',
 			'background-size': 'cover',
 			width: '54vw!important',
 		}"
 		:leftColor="'transparent'"
-		:rightColor="'var(--blue-gradient-right)'"
+		:rightColor="'var(--grey-gradient-right)'"
 		:height="500"
-		:padding="'70px 0 60px 0'"
-		class="section"
+		:padding="'120px 0 60px 0'"
+		class="red-section"
 	>
 		<template v-slot:right>
 			<div class="center vertical-center">
@@ -29,7 +29,7 @@
 		:height="'0'"
 		:opacity="0.2"
 		:overlayColor="'0, 0, 0'"
-		class="section"
+		class="red-section"
 	>
 		<div class="h-100 pb-4 pt-4">
 			<center>

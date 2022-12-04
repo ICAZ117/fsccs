@@ -1,10 +1,10 @@
 <template>
 	<!-- Start Hero Section -->
-	<div class="hero section">
+	<div class="hero red-section">
 		<Carousel
 			class="carousel"
 			:wrap-around="true"
-			:autoplay="50000000"
+			:autoplay="5000"
 			:transition="1500"
 			:pauseAutoplayOnHover="true"
 			:key="reloadHero"
@@ -79,7 +79,7 @@
 		:height="'70vh'"
 		:opacity="0.5"
 		:overlayColor="'0, 0, 0'"
-		class="section"
+		class="red-section"
 	>
 		<div class="h-100">
 			<div class="announcements container py-5 h-100">
@@ -128,7 +128,7 @@
 		:height="'0'"
 		:opacity="0.2"
 		:overlayColor="'0, 0, 0'"
-		class="section"
+		class="red-section"
 	>
 		<div class="h-100 pb-2">
 			<div class="container-xl py-5 h-100">
@@ -193,7 +193,7 @@
 		:height="'0'"
 		:opacity="0.2"
 		:overlayColor="'0, 0, 0'"
-		class="section"
+		class="red-section"
 		:key="mountReload"
 	>
 		<div class="h-100 pb-2">
@@ -231,18 +231,18 @@
 	<!-- Start Tour Section -->
 	<Parallax
 		:image="{
-			background: 'var(--FSCgrey)',
-			'background-position': 'left middle',
+			backgroundImage: `url(${require('@/assets/img/virtual-tour/Tour1.jpg')}`,
+			'background-position': 'top',
 		}"
-		:height="'70vh'"
-		:opacity="0.2"
+		:height="'0'"
+		:opacity="0.4"
 		:overlayColor="'0, 0, 0'"
 		class=""
 	>
 		<div class="container py-5 my-2" style="height: 70vh !important">
 			<div class="center vertical-center">
-				<router-link to="/virutal-tour" class="no-decor">
-					<h1 class="bold tour-link">Take a Virtual Tour</h1>
+				<router-link to="/virutal-tour" class="no-decor link-box">
+					<h1 class="white bold tour-link">Take a Virtual Tour</h1>
 				</router-link>
 			</div>
 		</div>
@@ -712,8 +712,10 @@ export default {
    ██     ██████   ██████  ██   ██ 
 */
 .tour-link {
-	color: white;
 	transition: all 0.2s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 50px;
+    border-radius: 20px;
 }
 
 .tour-link:hover {

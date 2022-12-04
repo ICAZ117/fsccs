@@ -1,7 +1,8 @@
 <template>
+    <!-- HERO -->
 	<SkewBox
 		:rightBG="{
-			backgroundImage: `url(${require('@/assets/img/csclub1.png')})`,
+			backgroundImage: `url(${require('@/assets/img/Department/csclub1.png')})`,
 			'background-position': 'top',
 			'background-size': 'cover',
 			width: '54vw!important',
@@ -9,7 +10,8 @@
 		:rightColor="'transparent'"
 		:leftColor="'var(--FSCblue)'"
 		:height="500"
-		:padding="'70px 0 60px 0'"
+		:padding="'120px 0 60px 0'"
+        class="red-section"
 	>
 		<template v-slot:left>
 			<div class="center vertical-center">
@@ -18,7 +20,8 @@
 		</template>
 	</SkewBox>
 
-	<div class="center" style="background: lightcyan">
+    <!-- OFFICERS -->
+	<div class="center" :style="`background-image:url(${require('@/assets/img/BG7.jpg')}); background-repeat: no-repeat; background-size: cover;`">
 		<h1 class="pt-5 pb-1">CS club: A place for everyone</h1>
 
 		<h5
@@ -41,9 +44,6 @@
 			<strong>Meet the 2022-2023 Exec Members</strong>
 		</h2>
 
-		<!-- <div class="col-6 pic center">
-			<img src="@/assets/img/CS_department_pic3.png">
-		</div> -->
 		<div class="container">
 			<div class="py-4 px-5 mx-5 cs-club">
 				<Carousel :itemsToShow="2.5" :wrapAround="true">
@@ -61,55 +61,18 @@
 						<Pagination class="show-576" />
 					</template>
 				</Carousel>
-				<!-- <div class="col-3" v-for="(officer, name) in officers" :key="name">
-				<div class="exec">
-					<ProfileCard
-						:pfp="`${require('@/assets/img/People/Anonymous.png')}`"
-						:name="officer.name"
-						:role="officer.position"
-					></ProfileCard>
-				</div>
-				<div class="exec">
-					<h5>{{officer.position}}</h5>
-					<center><hr class="primary-hr"/></center>
-					<i><p>{{officer.name}}</p></i>
-				</div>
-			</div> -->
 			</div>
 		</div>
-
-		<!-- <div class="py-4">
-			<div class="col-3 exec">
-				<h5>President</h5>
-				<center><hr class="primary-hr"/></center>
-				<i><p>Nickolas Bonner</p></i>
-			</div>
-			<div class="col-3 exec">
-				<h5>Vice President</h5>
-				<center><hr class="primary-hr"/></center>
-				<i><p>Johnathan Bailey</p></i>
-			</div>
-			<div class="col-3 exec">
-				<h5>Treasurer</h5>
-				<center><hr class="primary-hr"/></center>
-				<i><p>Will Davidson</p></i>
-			</div>
-			<div class="col-3 exec">
-				<h5>Secretary/Historian</h5>
-				<center><hr class="primary-hr"/></center>
-				<i><p>Chloe Hacker</p></i>
-			</div>
-		</div> -->
 	</div>
 
-	<!-- Carosel of pictures of club events -->
+	<!-- GALLERY -->
 	<Parallax
 		:image="{
-			backgroundImage: `url(${require('@/assets/img/backgrounds/Geometric3.jpg')}`,
-			'background-position': 'left middle',
+			backgroundImage: `url(${require('@/assets/img/BG3.jpg')}`,
+			'background-position': 'center',
 		}"
 		:height="'0'"
-		:opacity="0.6"
+		:opacity="0"
 		:overlayColor="'0, 0, 0'"
 	>
 		<div class="h-100 pb-2">
@@ -164,11 +127,11 @@
 		</div>
 	</Parallax>
 
-	<!-- List of cool things about the club -->
-	<SkewBox
+	<!-- ABOUT CSC -->
+	<!-- <SkewBox
 		:leftBG="{
 			backgroundImage: `url(${require('@/assets/img/CS_department_pic1.png')})`,
-			'background-position': 'top',
+			'background-position': 'center',
 			'background-size': 'cover',
 			width: '54vw!important',
 		}"
@@ -203,29 +166,7 @@
 				</div>
 			</div>
 		</template>
-	</SkewBox>
-	<!-- <div class="pb-2" style="background-color: var(--FSCred); display: flex; align-items: center;">
-		<div class="text col-6" style="display: inline-block;">
-			<div class="top pt-3 px-5">
-				<em><h1>What does the CS club have to offer?</h1></em>
-			</div>
-			<div class="items center py-2">
-				<h4 class="item left col-7">Exploring engaging topics</h4>
-				<div class="pb-2"></div>
-
-				<h4 class="item right col-7">Spend time with other CS students</h4>
-				<div class="pb-2"></div>
-
-				<h4 class="item left col-8">Get to know your professors</h4>
-				<div class="pb-2"></div>
-
-				<h4 class="item right col-5">Enjoy fun events</h4>
-			</div>
-		</div>
-		<div class="pic col-6 center">
-			<img src="@/assets/img/CS_department_pic1.png">
-		</div>
-	</div> -->
+	</SkewBox> -->
 </template>
 
 <script>

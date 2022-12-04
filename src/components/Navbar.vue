@@ -4,9 +4,9 @@
 			<div class="w-100 contain">
 				<router-link to="/" class="navbar-brand">
 					<img
-						src="../assets/img/Cube.svg"
-						class="cube"
-						height="44"
+						src="../assets/img/DiscoCube.gif"
+						class=""
+						height="50"
 						alt="Logo"
 						title="Logo"
 					/>
@@ -333,7 +333,7 @@ nav,
 .navbar-expand-xl {
 	width: 100%;
 	padding: 0 20px !important;
-	background-color: rgba(0, 0, 0, 0.75);
+	background-color: rgba(0, 0, 0, 0.85);
 	backdrop-filter: blur(50px);
 	height: var(--navbar-height) !important;
 	position: fixed;

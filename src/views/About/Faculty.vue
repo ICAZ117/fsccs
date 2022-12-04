@@ -1,20 +1,20 @@
 <template>
 	<SkewBox
 		:rightBG="{
-			backgroundImage: `url(${require('@/assets/img/WCS3.jpg')})`,
+			backgroundImage: `url(${require('@/assets/img/cube-pics/Cube1.jpg')})`,
 			'background-position': 'left',
 			'background-size': 'cover',
 			width: '55vw!important',
 		}"
 		:rightColor="'transparent'"
-		:leftColor="'var(--FSCblue)'"
+		:leftColor="'var(--red-gradient-left)'"
 		:height="500"
-		:padding="'70px 0 60px 0'"
-		class="section"
+		:padding="'120px 0 60px 0'"
+		class="red-section"
 	>
 		<template v-slot:left>
 			<div class="center vertical-center">
-				<h1 class="white">About the Faculty</h1>
+				<h1 class="white">Meet the Faculty</h1>
 			</div>
 		</template>
 	</SkewBox>
@@ -35,7 +35,15 @@
 					:title="professor.title"
 					:quote="professor.quote"
 					:image="professor.teachingimg"
-					:overlay="(index % 2 == 0) ? 'overlay1' : 'overlay2'"
+					:overlay="index % 2 == 0 ? 'overlay1' : 'overlay2'"
+					:class="
+						index % 2 == 0 &&
+						index != Object.keys(professors).length - 1
+							? 'red-section'
+							: index != Object.keys(professors).length - 1
+							? 'blue-section'
+							: ''
+					"
 				>
 					<a
 						:href="`/faculty?id=${name}`"

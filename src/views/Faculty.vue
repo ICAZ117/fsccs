@@ -1,5 +1,6 @@
 <template>
 	<div :key="forceReloadPage">
+        <!-- MAIN SECTION -->
 		<Parallax
 			:image="{
 				backgroundImage: `url(${require('@/assets/img/WCS.jpg')})`,
@@ -8,6 +9,7 @@
 			:height="'100vh'"
 			:opacity="0.7"
 			:overlayColor="'25, 25, 25'"
+            class="red-section"
 		>
 			<div class="blur">
 				<SkewBox
@@ -125,7 +127,7 @@
 			</div>
 		</Parallax>
 
-		<!-- Start Faculty Section -->
+        <!-- CAROUSEL -->
 		<Parallax
 			:image="{
 				backgroundImage: `url(${require('@/assets/img/BG4.jpg')}`,
@@ -161,7 +163,6 @@
 				</div>
 			</div>
 		</Parallax>
-		<!-- End Faculty Section -->
 	</div>
 </template>
 
