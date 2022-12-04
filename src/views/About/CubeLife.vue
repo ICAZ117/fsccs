@@ -75,7 +75,10 @@
 							The Cube Life chooses you!
 						</p>
 						<div class="center">
-							<button class="btn btn-md btn-primary" @click="activateCubeLife">
+							<button
+								class="btn btn-md btn-primary"
+								@click="activateCubeLife"
+							>
 								Enable Cube Life Mode!
 							</button>
 						</div>
@@ -242,12 +245,16 @@
 		:leftColor="'transparent'"
 		:rightColor="'linear-gradient(to right, #42b883, #35495e 45%)'"
 		:height="550"
+		:maintainSkewbox="false"
+		:pictureSide="'left'"
+		:invert="true"
+		:mobileColor="'153, 70%, 30%, 0.6'"
 		style="transform: scaleY(-1)"
 	>
 		<template v-slot:right>
 			<div
-				class="ps-5 vertical-center white"
-				style="transform: scaleY(-1); text-align: justify !important"
+				class="ps-xl-5 vertical-center white"
+				style="transform: scaleY(-1); text-align: justify"
 			>
 				<h2>Tech Stack</h2>
 				<p>
@@ -287,10 +294,14 @@
 		:rightColor="'transparent'"
 		:leftColor="'linear-gradient(to left, #7e49cb, #4b1d8a 35%)'"
 		:height="550"
+        :maintainSkewbox="false"
+        :pictureSide="'right'"
+        :invert="false"
+        :mobileColor="'264, 100%, 10%, 0.7'"
 	>
 		<template v-slot:left>
 			<div
-				class="pe-5 vertical-center white"
+				class="pe-xl-5 vertical-center white"
 				style="text-align: justify !important"
 			>
 				<p>
@@ -319,22 +330,26 @@
 	<!-- FIREBASE -->
 	<SkewBox
 		:leftBG="{
-			backgroundImage: `url(https://firebase.google.com/static/images/brand-guidelines/logo-vertical.png)`,
+			backgroundImage: `url(https://webartdevelopers.com/blog/wp-content/uploads/2020/10/firebase-logo.png)`,
 			'background-color': '#039be6',
 			width: '55vw!important',
 			transform: 'scaleY(-1)',
 			'background-position': 'center',
-			'background-size': 'contain',
+			'background-size': 'cover',
 			'background-repeat': 'no-repeat',
 		}"
 		:leftColor="'transparent'"
-		:rightColor="'linear-gradient(to right, #ffa715, #f48310 35%)'"
+		:rightColor="'linear-gradient(to right, #ffa715, #f48310 30%)'"
 		:height="550"
+        :maintainSkewbox="false"
+        :pictureSide="'left'"
+        :invert="true"
+        :mobileColor="'37, 100%, 50%, 0.7'"
 		style="transform: scaleY(-1)"
 	>
 		<template v-slot:right>
 			<div
-				class="ps-5 vertical-center white"
+				class="ps-xl-5 vertical-center white"
 				style="transform: scaleY(-1); text-align: justify !important"
 			>
 				<p>
@@ -370,11 +385,15 @@
 		:rightColor="'transparent'"
 		:leftColor="'linear-gradient(to left, #202337, #000 80%)'"
 		:height="550"
+        :maintainSkewbox="false"
+        :pictureSide="'right'"
+        :invert="false"
+        :mobileColor="'232, 26%, 10%, 0.85'"
 	>
 		<template v-slot:left>
 			<div
-				class="pe-5 vertical-center white"
-				style="text-align: justify !important"
+				class="pe-xl-5 vertical-center white"
+				style="text-align: justify !important;"
 			>
 				<p>
 					Lastly, the virtual tour (<router-link
@@ -453,7 +472,7 @@ export default {
 .inspiration .carousel__pagination-button {
 	height: calc(var(--vc-pgn-height) * 1.5) !important;
 	width: calc(var(--vc-pgn-width) * 1.5) !important;
-	background-color: darkgray;
+	background-color: darkgrey;
 }
 
 .inspiration .carousel__pagination-button--active {

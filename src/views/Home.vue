@@ -36,28 +36,46 @@
 			<Slide :key="1">
 				<SkewBox
 					:rightBG="{
-						backgroundImage: `url(${require('@/assets/img/WCS.jpg')})`,
+						backgroundImage: `url(${require('@/assets/img/intramurals/BannerBlur.jpg')})`,
+						width: '55vw!important',
 						'background-position': 'center',
 						'background-size': 'cover',
 						'background-repeat': 'none',
 					}"
-					:leftColor="'rgba(var(--FSCblueRGB), 0.7); backdrop-filter: blur(5px);'"
+					:leftColor="'var(--blue-gradient-left)'"
 					:rightColor="'transparent'"
 					:height="500"
 					:padding="'60px 0 0 0'"
 				>
 					<template v-slot:left>
-						<h1 style="color: white">Content on the Left side</h1>
+						<div class="vertical-center">
+							<h1 style="color: white">
+								Home of the 2021-2022 All-Sports Champions
+							</h1>
+						</div>
 					</template>
 				</SkewBox>
 			</Slide>
 			<Slide :key="2">
-				<SkewBox :height="500" :padding="'60px 0 0 0'">
-					<template v-slot:left>
-						<h1 style="color: white">Content on the left side</h1>
-					</template>
+				<SkewBox
+					:leftBG="{
+						backgroundImage: `url(${require('@/assets/img/BGlunch6.jpg')})`,
+						width: '55vw!important',
+						'background-position': 'center',
+						'background-size': 'cover',
+						'background-repeat': 'none',
+					}"
+					:rightColor="'var(--grey-gradient-right)'"
+					:leftColor="'transparent'"
+					:height="500"
+					:padding="'60px 0 0 0'"
+				>
 					<template v-slot:right>
-						<h1 style="color: white">Content on the right side</h1>
+						<div class="vertical-center">
+							<h1 style="color: white">
+								The BEST Department on Campus
+							</h1>
+						</div>
 					</template>
 				</SkewBox>
 			</Slide>
@@ -713,9 +731,9 @@ export default {
 */
 .tour-link {
 	transition: all 0.2s ease-in-out;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 50px;
-    border-radius: 20px;
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 50px;
+	border-radius: 20px;
 }
 
 .tour-link:hover {

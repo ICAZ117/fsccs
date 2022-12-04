@@ -4,9 +4,9 @@
 			<div class="w-100 contain">
 				<router-link to="/" class="navbar-brand">
 					<img
-						src="../assets/img/DiscoCube.gif"
-						class=""
-						height="50"
+						src="../assets/img/Cube.svg"
+						class="cube"
+						height="44"
 						alt="Logo"
 						title="Logo"
 					/>

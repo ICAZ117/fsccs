@@ -1,5 +1,5 @@
 <template>
-	<div class="skewbox-parent">
+	<div class="skewbox-parent" v-if="maintainSkewbox || windowWidth >= 1200">
 		<div class="bgs">
 			<div class="bg" :style="leftBG"></div>
 			<div class="bg" :style="rightBG" style="right: 0 !important"></div>
@@ -13,6 +13,30 @@
 			<div class="poly-item" :style="'background: ' + rightColor">
 				<div class="poly-content poly-right">
 					<slot name="right"></slot>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div v-else>
+		<div
+			:style="pictureSide == 'right' ? rightBG : leftBG"
+			style="width: 100vw !important"
+		>
+			<div
+				:style="
+					'min-height: ' +
+					cssHeight +
+					'; width: 100vw!important; transform: scaleY(' +
+					(invert ? '-' : '') +
+					'1); display: flex; align-items: center; background: hsla(' +
+					mobileColor +
+					'); backdrop-filter: blur(7px); height: 100%; width: 100%; font-size: large; hyphens: auto;'
+				"
+			>
+				<div class="container p-5">
+					<slot
+						:name="pictureSide == 'right' ? 'left' : 'right'"
+					></slot>
 				</div>
 			</div>
 		</div>
@@ -67,17 +91,50 @@ export default {
 			default: "0, 0, 0",
 			required: false,
 		},
+		pictureSide: {
+			type: String,
+			default: "right",
+			required: false,
+		},
+		maintainSkewbox: {
+			type: Boolean,
+			default: true,
+			required: false,
+		},
+		invert: {
+			type: Boolean,
+			default: false,
+			required: false,
+		},
+		mobileColor: {
+			type: String,
+			default: "rgba(0, 0, 0, 0.6)",
+			required: false,
+		},
 	},
 	data() {
 		return {
 			x: 0,
 			cssHeight: "",
 			windowHeight: "",
+			windowWidth: "",
 		};
 	},
-	beforeMount() {
-		this.windowHeight = window.innerHeight;
+	methods: {
+		getWindowSize() {
+			this.windowHeight = window.innerHeight;
+			this.windowWidth = window.innerWidth;
+		},
 	},
+	created() {
+		window.addEventListener("resize", this.getWindowSize);
+	},
+	destroyed() {
+		window.removeEventListener("resize", this.getWindowSize);
+	},
+    beforeMount() {
+        this.getWindowSize();
+    },
 	mounted() {
 		this.x = Math.tan((10 * Math.PI) / 180) * (this.height / 2) + "px";
 		this.cssHeight = this.height + "px";
@@ -219,7 +276,7 @@ export default {
 		--propHeight: calc(0.6 * v-bind(cssHeight));
 	}
 
-    .poly-right {
+	.poly-right {
 		transform: skew(10deg) translateX(-35px);
 	}
 
