@@ -257,7 +257,7 @@
 						<div class="col-4">
 							<Bucket
 								:courses="courses"
-								:title="'Calculus'"
+								:title="'Discrete Structures'"
 								:coursesTaken="cs.math1"
 								:credits="4"
 							/>
@@ -265,7 +265,7 @@
 						<div class="col-4">
 							<Bucket
 								:courses="courses"
-								:title="'Discrete Structures'"
+								:title="'Calculus'"
 								:coursesTaken="cs.math2"
 								:credits="4"
 							/>
@@ -595,6 +595,7 @@ export default {
 				religion: [],
 				theology: [],
 			},
+			extras: [],
 		};
 	},
 	methods: {
@@ -802,7 +803,7 @@ export default {
 
 					// Loop over the buckets in the course
 					for (let j = 0; j < course.buckets.length; j++) {
-						// Add the course to the buckets it fills
+						// Deteremine if the course applies to a BS bucket
 						if (course.buckets[j] == "BSQuan") {
 							BSbucket = "quantitative";
 						} else if (course.buckets[j] == "BSNS") {
@@ -908,6 +909,33 @@ export default {
 							}
 						}
 					}
+				}
+
+				// Loop over all of the courses the student has taken.
+				for (let i = 0; i < this.coursesTaken.length; i++) {
+					// Get the course from the master course list
+					const course = this.courses[this.coursesTaken[i].code];
+					var bsBucketsFilled = [];
+
+					// Loop over the buckets in the course
+					for (let j = 0; j < course.buckets.length; j++) {
+						// Deteremine if the course applies to a BS bucket
+                        if (course.buckets[j] == "BSQuan") {
+							bsBucketsFilled.push("quantitative");
+						} else if (course.buckets[j] == "BSNS") {
+							bsBucketsFilled.push("naturalScience");
+						} else if (course.buckets[j] == "BSSS") {
+							bsBucketsFilled.push("socialScience");
+						} else {
+							continue;
+						}
+					}
+
+                    var applicableToExtra = true;
+
+                    for (let j = 0; j < bsBucketsFilled.length; j++) {
+                        const credits = this.calcCredits(this.bs[bsBucketsFilled[j]]) - course.credits;
+                    }
 				}
 			}
 
@@ -1247,7 +1275,7 @@ export default {
 				}
 			});
 
-			if (this.credits == 0) {
+			if (this.credits != 0) {
 				this.cumulativeGPA = gradePoints / credits;
 			}
 		},
@@ -1301,7 +1329,7 @@ export default {
 					}
 				}
 			});
-			if (this.credits == 0) {
+			if (this.credits != 0) {
 				this.majorGPA = gradePoints / credits;
 			}
 		},
