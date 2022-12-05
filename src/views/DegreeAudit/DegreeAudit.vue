@@ -237,7 +237,7 @@
 				</div>
 				<div id="computerScience" class="mt-4 pt-1">
 					<div style="display: flex; flex-direction: row">
-						<h3>Computer science</h3>
+						<h3>Computer Science</h3>
 						<div class="ms-4">
 							Required Credits: 66
 							<br />
@@ -447,7 +447,7 @@
 					</div>
 				</div>
 
-				<div id="bs" class="mt-5 pt-1" v-if="degreeType == 'BA'">
+				<div id="ba" class="mt-5 pt-1" v-if="degreeType == 'BA'">
 					<div style="display: flex; flex-direction: row">
 						<h3>Bachelors of Arts</h3>
 						<div class="ms-4">
@@ -531,6 +531,28 @@
 								:title="'Theology'"
 								:coursesTaken="ba.theology"
 								:credits="4"
+							/>
+						</div>
+					</div>
+				</div>
+
+				<div id="extras" class="mt-5 pt-1">
+					<div style="display: flex; flex-direction: row">
+						<h3>Extra Courses</h3>
+						<div
+							class="ms-4 mb-2"
+							style="display: flex; align-items: center"
+						>
+							Completed Credits: {{ calcCredits(extras) }}
+						</div>
+					</div>
+					<hr class="primary-hr" />
+					<div class="mx-0 row gy-4">
+						<div class="col-4">
+							<Bucket
+								:courses="courses"
+								:title="'Extras'"
+								:coursesTaken="extras"
 							/>
 						</div>
 					</div>
@@ -911,6 +933,9 @@ export default {
 					}
 				}
 
+				// Once all of the BS buckets have been filled, the next step is to remove
+				// any overflowed buckets from BS buckets and move them into the extras bucket
+
 				// Loop over all of the courses the student has taken.
 				for (let i = 0; i < this.coursesTaken.length; i++) {
 					// Get the course from the master course list
@@ -920,7 +945,7 @@ export default {
 					// Loop over the buckets in the course
 					for (let j = 0; j < course.buckets.length; j++) {
 						// Deteremine if the course applies to a BS bucket
-                        if (course.buckets[j] == "BSQuan") {
+						if (course.buckets[j] == "BSQuan") {
 							bsBucketsFilled.push("quantitative");
 						} else if (course.buckets[j] == "BSNS") {
 							bsBucketsFilled.push("naturalScience");
@@ -931,11 +956,37 @@ export default {
 						}
 					}
 
-                    var applicableToExtra = true;
+					// Create a flag
+					var applicableToExtra = true;
 
-                    for (let j = 0; j < bsBucketsFilled.length; j++) {
-                        const credits = this.calcCredits(this.bs[bsBucketsFilled[j]]) - course.credits;
-                    }
+					// Loop over all of the BS buckets the current course applies to
+					for (let j = 0; j < bsBucketsFilled.length; j++) {
+						// Calculate the number of credits within the current bucket
+						// should the current course be removed
+						const credits =
+							this.calcCredits(this.bs[bsBucketsFilled[j]]) -
+							course.credits;
+
+						// If the removal of the current course would result in the
+						// bucket being underfilled, don't remove the course
+						if (credits < 4) {
+							applicableToExtra = false;
+							break;
+						}
+					}
+
+					// If the current course is an extra course, remove it from all BS buckets
+					// it's in and add it to the extras bucket
+					if (applicableToExtra) {
+						// Loop over all of the BS buckets the current course applies to
+						for (let j = 0; j < bsBucketsFilled.length; j++) {
+							this.bs[bsBucketsFilled[j]] = this.bs[
+								bsBucketsFilled[j]
+							].filter((code) => code != course.code);
+
+							this.extras.push(course.code);
+						}
+					}
 				}
 			}
 
@@ -1337,7 +1388,7 @@ export default {
 			var credits = 0;
 
 			for (var i = 0; i < list.length; i++) {
-				credits += this.courses[list[0]].credits;
+				credits += parseInt(this.courses[list[i]].credits);
 			}
 
 			return credits;

@@ -23,16 +23,17 @@
 	<!-- SUMMARY -->
 	<Parallax
 		:image="{
-			backgroundImage: `url(${require('@/assets/img/cube-pics/DSC00018b.jpg')}`,
-			'background-position': 'top middle',
+			backgroundImage: `url(${require('@/assets/img/cube-pics/SidePic.jpg')}`,
+			'background-position': 'center',
 		}"
 		:height="'0'"
 		:opacity="0.7"
 		:overlayColor="'0, 0, 0'"
 		class="red-section"
 	>
-		<div class="intro col-10 my-5 center">
-			<p>
+		<div class="container my-5 py-5 vertical-center">
+            <h3 class="white">Carol &amp; Marcus Weinstein Computer Sciences Center</h3>
+			<p class="white">
 				The Weinstein Computer Sciences Center was completed in spring
 				of 2020 and was named for FSC Trustee Carole and Marcus
 				Weinstein of Richmond, Va. On top of being a cohesive learning

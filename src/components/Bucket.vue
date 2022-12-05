@@ -20,7 +20,7 @@
 							: 'white'
 					"
 				>
-					{{ creditsTaken }}/{{ credits }}
+					{{ creditsTaken }}{{ (credits) ? '/' + credits : '' }}
 				</div>
 				<div v-if="creditsTaken < credits">
 					<i

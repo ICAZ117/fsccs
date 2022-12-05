@@ -26,17 +26,18 @@
 			backgroundImage: `url(${require('@/assets/img/cube-pics/DSC00031.jpg')}`,
 			'background-position': 'left middle',
 		}"
-		:height="'0'"
+		:height="''"
 		:opacity="0.7"
 		:overlayColor="'0, 0, 0'"
 		class="red-section"
 	>
-		<div class="h-100 pb-2">
+		<div class="h-100">
 			<center>
-				<div class="container py-5 h-100">
-					<div class="">
+				<div class="container my-5 py-5 h-100">
+					<div>
+                        <h3 class="white">What We Have to Offer</h3>
 						<p
-							class="col-10 white large"
+							class="white"
 							style="text-align: justify"
 						>
 							Computer science provides you with a sound
@@ -78,11 +79,11 @@
 	>
 		<template v-slot:right>
 			<div class="vertical-center">
-				<div class="center mb-4 white">
+				<div class="center white">
 					<h3 style="font-weight: bold">A Community That Cares</h3>
 				</div>
 				<div>
-					<h5 class="community-text">
+					<p class="white">
 						The CS department strives to be a welcoming and
 						inclusive environment for students, both inside and
 						outside of class. More than just a major, the department
@@ -90,7 +91,7 @@
 						to connect with each other and the material, as well as
 						build skills that can be directly translated into the
 						work force.
-					</h5>
+					</p>
 				</div>
 			</div>
 		</template>
@@ -206,7 +207,6 @@
 			:wrapAround="true"
 			:transition="600"
 			:pauseAutoplayOnHover="true"
-			:autoplay="5000"
 			style="height: 499px; overflow: hidden"
 		>
 			<Slide key="0">

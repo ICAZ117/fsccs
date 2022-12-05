@@ -35,13 +35,13 @@
 					:title="professor.title"
 					:quote="professor.quote"
 					:image="professor.teachingimg"
-					:overlay="index % 2 == 0 ? 'overlay1' : 'overlay2'"
+					:overlay="index % 2 == 0 ? 'overlay2' : 'overlay1'"
 					:class="
 						index % 2 == 0 &&
 						index != Object.keys(professors).length - 1
-							? 'red-section'
-							: index != Object.keys(professors).length - 1
 							? 'blue-section'
+							: index != Object.keys(professors).length - 1
+							? 'red-section'
 							: ''
 					"
 				>

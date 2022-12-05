@@ -101,7 +101,7 @@
 	>
 		<div class="h-100">
 			<div class="announcements container py-5 h-100">
-				<h1 class="center primary mt-2 pb-1 bold">Announcements</h1>
+				<h1 class="center white mt-2 pb-1 bold">Announcements</h1>
 
 				<Carousel
 					class="carousel"
