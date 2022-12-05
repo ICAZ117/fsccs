@@ -90,7 +90,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .outside {
 	position: relative;
 	object-position: center;
