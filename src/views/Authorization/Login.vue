@@ -75,6 +75,8 @@
 <script>
 import {
 	getAuth,
+	setPersistence,
+	browserLocalPersistence,
 	signInWithEmailAndPassword,
 	sendEmailVerification,
 	signOut,
@@ -92,67 +94,74 @@ export default {
 	},
 	methods: {
 		async signIn() {
-			await signInWithEmailAndPassword(
-				getAuth(),
-				this.email,
-				this.password
-			)
-				.then(async () => {
-					// Set the user's email in the store
-					this.$store.commit("setEmail", this.email);
+			await setPersistence(getAuth(), browserLocalPersistence).then(
+				async () => {
+					return await signInWithEmailAndPassword(
+						getAuth(),
+						this.email,
+						this.password
+					)
+						.then(async () => {
+							// Set the user's email in the store
+							this.$store.commit("setEmail", this.email);
 
-					// Fetch the user's account into the store
-					await this.$store.dispatch("fetchUser");
+							// Fetch the user's account into the store
+							await this.$store.dispatch("fetchUser");
 
-					// Grab the user's account from the store
-					this.auth = this.$store.getters.getUser;
+							// Grab the user's account from the store
+							this.auth = this.$store.getters.getUser;
 
-					// If the user has already registered...
-					if (this.auth.registrationComplete) {
-						this.$router.push("/");
-					} else {
-						if (getAuth().currentUser.emailVerified) {
-							this.$router.push("/sign-up/finalize");
-						} else {
+							// If the user has already registered...
+							if (this.auth.registrationComplete) {
+								this.$router.push("/");
+							} else {
+								if (getAuth().currentUser.emailVerified) {
+									this.$router.push("/sign-up/finalize");
+								} else {
+									this.$notify({
+										title: "Error",
+										text: "Email not yet verified!",
+										type: "error",
+										duration: 5000,
+									});
+									signOut(getAuth());
+									this.showVerificationBtn = true;
+									this.height = "500px";
+								}
+							}
+						})
+						.catch((error) => {
+							let message = "";
+
+							switch (error.code) {
+								case "auth/invlid-email":
+									message = "Invalid email address";
+									break;
+								case "auth/user-not-found":
+									message =
+										"No account exists with that email address";
+									break;
+								case "auth/wrong-password":
+									message = "Invalid password";
+									break;
+								case "auth/user-disabled":
+									message = "Your account has been disabled";
+									break;
+								default:
+									message = "Something went wrong";
+							}
+
 							this.$notify({
 								title: "Error",
-								text: "Email not yet verified!",
+								text: message,
 								type: "error",
-								duration: 5000,
 							});
-							signOut(getAuth());
-							this.showVerificationBtn = true;
-							this.height = "500px";
-						}
-					}
-				})
-				.catch((error) => {
-					let message = "";
-
-					switch (error.code) {
-						case "auth/invlid-email":
-							message = "Invalid email address";
-							break;
-						case "auth/user-not-found":
-							message =
-								"No account exists with that email address";
-							break;
-						case "auth/wrong-password":
-							message = "Invalid password";
-							break;
-						case "auth/user-disabled":
-							message = "Your account has been disabled";
-							break;
-						default:
-							message = "Something went wrong";
-					}
-
-					this.$notify({
-						title: "Error",
-						text: message,
-						type: "error",
-					});
-				});
+						});
+				}
+			)
+            .catch((error) => {
+                console.log("PERSISTENCE_ERROR: " + error.message);
+            });
 		},
 
 		async resend() {
