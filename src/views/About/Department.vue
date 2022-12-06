@@ -558,7 +558,7 @@ BOOTSTRAP BREAKPOINTS:
 		font-size: small;
 	}
 	.community .com-title {
-		font-size: x-small;
+		font-size: medium;
 		margin: 0 !important;
 	}
 
@@ -582,17 +582,24 @@ BOOTSTRAP BREAKPOINTS:
 }
 
 @media (max-width: 575.9px) {
-	.hero, .car {
+	.hero {
 		height: calc(500px * 0.6) !important;
+	}
+
+	.car {
+		height: calc(500px * 0.5) !important;
 	}
 
 	/* .community {
 		
 	} */
 
-	.car .skew h1 {
-		font-size: 25px;
-		margin: 10%;
+	.intro .intro-text {
+		font-size: x-small !important;
+	}
+
+	.car .skew {
+		font-size: 15px;
 	}
 
 	.carousel__prev,
