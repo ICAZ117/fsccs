@@ -40,7 +40,7 @@
 					<div class="">
 						<p
 							class="col-10 white intro-text"
-							style="text-align: justify"
+							style="text-align: justify; line-height: 2 !important; font-size: larger;"
 						>
 							Computer science provides you with a sound
 							theoretical background and the opportunities for
