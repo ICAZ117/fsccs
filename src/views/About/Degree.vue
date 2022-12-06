@@ -11,7 +11,7 @@
 		:leftColor="'var(--red-gradient-left)'"
 		:height="500"
 		:padding="'120px 0 60px 0'"
-		class="red-section"
+		class="red-section hero"
 	>
 		<template v-slot:left>
 			<div class="center vertical-center">
@@ -34,10 +34,10 @@
 		<div class="h-100 pb-2">
 			<center>
 				<div class="m-auto faculty container py-5 h-100">
-					<h1 class="center white mt-2 mb-4 pb-1">
+					<h1 class="center white mt-2 mb-4 pb-1 intro">
 						Bachelors of Computer Science
 					</h1>
-					<p class="white page-text">
+					<p class="white page-text intro-text">
 						Computer science provides you with a sound theoretical
 						background and the opportunities for individual and
 						collaborative exploration of real-world computing
@@ -60,7 +60,7 @@
 						interests into the curriculum. For a detailed list of
 						the classes in the CS major, please check out
 						<a
-							class="white link"
+							class="link"
 							value="Catalog Link"
 							href="https://www.flsouthern.edu/about/academics/catalog.aspx"
 							target="_blank"
@@ -91,7 +91,7 @@
 
 	<!-- CONCENTRATIONS -->
 	<Carousel
-		class="carousel concentrations"
+		class="carousel concentrations car"
 		:wrap-around="true"
 		:autoplay="5000"
 		:transition="1500"
@@ -109,6 +109,7 @@
 				:leftColor="'var(--FSCred)'"
 				:rightColor="'transparent'"
 				:height="600"
+				class="skew"
 			>
 				<template v-slot:left>
 					<div
@@ -151,6 +152,7 @@
 				:leftColor="'var(--FSCgrey)'"
 				:rightColor="'transparent'"
 				:height="600"
+				class="skew"
 			>
 				<template v-slot:left>
 					<div
@@ -194,6 +196,7 @@
 				:leftColor="'var(--FSCblue)'"
 				:rightColor="'transparent'"
 				:height="600"
+				class="skew skew-cyber"
 			>
 				<template v-slot:left>
 					<div
@@ -269,4 +272,127 @@ export default {
 .concentrations .carousel__next {
 	right: 30px !important;
 }
+
+
+/*
+███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
+████  ████ ██      ██   ██ ██ ██   ██     ██    ██ ██    ██ ██      ██   ██ ██ ██      ██      
+██ ████ ██ █████   ██   ██ ██ ███████     ██    ██ ██    ██ █████   ██████  ██ █████   ███████ 
+██  ██  ██ ██      ██   ██ ██ ██   ██     ██ ▄▄ ██ ██    ██ ██      ██   ██ ██ ██           ██ 
+██      ██ ███████ ██████  ██ ██   ██      ██████   ██████  ███████ ██   ██ ██ ███████ ███████ 
+*/
+/* 
+BOOTSTRAP BREAKPOINTS:
+  xs: 475px
+  sm: 576px
+  md: 768px
+  lg: 992px
+  xl: 1200px
+  xxl: 1400px
+*/
+@media (max-width: 1199.9px) {
+	.hero, .car {
+		height: calc(500px * 0.7) !important;
+	}
+
+	.car .carousel__prev,
+	.car .carousel__next {
+		scale: 0.85;
+	}
+
+	.car .carousel__prev {
+		left: 10px !important;
+	}
+
+	.car .carousel__next {
+		right: 10px !important;
+	}
+
+}
+
+@media (max-width: 991.9px) {
+	
+	.intro .intro-text {
+		font-size: medium;
+	}
+
+	.skew h1 {
+		font-size: medium;
+	}
+	.skew p {
+		font-size: small;
+		line-height: 1.8;
+	}
+	.skew-cyber p {
+		margin-bottom: .5rem;
+		line-height: 1.6 !important;
+	}
+	.skew li {
+		font-size: small;
+	}
+
+	.car .carousel__prev {
+		left: -15px !important;
+	}
+
+	.car .carousel__next {
+		right: -15px !important;
+	}
+
+}
+
+@media (max-width: 767.9px) {
+
+	.intro .intro-text {
+		font-size: medium !important;
+	}
+
+
+	.car .carousel__prev,
+	.car .carousel__next {
+		scale: 0.65;
+	}
+	
+	.car .carousel__prev {
+		left: -10px !important;
+	}
+
+	.car .carousel__next {
+		right: -10px !important;
+	}
+
+	
+}
+
+@media (max-width: 575.9px) {
+	.hero, .car {
+		height: calc(500px * 0.5) !important;
+	}
+
+	/* .community {
+		
+	} */
+
+	.intro .intro-text {
+		font-size: small !important;
+	}
+
+	.car .skew {
+		font-size: 15px;
+	}
+
+	.carousel__prev,
+	.carousel__next {
+		display: none;
+	}
+
+	.show-576 {
+		display: flex;
+	}
+
+}
+
+@media (max-width: 399.9px) {
+}
+
 </style>

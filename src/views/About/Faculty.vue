@@ -28,7 +28,7 @@
 
 	<div class="">
 		<div id="professorList">
-			<div v-for="(professor, name, index) in professors" :key="index">
+			<div class="prof" v-for="(professor, name, index) in professors" :key="index">
 				<FacultyPageCard
 					:professor="professor"
 					:name="name"
@@ -47,7 +47,7 @@
 				>
 					<a
 						:href="`/faculty?id=${name}`"
-						class="btn btn-primary btn-md mt-2"
+						class="btn btn-primary btn-md mt-2 link"
 						>Learn more<i class="ms-2 fa-solid fa-arrow-right"></i
 					></a>
 				</FacultyPageCard>
@@ -103,11 +103,74 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 /* #professorList>*:not(:last-child) {
     margin-bottom: 1rem;
 } */
 .background {
 	background-color: var(--FSCred) !important;
 }
+.link {
+	background-color: white;
+	color: var(--FSCred)
+}
+.prof:hover .link {
+	background-color: var(--FSCred);
+	color: white
+}
+
+/*
+███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
+████  ████ ██      ██   ██ ██ ██   ██     ██    ██ ██    ██ ██      ██   ██ ██ ██      ██      
+██ ████ ██ █████   ██   ██ ██ ███████     ██    ██ ██    ██ █████   ██████  ██ █████   ███████ 
+██  ██  ██ ██      ██   ██ ██ ██   ██     ██ ▄▄ ██ ██    ██ ██      ██   ██ ██ ██           ██ 
+██      ██ ███████ ██████  ██ ██   ██      ██████   ██████  ███████ ██   ██ ██ ███████ ███████ 
+*/
+/* 
+BOOTSTRAP BREAKPOINTS:
+  xs: 475px
+  sm: 576px
+  md: 768px
+  lg: 992px
+  xl: 1200px
+  xxl: 1400px
+*/
+@media (max-width: 1199.9px) {
+	.hero {
+		height: calc(500px * 0.7) !important;
+	}
+	
+	
+}
+
+@media (max-width: 991.9px) {
+	.link {
+		transform: scale(.9) !important;
+		margin-top: 0 !important;
+	}
+	
+}
+
+@media (max-width: 767.9px) {
+
+	
+	
+}
+
+@media (max-width: 575.9px) {
+	.hero {
+		height: calc(500px * 0.5) !important;
+	}
+	.link {
+		transform: scale(.8) !important;
+		position:relative;
+		left: -15px;
+		top: 10px;
+	}
+	
+}
+
+@media (max-width: 399.9px) {
+}
+
 </style>

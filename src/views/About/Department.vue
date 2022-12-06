@@ -526,11 +526,6 @@ BOOTSTRAP BREAKPOINTS:
 		right: 10px !important;
 	}
 
-	.events {
-		width: 100%;
-		overflow: hidden;
-		max-height: unset !important;
-	}
 }
 
 @media (max-width: 991.9px) {
