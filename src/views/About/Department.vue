@@ -11,7 +11,10 @@
 		:leftColor="'var(--red-gradient-left)'"
 		:height="500"
 		:padding="'120px 0 60px 0'"
-		class="red-section"
+		:maintainSkewbox="true"
+		:pictureSide="'right'"
+		:invert="false"
+		class="hero red-section"
 	>
 		<template v-slot:left>
 			<div class="center vertical-center">
@@ -29,15 +32,14 @@
 		:height="''"
 		:opacity="0.7"
 		:overlayColor="'0, 0, 0'"
-		class="red-section"
+		class="red-section intro"
 	>
 		<div class="h-100">
 			<center>
-				<div class="container my-5 py-5 h-100">
-					<div>
-                        <h3 class="white">What We Have to Offer</h3>
+				<div class="py-5 h-100">
+					<div class="">
 						<p
-							class="white"
+							class="col-10 white intro-text"
 							style="text-align: justify"
 						>
 							Computer science provides you with a sound
@@ -75,15 +77,18 @@
 		:rightColor="'var(--blue-gradient-right)'"
 		:height="500"
 		:padding="'60px 0 60px 20px'"
-		class="red-section"
+		:maintainSkewbox="false"
+		:pictureSide="'left'"
+		:invert="false"
+		class="red-section community"
 	>
 		<template v-slot:right>
 			<div class="vertical-center">
-				<div class="center white">
+				<div class="center white com-title">
 					<h3 style="font-weight: bold">A Community That Cares</h3>
 				</div>
 				<div>
-					<p class="white">
+					<p class="white community-text">
 						The CS department strives to be a welcoming and
 						inclusive environment for students, both inside and
 						outside of class. More than just a major, the department
@@ -110,12 +115,12 @@
 	>
 		<div class="h-100 pb-2">
 			<center>
-				<div class="m-auto container py-5 h-100">
+				<div class="m-auto container py-5 h-100 great-dep">
 					<h1 class="center mt-2" style="color: white">
 						What Makes Our Department Great
 					</h1>
 					<div class="row">
-						<div class="col-6 mb-4">
+						<div class="col-6 mb-4 info-card">
 							<a
 								href="/about/faculty"
 								style="text-decoration: none !important"
@@ -134,7 +139,7 @@
 								</InfoCard>
 							</a>
 						</div>
-						<div class="col-6">
+						<div class="col-6 mb-4 info-card">
 							<a
 								href="/about/degree-and-concentrations"
 								style="text-decoration: none"
@@ -153,7 +158,7 @@
 								</InfoCard>
 							</a>
 						</div>
-						<div class="col-6">
+						<div class="col-6 mb-4 info-card">
 							<a
 								href="/virtual-tour"
 								style="text-decoration: none"
@@ -174,7 +179,7 @@
 								</InfoCard>
 							</a>
 						</div>
-						<div class="col-6">
+						<div class="col-6 mb-4 info-card">
 							<a
 								href="/get-involved/cs-club"
 								style="text-decoration: none"
@@ -202,154 +207,169 @@
 	</Parallax>
 
 	<!-- CAROUSEL-->
-	<div class="h-75 faculty">
-		<Carousel
-			:wrapAround="true"
-			:transition="600"
-			:pauseAutoplayOnHover="true"
-			style="height: 499px; overflow: hidden"
-		>
-			<Slide key="0">
-				<div
-					class="h-100 w-100"
-					:style="`background-image: url(${require('@/assets/img/BG7.jpg')}); background-size: cover; background-repeat: no-repeat`"
-				>
-					<div class="vertical-center">
-						<h1 class="primary">Why We Are Awesome</h1>
-					</div>
+	
+	<Carousel
+		:wrapAround="true"
+		:transition="600"
+		:pauseAutoplayOnHover="true"
+		style="height: 499px; overflow: hidden"
+		class="faculty car"
+	>
+		<Slide key="0">
+			<div
+				class="h-100 w-100"
+				:style="`background-image: url(${require('@/assets/img/BG7.jpg')}); background-size: cover; background-repeat: no-repeat`"
+			>
+				<div class="vertical-center">
+					<h1 class="primary">Why We Are Awesome</h1>
 				</div>
-			</Slide>
+			</div>
+		</Slide>
 
-			<Slide :key="1">
-				<SkewBox
-					:leftBG="{
-						backgroundImage: `url(${require('@/assets/img/Department/Bowling_Fall18.jpg')})`,
-						'background-position': 'right top',
-						'background-size': 'cover',
-						width: '54vw!important',
-						transform: 'scaleY(-1)',
-					}"
-					:leftColor="'transparent'"
-					:rightColor="'var(--red-gradient-right)'"
-					:height="500"
-					:padding="'70px 0 60px 0'"
-					style="transform: scaleY(-1)"
-				>
-					<template v-slot:right>
-						<div
-							class="vertical-center"
-							style="transform: scaleY(-1); text-align: center"
-						>
-							<h1 class="white">The department bowling team</h1>
-						</div>
-					</template>
-				</SkewBox>
-			</Slide>
+		<Slide :key="1">
+			<SkewBox
+				:leftBG="{
+					backgroundImage: `url(${require('@/assets/img/Department/Bowling_Fall18.jpg')})`,
+					'background-position': 'right top',
+					'background-size': 'cover',
+					width: '54vw!important',
+					transform: 'scaleY(-1)',
+				}"
+				:leftColor="'transparent'"
+				:rightColor="'var(--red-gradient-right)'"
+				:height="500"
+				:padding="'70px 0 60px 0'"
+				:maintainSkewbox="true"
+				:pictureSide="'left'"
+				:invert="true"
+				style="transform: scaleY(-1)"
+			>
+				<template v-slot:right>
+					<div
+						class="vertical-center skew"
+						style="transform: scaleY(-1); text-align: center"
+					>
+						<h1 class="white">The department bowling team</h1>
+					</div>
+				</template>
+			</SkewBox>
+		</Slide>
 
-			<Slide :key="2">
-				<SkewBox
-					:rightBG="{
-						backgroundImage: `url(${require('@/assets/img/Department/ChiliContest.png')})`,
-						'background-position': 'center',
-						'background-size': '',
-						width: '54vw!important',
-					}"
-					:rightColor="'transparent'"
-					:leftColor="'var(--blue-gradient-left)'"
-					:height="500"
-					:padding="'70px 0 60px 0'"
-				>
-					<template v-slot:left>
-						<div class="vertical-center white">
-							<h1 class="">
-								Cool events, like this chili contest
-							</h1>
-						</div>
-					</template>
-				</SkewBox>
-			</Slide>
+		<Slide :key="2">
+			<SkewBox
+				:rightBG="{
+					backgroundImage: `url(${require('@/assets/img/Department/ChiliContest.png')})`,
+					'background-position': 'center',
+					'background-size': '',
+					width: '54vw!important',
+				}"
+				:rightColor="'transparent'"
+				:leftColor="'var(--blue-gradient-left)'"
+				:height="500"
+				:maintainSkewbox="true"
+				:pictureSide="'right'"
+				:invert="false"
+				:padding="'70px 0 60px 0'"
+			>
+				<template v-slot:left>
+					<div class="vertical-center white skew">
+						<h1 class="">
+							Cool events, like this chili contest
+						</h1>
+					</div>
+				</template>
+			</SkewBox>
+		</Slide>
 
-			<Slide :key="3">
-				<SkewBox
-					:leftBG="{
-						backgroundImage: `url(${require('@/assets/img/EngagedLearning2.jpg')})`,
-						'background-position': 'right center',
-						'background-size': 'cover',
-						width: '54vw!important',
-						transform: 'scaleY(-1)',
-					}"
-					:leftColor="'transparent'"
-					:rightColor="'var(--FSCgrey)'"
-					:height="500"
-					:padding="'70px 0 60px 0'"
-					style="transform: scaleY(-1)"
-				>
-					<template v-slot:right>
-						<div
-							class="vertical-center"
-							style="transform: scaleY(-1); text-align: center"
-						>
-							<h1 class="white">
-								Engaged learning, which makes classes
-								interesting!
-							</h1>
-						</div>
-					</template>
-				</SkewBox>
-			</Slide>
+		<Slide :key="3">
+			<SkewBox
+				:leftBG="{
+					backgroundImage: `url(${require('@/assets/img/EngagedLearning2.jpg')})`,
+					'background-position': 'right center',
+					'background-size': 'cover',
+					width: '54vw!important',
+					transform: 'scaleY(-1)',
+				}"
+				:leftColor="'transparent'"
+				:rightColor="'var(--FSCgrey)'"
+				:height="500"
+				:padding="'70px 0 60px 0'"
+				:maintainSkewbox="true"
+				:pictureSide="'left'"
+				:invert="true"
+				style="transform: scaleY(-1)"
+			>
+				<template v-slot:right>
+					<div
+						class="vertical-center skew"
+						style="transform: scaleY(-1); text-align: center"
+					>
+						<h1 class="white">
+							Engaged learning, which makes classes
+							interesting!
+						</h1>
+					</div>
+				</template>
+			</SkewBox>
+		</Slide>
 
-			<Slide :key="4">
-				<SkewBox
-					:rightBG="{
-						backgroundImage: `url(${require('@/assets/img/BoardGameLunch.png')})`,
-						'background-position': 'center',
-						'background-size': 'cover',
-						width: '54vw!important',
-					}"
-					:rightColor="'transparent'"
-					:leftColor="'var(--red-gradient-left)'"
-					:height="500"
-					:padding="'70px 0 60px 0'"
-				>
-					<template v-slot:left>
-						<div class="vertical-center white">
-							<h1 class="">Weekly boardgame lunches</h1>
-						</div>
-					</template>
-				</SkewBox>
-			</Slide>
+		<Slide :key="4">
+			<SkewBox
+				:rightBG="{
+					backgroundImage: `url(${require('@/assets/img/BoardGameLunch.png')})`,
+					'background-position': 'center',
+					'background-size': 'cover',
+					width: '54vw!important',
+				}"
+				:rightColor="'transparent'"
+				:leftColor="'var(--red-gradient-left)'"
+				:height="500"
+				:padding="'70px 0 60px 0'"
+				:maintainSkewbox="true"
+				:pictureSide="'right'"
+				:invert="false"
+			>
+				<template v-slot:left>
+					<div class="vertical-center white skew">
+						<h1 class="">Weekly boardgame lunches</h1>
+					</div>
+				</template>
+			</SkewBox>
+		</Slide>
 
-			<Slide :key="5">
-				<SkewBox
-					:leftBG="{
-						backgroundImage: `url(${require('@/assets/img/Department/EicholtzGaming.jpg')})`,
-						'background-position': 'right top',
-						'background-size': 'cover',
-						width: '54vw!important',
-						transform: 'scaleY(-1)',
-					}"
-					:leftColor="'transparent'"
-					:rightColor="'var(--blue-gradient-right)'"
-					:height="500"
-					:padding="'70px 0 60px 0'"
-					style="transform: scaleY(-1)"
-				>
-					<template v-slot:right>
-						<div
-							class="vertical-center"
-							style="transform: scaleY(-1); text-align: center"
-						>
-							<h1 class="white">Everyone has fun!</h1>
-						</div>
-					</template>
-				</SkewBox>
-			</Slide>
-			<template #addons>
-				<Navigation />
-				<Pagination style="transform: translateY(-40px)" />
-			</template>
-		</Carousel>
-	</div>
+		<Slide :key="5">
+			<SkewBox
+				:leftBG="{
+					backgroundImage: `url(${require('@/assets/img/Department/EicholtzGaming.jpg')})`,
+					'background-position': 'right top',
+					'background-size': 'cover',
+					width: '54vw!important',
+					transform: 'scaleY(-1)',
+				}"
+				:leftColor="'transparent'"
+				:rightColor="'var(--blue-gradient-right)'"
+				:height="500"
+				:padding="'70px 0 60px 0'"
+				:maintainSkewbox="true"
+				:pictureSide="'left'"
+				:invert="true"
+				style="transform: scaleY(-1)"
+			>
+				<template v-slot:right>
+					<div
+						class="vertical-center skew"
+						style="transform: scaleY(-1); text-align: center"
+					>
+						<h1 class="white">Everyone has fun!</h1>
+					</div>
+				</template>
+			</SkewBox>
+		</Slide>
+		<template #addons>
+			<Navigation />
+			<Pagination style="transform: translateY(-40px)" />
+		</template>
+	</Carousel>
 </template>
 
 <script>
@@ -471,4 +491,125 @@ a:focus {
 	/* margin-left: 5%;
 		margin-right: 5%; */
 }
+
+/*
+███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
+████  ████ ██      ██   ██ ██ ██   ██     ██    ██ ██    ██ ██      ██   ██ ██ ██      ██      
+██ ████ ██ █████   ██   ██ ██ ███████     ██    ██ ██    ██ █████   ██████  ██ █████   ███████ 
+██  ██  ██ ██      ██   ██ ██ ██   ██     ██ ▄▄ ██ ██    ██ ██      ██   ██ ██ ██           ██ 
+██      ██ ███████ ██████  ██ ██   ██      ██████   ██████  ███████ ██   ██ ██ ███████ ███████ 
+*/
+/* 
+BOOTSTRAP BREAKPOINTS:
+  xs: 475px
+  sm: 576px
+  md: 768px
+  lg: 992px
+  xl: 1200px
+  xxl: 1400px
+*/
+@media (max-width: 1199.9px) {
+	.hero, .car {
+		height: calc(500px * 0.7) !important;
+	}
+
+	.car .carousel__prev,
+	.car .carousel__next {
+		scale: 0.85;
+	}
+
+	.car .carousel__prev {
+		left: 10px !important;
+	}
+
+	.car .carousel__next {
+		right: 10px !important;
+	}
+
+	.events {
+		width: 100%;
+		overflow: hidden;
+		max-height: unset !important;
+	}
+}
+
+@media (max-width: 991.9px) {
+	
+	.intro .intro-text {
+		font-size: medium;
+	}
+
+	.community .community-text {
+		font-size: medium;
+	}
+	.community .com-title {
+		font-size: small;
+		margin: 0 !important;
+	}
+}
+
+@media (max-width: 767.9px) {
+
+	.intro .intro-text {
+		font-size: small;
+	}
+
+	.community .community-text {
+		font-size: small;
+	}
+	.community .com-title {
+		font-size: x-small;
+		margin: 0 !important;
+	}
+
+	.car .carousel__prev,
+	.car .carousel__next {
+		scale: 0.65;
+	}
+	
+	.car .carousel__prev {
+		left: -10px !important;
+	}
+
+	.car .carousel__next {
+		right: -10px !important;
+	}
+
+	.great-dep .info-card {
+		width: 100%
+	}
+	
+}
+
+@media (max-width: 575.9px) {
+	.hero, .car {
+		height: calc(500px * 0.6) !important;
+	}
+
+	/* .community {
+		
+	} */
+
+	.car .skew h1 {
+		font-size: 25px;
+		margin: 10%;
+	}
+
+	.carousel__prev,
+	.carousel__next {
+		display: none;
+	}
+
+	.show-576 {
+		display: flex;
+	}
+
+	.announcementComponent {
+		width: 100% !important;
+	}
+}
+
+@media (max-width: 399.9px) {
+}
+
 </style>

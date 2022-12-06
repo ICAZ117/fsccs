@@ -128,7 +128,7 @@
 	</Parallax>
 
 	<!-- ABOUT CSC -->
-	<!-- <SkewBox
+	<SkewBox
 		:leftBG="{
 			backgroundImage: `url(${require('@/assets/img/CS_department_pic1.png')})`,
 			'background-position': 'center',
@@ -166,7 +166,7 @@
 				</div>
 			</div>
 		</template>
-	</SkewBox> -->
+	</SkewBox>
 </template>
 
 <script>
