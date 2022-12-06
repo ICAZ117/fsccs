@@ -5,20 +5,22 @@
 			backgroundImage: `url(${require('@/assets/img/cube-pics/CubeBallsGreen.jpg')})`,
 			'background-position': 'top',
 			'background-size': 'cover',
-			width: '53vw!important',
+			width: '58vw!important',
 		}"
 		:rightColor="'transparent'"
 		:leftColor="'var(--red-gradient-left)'"
 		:height="500"
-		:padding="'120px 0 60px 0'"
+		:padding="'60px 0 0 0'"
 		:maintainSkewbox="true"
 		:pictureSide="'right'"
 		:invert="false"
-		class="hero red-section"
+		class="red-section"
 	>
 		<template v-slot:left>
-			<div class="center vertical-center">
-				<h1 class="white">About the Department</h1>
+			<div class="h-100">
+				<div class="center vertical-center">
+					<h1 class="white">About the Department</h1>
+				</div>
 			</div>
 		</template>
 	</SkewBox>
@@ -29,18 +31,22 @@
 			backgroundImage: `url(${require('@/assets/img/cube-pics/DSC00031.jpg')}`,
 			'background-position': 'left middle',
 		}"
-		:height="''"
+		:height="'0'"
 		:opacity="0.7"
 		:overlayColor="'0, 0, 0'"
 		class="red-section intro"
 	>
 		<div class="h-100">
 			<center>
-				<div class="py-5 h-100">
-					<div class="">
+				<div class="my-5 py-5 h-100">
+					<div>
+						<h3 class="white">What We Have to Offer</h3>
 						<p
 							class="col-10 white intro-text"
-							style="text-align: justify; line-height: 2 !important; font-size: larger;"
+							style="
+								text-align: justify;
+								line-height: 2 !important;
+							"
 						>
 							Computer science provides you with a sound
 							theoretical background and the opportunities for
@@ -69,9 +75,9 @@
 	<SkewBox
 		:leftBG="{
 			backgroundImage: `url(${require('@/assets/img/gaming_at_party2.png')})`,
-			'background-position': 'top',
+			'background-position': 'right',
 			'background-size': 'cover',
-			width: '54vw!important',
+			width: '58vw!important',
 		}"
 		:leftColor="'transparent'"
 		:rightColor="'var(--blue-gradient-right)'"
@@ -111,7 +117,7 @@
 		:height="'0'"
 		:opacity="0.05"
 		:overlayColor="'0, 0, 0'"
-        class="red-section"
+		class="red-section"
 	>
 		<div class="h-100 pb-2">
 			<center>
@@ -207,7 +213,6 @@
 	</Parallax>
 
 	<!-- CAROUSEL-->
-	
 	<Carousel
 		:wrapAround="true"
 		:transition="600"
@@ -232,13 +237,13 @@
 					backgroundImage: `url(${require('@/assets/img/Department/Bowling_Fall18.jpg')})`,
 					'background-position': 'right top',
 					'background-size': 'cover',
-					width: '54vw!important',
+					width: '58vw!important',
 					transform: 'scaleY(-1)',
 				}"
 				:leftColor="'transparent'"
 				:rightColor="'var(--red-gradient-right)'"
 				:height="500"
-				:padding="'70px 0 60px 0'"
+				:padding="'0'"
 				:maintainSkewbox="true"
 				:pictureSide="'left'"
 				:invert="true"
@@ -260,8 +265,10 @@
 				:rightBG="{
 					backgroundImage: `url(${require('@/assets/img/Department/ChiliContest.png')})`,
 					'background-position': 'center',
-					'background-size': '',
-					width: '54vw!important',
+					'background-size': 'contain',
+					'background-repeat': 'no-repeat',
+					'background-color': 'var(--FSCgrey)',
+					width: '58vw!important',
 				}"
 				:rightColor="'transparent'"
 				:leftColor="'var(--blue-gradient-left)'"
@@ -269,13 +276,11 @@
 				:maintainSkewbox="true"
 				:pictureSide="'right'"
 				:invert="false"
-				:padding="'70px 0 60px 0'"
+				:padding="'0'"
 			>
 				<template v-slot:left>
 					<div class="vertical-center white skew">
-						<h1 class="">
-							Cool events, like this chili contest
-						</h1>
+						<h1 class="">Cool events, like this chili contest</h1>
 					</div>
 				</template>
 			</SkewBox>
@@ -287,13 +292,13 @@
 					backgroundImage: `url(${require('@/assets/img/EngagedLearning2.jpg')})`,
 					'background-position': 'right center',
 					'background-size': 'cover',
-					width: '54vw!important',
+					width: '58vw!important',
 					transform: 'scaleY(-1)',
 				}"
 				:leftColor="'transparent'"
 				:rightColor="'var(--FSCgrey)'"
 				:height="500"
-				:padding="'70px 0 60px 0'"
+				:padding="'0'"
 				:maintainSkewbox="true"
 				:pictureSide="'left'"
 				:invert="true"
@@ -305,8 +310,7 @@
 						style="transform: scaleY(-1); text-align: center"
 					>
 						<h1 class="white">
-							Engaged learning, which makes classes
-							interesting!
+							Engaged learning, which makes classes interesting!
 						</h1>
 					</div>
 				</template>
@@ -319,12 +323,12 @@
 					backgroundImage: `url(${require('@/assets/img/BoardGameLunch.png')})`,
 					'background-position': 'center',
 					'background-size': 'cover',
-					width: '54vw!important',
+					width: '58vw!important',
 				}"
 				:rightColor="'transparent'"
 				:leftColor="'var(--red-gradient-left)'"
 				:height="500"
-				:padding="'70px 0 60px 0'"
+				:padding="'0'"
 				:maintainSkewbox="true"
 				:pictureSide="'right'"
 				:invert="false"
@@ -343,13 +347,13 @@
 					backgroundImage: `url(${require('@/assets/img/Department/EicholtzGaming.jpg')})`,
 					'background-position': 'right top',
 					'background-size': 'cover',
-					width: '54vw!important',
+					width: '58vw!important',
 					transform: 'scaleY(-1)',
 				}"
 				:leftColor="'transparent'"
 				:rightColor="'var(--blue-gradient-right)'"
 				:height="500"
-				:padding="'70px 0 60px 0'"
+				:padding="'0'"
 				:maintainSkewbox="true"
 				:pictureSide="'left'"
 				:invert="true"
@@ -509,7 +513,7 @@ BOOTSTRAP BREAKPOINTS:
   xxl: 1400px
 */
 @media (max-width: 1199.9px) {
-	.hero, .car {
+	.car {
 		height: calc(500px * 0.7) !important;
 	}
 
@@ -525,11 +529,9 @@ BOOTSTRAP BREAKPOINTS:
 	.car .carousel__next {
 		right: 10px !important;
 	}
-
 }
 
 @media (max-width: 991.9px) {
-	
 	.intro .intro-text {
 		font-size: medium;
 	}
@@ -544,7 +546,6 @@ BOOTSTRAP BREAKPOINTS:
 }
 
 @media (max-width: 767.9px) {
-
 	.intro .intro-text {
 		font-size: medium !important;
 	}
@@ -561,7 +562,7 @@ BOOTSTRAP BREAKPOINTS:
 	.car .carousel__next {
 		scale: 0.65;
 	}
-	
+
 	.car .carousel__prev {
 		left: -10px !important;
 	}
@@ -571,14 +572,13 @@ BOOTSTRAP BREAKPOINTS:
 	}
 
 	.great-dep .info-card {
-		width: 100%
+		width: 100%;
 	}
-	
 }
 
 @media (max-width: 575.9px) {
-	.hero, .car {
-		height: calc(500px * 0.5) !important;
+	.car {
+		height: calc(500px * 0.6) !important;
 	}
 
 	/* .community {
@@ -609,5 +609,4 @@ BOOTSTRAP BREAKPOINTS:
 
 @media (max-width: 399.9px) {
 }
-
 </style>

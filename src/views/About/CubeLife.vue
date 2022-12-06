@@ -10,12 +10,14 @@
 		:rightColor="'transparent'"
 		:leftColor="'var(--red-gradient-left)'"
 		:height="500"
-		:padding="'120px 0 60px 0'"
+		:padding="'60px 0 0 0'"
 		class="red-section"
 	>
 		<template v-slot:left>
-			<div class="center vertical-center">
-				<h1 class="white">About The Cube Life</h1>
+			<div class="h-100">
+				<div class="center vertical-center">
+					<h1 class="white">About The Cube Life</h1>
+				</div>
 			</div>
 		</template>
 	</SkewBox>
@@ -75,10 +77,14 @@
 							The Cube Life chooses you!
 						</p>
 						<div class="center">
-							<button
+							<!-- <button
 								class="btn btn-md btn-primary"
 								@click="activateCubeLife"
 							>
+								Enable Cube Life Mode!
+							</button> -->
+
+							<button class="btn btn-md btn-primary">
 								Enable Cube Life Mode!
 							</button>
 						</div>
@@ -294,10 +300,10 @@
 		:rightColor="'transparent'"
 		:leftColor="'linear-gradient(to left, #7e49cb, #4b1d8a 35%)'"
 		:height="550"
-        :maintainSkewbox="false"
-        :pictureSide="'right'"
-        :invert="false"
-        :mobileColor="'264, 100%, 10%, 0.7'"
+		:maintainSkewbox="false"
+		:pictureSide="'right'"
+		:invert="false"
+		:mobileColor="'264, 100%, 10%, 0.7'"
 	>
 		<template v-slot:left>
 			<div
@@ -341,10 +347,10 @@
 		:leftColor="'transparent'"
 		:rightColor="'linear-gradient(to right, #ffa715, #f48310 30%)'"
 		:height="550"
-        :maintainSkewbox="false"
-        :pictureSide="'left'"
-        :invert="true"
-        :mobileColor="'37, 100%, 50%, 0.7'"
+		:maintainSkewbox="false"
+		:pictureSide="'left'"
+		:invert="true"
+		:mobileColor="'37, 100%, 50%, 0.7'"
 		style="transform: scaleY(-1)"
 	>
 		<template v-slot:right>
@@ -385,15 +391,15 @@
 		:rightColor="'transparent'"
 		:leftColor="'linear-gradient(to left, #202337, #000 80%)'"
 		:height="550"
-        :maintainSkewbox="false"
-        :pictureSide="'right'"
-        :invert="false"
-        :mobileColor="'232, 26%, 10%, 0.85'"
+		:maintainSkewbox="false"
+		:pictureSide="'right'"
+		:invert="false"
+		:mobileColor="'232, 26%, 10%, 0.85'"
 	>
 		<template v-slot:left>
 			<div
 				class="pe-xl-5 vertical-center white"
-				style="text-align: justify !important;"
+				style="text-align: justify !important"
 			>
 				<p>
 					Lastly, the virtual tour (<router-link
@@ -449,7 +455,7 @@ export default {
 				text: "Can you find all of the easter eggs?",
 				type: "success",
 			});
-            this.$router.push("/");
+			this.$router.push("/");
 		},
 	},
 };
