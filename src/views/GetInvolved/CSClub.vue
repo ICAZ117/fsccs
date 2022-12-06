@@ -173,9 +173,9 @@
 import SkewBox from "@/components/SkewBox.vue";
 import Parallax from "@/components/Parallax.vue";
 import InfoCard from "@/components/InfoCard.vue";
+import ProfileCard from "@/components/ProfileCard.vue";
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
-import ProfileCard from "../../components/ProfileCard.vue";
 
 export default {
 	components: {

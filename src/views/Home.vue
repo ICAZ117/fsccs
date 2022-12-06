@@ -217,7 +217,7 @@
 		<div class="h-100 pb-2">
 			<center>
 				<div class="m-auto faculty container py-5 h-100">
-					<h1 class="center FSCred mt-2 mb-4 pb-1 bold">
+					<h1 class="center white mt-2 mb-4 pb-1 bold">
 						Meet the Faculty
 					</h1>
 					<Carousel
@@ -259,7 +259,7 @@
 	>
 		<div class="container py-5 my-2" style="height: 70vh !important">
 			<div class="center vertical-center">
-				<router-link to="/virutal-tour" class="no-decor link-box">
+				<router-link to="/virtual-tour" class="no-decor link-box">
 					<h1 class="white bold tour-link">Take a Virtual Tour</h1>
 				</router-link>
 			</div>

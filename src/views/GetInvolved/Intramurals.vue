@@ -31,27 +31,28 @@
 		:overlayColor="'0, 0, 0'"
 		class="red-section"
 	>
-		<div class="h-100 pb-2">
+		<div class="h-100">
 			<center>
 				<div class="m-auto container py-5 h-100">
 					<div
 						class="white"
 						style="text-align: justify; line-height: 2 !important"
 					>
+						<h3 class="center white">
+							Home of the 2021-2022 All-Sports Champions
+						</h3>
 						<p>
-							Introducing the 2021-2022 All-Sports Champions: the
-							Computer Science Department! Yes, you read that
-							correctly! With Dr. Eicholtz leading the way and
-							rallying students each and every week, the Computer
-							Science Department won the 2021-2022 All-Sports
-							Championship for Intramural Sports here at FSC.
-							Along with taking home the championship in several
-							individual sports, including Bocce Ball, Bowling,
-							eSports (Apex Legends), Swimming, Trivia, and more,
-							the Computer Science Department beat out all other
-							organizations, fraternities, and sororities, and
-							earned the highest overall points over the 2021-2022
-							academic year.
+							Yes, you read that correctly! With Dr. Eicholtz
+							leading the way and rallying students each and every
+							week, the Computer Science Department won the
+							2021-2022 All-Sports Championship for Intramural
+							Sports here at FSC. Along with taking home the
+							championship in several individual sports, including
+							Bocce Ball, Bowling, eSports (Apex Legends),
+							Swimming, Trivia, and more, the Computer Science
+							Department beat out all other organizations,
+							fraternities, and sororities, and earned the highest
+							overall points over the 2021-2022 academic year.
 						</p>
 						<p>
 							Our continued success is strictly conditional on
@@ -82,7 +83,7 @@
 
 					<div class="gallery">
 						<Carousel :itemsToShow="1" :wrapAround="true">
-                            <Slide :key="0">
+							<Slide :key="0">
 								<img
 									src="@/assets/img/intramurals/im_bowling_2022.jpg"
 									height="500"

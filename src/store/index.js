@@ -306,6 +306,9 @@ const store = createStore({
         getTutorInfo(state) {
             return state.tutorInfo;
         },
+        getCubeLifeMode(state) {
+            return state.cubeLifeMode;
+        }
     },
 });
 

@@ -1,7 +1,11 @@
 <template>
-	<div class="mx-auto team-member">
+	<div
+		class="mx-auto team-member"
+		@mouseenter="playAudio()"
+		@mouseleave="stopAudio()"
+	>
 		<div class="team-member-img">
-			<img :src="pfp" alt="" width="325" />
+			<CubeImage :pic="pfp" width="325"></CubeImage>
 			<div
 				class="social-icons"
 				v-if="website || email || linkedin || github || discord"
@@ -54,9 +58,19 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- <div v-show="false">
+        <audio id='thugLife1' src='@/assets/audio/Thug-Life-basic.mp3'/>
+    </div> -->
 </template>
 
 <script>
+import { defineAsyncComponent } from "vue";
+import audio1 from "@/assets/audio/Thug-Life-basic.mp3";
+import audio2 from "@/assets/audio/Thug-Life-DrDre.mp3";
+import audio3 from "@/assets/audio/Thug-Life-GTA.mp3";
+import audio4 from "@/assets/audio/Thug-Life-Snoop.mp3";
+
 export default {
 	props: {
 		pfp: {
@@ -98,10 +112,35 @@ export default {
 			default: "",
 		},
 	},
+	components: {
+		CubeImage: defineAsyncComponent(() =>
+			import("@/components/CubeImage.vue")
+		),
+	},
 	data() {
-		return {};
+		return {
+			cubeLifeMode: false,
+			audioFiles: [],
+		};
 	},
 	methods: {
+		playAudio() {
+			if (this.cubeLifeMode) {
+				var idx = Math.floor(Math.random() * 4);
+				this.audioFiles[idx].play();
+				this.audioFiles[idx].loop = true;
+			}
+		},
+		stopAudio() {
+			this.audioFiles[0].pause();
+			this.audioFiles[0].currentTime = 0;
+			this.audioFiles[1].pause();
+			this.audioFiles[1].currentTime = 0;
+			this.audioFiles[2].pause();
+			this.audioFiles[2].currentTime = 0;
+			this.audioFiles[3].pause();
+			this.audioFiles[3].currentTime = 0;
+		},
 		copyDiscord() {
 			navigator.clipboard.writeText(this.discord);
 			this.$notify({
@@ -110,6 +149,13 @@ export default {
 				type: "success",
 			});
 		},
+	},
+	async mounted() {
+		this.cubeLifeMode = this.$store.getters.getCubeLifeMode;
+		this.audioFiles.push(new Audio(audio1));
+		this.audioFiles.push(new Audio(audio2));
+		this.audioFiles.push(new Audio(audio3));
+		this.audioFiles.push(new Audio(audio4));
 	},
 };
 </script>

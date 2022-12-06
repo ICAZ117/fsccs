@@ -427,7 +427,7 @@
 <script>
 import SkewBox from "@/components/SkewBox.vue";
 import Parallax from "@/components/Parallax.vue";
-import ProfileCard from "../../components/ProfileCard.vue";
+import ProfileCard from "@/components/ProfileCard.vue";
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 import "vue3-carousel/dist/carousel.css";
 
@@ -449,6 +449,7 @@ export default {
 				text: "Can you find all of the easter eggs?",
 				type: "success",
 			});
+            this.$router.push("/");
 		},
 	},
 };
