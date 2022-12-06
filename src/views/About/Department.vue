@@ -551,7 +551,7 @@ BOOTSTRAP BREAKPOINTS:
 @media (max-width: 767.9px) {
 
 	.intro .intro-text {
-		font-size: small;
+		font-size: medium !important;
 	}
 
 	.community .community-text {
@@ -582,11 +582,7 @@ BOOTSTRAP BREAKPOINTS:
 }
 
 @media (max-width: 575.9px) {
-	.hero {
-		height: calc(500px * 0.6) !important;
-	}
-
-	.car {
+	.hero, .car {
 		height: calc(500px * 0.5) !important;
 	}
 
@@ -595,7 +591,7 @@ BOOTSTRAP BREAKPOINTS:
 	} */
 
 	.intro .intro-text {
-		font-size: x-small !important;
+		font-size: small !important;
 	}
 
 	.car .skew {
@@ -611,8 +607,8 @@ BOOTSTRAP BREAKPOINTS:
 		display: flex;
 	}
 
-	.announcementComponent {
-		width: 100% !important;
+	.great-dep .info-card p {
+		font-size: smaller;
 	}
 }
 
