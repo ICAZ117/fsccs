@@ -206,8 +206,7 @@
 								font-size: larger;
 								text-align: justify;
 								line-height: 1.75;
-								font-weight: bold;
-							"
+								font-weight: bold;"
 						>
 							The process took a few years, but the Weinstien
 							building is complete and students will be able to
@@ -340,7 +339,7 @@
 	<!-- GARAGE -->
 	<SkewBox
 		:rightBG="{
-			backgroundImage: `url(${require('@/assets/img/insideWCS2.jpg')})`,
+			backgroundImage: `url(${require('@/assets/img/Department/Garage.jpg')})`,
 			'background-position': 'right top',
 			'background-size': 'cover',
 			width: '54vw!important',
@@ -368,7 +367,7 @@
 				transform: 'scaleY(-1)',
 			}"
 			:leftColor="'transparent'"
-			:rightColor="'var(--grey-gradient-right)'"
+			:rightColor="'purple'"
 			:height="500"
 			:padding="'70px 0 60px 0'"
 			style="transform: scaleY(-1)"
@@ -378,8 +377,7 @@
 					class="vertical-center"
 					style="
 						transform: scaleY(-1);
-						text-align: justify !important;
-					"
+						text-align: justify !important;"
 				>
 					<h1 class="white">Fresh Twist</h1>
 				</div>

@@ -148,6 +148,7 @@ export default {
 	background-color: var(--FSCred);
 	display: inline;
 	position: absolute;
+	border-radius: 25px;
 }
 
 .card,

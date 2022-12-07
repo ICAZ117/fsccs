@@ -33,7 +33,7 @@
 					'); backdrop-filter: blur(7px); height: 100%; width: 100%; font-size: large; hyphens: auto;'
 				"
 			>
-				<div class="container p-5">
+				<div class="container p-5 content">
 					<slot
 						:name="pictureSide == 'right' ? 'left' : 'right'"
 					></slot>
@@ -269,6 +269,11 @@ export default {
 	.poly-left {
 		transform: skew(10deg) translateX(20px);
 	}
+
+	.content {
+		padding: 0 !important;
+	}
+
 }
 
 @media (max-width: 575.9px) {
