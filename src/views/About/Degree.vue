@@ -11,6 +11,9 @@
 		:leftColor="'var(--red-gradient-left)'"
 		:height="500"
 		:padding="'120px 0 60px 0'"
+		:maintainSkewbox="true"
+		:pictureSide="'right'"
+		:invert="false"
 		class="red-section hero"
 	>
 		<template v-slot:left>
@@ -33,11 +36,11 @@
 	>
 		<div class="h-100 pb-2">
 			<center>
-				<div class="m-auto faculty container py-5 h-100">
-					<h1 class="center white mt-2 mb-4 pb-1 intro">
+				<div class="m-auto faculty container h-100 intro">
+					<h1 class="center white mt-2 mb-4 pb-1">
 						Bachelors of Computer Science
 					</h1>
-					<p class="white page-text intro-text">
+					<p class="white page-text">
 						Computer science provides you with a sound theoretical
 						background and the opportunities for individual and
 						collaborative exploration of real-world computing
@@ -90,10 +93,10 @@
 	</Parallax>
 
 	<!-- CONCENTRATIONS -->
+	<!-- :autoplay="5000" -->
 	<Carousel
 		class="carousel concentrations car"
 		:wrap-around="true"
-		:autoplay="5000"
 		:transition="1500"
 		:pauseAutoplayOnHover="true"
 	>
@@ -109,6 +112,10 @@
 				:leftColor="'var(--FSCred)'"
 				:rightColor="'transparent'"
 				:height="600"
+				:maintainSkewbox="false"
+				:pictureSide="'right'"
+				:invert="false"
+				:mobileColor="'266, 70%, 30%, 0.6'"
 				class="skew"
 			>
 				<template v-slot:left>
@@ -152,6 +159,10 @@
 				:leftColor="'var(--FSCgrey)'"
 				:rightColor="'transparent'"
 				:height="600"
+				:maintainSkewbox="false"
+				:pictureSide="'right'"
+				:invert="false"
+				:mobileColor="'205, 70%, 30%, 0.6'"
 				class="skew"
 			>
 				<template v-slot:left>
@@ -196,6 +207,10 @@
 				:leftColor="'var(--FSCblue)'"
 				:rightColor="'transparent'"
 				:height="600"
+				:maintainSkewbox="false"
+				:pictureSide="'right'"
+				:invert="false"
+				:mobileColor="'176, 80%, 30%, 0.6'"
 				class="skew skew-cyber"
 			>
 				<template v-slot:left>
@@ -273,6 +288,19 @@ export default {
 	right: 30px !important;
 }
 
+.intro {
+	margin-top: 3rem;
+	margin-bottom: 3rem;
+}
+
+.intro a {
+	font-weight: bold;
+}
+
+.intro a:hover {
+	color: white;
+}
+
 
 /*
 ███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
@@ -293,6 +321,11 @@ BOOTSTRAP BREAKPOINTS:
 @media (max-width: 1199.9px) {
 	.hero, .car {
 		height: calc(500px * 0.7) !important;
+	}
+
+	.intro {
+		margin-top: 2rem !important;
+		margin-bottom: 2rem !important;
 	}
 
 	.car .carousel__prev,
@@ -316,21 +349,6 @@ BOOTSTRAP BREAKPOINTS:
 		font-size: medium;
 	}
 
-	.skew h1 {
-		font-size: medium;
-	}
-	.skew p {
-		font-size: small;
-		line-height: 1.8;
-	}
-	.skew-cyber p {
-		margin-bottom: .5rem;
-		line-height: 1.6 !important;
-	}
-	.skew li {
-		font-size: small;
-	}
-
 	.car .carousel__prev {
 		left: -15px !important;
 	}
@@ -343,42 +361,66 @@ BOOTSTRAP BREAKPOINTS:
 
 @media (max-width: 767.9px) {
 
-	.intro .intro-text {
-		font-size: medium !important;
+	.car {
+		height: calc(500px * 0.5) !important;
+	}
+
+	.intro p {
+		font-size: small !important;
+	}
+
+	.intro {
+		padding: 0;
+	}
+
+	.skew {
+		height: 100% !important;
 	}
 
 
-	.car .carousel__prev,
-	.car .carousel__next {
-		scale: 0.65;
+	/* .skew h1 {
+		font-size: medium;
 	}
-	
-	.car .carousel__prev {
-		left: -10px !important;
+	.skew p {
+		font-size: small;
+		line-height: 1.8;
 	}
-
-	.car .carousel__next {
-		right: -10px !important;
+	.skew-cyber p {
+		margin-bottom: .5rem;
+		line-height: 1.6 !important;
 	}
-
+	.skew li {
+		font-size: small;
+	} */
 	
 }
 
 @media (max-width: 575.9px) {
-	.hero, .car {
-		height: calc(500px * 0.5) !important;
+	.hero {
+		height: calc(500px * 0.6) !important;
 	}
 
 	/* .community {
 		
 	} */
 
-	.intro .intro-text {
-		font-size: small !important;
+	.intro p {
+		font-size: x-small !important;
+		margin-left: 25px !important;
+		margin-right: 25px !important;
 	}
 
-	.car .skew {
-		font-size: 15px;
+	.intro h1 {
+		font-size: large !important;
+		margin-bottom: 10px !important;
+	}
+
+	.intro {
+		margin-bottom: 0 !important;
+	}
+
+	.hero {
+		font-size: 15px !important;
 	}
 
 	.carousel__prev,
@@ -388,6 +430,31 @@ BOOTSTRAP BREAKPOINTS:
 
 	.show-576 {
 		display: flex;
+	}
+
+	.skew {
+		height: auto;
+	}
+
+	.skew h1 {
+		font-size: x-large;
+	}
+
+	.skew p {
+		font-size: small;
+		padding: 25px !important;
+		padding-bottom: 10px !important;
+	}
+	
+	.skew b {
+		font-size: small;
+		padding-left: 25px !important;
+		padding-right: 25px !important;
+	}
+	
+	.skew li {
+		font-size: small;
+		margin-left: 20px;
 	}
 
 }
