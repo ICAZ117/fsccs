@@ -2,7 +2,7 @@
 	<!-- HERO -->
 	<SkewBox
 		:leftBG="{
-			backgroundImage: `url(${require('@/assets/img/FSC-Advising.jpg')})`,
+			backgroundImage: `url(${require('@/assets/img/Department/Advising-Roberson2.jpg')})`,
 			'background-position': 'top left',
 			'background-size': 'cover',
 			width: '54vw!important',
@@ -209,7 +209,7 @@
 			backgroundImage: `url(https://drscdn.500px.org/photo/1057546414/m%3D900/v2?sig=987f4482e7d6e75bf9aac64fecdbff1d8ed5aef08bcb4ace40d353ef4802f078)`,
 			'background-position': 'top',
 		}"
-		:opacity="0.8"
+		:opacity="0.5"
 		:overlayColor="'0, 0, 0'"
 		:height="'70vh'"
 	>
@@ -219,9 +219,9 @@
 					to="/resources/degree-audit"
 					class="no-decor link-box"
 				>
-					<h1 class="white bold tour-link">
+					<h3 class="white bold tour-link">
 						Explore the department degree audit tool
-					</h1>
+					</h3>
 				</router-link>
 			</div>
 		</div>
