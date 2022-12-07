@@ -54,6 +54,7 @@ const store = createStore({
         tutorInfo: {},
         authEmail: "",
         cubeLifeMode: false,
+        showLoader: false,
     },
     mutations: {
 

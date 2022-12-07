@@ -4,11 +4,19 @@
 			<div class="w-100 contain">
 				<router-link to="/" class="navbar-brand">
 					<img
+						src="@/assets/img/DiscoCube.gif"
+						height="50"
+						alt="Logo"
+						title="Logo"
+						v-if="cubeLifeMode"
+					/>
+					<img
 						src="../assets/img/Cube.svg"
 						class="cube"
 						height="44"
 						alt="Logo"
 						title="Logo"
+						v-else
 					/>
 				</router-link>
 
@@ -107,7 +115,7 @@
 							:width="'220px'"
 							:pageWidth="width"
 							:dropContent="[
-                                {
+								{
 									path: '/get-involved/boardgame-lunch',
 									title: 'Boardgame Lunch',
 								},
@@ -115,7 +123,7 @@
 									path: '/get-involved/cs-club',
 									title: 'CS Club',
 								},
-                                {
+								{
 									path: '/get-involved/intramurals',
 									title: 'Intramural Sports',
 								},
@@ -131,67 +139,31 @@
 							:useRouterLinks="true"
 							:width="'220px'"
 							:pageWidth="width"
-							:dropContent="
-								authUser &&
-								authUser.registrationComplete &&
-								authUser.privilege == 4
-									? [
-											{
-												path: '/resources/manage-courses',
+							:dropContent="[
+								{
+									path: '/resources/advising',
 
-												title: 'Manage Courses',
-											},
+									title: 'Advising',
+								},
 
-											{
-												path: '/resources/advising',
+								{
+									path: '/resources/degree-audit',
 
-												title: 'Advising',
-											},
+									title: 'Degree Audit',
+								},
 
-											{
-												path: '/resources/degree-audit',
+								{
+									path: '/resources/tutor-lab',
 
-												title: 'Degree Audit',
-											},
+									title: 'Tutor Lab',
+								},
 
-											{
-												path: '/resources/tutor-lab',
+								{
+									path: '/resources/calendar',
 
-												title: 'Tutor Lab',
-											},
-
-											{
-												path: '/resources/calendar',
-
-												title: 'Department Calendar',
-											},
-									  ]
-									: [
-											{
-												path: '/resources/advising',
-
-												title: 'Advising',
-											},
-
-											{
-												path: '/resources/degree-audit',
-
-												title: 'Degree Audit',
-											},
-
-											{
-												path: '/resources/tutor-lab',
-
-												title: 'Tutor Lab',
-											},
-
-											{
-												path: '/resources/calendar',
-
-												title: 'Department Calendar',
-											},
-									  ]
-							"
+									title: 'Department Calendar',
+								},
+							]"
 						/>
 
 						<div class="nav-item" v-if="!isLoggedIn">
@@ -225,6 +197,11 @@
 
 													title: 'Admin',
 												},
+                                                {
+												path: '/manage-courses',
+
+												title: 'Manage Courses',
+											},
 												{
 													path: '/logout',
 
@@ -280,6 +257,11 @@ export default {
 		authUser: function (newVal, oldVal) {
 			this.isLoggedIn = newVal != null ? true : false;
 		},
+		"$store.state.cubeLifeMode": function (newVal, oldVal) {
+			if (newVal) {
+				this.cubeLifeMode = true;
+			}
+		},
 	},
 
 	data() {
@@ -288,6 +270,7 @@ export default {
 			useHamburger: false,
 			width: 0,
 			isLoggedIn: false,
+			cubeLifeMode: false,
 		};
 	},
 	methods: {

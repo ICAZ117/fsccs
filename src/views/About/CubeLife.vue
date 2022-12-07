@@ -65,9 +65,10 @@
 							professors filthy liars, intramural All-Sports
 							domination, bowling and movie nights, annual Chili
 							Contests, and even our Annual Non-Denominational
-							Holiday Fun-Time ExtravaganzaTM. In short, Life in
-							The Cube is fun, is stressful at times, but most of
-							all, is an incredibly gratifying experience.
+							Holiday Fun-Time Extravaganza<sup>TM</sup>. In
+							short, Life in The Cube is fun, is stressful at
+							times, but most of all, is an incredibly gratifying
+							experience.
 						</p>
 						<h4 class="center white">
 							So once more, why The Cube Life?
@@ -77,16 +78,16 @@
 							The Cube Life chooses you!
 						</p>
 						<div class="center">
-							<!-- <button
+							<button
 								class="btn btn-md btn-primary"
 								@click="activateCubeLife"
 							>
 								Enable Cube Life Mode!
-							</button> -->
-
-							<button class="btn btn-md btn-primary">
-								Enable Cube Life Mode!
 							</button>
+
+							<!-- <button class="btn btn-md btn-primary">
+								Enable Cube Life Mode!
+							</button> -->
 						</div>
 					</div>
 				</div>
@@ -466,6 +467,7 @@ export default {
 	margin: 0 7rem;
 	padding: 0 5rem;
 }
+
 .inspiration .carousel {
 	text-align: left;
 }

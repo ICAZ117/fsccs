@@ -18,7 +18,7 @@ export default {
 		async cubify() {
 			const img = await faceapi.fetchImage(this.pic);
 
-			// console.log("FACE API IMG", img);
+            this.$store.state.showLoader = true;
 
 			await this.startImage(img);
 		},
@@ -110,9 +110,7 @@ export default {
 
 			this.cubifiedPic = dataUrl;
 
-            // while (document.getElementById("DELETE_ME")) {
-            //     document.getElementById("DELETE_ME").remove();
-            // }
+            this.$store.state.showLoader = false;
 		},
 
 		resize_and_rotate(img, scale, rotation) {
@@ -143,7 +141,7 @@ export default {
 			return retImg;
 		},
 	},
-	async beforeMount() {
+	async mounted() {
 		this.cubifiedPic = this.pic;
 
 		const res = this.$store.getters.getCubeLifeMode;

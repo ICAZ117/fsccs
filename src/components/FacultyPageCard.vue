@@ -4,17 +4,19 @@
 			<img :src="professor.teachingimg" alt="" class="faculty_pic" />
 			<div :class="overlay"></div>
 			<div class="card vertical-center" style="transform: scale(0.8)">
-				<div class="card-body col-12" style="display: inline-block !important">
-					<img
-						:src="professor.pfp"
-						alt=""
+				<div
+					class="card-body col-12"
+					style="display: inline-block !important"
+				>
+					<CubeImage
+						:pic="professor.pfp"
 						style="
 							float: left;
 							border: 5px solid white;
 							border-radius: 10px;
 						"
 						class="me-3"
-					/>
+					></CubeImage>
 					<h2 class="card-title primary bold">
 						{{ professor.name }}
 					</h2>
@@ -60,12 +62,20 @@
 </template>
 
 <script>
+import { defineAsyncComponent } from "vue";
+import audio1 from "@/assets/audio/Thug-Life-basic.mp3";
+import audio2 from "@/assets/audio/Thug-Life-DrDre.mp3";
+import audio3 from "@/assets/audio/Thug-Life-GTA.mp3";
+import audio4 from "@/assets/audio/Thug-Life-Snoop.mp3";
 import Parallax from "../components/Parallax.vue";
 
 export default {
 	props: ["professor", "name", "title", "quote", "image", "overlay"],
 	components: {
 		Parallax,
+		CubeImage: defineAsyncComponent(() =>
+			import("@/components/CubeImage.vue")
+		),
 	},
 	data() {
 		return {
@@ -192,7 +202,6 @@ export default {
 	display: inline-block;
 }
 
-
 /*
 ███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
 ████  ████ ██      ██   ██ ██ ██   ██     ██    ██ ██    ██ ██      ██   ██ ██ ██      ██      
@@ -213,88 +222,96 @@ BOOTSTRAP BREAKPOINTS:
 	.card {
 		height: calc(500px * 0.6) !important;
 	}
+
 	.card img {
 		height: 250px !important;
 	}
+
 	.card h2 {
 		font-size: 30px !important;
 	}
+
 	.card h3 {
 		font-size: 25px !important;
 	}
+
 	.card p {
 		font-size: 13px !important;
-		top: -10px
+		top: -10px;
 	}
-
-	
 }
 
 @media (max-width: 991.9px) {
 	.card {
 		height: calc(500px * 0.48) !important;
 	}
+
 	.card img {
 		height: 190px !important;
 	}
+
 	.card h2 {
 		font-size: 23px !important;
 	}
+
 	.card h3 {
 		font-size: 19px !important;
 	}
+
 	.card p {
 		font-size: 10px !important;
 		top: -10px !important;
 	}
-	
 }
 
 @media (max-width: 767.9px) {
 	.card {
 		height: calc(500px * 0.4) !important;
 	}
+
 	.card img {
 		height: 150px !important;
 	}
+
 	.card h2 {
 		font-size: 25px !important;
 	}
+
 	.card h3 {
 		font-size: 20px !important;
 	}
+
 	.card p {
 		display: none !important;
 		visibility: hidden !important;
 	}
-	
-	
 }
 
 @media (max-width: 575.9px) {
 	.card {
 		height: calc(500px * 0.3) !important;
 	}
+
 	.card img {
 		height: 120px !important;
 		margin-bottom: 1rem;
 	}
+
 	.card h2 {
 		font-size: 20px !important;
 	}
+
 	.card h3 {
 		font-size: 15px !important;
 		margin-bottom: 0 !important;
 	}
+
 	.card p {
 		display: none !important;
 		visibility: hidden !important;
 	}
-
-	
 }
 
 @media (max-width: 399.9px) {
 }
-
 </style>

@@ -139,7 +139,7 @@ const routes = [
         },
     },
     {
-        path: "/resources/manage-courses",
+        path: "/manage-courses",
         name: "Manage Courses",
         component: () => import("../views/DegreeAudit/ManageCourses.vue"),
         meta: {

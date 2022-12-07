@@ -191,14 +191,19 @@
 							"
 						>
 							<div class="px-3 col-12">
-								<span
-									class="courseTaken"
-									v-for="course in coursesTaken"
-									:key="course"
-									>{{ course.code }} ({{
-										course.grade
-									}})</span
-								>
+								<div class="mx-0 row">
+									<div
+										class="col-12"
+										v-for="course in coursesTaken.sort((a,b) => (a.code > b.code) ? 1 : ((b.code > a.code) ? -1 : 0))"
+										:key="course"
+									>
+										<div class="mx-0 row">
+											<div class="col-2">{{ course.code }}</div>
+											<div class="col-8">{{courses[course.code].name}}</div>
+											<div class="px-0 col-2">{{course.grade}}</div>
+										</div>
+									</div>
+								</div>
 							</div>
 							<div
 								class="px-3 py-2 col-12 center"
