@@ -23,22 +23,22 @@
 	<!-- WHAT IS ADVISING -->
 	<Parallax
 		:image="{
-			backgroundImage: `url(${require('@/assets/img/Matrix2.jpg')}`,
+			backgroundImage: `url(${require('@/assets/img/BG7.jpg')}`,
 			'background-position': 'left middle',
 		}"
 		:height="'0'"
-		:opacity="0.5"
+		:opacity="0.2"
 		:overlayColor="'0, 0, 0'"
 		class="red-section"
 	>
 		<div class="h-100 pb-2">
 			<center>
 				<div class="container py-5 h-100">
-					<h1 class="white mt-2 mb-2 pb-1 bold">
+					<h1 class="mt-2 mb-2 pb-1 bold">
 						Advising...what does that mean?
 					</h1>
 					<h5
-						class="white mt-4 mb-2 pb-1 mx-3"
+						class="mt-4 mb-2 pb-1 mx-3"
 						style="line-height: 2 !important"
 					>
 						When it's time to sign up for classes each semester, you
@@ -47,7 +47,7 @@
 						know when they are available. Once you have your
 						meeting, you will be eligible to pick your classes.
 					</h5>
-					<p class="white mt-4 mx-3">
+					<p class="mt-4 mx-3">
 						Look on portal to find your advisor, or find out how to
 						connect
 						<a href="/about/faculty" class="faculty_link"
@@ -65,7 +65,7 @@
 	<!-- HOW TO PREPARE -->
 	<Parallax
 		:image="{
-			backgroundImage: `url(${require('@/assets/img/cube-pics/DSC00038.jpg')}`,
+			backgroundImage: `url(${require('@/assets/img/Department/EicholtzWithStudents.jpg')}`,
 			'background-position': 'top',
 		}"
 		:height="'0'"
@@ -271,7 +271,7 @@ a:visited,
 a:hover,
 a:active,
 a:focus {
-	color: black;
+	color: black !important;
 }
 .faculty_link {
 	color: white !important;
