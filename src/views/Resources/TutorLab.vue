@@ -265,6 +265,8 @@ export default {
 	background-color: rgba(20, 2, 139, 0.54);
 	padding: 2rem;
 	border-radius: 15px;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
 }
 .tutor img {
 	border-top-left-radius: 15px !important;
