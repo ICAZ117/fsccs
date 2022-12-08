@@ -78,16 +78,16 @@
 							The Cube Life chooses you!
 						</p>
 						<div class="center">
-							<button
+							<!-- <button
 								class="btn btn-md btn-primary"
 								@click="activateCubeLife"
 							>
 								Enable Cube Life Mode!
-							</button>
-
-							<!-- <button class="btn btn-md btn-primary">
-								Enable Cube Life Mode!
 							</button> -->
+
+							<button class="btn btn-md btn-primary">
+								Enable Cube Life Mode!
+							</button>
 						</div>
 					</div>
 				</div>

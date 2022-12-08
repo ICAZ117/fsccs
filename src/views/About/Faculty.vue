@@ -103,7 +103,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 /* #professorList>*:not(:last-child) {
     margin-bottom: 1rem;
 } */

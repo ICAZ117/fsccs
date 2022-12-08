@@ -1,5 +1,10 @@
 <template>
-	<div class="team-member" @click="redirect">
+	<div
+		class="team-member"
+		@click="redirect"
+		@mouseenter="playAudio()"
+		@mouseleave="stopAudio()"
+	>
 		<div class="team-member-img">
 			<CubeImage :pic="professor.pfp" style="width: 100%"></CubeImage>
 			<div class="social-icons">
@@ -79,7 +84,7 @@ import audio4 from "@/assets/audio/Thug-Life-Snoop.mp3";
 
 export default {
 	props: ["professor", "name"],
-    components: {
+	components: {
 		CubeImage: defineAsyncComponent(() =>
 			import("@/components/CubeImage.vue")
 		),
@@ -87,9 +92,27 @@ export default {
 	data() {
 		return {
 			doRedirect: true,
+            audioFiles: [],
 		};
 	},
 	methods: {
+		playAudio() {
+			if (this.cubeLifeMode) {
+				var idx = Math.floor(Math.random() * 4);
+				this.audioFiles[idx].play();
+				this.audioFiles[idx].loop = true;
+			}
+		},
+		stopAudio() {
+			this.audioFiles[0].pause();
+			this.audioFiles[0].currentTime = 0;
+			this.audioFiles[1].pause();
+			this.audioFiles[1].currentTime = 0;
+			this.audioFiles[2].pause();
+			this.audioFiles[2].currentTime = 0;
+			this.audioFiles[3].pause();
+			this.audioFiles[3].currentTime = 0;
+		},
 		redirect() {
 			setTimeout(() => {
 				if (this.doRedirect) {
@@ -104,6 +127,13 @@ export default {
 				this.doRedirect = true;
 			}, 100);
 		},
+	},
+    async mounted() {
+		this.cubeLifeMode = this.$store.getters.getCubeLifeMode;
+		this.audioFiles.push(new Audio(audio1));
+		this.audioFiles.push(new Audio(audio2));
+		this.audioFiles.push(new Audio(audio3));
+		this.audioFiles.push(new Audio(audio4));
 	},
 };
 </script>

@@ -265,7 +265,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 a,
 a:visited,
 a:hover,

@@ -367,7 +367,7 @@
 				transform: 'scaleY(-1)',
 			}"
 			:leftColor="'transparent'"
-			:rightColor="'purple'"
+			:rightColor="'var(--grey-gradient-right)'"
 			:height="500"
 			:padding="'70px 0 60px 0'"
 			style="transform: scaleY(-1)"
