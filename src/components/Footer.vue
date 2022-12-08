@@ -91,7 +91,7 @@
 							</ul>
 						</div>
 						<div class="col-3">
-							<h2 class="primary">Re<div style="display: inline" @click="activateCubeLife()">s</div>ources</h2>
+							<h2 class="primary">Resources</h2>
 							<hr class="primary-hr" />
 							<ul style="list-style-type: none">
 								<li>
@@ -181,15 +181,6 @@ export default {
 			for (let i = textString.length - 1; i >= 0; i--)
 				revString += textString.charAt(i);
 			return revString;
-		},
-        activateCubeLife() {
-			this.$store.commit("activateCubeLife");
-			this.$notify({
-				title: "Cube Life Mode Activated!",
-				text: "Can you find all of the easter eggs?",
-				type: "success",
-			});
-			this.$router.push("/");
 		},
 	},
 };

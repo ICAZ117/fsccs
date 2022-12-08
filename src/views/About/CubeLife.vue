@@ -78,15 +78,16 @@
 							The Cube Life chooses you!
 						</p>
 						<div class="center">
-							<!-- <button
+							<button
 								class="btn btn-md btn-primary"
-								@click="activateCubeLife"
+								@click="toggleCubeLife"
 							>
-								Enable Cube Life Mode!
-							</button> -->
-
-							<button class="btn btn-md btn-primary">
-								Enable Cube Life Mode!
+								{{
+									$store.getters.getCubeLifeMode
+										? "Disable"
+										: "Enable"
+								}}
+								Cube Life Mode!
 							</button>
 						</div>
 					</div>
@@ -449,13 +450,22 @@ export default {
 		Navigation,
 	},
 	methods: {
-		activateCubeLife() {
-			this.$store.commit("activateCubeLife");
-			this.$notify({
-				title: "Cube Life Mode Activated!",
-				text: "Can you find all of the easter eggs?",
-				type: "success",
-			});
+		toggleCubeLife() {
+			this.$store.commit("toggleCubeLife");
+			const cubeLifeMode = this.$store.getters.getCubeLifeMode;
+
+			if (cubeLifeMode) {
+				this.$notify({
+					title: "Cube Life Mode Activated!",
+					text: "Can you find all of the easter eggs?",
+					type: "success",
+				});
+			} else {
+				this.$notify({
+					title: "Cube Life Mode Disabled!",
+					type: "success",
+				});
+			}
 			this.$router.push("/");
 		},
 	},

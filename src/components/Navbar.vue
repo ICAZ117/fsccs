@@ -258,9 +258,7 @@ export default {
 			this.isLoggedIn = newVal != null ? true : false;
 		},
 		"$store.state.cubeLifeMode": function (newVal, oldVal) {
-			if (newVal) {
-				this.cubeLifeMode = true;
-			}
+			this.cubeLifeMode = newVal;
 		},
 	},
 

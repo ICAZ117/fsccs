@@ -167,8 +167,8 @@ const store = createStore({
         setTutorInfo(state, payload) {
             state.tutorInfo = payload;
         },
-        activateCubeLife(state) {
-            state.cubeLifeMode = true;
+        toggleCubeLife(state) {
+            state.cubeLifeMode = !state.cubeLifeMode;
         },
     },
     actions: {
