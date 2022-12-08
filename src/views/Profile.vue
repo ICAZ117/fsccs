@@ -19,15 +19,15 @@
 				<!-- <<<<< START LEFT SECTION <<<<< -->
 				<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 				<div class="largePic mb-3">
-					<img
-						:src="
+					
+					<CubeImage
+						:pic="
 							authUser.pfp
 								? authUser.pfp
 								: 'https://www.knack.com/images/about/default-profile.png'
 						"
-						alt="Profile Picture"
 						class="largePic"
-					/>
+					></CubeImage>
 				</div>
 				<div class="w-100 px-4">
 					<div class="mb-3">
@@ -50,14 +50,6 @@
 						@click="updateProfile"
 					>
 						Save
-					</button>
-				</div>
-                <div class="px-4">
-					<button
-						class="btn btn-md btn-primary w-100"
-						@click="updateProfile"
-					>
-						Cubify Your Life
 					</button>
 				</div>
 				<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
@@ -190,6 +182,7 @@
 </template>
 
 <script>
+import { defineAsyncComponent } from "vue";
 import Parallax from "../components/Parallax.vue";
 import SkewBox from "../components/SkewBox.vue";
 import {
@@ -204,6 +197,9 @@ export default {
 	components: {
 		Parallax,
 		SkewBox,
+		CubeImage: defineAsyncComponent(() =>
+			import("@/components/CubeImage.vue")
+		),
 	},
 	watch: {
 		authUser: {
