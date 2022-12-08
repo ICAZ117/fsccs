@@ -2,7 +2,7 @@
 	<!-- HERO -->
 	<SkewBox
 		:leftBG="{
-			backgroundImage: `url(https://media.istockphoto.com/id/935964092/photo/adding-modifications-to-their-latest-code.jpg?s=612x612&w=0&k=20&c=r8koXFYqrZo_fQdV47foqg_9mbSdmL1Q1amd-l9DvOs=)`,
+			backgroundImage: `url(${require('@/assets/img/Department/Tutoring1.jpg')}`,
 			'background-position': 'top',
 			'background-size': 'cover',
 			width: '54vw!important',
@@ -23,7 +23,7 @@
 	<!-- SECTION -->
 	<Parallax
 		:image="{
-			backgroundImage: `url(${require('@/assets/img/cube-pics/DSC00032.jpg')}`,
+			backgroundImage: `url(${require('@/assets/img/BG7.jpg')}`,
 			'background-position': 'left middle',
 		}"
 		:height="'0'"
@@ -35,14 +35,14 @@
 			<center>
 				<div class="container py-5 h-100">
 					<div class="col-9 topbackground">
-						<h1 class="mt-2 mb-2">
+						<h1 class="white mt-2 mb-2">
 							Need help with your classes?
 						</h1>
-						<h2 class="mt-2 mb-2 pb-1 bold">
+						<h2 class="white mt-2 mb-2 pb-1 bold">
 							Ask a peer tutor!
 						</h2>
 						<h5
-							class="mt-4 mb-2 bold"
+							class="mt-4 mb-2 bold white"
 							style="line-height: 2 !important"
 						>
 							The CS department offers a <i>free</i> tutoring
@@ -73,10 +73,16 @@
 					<h1 class="mt-2 mb-4 bold white">This Semester's Tutors</h1>
 					<div
 						class="col-5 tutorbackground"
+						style="display:inline-block; margin: 1rem; border-radius: 15px;"
 						v-for="tutor in tutors"
 						:key="tutor"
 					>
-						<img
+						<ProfileCard
+							:pfp="tutor.picture"
+							:name="tutor.name"
+							class="col-6 tutor"
+						></ProfileCard>
+						<!-- <img
 							:src="tutor.picture"
 							class="col-6"
 							style="display: inline-block"
@@ -86,7 +92,7 @@
 							style="display: inline-block"
 						>
 							{{ tutor.name }}
-						</h4>
+						</h4> -->
 					</div>
 				</div>
 			</center>
@@ -96,8 +102,8 @@
 	<!-- WHERE-->
 	<SkewBox
 		:rightBG="{
-			backgroundImage: `url(${require('@/assets/img/WCS2.jpg')})`,
-			'background-position': 'right top',
+			backgroundImage: `url(${require('@/assets/img/Department/meeting.jpg')})`,
+			'background-position': 'left top',
 			'background-size': 'cover',
 			width: '54vw!important',
 		}"
@@ -167,7 +173,7 @@
 	</SkewBox>
 	<SkewBox
 		:leftBG="{
-			backgroundImage: `url(https://akkadian.co.ke/wp-content/uploads/2018/05/Happy-people-Akkadian-800x533.jpg)`,
+			backgroundImage: `url(${require('@/assets/img/Department/Tutoring2.jpg')}`,
 			'background-position': 'top',
 			'background-size': 'cover',
 			width: '54vw!important',
@@ -199,6 +205,7 @@ import SkewBox from "@/components/SkewBox.vue";
 import Parallax from "@/components/Parallax.vue";
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
+import ProfileCard from "@/components/ProfileCard.vue";
 
 export default {
 	components: {
@@ -208,6 +215,7 @@ export default {
 		Slide,
 		Pagination,
 		Navigation,
+		ProfileCard
 	},
 	data() {
 		return {
@@ -238,14 +246,29 @@ export default {
 
 <style>
 .topbackground {
-	background-color: rgba(255, 255, 255, 0.69);
-	padding: 1rem;
+	background-color: rgba(20, 2, 139, 0.54);
+	padding: 2rem;
+	border-radius: 15px;
 }
-.tutorbackground {
+.tutor img {
+	border-top-left-radius: 15px !important;
+	border-top-right-radius: 15px !important;
+}
+.tutor {
+	transition: all ease 0.5s;
+	border-radius: 15px !important;
+}
+
+.tutor:hover {
+	transition: all ease 0.5s;
+	transform: scale(1.1);
+}
+
+/* .tutorbackground {
 	background-color: rgba(0, 0, 0, 0.308);
 	padding: 1rem;
 	outline: 4px solid var(--FSCblue);
 	display: inline-block;
 	margin: 1rem;
-}
+} */
 </style>
