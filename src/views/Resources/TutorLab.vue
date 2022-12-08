@@ -11,7 +11,7 @@
 		:rightColor="'var(--grey-gradient-right)'"
 		:height="500"
 		:padding="'120px 0 60px 0'"
-		class="red-section"
+		class="red-section hero"
 	>
 		<template v-slot:right>
 			<div class="center vertical-center">
@@ -29,11 +29,11 @@
 		:height="'0'"
 		:opacity="0.2"
 		:overlayColor="'0, 0, 0'"
-		class="red-section"
+		class="red-section intro"
 	>
 		<div class="h-100 pb-4 pt-4">
 			<center>
-				<div class="container py-5 h-100">
+				<div class="container h-100">
 					<div class="col-9 topbackground">
 						<h1 class="white mt-2 mb-2">
 							Need help with your classes?
@@ -72,7 +72,7 @@
 				<div class="container py-5">
 					<h1 class="mt-2 mb-4 bold white">This Semester's Tutors</h1>
 					<div
-						class="col-5 tutorbackground"
+						class="col-5 tutorbackground info-card"
 						style="display:inline-block; margin: 1rem; border-radius: 15px;"
 						v-for="tutor in tutors"
 						:key="tutor"
@@ -111,6 +111,10 @@
 		:leftColor="'var(--FSCblue)'"
 		:height="500"
 		:padding="'70px 0 60px 0'"
+		:maintainSkewbox="false"
+		:pictureSide="'right'"
+		:invert="false"
+		class="skew"
 	>
 		<template v-slot:left>
 			<div class="vertical-center">
@@ -133,7 +137,11 @@
 		:rightColor="'var(--FSCred)'"
 		:height="500"
 		:padding="'70px 0 60px 0'"
+		:maintainSkewbox="false"
+		:pictureSide="'left'"
+		:invert="true"
 		style="transform: scaleY(-1)"
+		class="skew"
 	>
 		<template v-slot:right>
 			<div
@@ -161,6 +169,10 @@
 		:leftColor="'var(--FSCgrey)'"
 		:height="500"
 		:padding="'70px 0 60px 0'"
+		:maintainSkewbox="false"
+		:pictureSide="'right'"
+		:invert="false"
+		class="skew"
 	>
 		<template v-slot:left>
 			<div class="vertical-center">
@@ -183,7 +195,11 @@
 		:rightColor="'var(--FSCblue)'"
 		:height="500"
 		:padding="'70px 0 60px 0'"
+		:maintainSkewbox="false"
+		:pictureSide="'left'"
+		:invert="true"
 		style="transform: scaleY(-1)"
+		class="skew"
 	>
 		<template v-slot:right>
 			<div
@@ -271,4 +287,88 @@ export default {
 	display: inline-block;
 	margin: 1rem;
 } */
+
+
+/*
+███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
+████  ████ ██      ██   ██ ██ ██   ██     ██    ██ ██    ██ ██      ██   ██ ██ ██      ██      
+██ ████ ██ █████   ██   ██ ██ ███████     ██    ██ ██    ██ █████   ██████  ██ █████   ███████ 
+██  ██  ██ ██      ██   ██ ██ ██   ██     ██ ▄▄ ██ ██    ██ ██      ██   ██ ██ ██           ██ 
+██      ██ ███████ ██████  ██ ██   ██      ██████   ██████  ███████ ██   ██ ██ ███████ ███████ 
+*/
+/* 
+BOOTSTRAP BREAKPOINTS:
+  xs: 475px
+  sm: 576px
+  md: 768px
+  lg: 992px
+  xl: 1200px
+  xxl: 1400px
+*/
+@media (max-width: 1199.9px) {
+	.hero {
+		height: calc(500px * 0.7) !important;
+	}
+
+}
+
+@media (max-width: 991.9px) {
+	.intro .intro-text {
+		font-size: medium;
+	}
+
+	.community .community-text {
+		font-size: medium;
+	}
+	.community .com-title {
+		font-size: small;
+		margin: 0 !important;
+	}
+}
+
+@media (max-width: 767.9px) {
+	.intro .intro-text {
+		font-size: medium !important;
+	}
+
+	.community .community-text {
+		font-size: small;
+	}
+	.community .com-title {
+		font-size: medium;
+		margin: 0 !important;
+	}
+
+	.info-card {
+		width: 100%;
+	}
+}
+
+@media (max-width: 575.9px) {
+	.hero {
+		height: calc(500px * 0.6) !important;
+	}
+
+	.intro .topbackground {
+		margin: 15px !important;
+		padding: 5px !important;
+	}
+
+	.skew {
+		font-size: 15px;
+	}
+
+	.show-576 {
+		display: flex;
+	}
+
+	.info-card {
+		margin-left: 0 !important;
+	}
+
+}
+
+@media (max-width: 399.9px) {
+}
+
 </style>

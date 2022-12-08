@@ -11,7 +11,7 @@
 		:rightColor="'var(--grey-gradient-right)'"
 		:height="500"
 		:padding="'120px 0 60px 0'"
-		class="red-section"
+		class="red-section hero"
 	>
 		<template v-slot:right>
 			<div class="center vertical-center">
@@ -31,9 +31,9 @@
 		:overlayColor="'0, 0, 0'"
 		class="red-section"
 	>
-		<div class="h-100 pb-2">
+		<div class="pb-2">
 			<center>
-				<div class="container py-5 h-100">
+				<div class="container py-5">
 					<h1 class="mt-2 mb-2 pb-1 bold">
 						Advising...what does that mean?
 					</h1>
@@ -71,12 +71,12 @@
 		:height="'0'"
 		:opacity="0.7"
 		:overlayColor="'0, 0, 0'"
-		class="red-section"
+		class="red-section car"
 	>
 		<div class="pb-2">
 			<center>
-				<div class="faculty container py-3">
-					<h1 class="center FSCred mt-2 pb-1 bold">
+				<div class="faculty container">
+					<h1 class="center FSCred mt-4 pb-1 bold">
 						What should I do to prepare?
 					</h1>
 					<hr class="primary-hr mb-2" style="width: 80%" />
@@ -86,13 +86,13 @@
 						:pauseAutoplayOnHover="true"
 					>
 						<Slide :key="0">
-							<div class="w-50 mb-4 white">
+							<div class="w-50 white slide">
 								<h3 class="center bold pt-4 pb-1">
 									Know who your advisor is
 								</h3>
 								<center>
 									<h5
-										class="py-2"
+										class="py-1"
 										style="line-height: 1.5 !important"
 									>
 										Do you have multiple majors? Make sure
@@ -107,7 +107,7 @@
 							</div>
 						</Slide>
 						<Slide :key="1">
-							<div class="w-50 mb-4 white">
+							<div class="w-50 mb-4 white slide">
 								<h3 class="center bold pt-4 pb-1">
 									Schedule your advising appointments
 								</h3>
@@ -129,7 +129,7 @@
 							</div>
 						</Slide>
 						<Slide :key="2">
-							<div class="w-50 mb-4 white">
+							<div class="w-50 mb-4 white slide">
 								<h3 class="center bold pt-4 pb-1">
 									Start thinking about classes you need
 								</h3>
@@ -177,7 +177,7 @@
 					</h1>
 					<div class="m-0 row g-5">
 						<div
-							class="col-6"
+							class="col-6 info-card"
 							v-for="(resource, name) in advisingresources"
 							:key="name"
 						>
@@ -312,4 +312,131 @@ a:focus {
 	color: var(--FSCred);
 	border: 4px solid var(--FSCred);
 }
+
+
+/*
+███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
+████  ████ ██      ██   ██ ██ ██   ██     ██    ██ ██    ██ ██      ██   ██ ██ ██      ██      
+██ ████ ██ █████   ██   ██ ██ ███████     ██    ██ ██    ██ █████   ██████  ██ █████   ███████ 
+██  ██  ██ ██      ██   ██ ██ ██   ██     ██ ▄▄ ██ ██    ██ ██      ██   ██ ██ ██           ██ 
+██      ██ ███████ ██████  ██ ██   ██      ██████   ██████  ███████ ██   ██ ██ ███████ ███████ 
+*/
+/* 
+BOOTSTRAP BREAKPOINTS:
+  xs: 475px
+  sm: 576px
+  md: 768px
+  lg: 992px
+  xl: 1200px
+  xxl: 1400px
+*/
+@media (max-width: 1199.9px) {
+	.hero {
+		height: calc(500px * 0.7) !important;
+	}
+
+	.car .carousel__prev,
+	.car .carousel__next {
+		scale: 0.85;
+	}
+
+	.car .carousel__prev {
+		left: 10px !important;
+	}
+
+	.car .carousel__next {
+		right: 10px !important;
+	}
+}
+
+@media (max-width: 991.9px) {
+	.intro .intro-text {
+		font-size: medium;
+	}
+
+	.community .community-text {
+		font-size: medium;
+	}
+	.community .com-title {
+		font-size: small;
+		margin: 0 !important;
+	}
+	
+}
+
+@media (max-width: 767.9px) {
+	
+	.car .carousel__prev,
+	.car .carousel__next {
+		scale: 0.65;
+	}
+
+	.car .carousel__prev {
+		left: -10px !important;
+	}
+
+	.car .carousel__next {
+		right: -10px !important;
+	}
+
+	.car {
+		height: 550px !important;
+	}
+
+	.car {
+		font-size: 15px !important;
+	}
+
+	.carousel__slide {
+		height: 350px !important;
+	}
+
+	.car {
+		height: 480px !important;
+	}
+
+	.info-card {
+		width: 100%;
+	}
+}
+
+@media (max-width: 575.9px) {
+	.hero {
+		height: calc(500px * 0.6) !important;
+	}
+
+	.intro {
+		font-size: small !important;
+	}
+
+	.car .skew {
+		font-size: 15px;
+	}
+
+	.carousel__slide .slide {
+		width: 90% !important;
+	}
+
+	.carousel__prev,
+	.carousel__next {
+		display: none;
+	}
+
+	.show-576 {
+		display: flex;
+	}
+
+	.info-card p {
+		font-size: smaller;
+	}
+
+	.tour-link {
+		padding: 20px !important;
+	}
+
+}
+
+@media (max-width: 399.9px) {
+}
+
 </style>
