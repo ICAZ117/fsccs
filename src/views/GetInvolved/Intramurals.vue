@@ -11,7 +11,7 @@
 		:leftColor="'var(--blue-gradient-left)'"
 		:height="500"
 		:padding="'120px 0 60px 0'"
-		class="red-section"
+		class="red-section hero"
 	>
 		<template v-slot:left>
 			<div class="center vertical-center">
@@ -29,7 +29,7 @@
 		:height="'0'"
 		:opacity="0.6"
 		:overlayColor="'0, 0, 0'"
-		class="red-section"
+		class="red-section intro"
 	>
 		<div class="h-100">
 			<center>
@@ -75,11 +75,12 @@
 		:height="'0'"
 		:opacity="0"
 		:overlayColor="'0, 0, 0'"
+		class="outside-gal"
 	>
-		<div class="h-100 pb-2">
+		<div class="h-100">
 			<center>
-				<div class="m-auto py-5 h-100 container">
-					<h1 class="center mt-2 mb-4 pb-1">Gallery</h1>
+				<div class="m-auto h-100 container">
+					<h1 class="center mt-2 mb-2 pb-1">Gallery</h1>
 
 					<div class="gallery">
 						<Carousel :itemsToShow="1" :wrapAround="true">
@@ -245,4 +246,171 @@ export default {
 	opacity: 1;
 	transform: scale(1.1);
 }
+
+
+
+/*
+███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
+████  ████ ██      ██   ██ ██ ██   ██     ██    ██ ██    ██ ██      ██   ██ ██ ██      ██      
+██ ████ ██ █████   ██   ██ ██ ███████     ██    ██ ██    ██ █████   ██████  ██ █████   ███████ 
+██  ██  ██ ██      ██   ██ ██ ██   ██     ██ ▄▄ ██ ██    ██ ██      ██   ██ ██ ██           ██ 
+██      ██ ███████ ██████  ██ ██   ██      ██████   ██████  ███████ ██   ██ ██ ███████ ███████ 
+*/
+/* 
+BOOTSTRAP BREAKPOINTS:
+  xs: 475px
+  sm: 576px
+  md: 768px
+  lg: 992px
+  xl: 1200px
+  xxl: 1400px
+*/
+@media (max-width: 1199.9px) {
+	.hero {
+		height: calc(500px * 0.7) !important;
+	}
+
+	.gallery {
+		margin: 0 !important;
+	}
+
+	.gallery img {
+		max-width: 100% !important;
+	}
+
+	.gallery .carousel__prev {
+		left: 10px !important;
+	}
+
+	.gallery .carousel__next {
+		right: 10px !important;
+	}
+
+	.outside-gal {
+		padding-top: 20px !important;
+		height: 600px !important;
+	}
+
+	.gallery h1 {
+		font-size: 40px !important;
+	}
+
+	.gallery img {
+		max-height: 80% !important;
+		max-width: 65% !important;
+	}
+
+	.gallery .carousel__slide {
+		height: 400px !important;
+	}
+
+
+}
+
+@media (max-width: 991.9px) {
+	.gallery .carousel__prev {
+		left: -75px !important;
+	}
+
+	.gallery .carousel__next {
+		right: -75px !important;
+	}
+
+}
+
+@media (max-width: 767.9px) {
+	.intro h1 {
+		font-size: 28px !important;
+	}
+
+	.carousel__prev,
+	.carousel__next {
+		scale: 0.65;
+	}
+
+	.gallery .carousel__prev {
+		left: -40px !important;
+	}
+
+	.gallery .carousel__next {
+		right: -40px !important;
+	}
+
+	.outside-gal {
+		height: 330px !important;
+	}
+
+	.outside-gal h1 {
+		font-size: 25px !important;
+	}
+
+	.gallery img {
+		max-height: 95% !important;
+		max-width: 85% !important;
+	}
+
+	.gallery .carousel__slide {
+		height: 200px !important;
+	}
+
+	.gallery {
+		height: 100% !important;
+		padding-left: 2rem !important;
+		padding-right: 2rem !important;
+	}
+
+
+}
+
+@media (max-width: 575.9px) {
+	.hero {
+		height: calc(500px * 0.5) !important;
+	}
+
+	.intro {
+		font-size: smaller;
+	}
+
+	.carousel__prev,
+	.carousel__next {
+		display: none;
+	}
+
+	.outside-gal {
+		height: 350px !important;
+	}
+
+	.outside-gal h1 {
+		font-size: 20px !important;
+	}
+
+	.gallery img {
+		margin-top: 10px;
+		margin-left:0;
+		margin-right:0;
+		margin-bottom: 0;
+		max-height: 100% !important;
+		max-width: 95% !important;
+		padding: 5px;
+	}
+
+	.gallery .carousel__slide {
+		height: 220px !important;
+	}
+
+	.show-576 {
+		display: flex;
+	}
+
+	.intro h5 {
+		font-size: 15px !important;
+	}
+
+
+}
+
+@media (max-width: 399.9px) {
+}
+
+
 </style>
