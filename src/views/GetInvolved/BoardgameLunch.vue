@@ -10,7 +10,7 @@
 		:leftColor="'var(--blue-gradient-left)'"
 		:height="500"
 		:padding="'120px 0 60px 0'"
-		class="red-section"
+		class="red-section hero"
 	>
 		<template v-slot:left>
 			<div class="center vertical-center">
@@ -29,7 +29,7 @@
 		:overlayColor="'0, 0, 0'"
 		class="red-section"
 	>
-		<div class="h-100 pb-2">
+		<div class="h-100 pb-2 top">
 			<center>
 				<div class="container py-5 h-100">
 					<h1 class="white mt-2 mb-2 pb-1" style="text-align: left">
@@ -58,19 +58,19 @@
 	>
 		<div class="h-100 pb-2">
 			<center>
-				<div class="container py-5">
-					<h2 class="center mt-2 mb-4 pb-1 col-9 bold">
+				<div class="container intro-section">
+					<h2 class="center mt-2 mb-4 pb-1 col-9 bold intro-title">
 						Take a break from your normal schedule and come play games!
 					</h2>
-					<div class="center mt-3 mb-3 pb-1 mx-2">
-						<h5 class="info col-3 mx-4 my-2" style="transform: translate(-2%)">
+					<div class="center mt-3 mb-3 pb-1 mx-2 intro">
+						<h5 class="info col-3 box1" style="transform: translate(-2%)">
 							The CS department hosts a weekly event where 
 							you are invited to play games with your faculty and peers!
 						</h5>
-						<h5 class="info col-3 mx-4 my-2" style="transform: translate(-2%)">
+						<h5 class="info col-3 box2" style="transform: translate(-2%)">
 							There are a plethora of games available to play! Feel free to come by and join the fun.
 						</h5>
-						<h5 class="info col-3 mx-4 my-2" style="transform: translate(2%)">
+						<h5 class="info col-3 box3" style="transform: translate(2%)">
 							Check out the department calendar to see when boardgame lunch 
 							is being held this semester!
 						</h5>
@@ -91,7 +91,10 @@
 		:leftColor="'transparent'"
 		:height="500"
 		:padding="'70px 0 60px 0'"
-		class="red-section"
+		:maintainSkewbox="false"
+		:pictureSide="'left'"
+		:invert="false"
+		class="red-section skew"
 	>
 		<template v-slot:right>
 			<div class="center vertical-center">
@@ -116,9 +119,10 @@
 			:height="'0'"
 			:opacity="0.3"
 			:overlayColor="'0, 0, 0'"
+			class="wall-section"
 		>
 			<center>
-				<div class="m-auto faculty container py-4">
+				<div class="car faculty container pt-4">
 					<h1 class="center white pb-1 bold">
 						Boardgame Lunch Memory Wall
 					</h1>
@@ -229,6 +233,10 @@
 </script>
 
 <style>
+.intro-section {
+	margin-top: 4rem;
+	margin-bottom: 4rem;
+}
 .info {
 	display: inline-block;
 	border: 2px solid white;
@@ -237,6 +245,7 @@
 	line-height: 1.5 !important;
 	color: white;
 	padding: 1rem;
+	margin: 1rem;
 }
 .pic {
 	display: inline-block;
@@ -270,5 +279,175 @@
 	height: 100%;
 }
 
+
+/*
+███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
+████  ████ ██      ██   ██ ██ ██   ██     ██    ██ ██    ██ ██      ██   ██ ██ ██      ██      
+██ ████ ██ █████   ██   ██ ██ ███████     ██    ██ ██    ██ █████   ██████  ██ █████   ███████ 
+██  ██  ██ ██      ██   ██ ██ ██   ██     ██ ▄▄ ██ ██    ██ ██      ██   ██ ██ ██           ██ 
+██      ██ ███████ ██████  ██ ██   ██      ██████   ██████  ███████ ██   ██ ██ ███████ ███████ 
+*/
+/* 
+BOOTSTRAP BREAKPOINTS:
+  xs: 475px
+  sm: 576px
+  md: 768px
+  lg: 992px
+  xl: 1200px
+  xxl: 1400px
+*/
+@media (max-width: 1199.9px) {
+	.hero {
+		height: calc(500px * 0.7) !important;
+	}
+
+	.skew {
+		height: calc(700px * 0.7) !important;
+	}
+
+	.car .carousel__prev {
+		left: 10px !important;
+	}
+
+	.car .carousel__next {
+		right: 10px !important;
+	}
+
+	.wall-section {
+		height: 600px !important;
+	}
+
+	.car h1 {
+		font-size: 40px !important;
+	}
+
+	.pic2 {
+		max-height: 75% !important;
+		max-width: 60% !important;
+	}
+
+	.carousel__slide {
+		height: 450px !important;
+	}
+
+
+}
+
+@media (max-width: 991.9px) {
+	.intro-section h3 {
+		font-size: 20px !important;
+		margin: 0 !important;
+	}
+
+	.info {
+		margin: 10px !important;
+	}
+
+	.intro-section h2 {
+		font-size: 26px !important;
+		font-weight: bold;
+	}
+
+
+}
+
+@media (max-width: 767.9px) {
+	.top h1 {
+		font-size: 30px !important;
+	}
+
+	.info {
+		width: 90% !important;
+	}
+
+	.box3 {
+		transform: translate(-2%) !important;
+	}
+
+	.car .carousel__prev,
+	.car .carousel__next {
+		scale: 0.65;
+	}
+
+	.car .carousel__prev {
+		left: -10px !important;
+	}
+
+	.car .carousel__next {
+		right: -10px !important;
+	}
+
+	.wall-section {
+		height: 400px !important;
+	}
+
+	.car h1 {
+		font-size: 25px !important;
+	}
+
+	.pic2 {
+		max-height: 75% !important;
+		max-width: 60% !important;
+	}
+
+	.carousel__slide {
+		height: 280px !important;
+	}
+
+}
+
+@media (max-width: 575.9px) {
+	.hero{
+		height: calc(500px * 0.6) !important;
+	}
+
+	.top h1 {
+		font-size: 25px !important;
+	}
+	
+	.intro-section h2 {
+		font-size: 22px !important;
+		font-weight: bold !important;
+	}
+
+	.skew h2 {
+		font-size: 22px;
+	}
+	.skew p {
+		margin-left: 20px !important;
+		margin-right: 20px !important;
+	}
+
+	.carousel__prev,
+	.carousel__next {
+		display: none;
+	}
+
+	.wall-section {
+		height: 350px !important;
+	}
+
+	.car h1 {
+		font-size: 22px !important;
+	}
+
+	.pic2 {
+		margin-top: 10px;
+		max-height: 90% !important;
+		max-width: 100% !important;
+	}
+
+	.carousel__slide {
+		height: 250px !important;
+	}
+
+	.show-576 {
+		display: flex;
+	}
+
+}
+
+@media (max-width: 399.9px) {
+}
 
 </style>
