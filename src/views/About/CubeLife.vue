@@ -11,7 +11,7 @@
 		:leftColor="'var(--red-gradient-left)'"
 		:height="500"
 		:padding="'60px 0 0 0'"
-		class="red-section"
+		class="red-section hero"
 	>
 		<template v-slot:left>
 			<div class="h-100">
@@ -31,7 +31,7 @@
 		:height="'0'"
 		:opacity="0.8"
 		:overlayColor="'0, 0, 0'"
-		class="red-section"
+		class="red-section intro"
 	>
 		<div class="h-100 pb-2">
 			<center>
@@ -105,7 +105,7 @@
 		:height="'0'"
 		:opacity="0"
 		:overlayColor="'0, 0, 0'"
-		class="red-section"
+		class="red-section developers"
 	>
 		<div class="h-100 pb-2">
 			<center>
@@ -114,7 +114,7 @@
 						Meet the Developers
 					</h1>
 					<div class="mx-auto p-0 row block-center">
-						<div class="p-0 col-4">
+						<div class="p-0 col-4 info-card">
 							<ProfileCard
 								:pfp="`${require('@/assets/img/People/IbraheemCazalas.png')}`"
 								:name="'Ibraheem Cazalas'"
@@ -131,7 +131,7 @@
 								VR development.
 							</ProfileCard>
 						</div>
-						<div class="p-0 col-4">
+						<div class="p-0 col-4 info-card">
 							<ProfileCard
 								:pfp="`${require('@/assets/img/People/KiraFreijo.jpg')}`"
 								:name="'Kira Freijo'"
@@ -148,7 +148,7 @@
 								interesting AIs in the future.
 							</ProfileCard>
 						</div>
-						<div class="p-0 col-4">
+						<div class="p-0 col-4 info-card">
 							<ProfileCard
 								:pfp="`${require('@/assets/img/People/IsaacGaray.jpg')}`"
 								:name="'Isaac Garay'"
@@ -194,7 +194,7 @@
 						their efforts and feel privileged to continue
 						development of this project.
 					</p>
-					<div class="inspiration">
+					<div class="inspiration car">
 						<Carousel :itemsToShow="2.5" :wrapAround="true">
 							<Slide :key="1">
 								<ProfileCard
@@ -258,6 +258,7 @@
 		:invert="true"
 		:mobileColor="'153, 70%, 30%, 0.6'"
 		style="transform: scaleY(-1)"
+		class="skew"
 	>
 		<template v-slot:right>
 			<div
@@ -306,6 +307,7 @@
 		:pictureSide="'right'"
 		:invert="false"
 		:mobileColor="'264, 100%, 10%, 0.7'"
+		class="skew"
 	>
 		<template v-slot:left>
 			<div
@@ -354,6 +356,7 @@
 		:invert="true"
 		:mobileColor="'37, 100%, 50%, 0.7'"
 		style="transform: scaleY(-1)"
+		class="skew"
 	>
 		<template v-slot:right>
 			<div
@@ -397,6 +400,7 @@
 		:pictureSide="'right'"
 		:invert="false"
 		:mobileColor="'232, 26%, 10%, 0.85'"
+		class="skew"
 	>
 		<template v-slot:left>
 			<div
@@ -541,4 +545,111 @@ export default {
 	opacity: 1;
 	transform: scale(1.1);
 }
+
+
+
+/*
+███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
+████  ████ ██      ██   ██ ██ ██   ██     ██    ██ ██    ██ ██      ██   ██ ██ ██      ██      
+██ ████ ██ █████   ██   ██ ██ ███████     ██    ██ ██    ██ █████   ██████  ██ █████   ███████ 
+██  ██  ██ ██      ██   ██ ██ ██   ██     ██ ▄▄ ██ ██    ██ ██      ██   ██ ██ ██           ██ 
+██      ██ ███████ ██████  ██ ██   ██      ██████   ██████  ███████ ██   ██ ██ ███████ ███████ 
+*/
+/* 
+BOOTSTRAP BREAKPOINTS:
+  xs: 475px
+  sm: 576px
+  md: 768px
+  lg: 992px
+  xl: 1200px
+  xxl: 1400px
+*/
+@media (max-width: 1199.9px) {
+	.car {
+		height: calc(500px * 0.7) !important;
+	}
+
+	.car .carousel__prev,
+	.car .carousel__next {
+		scale: 0.85;
+	}
+
+	.car .carousel__prev {
+		left: 10px !important;
+	}
+
+	.car .carousel__next {
+		right: 10px !important;
+	}
+}
+
+@media (max-width: 991.9px) {
+	
+
+}
+
+@media (max-width: 767.9px) {
+	.intro p {
+		font-size: medium !important;
+	}
+
+	.intro h3 {
+		font-size: large !important;
+	}
+
+	.car .carousel__prev,
+	.car .carousel__next {
+		scale: 0.65;
+	}
+
+	.car .carousel__prev {
+		left: -10px !important;
+	}
+
+	.car .carousel__next {
+		right: -10px !important;
+	}
+
+	.info-card {
+		/* width: 100% !important; */
+		margin: 2rem;
+	}
+}
+
+@media (max-width: 575.9px) {
+	.hero {
+		height: calc(500px * 0.6) !important;
+	}
+
+	.intro p {
+		font-size: small !important;
+	}
+
+	.intro h3 {
+		font-size: medium !important;
+	}
+
+	.skew p {
+		font-size: 15px !important;
+		padding-left: 1rem !important;
+		padding-right: 1.5rem !important;
+	}
+
+	.carousel__prev,
+	.carousel__next {
+		display: none;
+	}
+
+	.show-576 {
+		display: flex;
+	}
+
+	.info-card p {
+		font-size: smaller;
+	}
+}
+
+@media (max-width: 399.9px) {
+}
+
 </style>

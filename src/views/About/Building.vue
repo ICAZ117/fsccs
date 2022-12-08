@@ -741,6 +741,9 @@ BOOTSTRAP BREAKPOINTS:
 }
 
 @media (max-width: 399.9px) {
+	.secondtext{
+		margin-bottom: 100px !important;
+	}
 }
 
 </style>
