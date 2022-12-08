@@ -123,7 +123,7 @@
 	<!-- WHAT -->
 	<SkewBox
 		:leftBG="{
-			backgroundImage: `url(https://th.bing.com/th/id/OIP.udrE6z4jI5Vdb3_VZo0l5QHaEK?w=274&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7)`,
+			backgroundImage: `url(${require('@/assets/img/Department/PythonCode.jpg')}`,
 			'background-position': 'right top',
 			'background-size': 'cover',
 			width: '54vw!important',
