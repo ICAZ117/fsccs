@@ -11,7 +11,7 @@
 		:rightColor="'var(--blue-gradient-right)'"
 		:height="500"
 		:padding="'120px 0 60px 0'"
-		class="red-section"
+		class="red-section hero"
 	>
 		<template v-slot:right>
 			<div class="center vertical-center">
@@ -29,7 +29,7 @@
 		:height="'0'"
 		:opacity="0.6"
 		:overlayColor="'0, 0, 0'"
-		class="red-section"
+		class="red-section intro"
 	>
 		<div class="h-100 pb-2">
 			<center>
@@ -66,7 +66,10 @@
 		:rightColor="'transparent'"
 		:leftColor="'var(--red-gradient-left)'"
 		:height="500"
-		class="red-section"
+		:maintainSkewbox="false"
+		:pictureSide="'right'"
+		:invert="false"
+		class="red-section skew"
 	>
 		<template v-slot:left>
 			<div class="h-100 pb-2 vertical-center">
@@ -107,7 +110,7 @@
 		:overlayColor="'0, 0, 0'"
 		class="red-section"
 	>
-		<div class="h-100 pb-2">
+		<div class="h-100 pb-2 prepare">
 			<center>
 				<div class="m-auto container py-5 h-100">
 					<h1 class="center white mt-2 mb-4 pb-1">How to prepare</h1>
@@ -200,7 +203,7 @@
 				<div class="m-auto container py-5 h-100">
 					<h1 class="center mt-2">FAQ</h1>
 					<div class="m-0 row g-5">
-						<div class="col-6">
+						<div class="col-6 info-card">
 							<InfoCard
 								:title="'Why Should I Join the Programming Team?'"
 							>
@@ -230,13 +233,13 @@
 								</ul>
 							</InfoCard>
 						</div>
-						<div class="col-6">
+						<div class="col-6 info-card">
 							<InfoCard
 								:title="'Interested in a Career in Software Development?'"
 							>
 								<ul>
 									<li>
-										Let’s hear from top SE companies and
+										Let's hear from top SE companies and
 										other professionals on how to prepare
 										and rock a Technical Interview:
 									</li>
@@ -286,7 +289,7 @@
 								</ul>
 							</InfoCard>
 						</div>
-						<div class="col-6">
+						<div class="col-6 info-card">
 							<InfoCard
 								:title="'How does the Programming Team Help Me Get a Job?'"
 							>
@@ -320,7 +323,7 @@
 								</ul>
 							</InfoCard>
 						</div>
-						<div class="col-6">
+						<div class="col-6 info-card">
 							<InfoCard
 								:title="'How Do I Join the Programming Team?'"
 							>
@@ -374,4 +377,95 @@ export default {
 p {
 	line-height: 2;
 }
+
+
+/*
+███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
+████  ████ ██      ██   ██ ██ ██   ██     ██    ██ ██    ██ ██      ██   ██ ██ ██      ██      
+██ ████ ██ █████   ██   ██ ██ ███████     ██    ██ ██    ██ █████   ██████  ██ █████   ███████ 
+██  ██  ██ ██      ██   ██ ██ ██   ██     ██ ▄▄ ██ ██    ██ ██      ██   ██ ██ ██           ██ 
+██      ██ ███████ ██████  ██ ██   ██      ██████   ██████  ███████ ██   ██ ██ ███████ ███████ 
+*/
+/* 
+BOOTSTRAP BREAKPOINTS:
+  xs: 475px
+  sm: 576px
+  md: 768px
+  lg: 992px
+  xl: 1200px
+  xxl: 1400px
+*/
+@media (max-width: 1199.9px) {
+	.hero {
+		height: calc(500px * 0.7) !important;
+	}
+
+}
+
+@media (max-width: 991.9px) {
+	.intro .intro-text {
+		font-size: medium;
+	}
+
+	.community .community-text {
+		font-size: medium;
+	}
+	.community .com-title {
+		font-size: small;
+		margin: 0 !important;
+	}
+}
+
+@media (max-width: 767.9px) {
+	.intro .intro-text {
+		font-size: medium !important;
+	}
+
+	.prepare {
+		font-size: smaller;
+	}
+	.prepare a {
+		font-size: smaller;
+	}
+
+	.info-card {
+		width: 100%;
+	}
+}
+
+@media (max-width: 575.9px) {
+	.hero {
+		height: calc(500px * 0.6) !important;
+	}
+
+	.intro .intro-text {
+		font-size: small !important;
+	}
+
+	.show-576 {
+		display: flex;
+	}
+
+	.prepare {
+		line-height: 1 !important;
+	}
+
+	.prepare a {
+		font-size: xx-small;
+	}
+
+	.info-card li {
+		font-size: smaller;
+	}
+
+	.skew {
+		font-size: smaller;
+	}
+
+}
+
+@media (max-width: 399.9px) {
+}
+
+
 </style>
