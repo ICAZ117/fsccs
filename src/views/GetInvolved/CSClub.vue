@@ -11,7 +11,7 @@
 		:leftColor="'var(--FSCblue)'"
 		:height="500"
 		:padding="'120px 0 60px 0'"
-        class="red-section"
+        class="red-section hero"
 	>
 		<template v-slot:left>
 			<div class="center vertical-center">
@@ -21,7 +21,7 @@
 	</SkewBox>
 
     <!-- OFFICERS -->
-	<div class="center" :style="`background-image:url(${require('@/assets/img/BG7.jpg')}); background-repeat: no-repeat; background-size: cover;`">
+	<div class="center intro" :style="`background-image:url(${require('@/assets/img/BG7.jpg')}); background-repeat: no-repeat; background-size: cover;`">
 		<h1 class="pt-5 pb-1">CS club: A place for everyone</h1>
 
 		<h5
@@ -31,7 +31,7 @@
 				padding-bottom: 30px;
 				color: var(--FSClightblue);
 				line-height: 1.5 !important;
-			"
+			" 
 		>
 			We offer a wide variety events from educational seminars in relation
 			to the major, to lighthearted video game tournaments. There is
@@ -40,13 +40,13 @@
 		</h5>
 
 		<hr />
-		<h2 class="py-2">
+		<h2 class="pt-2 intro-title" style="transform: translate(0, 10%)" >
 			<strong>Meet the 2022-2023 Exec Members</strong>
 		</h2>
 
-		<div class="container">
-			<div class="py-4 px-5 mx-5 cs-club">
-				<Carousel :itemsToShow="2.5" :wrapAround="true">
+		<div class="">
+			<div class="cs-club cs-exec">
+				<Carousel :itemsToShow="2.5" :wrapAround="true" class="car2">
 					<Slide v-for="(officer, name) in officers" :key="name">
 						<div class="exec">
 							<ProfileCard
@@ -74,11 +74,12 @@
 		:height="'0'"
 		:opacity="0"
 		:overlayColor="'0, 0, 0'"
+		class="gallery"
 	>
-		<div class="h-100 pb-2">
+		<div class="">
 			<center>
-				<div class="m-auto cs-club container py-5 h-75">
-					<div class="mx-5 px-5">
+				<div class="m-auto cs-club container">
+					<div class="outside-car">
 						<h1
 							class="center white mt-2 mb-2 pb-1"
 							style="font-weight: bold"
@@ -87,7 +88,7 @@
 						</h1>
 						<hr class="primary-hr" style="width: 50%" />
 						<Carousel
-							class="carousel"
+							class="carousel car"
 							:wrap-around="true"
 							:transition="600"
 							:pauseAutoplayOnHover="true"
@@ -117,14 +118,14 @@
 			</center>
 		</div>
 
-		<div class="link center mb-4">
+		<!-- <div class="link center pt-4">
 			<a
-				style="color: white; text-decoration: none"
+				style="color: white; text-decoration: none;"
 				href="/resources/calendar"
 			>
 				Check out our department calendar for upcoming events!
 			</a>
-		</div>
+		</div> -->
 	</Parallax>
 
 	<!-- ABOUT CSC -->
@@ -139,10 +140,14 @@
 		:rightColor="'var(--FSCred)'"
 		:height="500"
 		:padding="'70px 0 60px 0'"
+		:maintainSkewbox="false"
+		:pictureSide="'left'"
+		:invert="false"
+		class="skew"
 	>
 		<template v-slot:right>
 			<div
-				class=""
+				class="cs-info"
 				style="display: inline-block; transform: translate(0, -5%)"
 			>
 				<div class="white center">
@@ -252,6 +257,15 @@ export default {
 	right: -90px !important;
 }
 
+.cs-exec {
+	margin-top: 3rem;
+	margin-bottom: 3rem;
+	margin-left: 3rem;
+	margin-right: 3rem;
+	padding-left: 3rem;
+	padding-right: 3rem;
+}
+
 .item {
 	border: 2px solid white;
 	background-color: var(--FSClightblue);
@@ -290,4 +304,222 @@ export default {
 .items h4 {
 	transition: all ease 0.5s;
 }
+.gallery {
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-bottom: 20px;
+}
+
+/*
+███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
+████  ████ ██      ██   ██ ██ ██   ██     ██    ██ ██    ██ ██      ██   ██ ██ ██      ██      
+██ ████ ██ █████   ██   ██ ██ ███████     ██    ██ ██    ██ █████   ██████  ██ █████   ███████ 
+██  ██  ██ ██      ██   ██ ██ ██   ██     ██ ▄▄ ██ ██    ██ ██      ██   ██ ██ ██           ██ 
+██      ██ ███████ ██████  ██ ██   ██      ██████   ██████  ███████ ██   ██ ██ ███████ ███████ 
+*/
+/* 
+BOOTSTRAP BREAKPOINTS:
+  xs: 475px
+  sm: 576px
+  md: 768px
+  lg: 992px
+  xl: 1200px
+  xxl: 1400px
+*/
+@media (max-width: 1199.9px) {
+	.hero {
+		height: calc(500px * 0.7) !important;
+	}
+
+	.car .carousel__prev, .car2 .carousel__prev {
+		left: 10px !important;
+	}
+
+	.car .carousel__next, .car2 .carousel__next {
+		right: 10px !important;
+	}
+
+	.car2 .exec {
+		scale: .8 ;
+	}
+
+	.car2 {
+		height: 400px !important;
+	}
+
+	.gallery {
+		padding-top: 20px !important;
+		height: 600px !important;
+	}
+
+	.car h1 {
+		font-size: 40px !important;
+	}
+
+	.pic2 {
+		max-height: 80% !important;
+		max-width: 65% !important;
+	}
+
+	.car .carousel__slide {
+		height: 400px !important;
+	}
+
+	.cs-club hr {
+		margin:0 !important;
+	}
+
+	.cs-info {
+		margin-left: 18% !important;
+	}
+
+
+}
+
+@media (max-width: 991.9px) {
+	.car2 .exec {
+		scale: .7 ;
+	}
+
+	.cs-info {
+		margin-left: 12% !important;
+	}
+
+}
+
+@media (max-width: 767.9px) {
+	.intro h1 {
+		font-size: 28px !important;
+	}
+
+	.carousel__prev,
+	.carousel__next {
+		scale: 0.65;
+	}
+
+	.car .carousel__prev, .car2 .carousel__prev {
+		left: -10px !important;
+	}
+
+	.car .carousel__next, .car2 .carousel__next {
+		right: -10px !important;
+	}
+
+	.gallery {
+		height: 330px !important;
+	}
+
+	.gallery h1 {
+		font-size: 25px !important;
+	}
+
+	.pic2 {
+		max-height: 90% !important;
+		max-width: 80% !important;
+	}
+
+	.car .carousel__slide {
+		height: 200px !important;
+	}
+
+	.car {
+		height: 100% !important;
+	}
+
+	.intro .intro-title {
+		padding-top: 20px !important;
+	}
+
+	.car2 {
+		height: 230px !important;
+	}
+
+	.car2 .exec {
+		scale: .4 ;
+	}
+
+	.cs-info {
+		margin-left: 8% !important;
+	}
+
+}
+
+@media (max-width: 575.9px) {
+	.hero {
+		height: calc(500px * 0.5) !important;
+	}
+
+	h1 {
+		font-size: 20px !important;
+	}
+
+	.carousel__prev,
+	.carousel__next {
+		display: none;
+	}
+
+	.gallery {
+		height: 350px !important;
+	}
+
+	.gallery h1 {
+		font-size: 20px !important;
+	}
+
+	.pic2 {
+		margin-top: 10px;
+		margin-left:0;
+		margin-right:0;
+		margin-bottom: 0;
+		max-height: 100% !important;
+		max-width: 85% !important;
+		padding: 5px;
+	}
+
+	.car .carousel__slide {
+		height: 220px !important;
+	}
+
+	.show-576 {
+		display: flex;
+	}
+
+	.intro .intro-title {
+		padding-top: 5px !important;
+	}
+
+	.car2 {
+		height: 250px !important;
+	}
+
+	.cs-exec {
+		margin: 0 !important;
+		padding: 20px !important;
+		scale: 1;
+		width: 100%;
+		transform: translate(0, -20px);
+	}
+
+	.cs-info {
+		margin-left: 20% !important;
+		margin-right: 20% !important;
+		font-size: smaller !important;
+	}
+
+	.cs-info h3 {
+		font-size: 20px !important;
+		margin-bottom: 2rem !important;
+	}
+
+	.intro h5 {
+		font-size: 15px !important;
+	}
+
+
+}
+
+@media (max-width: 399.9px) {
+}
+
+
 </style>
