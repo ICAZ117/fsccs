@@ -1,5 +1,5 @@
 <template>
-	<div class="outside">
+	<div class="outside" @mouseenter="playAudio()" @mouseleave="stopAudio()">
 		<div class="vertical-center">
 			<img :src="professor.teachingimg" alt="" class="faculty_pic" />
 			<div :class="overlay"></div>
@@ -80,9 +80,32 @@ export default {
 	data() {
 		return {
 			doRedirect: true,
+			audioFiles: [],
+			cubeLifeMode: false,
 		};
 	},
 	methods: {
+		playAudio() {
+			if (this.cubeLifeMode) {
+				var idx = Math.floor(Math.random() * 6);
+				this.audioFiles[idx].play();
+				this.audioFiles[idx].loop = true;
+			}
+		},
+		stopAudio() {
+			this.audioFiles[0].pause();
+			this.audioFiles[0].currentTime = 0;
+			this.audioFiles[1].pause();
+			this.audioFiles[1].currentTime = 0;
+			this.audioFiles[2].pause();
+			this.audioFiles[2].currentTime = 0;
+			this.audioFiles[3].pause();
+			this.audioFiles[3].currentTime = 0;
+			this.audioFiles[4].pause();
+			this.audioFiles[4].currentTime = 0;
+			this.audioFiles[5].pause();
+			this.audioFiles[5].currentTime = 0;
+		},
 		redirect() {
 			setTimeout(() => {
 				if (this.doRedirect) {
@@ -96,6 +119,15 @@ export default {
 				this.doRedirect = true;
 			}, 100);
 		},
+	},
+	async mounted() {
+		this.cubeLifeMode = this.$store.getters.getCubeLifeMode;
+		this.audioFiles.push(new Audio(audio1));
+		this.audioFiles.push(new Audio(audio2));
+		this.audioFiles.push(new Audio(audio3));
+		this.audioFiles.push(new Audio(audio3));
+		this.audioFiles.push(new Audio(audio3));
+		this.audioFiles.push(new Audio(audio4));
 	},
 };
 </script>

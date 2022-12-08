@@ -44,12 +44,20 @@
 					</div>
 				</div>
 				<hr class="primary-hr" />
-				<div class="px-4">
+				<div class="px-4 mb-2">
 					<button
 						class="btn btn-md btn-primary w-100"
 						@click="updateProfile"
 					>
 						Save
+					</button>
+				</div>
+                <div class="px-4">
+					<button
+						class="btn btn-md btn-primary w-100"
+						@click="updateProfile"
+					>
+						Cubify Your Life
 					</button>
 				</div>
 				<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<< -->

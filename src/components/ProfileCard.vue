@@ -126,7 +126,7 @@ export default {
 	methods: {
 		playAudio() {
 			if (this.cubeLifeMode) {
-				var idx = Math.floor(Math.random() * 4);
+				var idx = Math.floor(Math.random() * 6);
 				this.audioFiles[idx].play();
 				this.audioFiles[idx].loop = true;
 			}
@@ -140,6 +140,10 @@ export default {
 			this.audioFiles[2].currentTime = 0;
 			this.audioFiles[3].pause();
 			this.audioFiles[3].currentTime = 0;
+            this.audioFiles[4].pause();
+			this.audioFiles[4].currentTime = 0;
+            this.audioFiles[5].pause();
+			this.audioFiles[5].currentTime = 0;
 		},
 		copyDiscord() {
 			navigator.clipboard.writeText(this.discord);
@@ -155,6 +159,8 @@ export default {
 		this.audioFiles.push(new Audio(audio1));
 		this.audioFiles.push(new Audio(audio2));
 		this.audioFiles.push(new Audio(audio3));
+        this.audioFiles.push(new Audio(audio3));
+        this.audioFiles.push(new Audio(audio3));
 		this.audioFiles.push(new Audio(audio4));
 	},
 };
