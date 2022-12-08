@@ -226,6 +226,7 @@ BOOTSTRAP BREAKPOINTS:
 
 	.card img {
 		height: 250px !important;
+		width: 250px !important;
 	}
 
 	.card h2 {
@@ -249,6 +250,7 @@ BOOTSTRAP BREAKPOINTS:
 
 	.card img {
 		height: 190px !important;
+		width: 190px !important;
 	}
 
 	.card h2 {
@@ -272,6 +274,7 @@ BOOTSTRAP BREAKPOINTS:
 
 	.card img {
 		height: 150px !important;
+		width: 150px !important;
 	}
 
 	.card h2 {
@@ -295,6 +298,7 @@ BOOTSTRAP BREAKPOINTS:
 
 	.card img {
 		height: 120px !important;
+		width: 120px !important;
 		margin-bottom: 1rem;
 	}
 

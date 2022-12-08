@@ -11,7 +11,7 @@
 		:rightColor="'var(--red-gradient-right)'"
 		:height="500"
 		:padding="'120px 0 60px 0'"
-		class="red-section"
+		class="red-section hero"
 	>
 		<template v-slot:right>
 			<div class="center vertical-center">
@@ -32,8 +32,8 @@
 		class="red-section"
 	>
 		<div class="container my-5 py-5 vertical-center">
-            <h3 class="white">Carol &amp; Marcus Weinstein Computer Sciences Center</h3>
-			<p class="white">
+            <h3 class="white intro-title">Carol &amp; Marcus Weinstein Computer Sciences Center</h3>
+			<p class="white intro">
 				The Weinstein Computer Sciences Center was completed in spring
 				of 2020 and was named for FSC Trustee Carole and Marcus
 				Weinstein of Richmond, Va. On top of being a cohesive learning
@@ -53,14 +53,14 @@
 	</Parallax>
 
 	<!-- CAROUSEL -->
-	<div class="red-section">
+	<div class="red-section car">
 		<Carousel
 			:wrapAround="true"
 			:transition="600"
 			:pauseAutoplayOnHover="true"
 			class="history"
 		>
-			<Slide :key="1">
+			<Slide :key="0">
 				<Parallax
 					:image="{
 						backgroundImage: `url(${require('@/assets/img/cube-pics/BuildingWCS3.jpg')}`,
@@ -80,8 +80,7 @@
 							line-height: 1.85;
 							margin-left: 10% !important;
 							margin-right: 10% !important;
-							font-weight: bold;
-						"
+							font-weight: bold;"
 					>
 						Shortly after the widely acclaimed success of the nearby
 						France Family Admissions Center, completed in 2017,
@@ -99,7 +98,7 @@
 				</Parallax>
 			</Slide>
 
-			<Slide :key="0">
+			<Slide :key="1">
 				<SkewBox
 					:leftBG="{
 						backgroundImage: `url(${require('@/assets/img/Weinstein-Groundbreaking.jpg')})`,
@@ -111,7 +110,10 @@
 					:rightColor="'var(--blue-gradient-right)'"
 					:height="500"
 					:padding="'70px 0 60px 0'"
-					class=""
+					:maintainSkewbox="true"
+					:pictureSide="'left'"
+					:invert="false"
+					class="skew"
 				>
 					<template v-slot:right>
 						<div class="vertical-center">
@@ -557,4 +559,121 @@ export default {
 	line-height: 1.75;
 	color: white;
 }
+
+
+/*
+███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
+████  ████ ██      ██   ██ ██ ██   ██     ██    ██ ██    ██ ██      ██   ██ ██ ██      ██      
+██ ████ ██ █████   ██   ██ ██ ███████     ██    ██ ██    ██ █████   ██████  ██ █████   ███████ 
+██  ██  ██ ██      ██   ██ ██ ██   ██     ██ ▄▄ ██ ██    ██ ██      ██   ██ ██ ██           ██ 
+██      ██ ███████ ██████  ██ ██   ██      ██████   ██████  ███████ ██   ██ ██ ███████ ███████ 
+*/
+/* 
+BOOTSTRAP BREAKPOINTS:
+  xs: 475px
+  sm: 576px
+  md: 768px
+  lg: 992px
+  xl: 1200px
+  xxl: 1400px
+*/
+@media (max-width: 1199.9px) {
+	.history .hero .skew{
+		height: calc(500px * 0.7) !important;
+	}
+
+	.car .carousel__prev,
+	.car .carousel__next {
+		scale: 0.85;
+		color: black;
+	}
+
+	.car .carousel__prev {
+		left: 10px !important;
+	}
+
+	.car .carousel__next {
+		right: 10px !important;
+	}
+}
+
+@media (max-width: 991.9px) {
+	.intro .intro-text {
+		font-size: medium;
+	}
+
+	.community .community-text {
+		font-size: medium;
+	}
+	.community .com-title {
+		font-size: small;
+		margin: 0 !important;
+	}
+}
+
+@media (max-width: 767.9px) {
+	.intro .intro-text {
+		font-size: medium !important;
+	}
+
+	.community .community-text {
+		font-size: small;
+	}
+	.community .com-title {
+		font-size: medium;
+		margin: 0 !important;
+	}
+
+	.car .carousel__prev,
+	.car .carousel__next {
+		scale: 0.65;
+	}
+
+	.car .carousel__prev {
+		left: -10px !important;
+	}
+
+	.car .carousel__next {
+		right: -10px !important;
+	}
+
+	.great-dep .info-card {
+		width: 100%;
+	}
+}
+
+@media (max-width: 575.9px) {
+	.car {
+		height: calc(500px * 0.6) !important;
+	}
+
+	/* .community {
+		
+	} */
+
+	.intro .intro-text {
+		font-size: small !important;
+	}
+
+	.car .skew {
+		font-size: 15px;
+	}
+
+	.carousel__prev,
+	.carousel__next {
+		display: none;
+	}
+
+	.show-576 {
+		display: flex;
+	}
+
+	.great-dep .info-card p {
+		font-size: smaller;
+	}
+}
+
+@media (max-width: 399.9px) {
+}
+
 </style>
