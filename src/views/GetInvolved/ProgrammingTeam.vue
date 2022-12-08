@@ -374,10 +374,28 @@ export default {
 </script>
 
 <style scoped>
+.link,
+.link:focus,
+.link:active,
+.link:visited,
+.link:hover {
+	color: var(--primary);
+	font-weight: 500;
+	transition: ease-in-out all 0.5s;
+}
+
+:deep(.card:hover) .link,
+:deep(.card:hover) .link:focus,
+:deep(.card:hover) .link:active,
+:deep(.card:hover) .link:visited,
+:deep(.card:hover) .link:hover {
+	color: white;
+	font-weight: 500;
+}
+
 p {
 	line-height: 2;
 }
-
 
 /*
 ███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
@@ -399,7 +417,6 @@ BOOTSTRAP BREAKPOINTS:
 	.hero {
 		height: calc(500px * 0.7) !important;
 	}
-
 }
 
 @media (max-width: 991.9px) {
@@ -461,11 +478,8 @@ BOOTSTRAP BREAKPOINTS:
 	.skew {
 		font-size: smaller;
 	}
-
 }
 
 @media (max-width: 399.9px) {
 }
-
-
 </style>

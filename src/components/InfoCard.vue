@@ -19,25 +19,28 @@ export default {
 </script>
 
 <style scoped>
-.card, .card .primary-hr, .card .card-title, .card a {
-    transition: all ease 0.5s;
+.card,
+.card .primary-hr,
+.card .card-title,
+.card a {
+	transition: all ease 0.5s;
 }
 
 .card:hover {
-    color: white!important;
-    background-color: var(--FSCred);
-    transform: scale(1.05);
+	color: white !important;
+	background-color: var(--FSCred);
+	transform: scale(1.05);
 }
 
 .card:hover .primary-hr {
-    border-color: white!important;
+	border-color: white !important;
 }
 
 .card:hover .card-title {
-    color: white!important;
+	color: white !important;
 }
 
 .card:hover a {
-    color: white!important;
+	color: white !important;
 }
 </style>
