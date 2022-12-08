@@ -31,7 +31,7 @@
 				padding-bottom: 30px;
 				color: var(--FSClightblue);
 				line-height: 1.5 !important;
-			" 
+			"
 		>
 			We offer a wide variety events from educational seminars in relation
 			to the major, to lighthearted video game tournaments. There is
@@ -40,7 +40,7 @@
 		</h5>
 
 		<hr />
-		<h2 class="pt-2 intro-title" style="transform: translate(0, 10%)" >
+		<h2 class="py-2 intro-title" style="transform: translate(0, 10%)" >
 			<strong>Meet the 2022-2023 Exec Members</strong>
 		</h2>
 
@@ -86,7 +86,7 @@
 						>
 							Peruse Past Events
 						</h1>
-						<hr class="primary-hr" style="width: 50%" />
+						<hr class="primary-hr mb-4" style="width: 50%" />
 						<Carousel
 							class="carousel car"
 							:wrap-around="true"
@@ -310,6 +310,16 @@ export default {
 	padding-bottom: 20px;
 }
 
+.car2 img {
+	overflow: hidden !important;
+}
+
+.pic2 {
+	object-fit: contain !important;
+	overflow: hidden !important;
+}
+
+
 /*
 ███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
 ████  ████ ██      ██   ██ ██ ██   ██     ██    ██ ██    ██ ██      ██   ██ ██ ██      ██      
@@ -331,20 +341,28 @@ BOOTSTRAP BREAKPOINTS:
 		height: calc(500px * 0.7) !important;
 	}
 
-	.car .carousel__prev, .car2 .carousel__prev {
-		left: 10px !important;
+	.car :deep(.carousel__prev) {
+		left: 2px !important;
 	}
 
-	.car .carousel__next, .car2 .carousel__next {
-		right: 10px !important;
+	.car :deep(.carousel__next) {
+		right: 2px !important;
 	}
 
 	.car2 .exec {
 		scale: .8 ;
 	}
 
+	.cs-exec {
+		margin-top: 0 !important;
+	}
+
 	.car2 {
-		height: 400px !important;
+		height: 500px !important;
+	}
+
+	.car2 :deep(.carousel__prev), .car2 :deep(.carousel__next), .car :deep(.carousel__prev), .car :deep(.carousel__next) {
+		scale: .8 !important;
 	}
 
 	.gallery {
@@ -356,17 +374,8 @@ BOOTSTRAP BREAKPOINTS:
 		font-size: 40px !important;
 	}
 
-	.pic2 {
-		max-height: 80% !important;
-		max-width: 65% !important;
-	}
-
 	.car .carousel__slide {
 		height: 400px !important;
-	}
-
-	.cs-club hr {
-		margin:0 !important;
 	}
 
 	.cs-info {
@@ -385,6 +394,14 @@ BOOTSTRAP BREAKPOINTS:
 		margin-left: 12% !important;
 	}
 
+	.car :deep(.carousel__prev) {
+		left: -60px !important;
+	}
+
+	.car :deep(.carousel__next) {
+		right: -60px !important;
+	}
+
 }
 
 @media (max-width: 767.9px) {
@@ -397,12 +414,12 @@ BOOTSTRAP BREAKPOINTS:
 		scale: 0.65;
 	}
 
-	.car .carousel__prev, .car2 .carousel__prev {
-		left: -10px !important;
+	.car :deep(.carousel__prev) {
+		left: -60px !important;
 	}
 
-	.car .carousel__next, .car2 .carousel__next {
-		right: -10px !important;
+	.car :deep(.carousel__next) {
+		right: -60px !important;
 	}
 
 	.gallery {
@@ -414,8 +431,7 @@ BOOTSTRAP BREAKPOINTS:
 	}
 
 	.pic2 {
-		max-height: 90% !important;
-		max-width: 80% !important;
+		max-height: 100% !important;
 	}
 
 	.car .carousel__slide {
@@ -431,6 +447,10 @@ BOOTSTRAP BREAKPOINTS:
 	}
 
 	.car2 {
+		height: 230px !important;
+	}
+
+	.car2 .carousel__slide {
 		height: 230px !important;
 	}
 
@@ -466,7 +486,7 @@ BOOTSTRAP BREAKPOINTS:
 		font-size: 20px !important;
 	}
 
-	.pic2 {
+	/* .pic2 {
 		margin-top: 10px;
 		margin-left:0;
 		margin-right:0;
@@ -474,7 +494,7 @@ BOOTSTRAP BREAKPOINTS:
 		max-height: 100% !important;
 		max-width: 85% !important;
 		padding: 5px;
-	}
+	} */
 
 	.car .carousel__slide {
 		height: 220px !important;

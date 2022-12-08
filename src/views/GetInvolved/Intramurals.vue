@@ -247,6 +247,15 @@ export default {
 	transform: scale(1.1);
 }
 
+.outside-gal h1 {
+	margin-top: 1rem !important;
+}
+
+.gallery {
+	margin-top: 1rem;
+	margin-bottom: 2rem;
+}
+
 
 
 /*
@@ -314,6 +323,10 @@ BOOTSTRAP BREAKPOINTS:
 
 	.gallery .carousel__next {
 		right: -75px !important;
+	}
+
+	.gallery {
+		margin-bottom: 0 !important;
 	}
 
 }
