@@ -9,6 +9,14 @@
 		>
 			<h1 class="center">Degree Audit</h1>
 			<div class="row h-100" v-if="!showOutput">
+				<div class="col-12 mb-4 center px-5">
+					<div class="mx-5 px-5">
+						Disclaimer: the Degree Audit is not a substitution for
+						academic advising. While this tool may assist you in
+						course planning and degree completion, you should still
+						confirm any and all results with your academic advisor.
+					</div>
+				</div>
 				<div class="col-6 h-100">
 					<div class="h-100">
 						<div class="mb-4">
@@ -194,13 +202,26 @@
 								<div class="mx-0 row">
 									<div
 										class="col-12"
-										v-for="course in coursesTaken.sort((a,b) => (a.code > b.code) ? 1 : ((b.code > a.code) ? -1 : 0))"
+										v-for="course in coursesTaken.sort(
+											(a, b) =>
+												a.code > b.code
+													? 1
+													: b.code > a.code
+													? -1
+													: 0
+										)"
 										:key="course"
 									>
 										<div class="mx-0 row">
-											<div class="col-2">{{ course.code }}</div>
-											<div class="col-8">{{courses[course.code].name}}</div>
-											<div class="px-0 col-2">{{course.grade}}</div>
+											<div class="col-2">
+												{{ course.code }}
+											</div>
+											<div class="col-8">
+												{{ courses[course.code].name }}
+											</div>
+											<div class="px-0 col-2">
+												{{ course.grade }}
+											</div>
 										</div>
 									</div>
 								</div>
@@ -1541,7 +1562,7 @@ export default {
 
 .degree-aduit-body {
 	width: 100%;
-	max-height: calc(100% - 100px);
+	max-height: calc(100% - 180px);
 	border-radius: 20px;
 	display: flex;
 	flex-direction: column;

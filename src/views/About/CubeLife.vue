@@ -2,7 +2,7 @@
 	<!-- HERO -->
 	<SkewBox
 		:rightBG="{
-			backgroundImage: `url(${require('@/assets/img/cube-pics/CubeBallsRed.jpg')})`,
+			backgroundImage: `url(${require('@/assets/img/cube-pics/DSC00062.jpg')})`,
 			'background-position': 'left',
 			'background-size': 'cover',
 			width: '55vw!important',

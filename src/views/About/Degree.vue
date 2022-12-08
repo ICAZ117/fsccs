@@ -34,10 +34,10 @@
 		:overlayColor="'0, 0, 0'"
 		class="red-section"
 	>
-		<div class="h-100 pb-2">
+		<div class="h-100">
 			<center>
-				<div class="m-auto faculty container h-100 intro">
-					<h1 class="center white mt-2 mb-4 pb-1">
+				<div class="mx-auto my-5 faculty container h-100 ">
+					<h1 class="center white">
 						Bachelors of Computer Science
 					</h1>
 					<p class="white page-text">
@@ -85,7 +85,7 @@
 						passionate about. If all are too enticing, students are
 						able to choose more than one, or pick up classes from
 						any concentration to fulfil their degree, allowing them
-						to tailor their schedule to their interests.<br /><br />
+						to tailor their schedule to their interests.
 					</p>
 				</div>
 			</center>
@@ -269,7 +269,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .concentrations .carousel__prev,
 .concentrations .carousel__next {
 	box-sizing: content-box;

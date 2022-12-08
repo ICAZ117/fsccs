@@ -13,9 +13,9 @@ import Login from "../views/Authorization/Login.vue";
 import SignUp from "../views/Authorization/SignUp.vue";
 import SignUpAuthorized from "../views/Authorization/SignUpAuthorized.vue";
 import ResetPassword from "../views/Authorization/ResetPassword.vue";
-import ResendEmail from "../views/Authorization/ResendEmail.vue";
 import Logout from "../views/Authorization/Logout.vue";
 import Profile from "../views/Profile.vue";
+import NotFound from "../views/NotFound.vue";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -247,6 +247,14 @@ const routes = [
             title: "Faculty - The Cube Life",
         },
     },
+    {
+        path: '/:pathMatch(.*)',
+        name: '404',
+        component: NotFound,
+        meta: {
+            title: "Page Not Found - The Cube Life",
+        },
+    }
 ];
 
 const router = createRouter({

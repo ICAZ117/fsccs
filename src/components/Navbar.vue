@@ -197,11 +197,11 @@
 
 													title: 'Admin',
 												},
-                                                {
-												path: '/manage-courses',
+												{
+													path: '/manage-courses',
 
-												title: 'Manage Courses',
-											},
+													title: 'Manage Courses',
+												},
 												{
 													path: '/logout',
 

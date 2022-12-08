@@ -91,11 +91,11 @@
 	<!-- Start Announcements Section -->
 	<Parallax
 		:image="{
-			backgroundImage: `url(${require('@/assets/img/backgrounds/RedCircuit4.jpg')})`,
+			backgroundImage: `url(${require('@/assets/img/cube-pics/BuildingWCS1.jpg')})`,
 			'background-position': 'center',
 		}"
 		:height="'70vh'"
-		:opacity="0.5"
+		:opacity="0.2"
 		:overlayColor="'0, 0, 0'"
 		class="red-section"
 	>
