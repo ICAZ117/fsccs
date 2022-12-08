@@ -3,7 +3,7 @@
 	<SkewBox
 		:leftBG="{
 			backgroundImage: `url(${require('@/assets/img/WCS3.jpg')})`,
-			'background-position': 'left',
+			'background-position': 'top',
 			'background-size': 'cover',
 			width: '53vw!important',
 		}"
@@ -11,7 +11,10 @@
 		:rightColor="'var(--red-gradient-right)'"
 		:height="500"
 		:padding="'120px 0 60px 0'"
-		class="red-section hero"
+		:maintainSkewbox="true"
+		:pictureSide="'left'"
+		:invert="false"
+		class="hero red-section"
 	>
 		<template v-slot:right>
 			<div class="center vertical-center">
@@ -31,7 +34,7 @@
 		:overlayColor="'0, 0, 0'"
 		class="red-section"
 	>
-		<div class="container my-5 py-5 vertical-center">
+		<div class="container py-5 vertical-center">
             <h3 class="white intro-title">Carol &amp; Marcus Weinstein Computer Sciences Center</h3>
 			<p class="white intro">
 				The Weinstein Computer Sciences Center was completed in spring
@@ -53,12 +56,11 @@
 	</Parallax>
 
 	<!-- CAROUSEL -->
-	<div class="red-section car">
 		<Carousel
 			:wrapAround="true"
 			:transition="600"
 			:pauseAutoplayOnHover="true"
-			class="history"
+			class="history red-section car"
 		>
 			<Slide :key="0">
 				<Parallax
@@ -165,7 +167,7 @@
 						</div>
 
 						<p
-							class="mx-4 mt-4"
+							class="mx-4 mt-4 secondtext"
 							style="
 								font-size: larger;
 								text-align: justify;
@@ -194,7 +196,7 @@
 					:opacity="0.4"
 					:overlayColor="'0, 0, 0'"
 					style="width: 100%; height: 100%; object-fit: cover"
-					class="center vertical-center"
+					class="center vertical-center slide3"
 				>
 					<div
 						style="
@@ -203,12 +205,13 @@
 						"
 					>
 						<p
-							class="mx-4 my-4 col-6 white"
+							class="mx-4 mb-4 col-6 white"
 							style="
 								font-size: larger;
 								text-align: justify;
 								line-height: 1.75;
-								font-weight: bold;"
+								font-weight: bold;
+							"
 						>
 							The process took a few years, but the Weinstien
 							building is complete and students will be able to
@@ -246,7 +249,6 @@
 				<Pagination style="transform: translateY(-40px)" />
 			</template>
 		</Carousel>
-	</div>
 
 	<!-- AI LAB -->
 	<SkewBox
@@ -254,12 +256,16 @@
 			backgroundImage: `url(${require('@/assets/img/insideWCS3.jpg')})`,
 			'background-position': 'right top',
 			'background-size': 'cover',
-			width: '54vw!important',
+			width: '58vw!important',
 		}"
 		:rightColor="'transparent'"
 		:leftColor="'var(--red-gradient-left)'"
 		:height="500"
 		:padding="'70px 0 60px 0'"
+		:maintainSkewbox="true"
+		:pictureSide="'right'"
+		:invert="false"
+		class="skew"
 	>
 		<template v-slot:left>
 			<div class="vertical-center">
@@ -272,16 +278,20 @@
 	<SkewBox
 		:leftBG="{
 			backgroundImage: `url(${require('@/assets/img/insideWCS2.jpg')})`,
-			'background-position': 'right top',
+			'background-position': 'top',
 			'background-size': 'cover',
-			width: '54vw!important',
+			width: '58vw!important',
 			transform: 'scaleY(-1)',
 		}"
 		:leftColor="'transparent'"
 		:rightColor="'var(--blue-gradient-right)'"
 		:height="500"
 		:padding="'70px 0 60px 0'"
+		:maintainSkewbox="true"
+		:pictureSide="'left'"
+		:invert="true"
 		style="transform: scaleY(-1)"
+		class="skew"
 	>
 		<template v-slot:right>
 			<div
@@ -299,12 +309,16 @@
 			backgroundImage: `url(${require('@/assets/img/insideWCS5.jpg')})`,
 			'background-position': 'right top',
 			'background-size': 'cover',
-			width: '54vw!important',
+			width: '58vw!important',
 		}"
 		:rightColor="'transparent'"
 		:leftColor="'var(--grey-gradient-left)'"
 		:height="500"
 		:padding="'70px 0 60px 0'"
+		:maintainSkewbox="true"
+		:pictureSide="'right'"
+		:invert="false"
+		class="skew"
 	>
 		<template v-slot:left>
 			<div class="vertical-center">
@@ -317,16 +331,20 @@
 	<SkewBox
 		:leftBG="{
 			backgroundImage: `url(${require('@/assets/img/insideWCS1.jpg')})`,
-			'background-position': 'right top',
+			'background-position': 'top',
 			'background-size': 'cover',
-			width: '54vw!important',
+			width: '58vw!important',
 			transform: 'scaleY(-1)',
 		}"
 		:leftColor="'transparent'"
 		:rightColor="'var(--red-gradient-right)'"
 		:height="500"
 		:padding="'70px 0 60px 0'"
+		:maintainSkewbox="true"
+		:pictureSide="'left top'"
+		:invert="true"
 		style="transform: scaleY(-1)"
+		class="skew"
 	>
 		<template v-slot:right>
 			<div
@@ -342,14 +360,18 @@
 	<SkewBox
 		:rightBG="{
 			backgroundImage: `url(${require('@/assets/img/Department/Garage.jpg')})`,
-			'background-position': 'right top',
+			'background-position': 'top',
 			'background-size': 'cover',
-			width: '54vw!important',
+			width: '58vw!important',
 		}"
 		:rightColor="'transparent'"
 		:leftColor="'var(--blue-gradient-left)'"
 		:height="500"
 		:padding="'70px 0 60px 0'"
+		:maintainSkewbox="true"
+		:pictureSide="'right'"
+		:invert="false"
+		class="skew"
 	>
 		<template v-slot:left>
 			<div class="vertical-center white">
@@ -359,33 +381,37 @@
 	</SkewBox>
 
 	<!-- FRESH TWIST -->
-	<div class="red-section">
-		<SkewBox
-			:leftBG="{
-				backgroundImage: `url(${require('@/assets/img/FreshTwist.png')})`,
-				'background-position': 'left',
-				'background-size': 'cover',
-				width: '54vw!important',
-				transform: 'scaleY(-1)',
-			}"
-			:leftColor="'transparent'"
-			:rightColor="'var(--grey-gradient-right)'"
-			:height="500"
-			:padding="'70px 0 60px 0'"
-			style="transform: scaleY(-1)"
-		>
-			<template v-slot:right>
-				<div
-					class="vertical-center"
-					style="
-						transform: scaleY(-1);
-						text-align: justify !important;"
-				>
-					<h1 class="white">Fresh Twist</h1>
-				</div>
-			</template>
-		</SkewBox>
-	</div>
+	<SkewBox
+		:leftBG="{
+			backgroundImage: `url(${require('@/assets/img/FreshTwist.png')})`,
+			'background-position': 'left',
+			'background-size': 'cover',
+			width: '58vw!important',
+			transform: 'scaleY(-1)',
+		}"
+		:leftColor="'transparent'"
+		:rightColor="'purple'"
+		:height="500"
+		:padding="'70px 0 60px 0'"
+		:maintainSkewbox="true"
+		:pictureSide="'left'"
+		:invert="true"
+		style="transform: scaleY(-1)"
+		class="skew"
+	>
+		<template v-slot:right>
+			<div
+				class="vertical-center"
+				style="
+					transform: scaleY(-1);
+					text-align: justify !important;
+				"
+			>
+				<h1 class="white">Fresh Twist</h1>
+			</div>
+		</template>
+	</SkewBox>
+	<div class="red-section"></div>
 
 	<!-- TOUR -->
 	<div class="tour_section">
@@ -423,6 +449,11 @@ export default {
 </script>
 
 <style scoped>
+.intro {
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+
 .history {
 	height: 499px;
 	overflow: hidden;
@@ -578,14 +609,12 @@ BOOTSTRAP BREAKPOINTS:
   xxl: 1400px
 */
 @media (max-width: 1199.9px) {
-	.history .hero .skew{
+	.history, .hero, .skew{
 		height: calc(500px * 0.7) !important;
 	}
 
-	.car .carousel__prev,
-	.car .carousel__next {
-		scale: 0.85;
-		color: black;
+	.car .skew {
+		height: calc(500px * 0.8) !important;
 	}
 
 	.car .carousel__prev {
@@ -595,33 +624,44 @@ BOOTSTRAP BREAKPOINTS:
 	.car .carousel__next {
 		right: 10px !important;
 	}
+
+	.car p {
+		font-size: 14.5px !important;
+	}
+
+
 }
 
 @media (max-width: 991.9px) {
-	.intro .intro-text {
-		font-size: medium;
+	.intro {
+		font-size: 20px !important;
 	}
 
-	.community .community-text {
-		font-size: medium;
+	.intro-title {
+		font-size: 26px !important;
+		font-weight: bold;
 	}
-	.community .com-title {
-		font-size: small;
-		margin: 0 !important;
+
+	.car p {
+		font-size: 13px !important;
+
 	}
+
+	.car img {
+		top: -10px !important;
+	}
+
 }
 
 @media (max-width: 767.9px) {
-	.intro .intro-text {
-		font-size: medium !important;
+	.intro {
+		font-size: 14px !important;
+		margin: 0 !important;
 	}
 
-	.community .community-text {
-		font-size: small;
-	}
-	.community .com-title {
-		font-size: medium;
-		margin: 0 !important;
+	.intro-title {
+		font-size: 20px !important;
+		font-weight: bold;
 	}
 
 	.car .carousel__prev,
@@ -637,19 +677,24 @@ BOOTSTRAP BREAKPOINTS:
 		right: -10px !important;
 	}
 
-	.great-dep .info-card {
-		width: 100%;
+	.car p {
+		font-size: 10px !important;
 	}
 }
 
 @media (max-width: 575.9px) {
-	.car {
-		height: calc(500px * 0.6) !important;
+	.intro {
+		font-size: 10px !important;
 	}
 
-	/* .community {
-		
-	} */
+	.intro-title {
+		font-size: 15px !important;
+		font-weight: bold;
+	}
+	
+	.car, .hero{
+		height: calc(500px * 0.6) !important;
+	}
 
 	.intro .intro-text {
 		font-size: small !important;
@@ -668,9 +713,31 @@ BOOTSTRAP BREAKPOINTS:
 		display: flex;
 	}
 
-	.great-dep .info-card p {
-		font-size: smaller;
+	.car p {
+		font-size: 8px !important;
 	}
+
+	.firsttext{
+		margin-bottom: 50px !important;
+	}
+
+	.secondtext{
+		margin-bottom: 70px !important;
+	}
+
+	.car .slide3 {
+		vertical-align: top !important;
+	}
+
+	.quote2 {
+		width: 75% !important;
+		left: -25px !important;
+	}
+
+	.skew {
+		height: calc(500px * 0.5) !important;
+	}
+
 }
 
 @media (max-width: 399.9px) {

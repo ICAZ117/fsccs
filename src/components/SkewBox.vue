@@ -288,5 +288,10 @@ export default {
 	.poly-left {
 		transform: skew(10deg) translateX(35px);
 	}
+
+	.poly-content {
+		font-size: smaller !important;
+	}
+
 }
 </style>
