@@ -10,12 +10,14 @@
 		:rightColor="'transparent'"
 		:leftColor="'var(--blue-gradient-left)'"
 		:height="500"
-		:padding="'120px 0 60px 0'"
+		:padding="'60px 0 0 0'"
 		class="red-section hero"
 	>
 		<template v-slot:left>
-			<div class="center vertical-center">
-				<h1 class="white">Intramural CS Domination</h1>
+			<div class="h-100">
+				<div class="center vertical-center">
+					<h1 class="white">Intramural CS Domination</h1>
+				</div>
 			</div>
 		</template>
 	</SkewBox>
@@ -178,7 +180,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .gallery {
 	margin: 0 7rem;
 	padding: 0 5rem;
@@ -256,8 +258,6 @@ export default {
 	margin-bottom: 2rem;
 }
 
-
-
 /*
 ███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
 ████  ████ ██      ██   ██ ██ ██   ██     ██    ██ ██    ██ ██      ██   ██ ██ ██      ██      
@@ -312,8 +312,6 @@ BOOTSTRAP BREAKPOINTS:
 	.gallery .carousel__slide {
 		height: 400px !important;
 	}
-
-
 }
 
 @media (max-width: 991.9px) {
@@ -328,7 +326,6 @@ BOOTSTRAP BREAKPOINTS:
 	.gallery {
 		margin-bottom: 0 !important;
 	}
-
 }
 
 @media (max-width: 767.9px) {
@@ -371,8 +368,6 @@ BOOTSTRAP BREAKPOINTS:
 		padding-left: 2rem !important;
 		padding-right: 2rem !important;
 	}
-
-
 }
 
 @media (max-width: 575.9px) {
@@ -399,8 +394,8 @@ BOOTSTRAP BREAKPOINTS:
 
 	.gallery img {
 		margin-top: 10px;
-		margin-left:0;
-		margin-right:0;
+		margin-left: 0;
+		margin-right: 0;
 		margin-bottom: 0;
 		max-height: 100% !important;
 		max-width: 95% !important;
@@ -418,12 +413,8 @@ BOOTSTRAP BREAKPOINTS:
 	.intro h5 {
 		font-size: 15px !important;
 	}
-
-
 }
 
 @media (max-width: 399.9px) {
 }
-
-
 </style>

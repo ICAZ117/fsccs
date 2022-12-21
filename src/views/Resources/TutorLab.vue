@@ -72,7 +72,7 @@
 				<div class="container py-5">
 					<h1 class="mt-2 mb-4 bold white">This Semester's Tutors</h1>
 					<div
-						class="col-5 tutorbackground info-card"
+						class="tutorbackground info-card"
 						style="display:inline-block; margin: 1rem; border-radius: 15px;"
 						v-for="tutor in tutors"
 						:key="tutor"
@@ -80,19 +80,7 @@
 						<ProfileCard
 							:pfp="tutor.picture"
 							:name="tutor.name"
-							class="col-6 tutor"
 						></ProfileCard>
-						<!-- <img
-							:src="tutor.picture"
-							class="col-6"
-							style="display: inline-block"
-						/>
-						<h4
-							class="white mt-2 mb-2 col-6"
-							style="display: inline-block"
-						>
-							{{ tutor.name }}
-						</h4> -->
 					</div>
 				</div>
 			</center>

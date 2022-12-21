@@ -27,7 +27,7 @@
 							<h4 class="white">Welcome to the</h4>
 							<h1 class="white">Florida Southern College</h1>
 							<h4 class="white">
-								Department of Computer Science
+								Department of Computer Science and Engineering
 							</h4>
 						</div>
 					</template>
@@ -152,7 +152,7 @@
 			<div class="container-xl py-5 h-100">
 				<h1 class="center white mt-2 mb-4 pb-1 bold">Events</h1>
 				<div class="events white-scroll-bar">
-					<div v-if="windowWidth >= 1200">
+					<div class="w-100" v-if="windowWidth >= 1200">
 						<Event
 							v-for="(event, i) in events"
 							:key="i"

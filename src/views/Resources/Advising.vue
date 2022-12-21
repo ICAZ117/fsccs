@@ -73,10 +73,10 @@
 		:overlayColor="'0, 0, 0'"
 		class="red-section car"
 	>
-		<div class="pb-2">
+		<div class="py-5">
 			<center>
 				<div class="faculty container">
-					<h1 class="center FSCred mt-4 pb-1 bold">
+					<h1 class="center FSCred bold">
 						What should I do to prepare?
 					</h1>
 					<hr class="primary-hr mb-2" style="width: 80%" />
