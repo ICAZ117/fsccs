@@ -3,7 +3,7 @@
 	<SkewBox
 		:rightBG="{
 			backgroundImage: `url(${require('@/assets/img/cube-pics/CubeBallsRed.jpg')})`,
-			'background-position': 'bottom',
+			'background-position': 'bottom left',
 			'background-size': 'cover',
 			width: '58vw!important',
 		}"
@@ -38,33 +38,31 @@
 	>
 		<div class="h-100">
 			<center>
-				<div class="my-5 py-5 h-100">
-					<div>
+				<div class="my-xl-5 py-5 h-100">
+					<div class="container">
 						<h3 class="white">What We Have to Offer</h3>
-						<p
-							class="col-10 white intro-text"
-							style="
-								text-align: justify;
-								line-height: 2 !important;
-							"
-						>
-							Computer science provides you with a sound
-							theoretical background and the opportunities for
-							individual and collaborative exploration of
-							real-world computing problems. The program gives
-							students the opportunity for hands-on experience
-							while they explore and apply the theoretical
-							underpinnings of the discipline. Students have the
-							option to choose from three different
-							concentrations: <b>AI and Machine Learning</b>,
-							<b>Cybersecurity</b>, and
-							<b>Web & Cloud Computing</b>. Choosing a
-							concentration allows students to get a more
-							specialized look into their interests. In addition
-							to being committed to providing a quality education,
-							the CS department is a place for all students to
-							belong, as you can explore below!
-						</p>
+
+						<Expandable>
+							<p class="white justify-large">
+								Computer science provides you with a sound
+								theoretical background and the opportunities for
+								individual and collaborative exploration of
+								real-world computing problems. The program gives
+								students the opportunity for hands-on experience
+								while they explore and apply the theoretical
+								underpinnings of the discipline. Students have
+								the option to choose from three different
+								concentrations: <b>AI and Machine Learning</b>,
+								<b>Cybersecurity</b>, and
+								<b>Web & Cloud Computing</b>. Choosing a
+								concentration allows students to get a more
+								specialized look into their interests. In
+								addition to being committed to providing a
+								quality education, the CS department is a place
+								for all students to belong, as you can explore
+								below!
+							</p>
+						</Expandable>
 					</div>
 				</div>
 			</center>
@@ -82,19 +80,19 @@
 		:leftColor="'transparent'"
 		:rightColor="'var(--blue-gradient-right)'"
 		:height="500"
-		:padding="'60px 0 60px 20px'"
+		:padding="'0'"
 		:maintainSkewbox="false"
 		:pictureSide="'left'"
 		:invert="false"
-		class="red-section community"
+		class="red-section w-100"
 	>
 		<template v-slot:right>
-			<div class="vertical-center">
-				<div class="center white com-title">
-					<h3 style="font-weight: bold">A Community That Cares</h3>
+			<div class="my-xl-0 my-5 vertical-center">
+				<div class="center white">
+					<h3>A Community That Cares</h3>
 				</div>
 				<div>
-					<p class="white community-text">
+					<p class="center white mb-0">
 						The CS department strives to be a welcoming and
 						inclusive environment for students, both inside and
 						outside of class. More than just a major, the department
@@ -119,12 +117,12 @@
 		:overlayColor="'0, 0, 0'"
 		class="red-section"
 	>
-		<div class="h-100 pb-2">
+		<div class="h-100">
 			<center>
 				<div class="m-auto container py-5 h-100 great-dep">
-					<h1 class="center mt-2" style="color: white">
+					<h3 class="center my-3" style="color: white">
 						What Makes Our Department Great
-					</h1>
+					</h3>
 					<div class="row">
 						<div class="col-6 mb-4 info-card">
 							<a
@@ -218,7 +216,7 @@
 		:transition="600"
 		:pauseAutoplayOnHover="true"
 		style="height: 499px; overflow: hidden"
-		class="faculty car"
+		class="car red-arrows"
 	>
 		<Slide key="0">
 			<div
@@ -254,7 +252,7 @@
 						class="vertical-center skew"
 						style="transform: scaleY(-1); text-align: center"
 					>
-						<h1 class="white">The department bowling team</h1>
+						<h3 class="white">The department bowling team</h3>
 					</div>
 				</template>
 			</SkewBox>
@@ -280,7 +278,7 @@
 			>
 				<template v-slot:left>
 					<div class="vertical-center white skew">
-						<h1 class="">Cool events, like this chili contest</h1>
+						<h3 class="">Cool events, like this chili contest</h3>
 					</div>
 				</template>
 			</SkewBox>
@@ -309,9 +307,9 @@
 						class="vertical-center skew"
 						style="transform: scaleY(-1); text-align: center"
 					>
-						<h1 class="white">
+						<h3 class="white">
 							Engaged learning, which makes classes interesting!
-						</h1>
+						</h3>
 					</div>
 				</template>
 			</SkewBox>
@@ -335,7 +333,7 @@
 			>
 				<template v-slot:left>
 					<div class="vertical-center white skew">
-						<h1 class="">Weekly boardgame lunches</h1>
+						<h3 class="">Weekly boardgame lunches</h3>
 					</div>
 				</template>
 			</SkewBox>
@@ -364,7 +362,7 @@
 						class="vertical-center skew"
 						style="transform: scaleY(-1); text-align: center"
 					>
-						<h1 class="white">Everyone has fun!</h1>
+						<h3 class="white">Everyone has fun!</h3>
 					</div>
 				</template>
 			</SkewBox>
@@ -377,7 +375,7 @@
 </template>
 
 <script>
-import TextPage from "../../components/TextPage.vue";
+import Expandable from "@/components/Expandable.vue";
 import Parallax from "@/components/Parallax.vue";
 import InfoCard from "@/components/InfoCard.vue";
 import SkewBox from "@/components/SkewBox.vue";
@@ -386,7 +384,7 @@ import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 
 export default {
 	components: {
-		TextPage,
+		Expandable,
 		Parallax,
 		InfoCard,
 		SkewBox,
