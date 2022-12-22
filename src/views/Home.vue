@@ -100,8 +100,8 @@
 		class="red-section"
 	>
 		<div class="h-100">
-			<div class="announcements container py-5 h-100">
-				<h1 class="center white mt-2 pb-1 bold">Announcements</h1>
+			<div class="announcements container my-5 h-100">
+				<h1 class="center white bold">Announcements</h1>
 
 				<Carousel
 					class="carousel"
@@ -624,7 +624,7 @@ BOOTSTRAP BREAKPOINTS:
 */
 @media (max-width: 1199.9px) {
 	.hero {
-		height: calc(500px * 0.69999);
+		height: calc(500px * 0.6999);
 	}
 
 	.hero .carousel__prev,
@@ -706,7 +706,7 @@ BOOTSTRAP BREAKPOINTS:
 	}
 
 	.announcementComponent {
-		width: 100% !important;
+		width: 80% !important;
 	}
 }
 

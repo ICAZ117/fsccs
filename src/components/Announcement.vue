@@ -78,16 +78,12 @@ export default {
 	margin-right: 10px;
 }
 
-.announcementHeader {
-    width: calc(100% - 60px);
-}
-
-.announcementBody {
+.announcementHeader, .announcementBody {
 	width: calc(100% - 60px);
 }
 
 .message {
-	max-height: 350px;
+	max-height: 250px;
 	overflow-y: auto;
 	hyphens: auto;
     overflow-wrap: break-word;
@@ -100,15 +96,6 @@ export default {
 	background-color: white;
 }
 
-.readMore {
-	width: 100%;
-	background: transparent;
-	border: none;
-	color: white;
-	font-weight: bold;
-	z-index: 10;
-	height: 30px;
-}
 
 @media (max-width: 767.9px) {
 	#smallAnnouncement {
@@ -119,4 +106,5 @@ export default {
         display: none;
     }
 }
+
 </style>

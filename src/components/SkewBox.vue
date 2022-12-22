@@ -17,23 +17,21 @@
 			</div>
 		</div>
 	</div>
-	<div v-else>
+	<div v-else class="h-100">
 		<div
-			:style="pictureSide == 'right' ? rightBG : leftBG"
-			style="width: 100vw !important"
+			:style="'background-position: center; background-size: cover; background-image: ' + (pictureSide == 'right' ? rightBG.backgroundImage : leftBG.backgroundImage)"
+			style="width: 100%!important; height: 100%!important"
 		>
 			<div
 				:style="
-					'min-height: ' +
-					cssHeight +
-					'; width: 100vw!important; transform: scaleY(' +
+					'transform: scaleY(' +
 					(invert ? '-' : '') +
 					'1); display: flex; align-items: center; background: hsla(' +
 					mobileColor +
-					'); backdrop-filter: blur(7px); height: 100%; width: 100%; font-size: large; hyphens: auto;'
+					'); backdrop-filter: blur(7px); height: 100%; width: 100%;'
 				"
 			>
-				<div class="container p-5 content">
+				<div class="container">
 					<slot
 						:name="pictureSide == 'right' ? 'left' : 'right'"
 					></slot>
@@ -132,9 +130,9 @@ export default {
 	destroyed() {
 		window.removeEventListener("resize", this.getWindowSize);
 	},
-    beforeMount() {
-        this.getWindowSize();
-    },
+	beforeMount() {
+		this.getWindowSize();
+	},
 	mounted() {
 		this.x = Math.tan((10 * Math.PI) / 180) * (this.height / 2) + "px";
 		this.cssHeight = this.height + "px";
@@ -237,7 +235,7 @@ export default {
 */
 @media (max-width: 1199.9px) {
 	.skewbox-parent {
-		--propHeight: calc(0.7 * v-bind(cssHeight));
+		--propHeight: calc((0.7 * v-bind(cssHeight)) + 1px);
 	}
 
 	.poly-content {
@@ -255,7 +253,7 @@ export default {
 
 @media (max-width: 767.9px) {
 	.skewbox-parent {
-		--propHeight: calc(0.7 * v-bind(cssHeight));
+		--propHeight: calc(0.6999 * v-bind(cssHeight));
 	}
 
 	.poly-content {
@@ -273,12 +271,11 @@ export default {
 	.content {
 		padding: 0 !important;
 	}
-
 }
 
 @media (max-width: 575.9px) {
 	.skewbox-parent {
-		--propHeight: calc(0.6 * v-bind(cssHeight));
+		--propHeight: calc(0.5999 * v-bind(cssHeight));
 	}
 
 	.poly-right {
@@ -288,10 +285,5 @@ export default {
 	.poly-left {
 		transform: skew(10deg) translateX(35px);
 	}
-
-	.poly-content {
-		font-size: smaller !important;
-	}
-
 }
 </style>

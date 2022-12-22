@@ -174,6 +174,7 @@ body {
 	background-color: var(--off-white);
 	color: rgb(20, 20, 20);
 	font-family: "Montserrat", sans-serif;
+	line-height: 1.75;
 }
 
 h1,
@@ -274,6 +275,10 @@ h6 {
 	box-shadow: 0px 0px 1px 1px var(--FSCgrey);
 }
 
+.carousel__pagination {
+    padding: 0!important;
+}
+
 .carousel__icon {
 	width: calc(var(--vc-icn-width) * 2) !important;
 	height: calc(var(--vc-icn-width) * 2) !important;
@@ -361,6 +366,13 @@ h6 {
 .cube {
 	filter: invert(11%) sepia(73%) saturate(5399%) hue-rotate(340deg)
 		brightness(98%) contrast(99%);
+}
+
+.justify-large {
+	hyphens: auto;
+	text-align: justify;
+	text-justify: distribute;
+	text-align-last: left;  
 }
 
 .page-text {
@@ -641,33 +653,15 @@ hr.FSClightblue {
 	}
 }
 
-@media (max-width: 575.9px) {
-	h1 {
-		font-size: 180%;
+@media (max-width: 474.9px) {
+	body {
+		font-size: 10pt;
 	}
 
-	h2 {
-		font-size: 150%;
-	}
-
-	h3 {
-		font-size: 130%;
-	}
-
-	h4 {
-		font-size: 120%;
-	}
-
-	h5 {
-		font-size: 110%;
-	}
-
-	h6 {
-		font-size: 100%;
-	}
+    .justify-large {
+        text-align: left;
+    }
 }
-
-
 
 @media (max-width: 349.9px) {
 	.applicationDisplay {

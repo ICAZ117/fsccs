@@ -92,7 +92,7 @@ export default {
 	data() {
 		return {
 			doRedirect: true,
-            audioFiles: [],
+			audioFiles: [],
 		};
 	},
 	methods: {
@@ -112,9 +112,9 @@ export default {
 			this.audioFiles[2].currentTime = 0;
 			this.audioFiles[3].pause();
 			this.audioFiles[3].currentTime = 0;
-            this.audioFiles[4].pause();
+			this.audioFiles[4].pause();
 			this.audioFiles[4].currentTime = 0;
-            this.audioFiles[5].pause();
+			this.audioFiles[5].pause();
 			this.audioFiles[5].currentTime = 0;
 		},
 		redirect() {
@@ -132,13 +132,13 @@ export default {
 			}, 100);
 		},
 	},
-    async mounted() {
+	async mounted() {
 		this.cubeLifeMode = this.$store.getters.getCubeLifeMode;
 		this.audioFiles.push(new Audio(audio1));
 		this.audioFiles.push(new Audio(audio2));
 		this.audioFiles.push(new Audio(audio3));
-        this.audioFiles.push(new Audio(audio3));
-        this.audioFiles.push(new Audio(audio3));
+		this.audioFiles.push(new Audio(audio3));
+		this.audioFiles.push(new Audio(audio3));
 		this.audioFiles.push(new Audio(audio4));
 	},
 };
@@ -239,5 +239,11 @@ export default {
 
 .card-contacts.row > * {
 	padding-left: 0 !important;
+}
+
+@media (max-width: 575.9px) {
+    .team-member {
+        width: 70vw;
+    }
 }
 </style>
