@@ -38,7 +38,7 @@
 					:rightBG="{
 						backgroundImage: `url(${require('@/assets/img/intramurals/BannerBlur.jpg')})`,
 						width: '55vw!important',
-						'background-position': 'center',
+						'background-position': 'right',
 						'background-size': 'cover',
 						'background-repeat': 'none',
 					}"
@@ -61,7 +61,7 @@
 					:leftBG="{
 						backgroundImage: `url(${require('@/assets/img/BGlunch6.jpg')})`,
 						width: '55vw!important',
-						'background-position': 'center',
+						'background-position': 'right',
 						'background-size': 'cover',
 						'background-repeat': 'none',
 					}"
@@ -211,7 +211,6 @@
 		:height="'0'"
 		:opacity="0.2"
 		:overlayColor="'0, 0, 0'"
-		class="red-section"
 		:key="mountReload"
 	>
 		<div class="h-100 pb-2">
@@ -223,6 +222,7 @@
 					<Carousel
 						:itemsToShow="numVisibleProfessors"
 						:wrapAround="true"
+						class="red-arrows scale-carousel"
 					>
 						<Slide
 							v-for="(professor, name) in professors"
@@ -245,27 +245,6 @@
 		</div>
 	</Parallax>
 	<!-- End Faculty Section -->
-
-	<!-- Start Tour Section -->
-	<Parallax
-		:image="{
-			backgroundImage: `url(${require('@/assets/img/virtual-tour/Tour1.jpg')}`,
-			'background-position': 'top',
-		}"
-		:height="'0'"
-		:opacity="0.4"
-		:overlayColor="'0, 0, 0'"
-		class=""
-	>
-		<div class="container py-5 my-2" style="height: 70vh !important">
-			<div class="center vertical-center">
-				<router-link to="/virtual-tour" class="no-decor link-box">
-					<h1 class="white bold tour-link">Take a Virtual Tour</h1>
-				</router-link>
-			</div>
-		</div>
-	</Parallax>
-	<!-- End Tour Section -->
 </template>
 
 <script>
@@ -486,39 +465,8 @@ export default {
 	transform: translateY(-30px);
 }
 
-.hero .carousel__pagination-button {
-	height: calc(var(--vc-pgn-height) * 1.5) !important;
-	width: calc(var(--vc-pgn-width) * 1.5) !important;
-}
-
-.hero .carousel__pagination-button--active {
-	background-color: white !important;
-}
-
-.hero .carousel__icon {
-	width: calc(var(--vc-icn-width) * 2) !important;
-	height: calc(var(--vc-icn-width) * 2) !important;
-}
-
-.hero .carousel__prev,
-.hero .carousel__next {
-	box-sizing: content-box;
-	background-color: transparent;
-	width: calc(var(--vc-nav-width) * 2) !important;
-	height: calc(var(--vc-nav-height) * 2) !important;
-	color: white !important;
-}
-
-.hero .carousel__prev {
-	left: 30px !important;
-}
-
-.hero .carousel__next {
-	right: 30px !important;
-}
-
 /*
-█████   ███    ██ ███    ██  ██████  ██    ██ ███    ██  ██████ ███████ ███    ███ ███████ ███    ██ ████████ ███████ 
+ █████  ███    ██ ███    ██  ██████  ██    ██ ███    ██  ██████ ███████ ███    ███ ███████ ███    ██ ████████ ███████ 
 ██   ██ ████   ██ ████   ██ ██    ██ ██    ██ ████   ██ ██      ██      ████  ████ ██      ████   ██    ██    ██      
 ███████ ██ ██  ██ ██ ██  ██ ██    ██ ██    ██ ██ ██  ██ ██      █████   ██ ████ ██ █████   ██ ██  ██    ██    ███████ 
 ██   ██ ██  ██ ██ ██  ██ ██ ██    ██ ██    ██ ██  ██ ██ ██      ██      ██  ██  ██ ██      ██  ██ ██    ██         ██ 
@@ -528,36 +476,6 @@ export default {
 	text-align: left;
 	max-width: 1000px;
 	margin: auto;
-}
-
-.announcements .carousel__pagination {
-	margin-bottom: 0;
-	padding-left: 0;
-	transform: translateY(0px);
-}
-
-.announcements .carousel__pagination-button {
-	height: calc(var(--vc-pgn-height) * 1.5) !important;
-	width: calc(var(--vc-pgn-width) * 1.5) !important;
-	background-color: darkgray;
-}
-
-.announcements .carousel__pagination-button--active {
-	background-color: white !important;
-}
-
-.announcements .carousel__icon {
-	width: calc(var(--vc-icn-width) * 2) !important;
-	height: calc(var(--vc-icn-width) * 2) !important;
-}
-
-.announcements .carousel__prev,
-.announcements .carousel__next {
-	/* box-sizing: content-box; */
-	background-color: transparent;
-	width: calc(var(--vc-nav-width) * 2) !important;
-	height: calc(var(--vc-nav-height) * 2) !important;
-	color: white !important;
 }
 
 .announcements .carousel__prev {
@@ -583,64 +501,12 @@ export default {
 	text-align: left;
 }
 
-.faculty .carousel__pagination {
-	margin-bottom: 0;
-	padding-left: 0;
-	transform: translateY(0px);
-}
-
-.faculty .carousel__pagination-button {
-	height: calc(var(--vc-pgn-height) * 1.5) !important;
-	width: calc(var(--vc-pgn-width) * 1.5) !important;
-	background-color: darkgray;
-}
-
-.faculty .carousel__pagination-button--active {
-	background-color: white !important;
-}
-
-.faculty .carousel__icon {
-	width: calc(var(--vc-icn-width) * 2) !important;
-	height: calc(var(--vc-icn-width) * 2) !important;
-}
-
-.faculty .carousel__prev,
-.faculty .carousel__next {
-	/* box-sizing: content-box; */
-	background-color: var(--FSCred);
-	width: 50px !important;
-	height: 50px !important;
-	border-radius: 50% !important;
-	color: white !important;
-}
-
 .faculty .carousel__prev {
 	left: 30px !important;
 }
 
 .faculty .carousel__next {
 	right: 30px !important;
-}
-
-.faculty .carousel__slide > .carousel__item {
-	transform: scale(0.8);
-	opacity: 0.5;
-	transition: 0.5s;
-}
-
-.faculty .carousel__slide--next > .carousel__item {
-	opacity: 0.9;
-	transform: scale(0.9) translate(25px);
-}
-
-.faculty .carousel__slide--prev > .carousel__item {
-	opacity: 0.9;
-	transform: scale(0.9) translate(-25px);
-}
-
-.faculty .carousel__slide--active > .carousel__item {
-	opacity: 1;
-	transform: scale(1.1);
 }
 
 /*
@@ -758,7 +624,7 @@ BOOTSTRAP BREAKPOINTS:
 */
 @media (max-width: 1199.9px) {
 	.hero {
-		height: calc(500px * 0.7);
+		height: calc(500px * 0.69999);
 	}
 
 	.hero .carousel__prev,
@@ -814,6 +680,14 @@ BOOTSTRAP BREAKPOINTS:
 
 	.announcementComponent {
 		width: 80% !important;
+	}
+
+	.faculty .carousel__prev {
+		left: 0px !important;
+	}
+
+	.faculty .carousel__next {
+		right: 0px !important;
 	}
 }
 
