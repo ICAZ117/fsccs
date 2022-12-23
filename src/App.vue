@@ -136,8 +136,9 @@ export default {
 	--FSCgreyRGB: 100, 100, 100 !important;
 
 	--primary: var(--FSCred);
-	--secondary: var(--FSCgrey);
+	--secondary: var(--FSCblue);
 	--primary-dark: #800820 !important;
+    --secondary-dark: hsl(206, 100%, 25%) !important;
 
 	--red-gradient-left: linear-gradient(
 		to left,
@@ -402,7 +403,24 @@ h6 {
 }
 
 .btn-primary:hover {
-	background-color: var(--primary-dark);
+	background-color: var(--primary-dark)!important;
+}
+
+.btn-secondary,
+.btn-secondary:visited,
+.btn-secondary:active,
+.btn-secondary:focus,
+.btn-secondary:active:focus {
+	background-color: var(--secondary);
+	color: rgb(255, 255, 255);
+	border: none;
+	outline: none;
+	box-shadow: none;
+	transition: all 0.25s ease-in-out;
+}
+
+.btn-secondary:hover {
+	background-color: var(--secondary-dark)!important;
 }
 
 .red-section {

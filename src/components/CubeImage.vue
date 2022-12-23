@@ -1,5 +1,5 @@
 <template>
-	<img id="thugImg" :src="cubifiedPic" alt="" width="325" />
+	<img id="thugImg" :src="cubifiedPic" alt="" />
 </template>
 
 <script>

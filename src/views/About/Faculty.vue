@@ -28,14 +28,22 @@
 
 	<div class="">
 		<div id="professorList">
-			<div class="prof" v-for="(professor, name, index) in professors" :key="index">
-				<FacultyPageCard
+			<div
+				class="prof"
+				v-for="(professor, name, index) in professors"
+				:key="index"
+			>
+				<HorizontalFacultyCard
 					:professor="professor"
 					:name="name"
-					:title="professor.title"
-					:quote="professor.quote"
-					:image="professor.teachingimg"
-					:overlay="index % 2 == 0 ? 'overlay2' : 'overlay1'"
+					:overlay="
+						index % 2 == 0
+							? 'rgba(var(--FSCblueRGB), 0.7)'
+							: 'rgba(var(--FSCredRGB), 0.7)'
+					"
+					:cardColor="
+						index % 2 == 0 ? 'var(--FSCblue)' : 'var(--FSCred)'
+					"
 					:class="
 						index % 2 == 0 &&
 						index != Object.keys(professors).length - 1
@@ -44,13 +52,7 @@
 							? 'red-section'
 							: ''
 					"
-				>
-					<a
-						:href="`/faculty?id=${name}`"
-						class="btn btn-primary btn-md mt-2 link"
-						>Learn more<i class="ms-2 fa-solid fa-arrow-right"></i
-					></a>
-				</FacultyPageCard>
+				/>
 			</div>
 		</div>
 	</div>
@@ -70,15 +72,13 @@
 </template>
 
 <script>
-import TextPage from "../../components/TextPage.vue";
-import FacultyPageCard from "../../components/FacultyPageCard.vue";
+import HorizontalFacultyCard from "@/components/HorizontalFacultyCard.vue";
 import Parallax from "../../components/Parallax.vue";
 import SkewBox from "@/components/SkewBox.vue";
 
 export default {
 	components: {
-		TextPage,
-		FacultyPageCard,
+		HorizontalFacultyCard,
 		Parallax,
 		SkewBox,
 	},
@@ -112,12 +112,9 @@ export default {
 }
 .link {
 	background-color: white;
-	color: var(--FSCred)
+	color: var(--FSCred);
 }
-.prof:hover .link {
-	background-color: var(--FSCred);
-	color: white
-}
+
 
 /*
 ███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
@@ -139,22 +136,16 @@ BOOTSTRAP BREAKPOINTS:
 	.hero {
 		height: calc(500px * 0.7) !important;
 	}
-	
-	
 }
 
 @media (max-width: 991.9px) {
 	.link {
-		transform: scale(.9) !important;
+		transform: scale(0.9) !important;
 		margin-top: 0 !important;
 	}
-	
 }
 
 @media (max-width: 767.9px) {
-
-	
-	
 }
 
 @media (max-width: 575.9px) {
@@ -162,15 +153,13 @@ BOOTSTRAP BREAKPOINTS:
 		height: calc(500px * 0.5) !important;
 	}
 	.link {
-		transform: scale(.8) !important;
-		position:relative;
+		transform: scale(0.8) !important;
+		position: relative;
 		left: -15px;
 		top: 10px;
 	}
-	
 }
 
 @media (max-width: 399.9px) {
 }
-
 </style>
