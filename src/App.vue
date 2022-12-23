@@ -376,6 +376,10 @@ h6 {
 	text-align-last: left;  
 }
 
+p {
+    margin: 0!important;
+}
+
 .page-text {
 	text-align: justify;
 	line-height: 2;

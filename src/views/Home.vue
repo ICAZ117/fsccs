@@ -99,39 +99,41 @@
 		:overlayColor="'0, 0, 0'"
 		class="red-section"
 	>
-		<div class="h-100">
-			<div class="announcements container my-5 h-100">
-				<h1 class="center white bold">Announcements</h1>
+		<div style="height: 70vh">
+			<div class="vertical-center">
+				<div class="announcements container my-5">
+					<h1 class="center white bold">Announcements</h1>
 
-				<Carousel
-					class="carousel"
-					:wrap-around="true"
-					:transition="600"
-					:pauseAutoplayOnHover="true"
-				>
-					<template #slides>
-						<Slide
-							v-for="announcement in announcements"
-							:key="announcement"
-						>
-							<Announcement
-								:pfp="announcement.pfp"
-								:name="announcement.name"
-								:date="announcement.date"
-								class="announcementComponent"
+					<Carousel
+						class="carousel"
+						:wrap-around="true"
+						:transition="600"
+						:pauseAutoplayOnHover="true"
+					>
+						<template #slides>
+							<Slide
+								v-for="announcement in announcements"
+								:key="announcement"
 							>
-								<Markdown
-									:source="announcement.content"
-									:breaks="true"
-								/>
-							</Announcement>
-						</Slide>
-					</template>
-					<template #addons>
-						<Navigation />
-						<Pagination />
-					</template>
-				</Carousel>
+								<Announcement
+									:pfp="announcement.pfp"
+									:name="announcement.name"
+									:date="announcement.date"
+									class="announcementComponent"
+								>
+									<Markdown
+										:source="announcement.content"
+										:breaks="true"
+									/>
+								</Announcement>
+							</Slide>
+						</template>
+						<template #addons>
+							<Navigation />
+							<Pagination />
+						</template>
+					</Carousel>
+				</div>
 			</div>
 		</div>
 	</Parallax>
