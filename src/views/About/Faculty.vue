@@ -44,6 +44,7 @@
 					:cardColor="
 						index % 2 == 0 ? 'var(--FSCblue)' : 'var(--FSCred)'
 					"
+                    :backgroundPosition="index % 2 == 0 ? 'right' : 'left'"
 					:class="
 						index % 2 == 0 &&
 						index != Object.keys(professors).length - 1

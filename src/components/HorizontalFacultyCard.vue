@@ -1,7 +1,7 @@
 <template>
 	<div
 		class="teachingBG"
-		:style="`background-image: url(${professor.teachingimg}); background-size: cover; background-repeat: no-repeat; background-position: center;`"
+		:style="`background-image: url(${professor.teachingimg}); background-size: cover; background-repeat: no-repeat; background-position: ${backgroundPosition};`"
 	>
 		<div class="teachingBGOverlay">
 			<div class="horizontal-card">
@@ -40,7 +40,7 @@
 <script>
 import CubeImage from "@/components/CubeImage.vue";
 export default {
-	props: ["professor", "name", "overlay", "cardColor"],
+	props: ["professor", "name", "overlay", "cardColor", "backgroundPosition"],
 	components: {
 		CubeImage,
 	},

@@ -75,10 +75,10 @@
 				:rightColor="'var(--blue-gradient-right)'"
 				:height="500"
 				:padding="'0'"
-				:maintainSkewbox="true"
+				:maintainSkewbox="false"
 				:pictureSide="'left'"
 				:invert="false"
-				class="skew"
+				class="w-100"
 			>
 				<template v-slot:right>
 					<div class="vertical-center">
@@ -154,7 +154,7 @@
 		<Slide :key="3">
 			<div
 				class="history"
-				:style="`background-image: url(${require('@/assets/img/cube-pics/Construction3.jpg')}); background-position: center`"
+				:style="`background-image: url(${require('@/assets/img/cube-pics/Construction3.jpg')}); background-position: right`"
 			>
 				<div class="container textbox">
 					<Expandable>
@@ -203,7 +203,6 @@
 			:maintainSkewbox="true"
 			:pictureSide="'right'"
 			:invert="false"
-			class="skew"
 		>
 			<template v-slot:left>
 				<div class="vertical-center">
@@ -229,15 +228,11 @@
 			:pictureSide="'left'"
 			:invert="true"
 			style="transform: scaleY(-1)"
-			class="skew"
 		>
 			<template v-slot:right>
 				<div
-					class="vertical-center"
-					style="
-						transform: scaleY(-1);
-						text-align: justify !important;
-					"
+					class="vertical-center center"
+					style="transform: scaleY(-1)"
 				>
 					<h1 class="white">Cyber Range</h1>
 				</div>
@@ -259,10 +254,9 @@
 			:maintainSkewbox="true"
 			:pictureSide="'right'"
 			:invert="false"
-			class="skew"
 		>
 			<template v-slot:left>
-				<div class="vertical-center">
+				<div class="vertical-center center">
 					<h1 class="white">Maker Space</h1>
 				</div>
 			</template>
@@ -289,8 +283,8 @@
 		>
 			<template v-slot:right>
 				<div
-					class="vertical-center"
-					style="transform: scaleY(-1); text-align: center"
+					class="vertical-center center"
+					style="transform: scaleY(-1)"
 				>
 					<h1 class="white">Advanced Computing Lab</h1>
 				</div>
@@ -377,12 +371,13 @@ export default {
 
 <style scoped>
 .history {
-	height: 500px;
+	height: 100%;
 	width: 100%;
 	background-size: cover;
 	background-repeat: no-repeat;
 	display: flex;
 	align-items: center;
+	padding: 2rem 0;
 }
 
 .textbox {
@@ -407,15 +402,10 @@ export default {
 ██  ██  ██ ██      ██   ██ ██ ██   ██     ██ ▄▄ ██ ██    ██ ██      ██   ██ ██ ██           ██ 
 ██      ██ ███████ ██████  ██ ██   ██      ██████   ██████  ███████ ██   ██ ██ ███████ ███████ 
 */
-@media (max-width: 1199.9px) {
-	.history {
-		height: 350px;
-	}
-}
 
 @media (max-width: 575.9px) {
-	.history {
-		height: 300px;
+	.textbox {
+		margin: auto 1rem;
 	}
 }
 </style>

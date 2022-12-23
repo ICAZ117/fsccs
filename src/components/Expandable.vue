@@ -11,7 +11,10 @@
 	</div>
 	<div style="display: flex">
 		<div
-			class="expandIcon mx-auto btn btn-primary btn-sm"
+			:class="
+				'expandIcon mx-auto btn btn-primary btn-sm ' +
+				(hideText ? '' : 'mt-3')
+			"
 			v-if="windowWidth < 768"
 			@click="hideText = !hideText"
 		>

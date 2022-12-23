@@ -3,7 +3,7 @@
 	<SkewBox
 		:rightBG="{
 			backgroundImage: `url(${require('@/assets/img/backgrounds/walkway.jpg')})`,
-			'background-position': 'left',
+			'background-position': 'center',
 			'background-size': 'cover',
 			width: '55vw!important',
 		}"
@@ -18,7 +18,7 @@
 	>
 		<template v-slot:left>
 			<div class="center vertical-center">
-				<h1 class="white">Degree & Concentrations</h1>
+				<h1 class="white customSizing">Degree & Concentrations</h1>
 			</div>
 		</template>
 	</SkewBox>
@@ -39,7 +39,7 @@
 				<div class="my-5 container h-100">
 					<h1 class="center white">Bachelors of Computer Science</h1>
 					<Expandable>
-						<p class="white justify-large">
+						<p class="white justify-large mb-3">
 							Computer science provides you with a sound
 							theoretical background and the opportunities for
 							individual and collaborative exploration of
@@ -73,13 +73,7 @@
 							>.
 						</p>
 
-						<p
-							class="white"
-							style="
-								text-align: justify;
-								line-height: 2 !important;
-							"
-						>
+						<p class="white justify-large">
 							In this department, there are three possible
 							concentrations for students to choose from. Each
 							track includes three different classes in rising
@@ -108,7 +102,7 @@
 		<Slide :key="0">
 			<SkewBox
 				:rightBG="{
-					backgroundImage: `url(${require('@/assets/img/Web.png')})`,
+					backgroundImage: `url(${require('@/assets/img/Web.jpg')})`,
 					'background-color': 'darkgrey',
 					'background-position': 'left',
 					'background-size': 'cover',
@@ -120,7 +114,7 @@
 				:maintainSkewbox="false"
 				:pictureSide="'right'"
 				:invert="false"
-				:mobileColor="'266, 70%, 30%, 0.6'"
+				:mobileColor="'348, 88%, 39%, 0.5'"
 				class="w-100"
 			>
 				<template v-slot:left>
@@ -128,10 +122,10 @@
 						style="display: flex; align-items: center; height: 100%"
 						class="my-5 my-xl-0"
 					>
-						<div class="white" style="text-align: left">
+						<div class="white">
 							<h1 class="white center">Web & Cloud Computing</h1>
 							<Expandable>
-								<p class="white page-text">
+								<p class="white justify-large mb-3">
 									In-depth examination of a current topic in
 									web development and cloud computing, such as
 									web security, user experience, mobile app
@@ -144,7 +138,7 @@
 									backend API, and more!
 								</p>
 								<b>Concentration specific classes:</b>
-								<ul class="white">
+								<ul class="white justify-large">
 									<li>Introduction to Web Development</li>
 									<li>Web Application Architectures</li>
 									<li>Advanced Topics in Web Development</li>
@@ -170,7 +164,7 @@
 				:maintainSkewbox="false"
 				:pictureSide="'right'"
 				:invert="false"
-				:mobileColor="'205, 70%, 30%, 0.6'"
+				:mobileColor="'206, 100%, 33%, 0.5'"
 				class="w-100"
 			>
 				<template v-slot:left>
@@ -181,7 +175,7 @@
 						<div class="white" style="text-align: left">
 							<h1 class="white center">AI & Machine Learning</h1>
 							<Expandable>
-								<p class="white page-text">
+								<p class="white justify-large mb-3">
 									In this concentration, you'll investigate
 									concepts and techniques related to
 									artificial intelligence such as evolutionary
@@ -194,7 +188,7 @@
 									AIs.
 								</p>
 								<b>Concentration specific classes:</b>
-								<ul class="white">
+								<ul class="white justify-large">
 									<li>
 										Introduction to Artificial Intelligence
 									</li>
@@ -225,7 +219,7 @@
 				:maintainSkewbox="false"
 				:pictureSide="'right'"
 				:invert="false"
-				:mobileColor="'176, 80%, 30%, 0.6'"
+				:mobileColor="'0, 0%, 39%, 0.8'"
 				class="w-100"
 			>
 				<template v-slot:left>
@@ -233,10 +227,10 @@
 						style="display: flex; align-items: center; height: 100%"
 						class="my-5 my-xl-0"
 					>
-						<div class="white" style="text-align: left">
+						<div class="white">
 							<h1 class="white center">Cyber Security</h1>
 							<Expandable>
-								<p class="white page-text">
+								<p class="white justify-large mb-3">
 									Cybersecurity analysts plan and carry out
 									security measures to protect an
 									organization's computer networks and
@@ -254,7 +248,7 @@
 									internet.
 								</p>
 								<b>Concentration specific classes:</b>
-								<ul class="white">
+								<ul class="white justify-large">
 									<li>Principles of Computer Networking</li>
 									<li>Penetration Testing</li>
 									<li>Threat Detection Engineering</li>
@@ -299,10 +293,38 @@ export default {
 	transform: translateX(-50%) translateY(-30px);
 }
 
+/*
+███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
+████  ████ ██      ██   ██ ██ ██   ██     ██    ██ ██    ██ ██      ██   ██ ██ ██      ██      
+██ ████ ██ █████   ██   ██ ██ ███████     ██    ██ ██    ██ █████   ██████  ██ █████   ███████ 
+██  ██  ██ ██      ██   ██ ██ ██   ██     ██ ▄▄ ██ ██    ██ ██      ██   ██ ██ ██           ██ 
+██      ██ ███████ ██████  ██ ██   ██      ██████   ██████  ███████ ██   ██ ██ ███████ ███████ 
+*/
+/* 
+BOOTSTRAP BREAKPOINTS:
+  xs: 475px
+  sm: 576px
+  md: 768px
+  lg: 992px
+  xl: 1200px
+  xxl: 1400px
+*/
 @media (max-width: 1199.9px) {
 	:deep(.carousel__prev),
 	:deep(.carousel__next) {
 		display: none;
+	}
+}
+
+@media (max-width: 575.9px) {
+	.customSizing {
+		font-size: 23pt !important;
+	}
+}
+
+@media (max-width: 474.9px) {
+	.customSizing {
+		font-size: 17pt !important;
 	}
 }
 </style>
