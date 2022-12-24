@@ -114,7 +114,7 @@
 				:maintainSkewbox="false"
 				:pictureSide="'right'"
 				:invert="false"
-				:mobileColor="'348, 88%, 39%, 0.5'"
+				:mobileColor="'hsla(348, 88%, 39%, 0.5)'"
 				class="w-100"
 			>
 				<template v-slot:left>
@@ -164,7 +164,7 @@
 				:maintainSkewbox="false"
 				:pictureSide="'right'"
 				:invert="false"
-				:mobileColor="'206, 100%, 33%, 0.5'"
+				:mobileColor="'hsla(206, 100%, 33%, 0.5)'"
 				class="w-100"
 			>
 				<template v-slot:left>
@@ -219,7 +219,7 @@
 				:maintainSkewbox="false"
 				:pictureSide="'right'"
 				:invert="false"
-				:mobileColor="'0, 0%, 39%, 0.8'"
+				:mobileColor="'hsla(0, 0%, 39%, 0.8)'"
 				class="w-100"
 			>
 				<template v-slot:left>

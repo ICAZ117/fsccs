@@ -7,7 +7,9 @@
 				: ''
 		"
 	>
-		<slot></slot>
+		<div id="expandableContent">
+			<slot @update="test()"></slot>
+		</div>
 	</div>
 	<div style="display: flex">
 		<div
@@ -30,14 +32,24 @@
 
 <script>
 export default {
+    watch: {
+        "$refs.expandableContent": function(newVal, oldVal) {
+            this.slotHeight = this.$refs.expandableContent.offsetHeight;
+            console.log(this.slotHeight);
+        }
+    },
 	data() {
 		return {
+            slotHeight: 0,
 			windowHeight: 0,
 			windowWidth: 0,
 			hideText: true,
 		};
 	},
 	methods: {
+        test() {
+            console.log("HERRRREEE");
+        },
 		getWindowSize() {
 			this.windowHeight = window.innerHeight;
 			this.windowWidth = window.innerWidth;

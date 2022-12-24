@@ -3,7 +3,7 @@
 	<SkewBox
 		:rightBG="{
 			backgroundImage: `url(${require('@/assets/img/cube-pics/DSC00062.jpg')})`,
-			'background-position': 'left',
+			'background-position': 'center',
 			'background-size': 'cover',
 			width: '55vw!important',
 		}"
@@ -355,7 +355,7 @@
 		:maintainSkewbox="false"
 		:pictureSide="'left'"
 		:invert="true"
-		:mobileColor="'153, 70%, 30%, 0.6'"
+		:mobileColor="'hsla(153, 70%, 30%, 0.6)'"
 		style="transform: scaleY(-1)"
 	>
 		<template v-slot:right>
@@ -407,7 +407,7 @@
 		:maintainSkewbox="false"
 		:pictureSide="'right'"
 		:invert="false"
-		:mobileColor="'264, 100%, 10%, 0.7'"
+		:mobileColor="'hsla(264, 100%, 10%, 0.7)'"
 		class="skew"
 	>
 		<template v-slot:left>
@@ -458,7 +458,7 @@
 		:maintainSkewbox="false"
 		:pictureSide="'left'"
 		:invert="true"
-		:mobileColor="'37, 100%, 50%, 0.7'"
+		:mobileColor="'hsla(37, 100%, 50%, 0.7)'"
 		style="transform: scaleY(-1)"
 		class="skew"
 	>
@@ -505,7 +505,7 @@
 		:maintainSkewbox="false"
 		:pictureSide="'right'"
 		:invert="false"
-		:mobileColor="'232, 26%, 10%, 0.85'"
+		:mobileColor="'hsla(232, 26%, 10%, 0.85)'"
 		class="skew"
 	>
 		<template v-slot:left>

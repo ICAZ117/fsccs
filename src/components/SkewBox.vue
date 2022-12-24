@@ -33,9 +33,9 @@
 				:style="
 					'transform: scaleY(' +
 					(invert ? '-' : '') +
-					'1); display: flex; align-items: center; background: hsla(' +
+					'1); display: flex; align-items: center; background: ' +
 					mobileColor +
-					'); backdrop-filter: blur(7px); height: 100%; width: 100%;'
+					'; backdrop-filter: blur(7px); height: 100%; width: 100%;'
 				"
 			>
 				<div class="container">

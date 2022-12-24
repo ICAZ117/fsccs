@@ -1,6 +1,6 @@
 <template>
 	<div :key="forceReloadPage">
-        <!-- MAIN SECTION -->
+		<!-- MAIN SECTION -->
 		<Parallax
 			:image="{
 				backgroundImage: `url(${require('@/assets/img/WCS.jpg')})`,
@@ -9,23 +9,28 @@
 			:height="'100vh'"
 			:opacity="0.7"
 			:overlayColor="'25, 25, 25'"
-            class="red-section"
+			class="red-section"
 		>
 			<div class="blur">
 				<SkewBox
-					:height="windowHeight * 0.7"
-					:padding="'80px 0 0 0'"
-					:divisionPosition="35"
+					:height="Math.max(windowHeight, 600)"
+					:padding="'60px 0 0 0'"
+					:divisionPosition="40"
 					:leftColor="'linear-gradient(to bottom, var(--FSCred), rgba(var(--FSCredRGB), 0.5) 60%, transparent)'"
 					:rightColor="'transparent'"
+					:maintainSkewbox="false"
+					:pictureSide="'right'"
+					:mobileColor="'linear-gradient(to bottom, var(--FSCred), rgba(var(--FSCredRGB), 0.5) 60%, transparent)'"
 				>
 					<template v-slot:left>
-						<div class="facultyPic mb-3">
-							<img
-								:src="professor.pfp"
-								alt=""
-								class="facultyPic"
-							/>
+						<div class="pt-5 pt-xl-0">
+							<div class="facultyPic mb-3 mt-5 mt-xl-3">
+								<img
+									:src="professor.pfp"
+									alt=""
+									class="facultyPic"
+								/>
+							</div>
 						</div>
 						<div class="w-100">
 							<center>
@@ -37,31 +42,36 @@
 							</center>
 						</div>
 						<hr class="white-hr" />
-						<div class="contact-info row">
-							<h5 class="col-1">
-								<i class="fa-solid fa-envelope"></i>
-							</h5>
-							<h5 class="col-11">
-								&nbsp;&nbsp;&nbsp;<a
-									:href="'mailto:' + professor.email"
-									class="white"
-									>{{ professor.email }}</a
-								>
-							</h5>
+						<div class="white">
+							<div class="customRow">
+								<h5>
+									<i class="fa-solid fa-envelope"></i>
+								</h5>
+								<h5>
+									&nbsp;&nbsp;&nbsp;<a
+										:href="'mailto:' + professor.email"
+										class="white"
+										>{{ professor.email }}</a
+									>
+								</h5>
+							</div>
+							<div class="customRow">
+								<h5>
+									<i class="fa-solid fa-phone"></i>
+								</h5>
+								<h5>&nbsp;&nbsp;&nbsp;{{ professor.phone }}</h5>
+							</div>
 
-							<h5 class="col-1">
-								<i class="fa-solid fa-phone"></i>
-							</h5>
-							<h5 class="col-11">
-								&nbsp;&nbsp;&nbsp;{{ professor.phone }}
-							</h5>
-
-							<h5 class="col-1">
-								<i class="fa-solid fa-location-dot"></i>
-							</h5>
-							<h5 class="col-11">
-								&nbsp;&nbsp;&nbsp;{{ professor.office }}
-							</h5>
+							<div class="customRow">
+								<h5>
+									<i class="fa-solid fa-location-dot"></i>
+								</h5>
+								<h5>
+									&nbsp;&nbsp;&nbsp;&nbsp;{{
+										professor.office
+									}}
+								</h5>
+							</div>
 						</div>
 					</template>
 					<template v-slot:right>
@@ -76,7 +86,8 @@
 					</template>
 				</SkewBox>
 
-				<div class="professor mx-5 py-5">
+				<!-- TABS -->
+				<div class="professor mx-s-5 py-5">
 					<div class="container white">
 						<tabs
 							:key="forceReload + forceReloadPage"
@@ -94,40 +105,70 @@
 								v-if="professor.bio"
 								id="bio"
 								name="Biography"
-								v-html="professor.bio"
 								:key="forceReload + forceReloadPage"
-							></tab>
+							>
+								<Expandable>
+									<div
+										v-html="professor.bio"
+										class="justify-large"
+									></div>
+								</Expandable>
+							</tab>
 							<tab
 								v-if="professor.interests"
 								name="Interests"
-								v-html="professor.interests"
 								:key="forceReload + forceReloadPage"
-							></tab>
+							>
+								<Expandable>
+									<div
+										v-html="professor.interests"
+										class="justify-large"
+									></div>
+								</Expandable>
+							</tab>
 							<tab
 								v-if="professor.education"
 								name="Education"
-								v-html="professor.education"
 								:key="forceReload + forceReloadPage"
-							></tab>
+							>
+								<Expandable>
+									<div
+										v-html="professor.education"
+										class="justify-large"
+									></div>
+								</Expandable>
+							</tab>
 							<tab
 								v-if="professor.awards"
 								name="Honors/Awards"
-								v-html="professor.awards"
 								:key="forceReload + forceReloadPage"
-							></tab>
+							>
+								<Expandable>
+									<div
+										v-html="professor.awards"
+										class="justify-large"
+									></div>
+								</Expandable>
+							</tab>
 							<tab
 								v-if="professor.publications"
 								name="Publications"
-								v-html="professor.publications"
 								:key="forceReload + forceReloadPage"
-							></tab>
+							>
+								<Expandable>
+									<div
+										v-html="professor.publications"
+										class="justify-large"
+									></div>
+								</Expandable>
+							</tab>
 						</tabs>
 					</div>
 				</div>
 			</div>
 		</Parallax>
 
-        <!-- CAROUSEL -->
+		<!-- CAROUSEL -->
 		<Parallax
 			:image="{
 				backgroundImage: `url(${require('@/assets/img/BG4.jpg')}`,
@@ -139,11 +180,13 @@
 			class=""
 		>
 			<div class="h-100 pb-2">
-				<div class="faculty container py-5 h-100">
-					<h1 class="center FSCred mt-2 mb-4 pb-1 bold">
-						Meet the Faculty
-					</h1>
-					<Carousel :itemsToShow="3.5" :wrapAround="true">
+				<div class="container py-5 h-100">
+					<h1 class="primary center mt-2 bold">Meet the Faculty</h1>
+					<Carousel
+						:itemsToShow="numVisibleProfessors"
+						:wrapAround="true"
+						class="red-arrows scale-carousel"
+					>
 						<Slide
 							v-for="(professor, name) in professors"
 							:key="name"
@@ -158,6 +201,7 @@
 						</Slide>
 						<template #addons>
 							<Navigation />
+							<Pagination />
 						</template>
 					</Carousel>
 				</div>
@@ -167,6 +211,7 @@
 </template>
 
 <script>
+import Expandable from "@/components/Expandable.vue";
 import Parallax from "../components/Parallax.vue";
 import SkewBox from "../components/SkewBox.vue";
 import Quote from "../components/Quote.vue";
@@ -177,6 +222,7 @@ import FacultyCard from "../components/FacultyCard.vue";
 
 export default {
 	components: {
+		Expandable,
 		Parallax,
 		SkewBox,
 		Quote,
@@ -193,19 +239,55 @@ export default {
 			professor: "",
 			name: "",
 			windowHeight: 0,
+			windowWidth: 0,
 			facultyList: {},
 			professors: {},
 			forceReload: 0,
 			forceReloadPage: 0,
 		};
 	},
+	methods: {
+		getWindowSize() {
+			this.windowHeight = window.innerHeight;
+			this.windowWidth = window.innerWidth;
+		},
+	},
+	computed: {
+		numVisibleProfessors() {
+			// xs: 0px
+			// sm: 576px
+			// md: 768px
+			// lg: 992px
+			// xl: 1200px
+			// xxl: 1400px
+
+			if (this.windowWidth > 1399.9) {
+				return 3.7;
+			} else if (this.windowWidth > 1199.9) {
+				return 3.5;
+			} else if (this.windowWidth > 991.9) {
+				return 3;
+			} else if (this.windowWidth > 767.9) {
+				return 2;
+			} else if (this.windowWidth > 575.9) {
+				return 1.5;
+			} else {
+				return 1;
+			}
+		},
+	},
+	created() {
+		window.addEventListener("resize", this.getWindowSize);
+	},
+	destroyed() {
+		window.removeEventListener("resize", this.getWindowSize);
+	},
 	async beforeMount() {
 		// Get name from URL param
 		this.name = this.$route.query.id;
 
 		// Get window height
-		this.windowHeight = window.innerHeight;
-
+		this.getWindowSize();
 		// Get all faculty members in DB
 		await this.$store.dispatch("fetchFaculty");
 
@@ -236,43 +318,52 @@ export default {
 };
 </script>
 
-<style>
-.tab-headers {
-	border-radius: 10px 10px 0 0;
-	overflow: hidden;
-	/* gap: 10px; */
+<style scoped>
+.customRow {
+	display: flex;
+	flex-direction: row;
+	margin: auto;
 }
 
-.tab-headers > *:not(:last-child) {
+.customRow .left {
+	width: fit-content !important;
+}
+
+:deep(.tab-headers) {
+	border-radius: 10px 10px 0 0;
+	overflow: hidden;
+}
+
+:deep(.tab-headers > *:not(:last-child)) {
 	border-right: 1px solid gray;
 }
 
-.tab-headers li {
+:deep(.tab-headers li) {
 	text-decoration: none;
 	list-style-type: none;
 }
 
-.tab-header {
+:deep(.tab-header) {
 	display: flex;
 	background-color: var(--FSCgrey);
 	height: 50px;
 	justify-content: center;
 	transition: all ease 0.3s;
+    padding: 1rem;
 }
 
-.tab-header:hover {
+:deep(.tab-header:hover) {
 	background-color: gray;
 }
 
-.tab-header.is-active {
+:deep(.tab-header.is-active) {
 	background-color: var(--FSCred);
 }
 
-.tab-panels {
+:deep(.tab-panels) {
 	background-color: rgba(0, 0, 0, 0.6);
 	border-radius: 0 0 10px 10px;
 }
-
 .facultyPic {
 	height: 250px;
 	width: 250px;
