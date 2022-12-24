@@ -19,8 +19,15 @@
 	</div>
 	<div v-else class="h-100">
 		<div
-			:style="'background-position: center; background-size: cover; background-image: ' + (pictureSide == 'right' ? rightBG.backgroundImage : leftBG.backgroundImage)"
-			style="width: 100%!important; height: 100%!important"
+			:style="
+				'transform: scaleY(' +
+				(invert ? '-' : '') +
+				'1); background-position: center; background-size: cover; background-image: ' +
+				(pictureSide == 'right'
+					? rightBG.backgroundImage
+					: leftBG.backgroundImage)
+			"
+			style="width: 100% !important; height: 100% !important"
 		>
 			<div
 				:style="

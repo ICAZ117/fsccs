@@ -1,11 +1,11 @@
 <template>
 	<div
-		class="mx-auto team-member"
+		class="team-member"
 		@mouseenter="playAudio()"
 		@mouseleave="stopAudio()"
 	>
 		<div class="team-member-img">
-			<CubeImage :pic="pfp" width="325"></CubeImage>
+			<CubeImage :pic="pfp" style="width: 100%;"></CubeImage>
 			<div
 				class="social-icons"
 				v-if="website || email || linkedin || github || discord"
@@ -53,15 +53,11 @@
 				<small class=""><span v-if="role" v-html="role"></span></small>
 			</div>
 			<hr class="primary-hr mx-auto my-2" width="200px" />
-			<div class="card-text" style="text-align: justify; hyphens: auto">
+			<div class="" style="text-align: justify; hyphens: auto">
 				<slot></slot>
 			</div>
 		</div>
 	</div>
-
-	<!-- <div v-show="false">
-        <audio id='thugLife1' src='@/assets/audio/Thug-Life-basic.mp3'/>
-    </div> -->
 </template>
 
 <script>
@@ -140,9 +136,9 @@ export default {
 			this.audioFiles[2].currentTime = 0;
 			this.audioFiles[3].pause();
 			this.audioFiles[3].currentTime = 0;
-            this.audioFiles[4].pause();
+			this.audioFiles[4].pause();
 			this.audioFiles[4].currentTime = 0;
-            this.audioFiles[5].pause();
+			this.audioFiles[5].pause();
 			this.audioFiles[5].currentTime = 0;
 		},
 		copyDiscord() {
@@ -159,8 +155,8 @@ export default {
 		this.audioFiles.push(new Audio(audio1));
 		this.audioFiles.push(new Audio(audio2));
 		this.audioFiles.push(new Audio(audio3));
-        this.audioFiles.push(new Audio(audio3));
-        this.audioFiles.push(new Audio(audio3));
+		this.audioFiles.push(new Audio(audio3));
+		this.audioFiles.push(new Audio(audio3));
 		this.audioFiles.push(new Audio(audio4));
 	},
 };
@@ -190,7 +186,8 @@ export default {
 	background-color: white;
 	color: var(--FSCred);
 	transition: all ease 0.5s;
-	width: 325px;
+    width: 100%;
+	max-width: 325px;
 }
 
 .team-member:hover {
