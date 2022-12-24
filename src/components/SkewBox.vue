@@ -113,7 +113,7 @@ export default {
 		},
 		mobileColor: {
 			type: String,
-			default: "0, 0%, 0%, 0.6",
+			default: "hsla(0, 0%, 0%, 0.6)",
 			required: false,
 		},
 	},
