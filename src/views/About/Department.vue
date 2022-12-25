@@ -125,10 +125,7 @@
 					</h3>
 					<div class="row">
 						<div class="col-6 mb-4 info-card">
-							<a
-								href="/about/faculty"
-								style="text-decoration: none !important"
-							>
+							<router-link to="/about/faculty" class="card-link">
 								<InfoCard :title="'Professors that care'">
 									<p class="center card_text">
 										Every professor in the CS department is
@@ -141,12 +138,12 @@
 										></i>
 									</p>
 								</InfoCard>
-							</a>
+							</router-link>
 						</div>
 						<div class="col-6 mb-4 info-card">
-							<a
-								href="/about/degree-and-concentrations"
-								style="text-decoration: none"
+							<router-link
+								to="/about/degree-and-concentrations"
+								class="card-link"
 							>
 								<InfoCard :title="'Engaging classes'">
 									<p class="center card_text">
@@ -160,13 +157,10 @@
 										></i>
 									</p>
 								</InfoCard>
-							</a>
+							</router-link>
 						</div>
 						<div class="col-6 mb-4 info-card">
-							<a
-								href="/virtual-tour"
-								style="text-decoration: none"
-							>
+							<router-link to="/virtual-tour" class="card-link">
 								<InfoCard :title="'Convinient workspaces'">
 									<p class="center card_text">
 										The CS building features a large work
@@ -181,12 +175,12 @@
 										></i>
 									</p>
 								</InfoCard>
-							</a>
+							</router-link>
 						</div>
 						<div class="col-6 mb-4 info-card">
-							<a
-								href="/get-involved/cs-club"
-								style="text-decoration: none"
+							<router-link
+								to="/get-involved/cs-club"
+								class="card-link"
 							>
 								<InfoCard :title="'Active community'">
 									<p class="center card_text">
@@ -202,7 +196,7 @@
 										></i>
 									</p>
 								</InfoCard>
-							</a>
+							</router-link>
 						</div>
 					</div>
 				</div>
@@ -407,204 +401,9 @@ export default {
 };
 </script>
 
-<style>
-.text_block {
-	display: inline-block;
-	line-height: 2;
-	text-align: justify;
-	font-size: x-large;
-}
-.small_pic {
-	display: inline-block;
-}
-.degree_square {
-	background-color: var(--FSCred);
-	margin-left: 0;
-	margin-right: 0;
-	height: 375px;
-	position: relative;
-}
-.inner_square {
-	background-color: rgba(58, 64, 64, 0.63);
-	height: 300px;
-	display: inline;
-	position: absolute;
-	top: 10%;
-}
-.sm_inner_square {
-	background-color: rgba(121, 108, 108, 0.904) !important;
-	height: 80px;
-	width: 275px;
-	color: white;
-	text-align: center;
-	display: inline;
-	position: absolute;
-	transform: translate(-70%, -70%);
-}
-.sm_inner_square:hover {
-	background-color: rgb(254, 254, 254) !important;
-	color: var(--FSCred) !important;
-}
-.community-pic {
-	width: 50%;
-	display: block;
-	transform: scale(1) !important;
-	margin: auto;
-}
-.community-pic-holder {
-	position: relative;
-}
-.community-text {
-	color: white;
-	text-align: center;
-	line-height: 1.5 !important;
-}
-
-.degree_pic {
-	display: block;
-	width: 85%;
-	margin-left: auto;
-	margin-right: auto;
-	transform: translate(5%, 5%);
-}
-.textandimg {
-	position: relative;
-	text-align: center;
-}
-a,
-a:visited,
-a:hover,
-a:active,
-a:focus {
+<style scoped>
+.card-link {
+	text-decoration: none;
 	color: black;
-}
-.carouseltitle {
-	background-color: var(--FSCblue) !important;
-	margin-left: 0;
-	margin-right: 0;
-	height: 60px;
-	text-align: center;
-	color: white;
-	border: 4px solid var(--FSClightblue);
-}
-.topbackground2 {
-	background-color: rgba(21, 127, 143, 0);
-	padding: 1rem;
-	/* margin-left: 5%;
-		margin-right: 5%; */
-}
-
-/*
-███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
-████  ████ ██      ██   ██ ██ ██   ██     ██    ██ ██    ██ ██      ██   ██ ██ ██      ██      
-██ ████ ██ █████   ██   ██ ██ ███████     ██    ██ ██    ██ █████   ██████  ██ █████   ███████ 
-██  ██  ██ ██      ██   ██ ██ ██   ██     ██ ▄▄ ██ ██    ██ ██      ██   ██ ██ ██           ██ 
-██      ██ ███████ ██████  ██ ██   ██      ██████   ██████  ███████ ██   ██ ██ ███████ ███████ 
-*/
-/* 
-BOOTSTRAP BREAKPOINTS:
-  xs: 475px
-  sm: 576px
-  md: 768px
-  lg: 992px
-  xl: 1200px
-  xxl: 1400px
-*/
-@media (max-width: 1199.9px) {
-	.car {
-		height: calc(500px * 0.7) !important;
-	}
-
-	.car .carousel__prev,
-	.car .carousel__next {
-		scale: 0.85;
-	}
-
-	.car .carousel__prev {
-		left: 10px !important;
-	}
-
-	.car .carousel__next {
-		right: 10px !important;
-	}
-}
-
-@media (max-width: 991.9px) {
-	.intro .intro-text {
-		font-size: medium;
-	}
-
-	.community .community-text {
-		font-size: medium;
-	}
-	.community .com-title {
-		font-size: small;
-		margin: 0 !important;
-	}
-}
-
-@media (max-width: 767.9px) {
-	.intro .intro-text {
-		font-size: medium !important;
-	}
-
-	.community .community-text {
-		font-size: small;
-	}
-	.community .com-title {
-		font-size: medium;
-		margin: 0 !important;
-	}
-
-	.car .carousel__prev,
-	.car .carousel__next {
-		scale: 0.65;
-	}
-
-	.car .carousel__prev {
-		left: -10px !important;
-	}
-
-	.car .carousel__next {
-		right: -10px !important;
-	}
-
-	.great-dep .info-card {
-		width: 100%;
-	}
-}
-
-@media (max-width: 575.9px) {
-	.car {
-		height: calc(500px * 0.6) !important;
-	}
-
-	/* .community {
-		
-	} */
-
-	.intro .intro-text {
-		font-size: small !important;
-	}
-
-	.car .skew {
-		font-size: 15px;
-	}
-
-	.carousel__prev,
-	.carousel__next {
-		display: none;
-	}
-
-	.show-576 {
-		display: flex;
-	}
-
-	.great-dep .info-card p {
-		font-size: smaller;
-	}
-}
-
-@media (max-width: 399.9px) {
 }
 </style>

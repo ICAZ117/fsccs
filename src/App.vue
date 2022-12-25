@@ -312,6 +312,19 @@ h6 {
 	color: white !important;
 }
 
+.gallery-pic {
+	padding: 0 1rem;
+	height: 300px;
+	width: 100%;
+	overflow: hidden;
+}
+
+.gallery-pic img {
+	height: 100% !important;
+	width: 100% !important;
+	object-fit: contain;
+}
+
 /* 
 ███████  ██████  █████  ██      ███████      ██████  █████  ██████   ██████  ██    ██ ███████ ███████ ██      
 ██      ██      ██   ██ ██      ██          ██      ██   ██ ██   ██ ██    ██ ██    ██ ██      ██      ██      

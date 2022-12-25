@@ -31,19 +31,18 @@
 		:height="'0'"
 		:opacity="0.6"
 		:overlayColor="'0, 0, 0'"
-		class="red-section intro"
+		class="red-section"
 	>
 		<div class="h-100">
 			<center>
 				<div class="m-auto container py-5 h-100">
 					<div
 						class="white"
-						style="text-align: justify; line-height: 2 !important"
 					>
-						<h3 class="center white">
+						<h3 class="center">
 							Home of the 2021-2022 All-Sports Champions
 						</h3>
-						<p>
+						<p class="mb-3 justify-large">
 							Yes, you read that correctly! With Dr. Eicholtz
 							leading the way and rallying students each and every
 							week, the Computer Science Department won the
@@ -56,7 +55,7 @@
 							fraternities, and sororities, and earned the highest
 							overall points over the 2021-2022 academic year.
 						</p>
-						<p>
+						<p class="justify-large">
 							Our continued success is strictly conditional on
 							YOUR participation and motivation. Join in the fun,
 							and let's keep adding more and more Championship
@@ -77,87 +76,78 @@
 		:height="'0'"
 		:opacity="0"
 		:overlayColor="'0, 0, 0'"
-		class="outside-gal"
 	>
-		<div class="h-100">
-			<center>
-				<div class="m-auto h-100 container">
-					<h1 class="center mt-2 mb-2 pb-1">Gallery</h1>
-
-					<div class="gallery">
-						<Carousel :itemsToShow="1" :wrapAround="true">
-							<Slide :key="0">
-								<img
-									src="@/assets/img/intramurals/im_bowling_2022.jpg"
-									height="500"
-									style="object-fit: cover"
-								/>
-							</Slide>
-							<Slide :key="1">
-								<img
-									src="@/assets/img/intramurals/im_bouldering_2022.png"
-									height="500"
-									style="object-fit: cover"
-								/>
-							</Slide>
-							<Slide :key="2">
-								<img
-									src="@/assets/img/intramurals/bowling-dept-2021.jpg"
-									height="500"
-									style="object-fit: cover"
-								/>
-							</Slide>
-							<Slide :key="3">
-								<img
-									src="@/assets/img/intramurals/im_bouldering_2021.png"
-									height="500"
-									style="object-fit: cover"
-								/>
-							</Slide>
-							<Slide :key="4">
-								<img
-									src="@/assets/img/intramurals/bowling-2021-mens-champions.jpg"
-									height="500"
-									style="object-fit: cover"
-								/>
-							</Slide>
-							<Slide :key="5">
-								<img
-									src="@/assets/img/intramurals/im_softball_f21_03.jpg"
-									height="500"
-									style="object-fit: cover"
-								/>
-							</Slide>
-							<Slide :key="6">
-								<img
-									src="@/assets/img/intramurals/OldChampPic.jpg"
-									height="500"
-									style="object-fit: cover"
-								/>
-							</Slide>
-							<Slide :key="7">
-								<img
-									src="@/assets/img/intramurals/Bouldering3.png"
-									height="500"
-									style="object-fit: cover"
-								/>
-							</Slide>
-							<Slide :key="8">
-								<img
-									src="@/assets/img/intramurals/IMG_0033.jpg"
-									height="500"
-									style="object-fit: cover"
-								/>
-							</Slide>
-
-							<template #addons>
-								<Navigation />
-								<Pagination />
-							</template>
-						</Carousel>
+		<div class="container py-5">
+			<h3 class="center black pb-1">Photo Gallery</h3>
+			<hr class="primary-hr mx-auto" style="width: 80%" />
+			<Carousel
+				:wrapAround="true"
+				:transition="600"
+				:pauseAutoplayOnHover="true"
+				class="red-arrows"
+			>
+				<Slide :key="0">
+					<div class="gallery-pic">
+						<img
+							src="@/assets/img/intramurals/im_bowling_2022.jpg"
+						/>
 					</div>
-				</div>
-			</center>
+				</Slide>
+				<Slide :key="1">
+					<div class="gallery-pic">
+						<img
+							src="@/assets/img/intramurals/im_bouldering_2022.png"
+						/>
+					</div>
+				</Slide>
+				<Slide :key="2">
+					<div class="gallery-pic">
+						<img
+							src="@/assets/img/intramurals/bowling-dept-2021.jpg"
+						/>
+					</div>
+				</Slide>
+				<Slide :key="3">
+					<div class="gallery-pic">
+						<img
+							src="@/assets/img/intramurals/im_bouldering_2021.png"
+						/>
+					</div>
+				</Slide>
+				<Slide :key="4">
+					<div class="gallery-pic">
+						<img
+							src="@/assets/img/intramurals/bowling-2021-mens-champions.jpg"
+						/>
+					</div>
+				</Slide>
+				<Slide :key="5">
+					<div class="gallery-pic">
+						<img
+							src="@/assets/img/intramurals/im_softball_f21_03.jpg"
+						/>
+					</div>
+				</Slide>
+				<Slide :key="6">
+					<div class="gallery-pic">
+						<img src="@/assets/img/intramurals/OldChampPic.jpg" />
+					</div>
+				</Slide>
+				<Slide :key="7">
+					<div class="gallery-pic">
+						<img src="@/assets/img/intramurals/Bouldering3.png" />
+					</div>
+				</Slide>
+				<Slide :key="8">
+					<div class="gallery-pic">
+						<img src="@/assets/img/intramurals/IMG_0033.jpg" />
+					</div>
+				</Slide>
+				<template #addons>
+					<Navigation />
+					<Pagination />
+				</template>
+			</Carousel>
 		</div>
 	</Parallax>
 </template>
@@ -181,240 +171,4 @@ export default {
 </script>
 
 <style scoped>
-.gallery {
-	margin: 0 7rem;
-	padding: 0 5rem;
-}
-.gallery .carousel {
-	text-align: left;
-}
-
-.gallery .carousel__pagination {
-	margin-bottom: 0;
-	padding-left: 0;
-	transform: translateY(0px);
-}
-
-.gallery .carousel__pagination-button {
-	height: calc(var(--vc-pgn-height) * 1.5) !important;
-	width: calc(var(--vc-pgn-width) * 1.5) !important;
-	background-color: darkgray;
-}
-
-.gallery .carousel__pagination-button--active {
-	background-color: var(--FSCred) !important;
-}
-
-.gallery .carousel__icon {
-	width: calc(var(--vc-icn-width) * 2) !important;
-	height: calc(var(--vc-icn-width) * 2) !important;
-}
-
-.gallery .carousel__prev,
-.gallery .carousel__next {
-	/* box-sizing: content-box; */
-	background-color: var(--FSCred);
-	width: 50px !important;
-	height: 50px !important;
-	border-radius: 50% !important;
-	color: white !important;
-}
-
-.gallery .carousel__prev {
-	left: -80px !important;
-}
-
-.gallery .carousel__next {
-	right: -80px !important;
-}
-
-.gallery .carousel__slide > .carousel__item {
-	transform: scale(0.8);
-	opacity: 0.5;
-	transition: 0.5s;
-}
-
-.gallery .carousel__slide--next > .carousel__item {
-	opacity: 0.9;
-	transform: scale(0.9) translate(25px);
-}
-
-.gallery .carousel__slide--prev > .carousel__item {
-	opacity: 0.9;
-	transform: scale(0.9) translate(-25px);
-}
-
-.gallery .carousel__slide--active > .carousel__item {
-	opacity: 1;
-	transform: scale(1.1);
-}
-
-.outside-gal h1 {
-	margin-top: 1rem !important;
-}
-
-.gallery {
-	margin-top: 1rem;
-	margin-bottom: 2rem;
-}
-
-/*
-███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
-████  ████ ██      ██   ██ ██ ██   ██     ██    ██ ██    ██ ██      ██   ██ ██ ██      ██      
-██ ████ ██ █████   ██   ██ ██ ███████     ██    ██ ██    ██ █████   ██████  ██ █████   ███████ 
-██  ██  ██ ██      ██   ██ ██ ██   ██     ██ ▄▄ ██ ██    ██ ██      ██   ██ ██ ██           ██ 
-██      ██ ███████ ██████  ██ ██   ██      ██████   ██████  ███████ ██   ██ ██ ███████ ███████ 
-*/
-/* 
-BOOTSTRAP BREAKPOINTS:
-  xs: 475px
-  sm: 576px
-  md: 768px
-  lg: 992px
-  xl: 1200px
-  xxl: 1400px
-*/
-@media (max-width: 1199.9px) {
-	.hero {
-		height: calc(500px * 0.7) !important;
-	}
-
-	.gallery {
-		margin: 0 !important;
-	}
-
-	.gallery img {
-		max-width: 100% !important;
-	}
-
-	.gallery .carousel__prev {
-		left: 10px !important;
-	}
-
-	.gallery .carousel__next {
-		right: 10px !important;
-	}
-
-	.outside-gal {
-		padding-top: 20px !important;
-		height: 600px !important;
-	}
-
-	.gallery h1 {
-		font-size: 40px !important;
-	}
-
-	.gallery img {
-		max-height: 80% !important;
-		max-width: 65% !important;
-	}
-
-	.gallery .carousel__slide {
-		height: 400px !important;
-	}
-}
-
-@media (max-width: 991.9px) {
-	.gallery .carousel__prev {
-		left: -75px !important;
-	}
-
-	.gallery .carousel__next {
-		right: -75px !important;
-	}
-
-	.gallery {
-		margin-bottom: 0 !important;
-	}
-}
-
-@media (max-width: 767.9px) {
-	.intro h1 {
-		font-size: 28px !important;
-	}
-
-	.carousel__prev,
-	.carousel__next {
-		scale: 0.65;
-	}
-
-	.gallery .carousel__prev {
-		left: -40px !important;
-	}
-
-	.gallery .carousel__next {
-		right: -40px !important;
-	}
-
-	.outside-gal {
-		height: 330px !important;
-	}
-
-	.outside-gal h1 {
-		font-size: 25px !important;
-	}
-
-	.gallery img {
-		max-height: 95% !important;
-		max-width: 85% !important;
-	}
-
-	.gallery .carousel__slide {
-		height: 200px !important;
-	}
-
-	.gallery {
-		height: 100% !important;
-		padding-left: 2rem !important;
-		padding-right: 2rem !important;
-	}
-}
-
-@media (max-width: 575.9px) {
-	.hero {
-		height: calc(500px * 0.5) !important;
-	}
-
-	.intro {
-		font-size: smaller;
-	}
-
-	.carousel__prev,
-	.carousel__next {
-		display: none;
-	}
-
-	.outside-gal {
-		height: 350px !important;
-	}
-
-	.outside-gal h1 {
-		font-size: 20px !important;
-	}
-
-	.gallery img {
-		margin-top: 10px;
-		margin-left: 0;
-		margin-right: 0;
-		margin-bottom: 0;
-		max-height: 100% !important;
-		max-width: 95% !important;
-		padding: 5px;
-	}
-
-	.gallery .carousel__slide {
-		height: 220px !important;
-	}
-
-	.show-576 {
-		display: flex;
-	}
-
-	.intro h5 {
-		font-size: 15px !important;
-	}
-}
-
-@media (max-width: 399.9px) {
-}
 </style>

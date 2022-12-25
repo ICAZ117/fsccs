@@ -222,18 +222,6 @@ export default {
 </script>
 
 <style scoped>
-.gallery-pic {
-	padding: 0 1rem;
-	height: 300px;
-	width: 100%;
-	overflow: hidden;
-}
-
-.gallery-pic img {
-	height: 100% !important;
-	width: 100% !important;
-	object-fit: contain;
-}
 .carousel-wrapper {
 	margin: 0 7rem;
 	padding: 0 5rem;

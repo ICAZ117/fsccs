@@ -44,7 +44,7 @@
 					:cardColor="
 						index % 2 == 0 ? 'var(--FSCblue)' : 'var(--FSCred)'
 					"
-                    :backgroundPosition="index % 2 == 0 ? 'right' : 'left'"
+					:backgroundPosition="index % 2 == 0 ? 'right' : 'left'"
 					:class="
 						index % 2 == 0 &&
 						index != Object.keys(professors).length - 1
@@ -57,19 +57,6 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- <div id="professorList">
-        <div v-for="(professor, name) in professors" :key="name">
-            <div>
-                <img :src="professor.pfp" width="200"
-                    style="float: left; border: 3px solid var(--FSCred); border-radius: 5px;" class="me-3">
-                <h2 class="white">{{ professor.name }}</h2>
-                <hr class="primary-hr">
-                <div v-html="professor.bio"></div>
-                <a :href="`/faculty?id=${name}`" class="btn btn-primary btn-md">Learn more<i class="ms-2 fa-solid fa-arrow-right"></i></a>
-            </div>
-        </div>
-    </div> -->
 </template>
 
 <script>
@@ -105,62 +92,11 @@ export default {
 </script>
 
 <style scoped>
-/* #professorList>*:not(:last-child) {
-    margin-bottom: 1rem;
-} */
 .background {
 	background-color: var(--FSCred) !important;
 }
 .link {
 	background-color: white;
 	color: var(--FSCred);
-}
-
-
-/*
-███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
-████  ████ ██      ██   ██ ██ ██   ██     ██    ██ ██    ██ ██      ██   ██ ██ ██      ██      
-██ ████ ██ █████   ██   ██ ██ ███████     ██    ██ ██    ██ █████   ██████  ██ █████   ███████ 
-██  ██  ██ ██      ██   ██ ██ ██   ██     ██ ▄▄ ██ ██    ██ ██      ██   ██ ██ ██           ██ 
-██      ██ ███████ ██████  ██ ██   ██      ██████   ██████  ███████ ██   ██ ██ ███████ ███████ 
-*/
-/* 
-BOOTSTRAP BREAKPOINTS:
-  xs: 475px
-  sm: 576px
-  md: 768px
-  lg: 992px
-  xl: 1200px
-  xxl: 1400px
-*/
-@media (max-width: 1199.9px) {
-	.hero {
-		height: calc(500px * 0.7) !important;
-	}
-}
-
-@media (max-width: 991.9px) {
-	.link {
-		transform: scale(0.9) !important;
-		margin-top: 0 !important;
-	}
-}
-
-@media (max-width: 767.9px) {
-}
-
-@media (max-width: 575.9px) {
-	.hero {
-		height: calc(500px * 0.5) !important;
-	}
-	.link {
-		transform: scale(0.8) !important;
-		position: relative;
-		left: -15px;
-		top: 10px;
-	}
-}
-
-@media (max-width: 399.9px) {
 }
 </style>
