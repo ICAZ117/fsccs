@@ -408,7 +408,6 @@
 		:pictureSide="'right'"
 		:invert="false"
 		:mobileColor="'hsla(264, 100%, 10%, 0.7)'"
-		class="skew"
 	>
 		<template v-slot:left>
 			<div
@@ -460,7 +459,6 @@
 		:invert="true"
 		:mobileColor="'hsla(37, 100%, 50%, 0.7)'"
 		style="transform: scaleY(-1)"
-		class="skew"
 	>
 		<template v-slot:right>
 			<div
@@ -506,7 +504,6 @@
 		:pictureSide="'right'"
 		:invert="false"
 		:mobileColor="'hsla(232, 26%, 10%, 0.85)'"
-		class="skew"
 	>
 		<template v-slot:left>
 			<div

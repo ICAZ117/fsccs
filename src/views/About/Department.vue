@@ -249,7 +249,7 @@
 			>
 				<template v-slot:right>
 					<div
-						class="vertical-center skew"
+						class="vertical-center"
 						style="transform: scaleY(-1); text-align: center"
 					>
 						<h3 class="white">The department bowling team</h3>
@@ -277,7 +277,7 @@
 				:padding="'0'"
 			>
 				<template v-slot:left>
-					<div class="vertical-center white skew">
+					<div class="vertical-center white">
 						<h3 class="">Cool events, like this chili contest</h3>
 					</div>
 				</template>
@@ -304,7 +304,7 @@
 			>
 				<template v-slot:right>
 					<div
-						class="vertical-center skew"
+						class="vertical-center"
 						style="transform: scaleY(-1); text-align: center"
 					>
 						<h3 class="white">
@@ -332,7 +332,7 @@
 				:invert="false"
 			>
 				<template v-slot:left>
-					<div class="vertical-center white skew">
+					<div class="vertical-center white">
 						<h3 class="">Weekly boardgame lunches</h3>
 					</div>
 				</template>
@@ -359,7 +359,7 @@
 			>
 				<template v-slot:right>
 					<div
-						class="vertical-center skew"
+						class="vertical-center"
 						style="transform: scaleY(-1); text-align: center"
 					>
 						<h3 class="white">Everyone has fun!</h3>

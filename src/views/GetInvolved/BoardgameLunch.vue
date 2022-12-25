@@ -1,4 +1,5 @@
 <template>
+	<!-- HERO -->
 	<SkewBox
 		:rightBG="{
 			backgroundImage: `url(${require('@/assets/img/BoardGameLunch.png')})`,
@@ -19,6 +20,7 @@
 		</template>
 	</SkewBox>
 
+	<!-- WEEKLY  -->
 	<Parallax
 		:image="{
 			backgroundImage: `url(${require('@/assets/img/BG2.jpg')}`,
@@ -35,10 +37,11 @@
 					<h1 class="white mt-2 mb-2 pb-1" style="text-align: left">
 						Once a week.
 					</h1>
-					<h1 class="center white mt-2 mb-2 pb-1">
-						Every week.
-					</h1>
-					<h1 class="right white mt-2 mb-2 pb-1" style="text-align: right">
+					<h1 class="center white mt-2 mb-2 pb-1">Every week.</h1>
+					<h1
+						class="right white mt-2 mb-2 pb-1"
+						style="text-align: right"
+					>
 						All semester.
 					</h1>
 				</div>
@@ -46,6 +49,7 @@
 		</div>
 	</Parallax>
 
+	<!-- WHAT -->
 	<Parallax
 		:image="{
 			backgroundImage: `url(${require('@/assets/img/BG7.jpg')}`,
@@ -56,30 +60,54 @@
 		:overlayColor="'0, 0, 0'"
 		class="red-section"
 	>
-		<div class="h-100 pb-2">
-			<center>
-				<div class="container intro-section">
-					<h2 class="center mt-2 mb-4 pb-1 col-9 bold intro-title">
-						Take a break from your normal schedule and come play games!
-					</h2>
-					<div class="center mt-3 mb-3 pb-1 mx-2 intro">
-						<h5 class="info col-3 box1" style="transform: translate(-2%)">
-							The CS department hosts a weekly event where 
-							you are invited to play games with your faculty and peers!
+		<div class="h-100">
+			<div class="container py-5">
+				<h3 class="center mb-4">
+					Take a break from your normal schedule and come play games!
+				</h3>
+				<div class="row">
+					<div class="col-4">
+						<h5
+							class="info center white bold"
+							style="
+								background-color: rgba(var(--FSCredRGB), 0.75);
+								box-shadow: 0px 0px 5px 5px rgba(var(--FSCredRGB), 0.75);
+							"
+						>
+							The CS department hosts a weekly event where you are
+							invited to play games with your faculty and peers!
 						</h5>
-						<h5 class="info col-3 box2" style="transform: translate(-2%)">
-							There are a plethora of games available to play! Feel free to come by and join the fun.
+					</div>
+					<div class="col-4">
+						<h5
+							class="info center white bold"
+							style="
+								background-color: rgba(var(--FSCblueRGB), 0.75);
+								box-shadow: 0px 0px 5px 5px rgba(var(--FSCblueRGB), 0.75);
+							"
+						>
+							There are a plethora of games available to play!
+							Feel free to come by and join the fun.
 						</h5>
-						<h5 class="info col-3 box3" style="transform: translate(2%)">
-							Check out the department calendar to see when boardgame lunch 
-							is being held this semester!
+					</div>
+					<div class="col-4">
+						<h5
+							class="info center white bold"
+							style="
+								background-color: rgba(var(--FSCgreyRGB), 0.75);
+								box-shadow: 0px 0px 5px 5px rgba(var(--FSCgreyRGB), 0.75);
+							"
+						>
+							Check out the department calendar to see when
+							boardgame lunch is being held this semester!
 						</h5>
 					</div>
 				</div>
-			</center>
+			</div>
 		</div>
 	</Parallax>
 
+	<!-- GAMES -->
 	<SkewBox
 		:leftBG="{
 			backgroundImage: `url(${require('@/assets/img/Department/BoardGames.jpg')})`,
@@ -90,27 +118,73 @@
 		:rightColor="'var(--FSCblue)'"
 		:leftColor="'transparent'"
 		:height="500"
-		:padding="'70px 0 60px 0'"
+		:padding="'0'"
 		:maintainSkewbox="false"
 		:pictureSide="'left'"
 		:invert="false"
-		class="red-section skew"
+		class="red-section"
 	>
 		<template v-slot:right>
-			<div class="center vertical-center">
-				<h2 class="white">What kind of games are there?</h2>
+			<div class="center vertical-center my-xl-0 my-5">
+				<h3 class="white">What kind of games are there?</h3>
 				<p class="white mt-4">
-					From <strong>One Night Ultimate Werewolf</strong>, to <strong>Go Fish</strong>, 
-					to <strong>Tetris Link</strong>, there's something for everyone at boardgame lunch. 
-					Check out a few of the ones available in the picture to the left. If 
-					the department doesn't own your favorite game (and it's school appropriate), 
-					feel free to bring yours from home!
+					From <strong>One Night Ultimate Werewolf</strong>, to
+					<strong>Go Fish</strong>, to <strong>Tetris Link</strong>,
+					there's something for everyone at boardgame lunch. Check out
+					a few of the ones available in the picture to the left. If
+					the department doesn't own your favorite game (and it's
+					school appropriate), feel free to bring yours from home!
 				</p>
 			</div>
 		</template>
 	</SkewBox>
 
-	<div class="memory_wall">
+    <!-- GALLERY -->
+	<div v-if="false" class="gallery">
+		<div class="col">
+			<img
+				src="@/assets/img/BGlunch.png"
+				style="height: 300px; object-fit: cover"
+			/>
+		</div>
+		<div class="col">
+			<img
+				src="@/assets/img/BGlunch3.png"
+				style="height: 300px; object-fit: cover"
+			/>
+		</div>
+		<div class="col">
+			<img
+				src="@/assets/img/BGlunch2.png"
+				style="height: 300px; object-fit: cover"
+			/>
+		</div>
+		<div class="col">
+			<img
+				src="@/assets/img/BGlunch6.jpg"
+				style="height: 300px; object-fit: cover"
+			/>
+		</div>
+		<div class="col">
+			<img
+				src="@/assets/img/BGlunch5-2.png"
+				style="height: 300px; object-fit: cover"
+			/>
+		</div>
+		<div class="col">
+			<img
+				src="@/assets/img/BGlunch7.jpg"
+				style="height: 300px; object-fit: cover"
+			/>
+		</div>
+		<div class="col">
+			<img
+				src="@/assets/img/BGlunch8.jpg"
+				style="height: 300px; object-fit: cover"
+			/>
+		</div>
+	</div>
+	<div v-if="true" class="memory_wall">
 		<Parallax
 			:image="{
 				backgroundImage: `url(${require('@/assets/img/BG3.jpg')}`,
@@ -119,166 +193,111 @@
 			:height="'0'"
 			:opacity="0.3"
 			:overlayColor="'0, 0, 0'"
-			class="wall-section"
 		>
-			<center>
-				<div class="car faculty container pt-4">
-					<h1 class="center white pb-1 bold">
-						Boardgame Lunch Memory Wall
-					</h1>
-					<hr class="primary-hr" style="width: 80%;" />
-					<Carousel
-						:wrapAround="true"
-						:transition="600"
-						:pauseAutoplayOnHover="true"
-						style="transform: translate(0, -10%);"
-					>
+			<div class="container py-5">
+				<h3 class="center white pb-1">Boardgame Lunch Memory Wall</h3>
+				<hr class="primary-hr mx-auto" style="width: 80%" />
+				<Carousel
+					:wrapAround="true"
+					:transition="600"
+					:pauseAutoplayOnHover="true"
+				>
 					<Slide :key="0">
-						<div class="pic2">
-							<img src="@/assets/img/BGlunch.png">
+						<div class="gallery-pic">
+							<img src="@/assets/img/BGlunch.png" />
 						</div>
 					</Slide>
 					<Slide :key="1">
-						<div class="pic2">
-							<img src="@/assets/img/BGlunch3.png">
+						<div class="gallery-pic">
+							<img src="@/assets/img/BGlunch3.png" />
 						</div>
 					</Slide>
 					<Slide :key="2">
-						<div class="pic2">
-							<img src="@/assets/img/BGlunch2.png">
+						<div class="gallery-pic">
+							<img src="@/assets/img/BGlunch2.png" />
 						</div>
 					</Slide>
 					<Slide :key="3">
-						<div class="pic2">
-							<img src="@/assets/img/BGlunch6.jpg">
+						<div class="gallery-pic">
+							<img src="@/assets/img/BGlunch6.jpg" />
 						</div>
 					</Slide>
 					<Slide :key="4">
-						<div class="pic2">
-							<img src="@/assets/img/BGlunch5-2.png">
+						<div class="gallery-pic">
+							<img src="@/assets/img/BGlunch5-2.png" />
 						</div>
 					</Slide>
 					<Slide :key="5">
-						<div class="pic2">
-							<img src="@/assets/img/BGlunch7.jpg">
+						<div class="gallery-pic">
+							<img src="@/assets/img/BGlunch7.jpg" />
 						</div>
 					</Slide>
 					<Slide :key="6">
-						<div class="pic2">
-							<img src="@/assets/img/BGlunch8.jpg">
+						<div class="gallery-pic">
+							<img src="@/assets/img/BGlunch8.jpg" />
 						</div>
 					</Slide>
-						<template #addons>
-							<Navigation />
-                            <Pagination />
-						</template>
-					</Carousel>
-				</div>
-			</center>
-		
-		<!-- <div class="row">
-			<div class="col-4 pic" style="transform: scale(.7)">
-				<img src="@/assets/img/BGlunch.png" style="transform: translate(-12%, -20%)">
+					<template #addons>
+						<Navigation />
+						<Pagination />
+					</template>
+				</Carousel>
 			</div>
-			<div class="col-4 pic" style="transform: scale(.75)">
-				<img src="@/assets/img/BGlunch3.png" style="transform: translate(-30%, 5%)">
-			</div>
-			<div class="col-4 pic" style="transform: scale(.8)">
-				<img src="@/assets/img/BGlunch2.png" style="transform: translate(0%, -20%)">
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-4 pic" style="transform: scale(.20)">
-				<img src="@/assets/img/BGlunch6.jpg" style="transform: translate(-30%, -50%);">
-			</div>
-			<div class="col-4 pic_text center" style="transform: translate(0%, -5%);">
-				<h3 class="background"><strong>Boardgame Lunch<br>Memory Wall</strong></h3>
-			</div>
-			<div class="col-4 pic" style="transform: translate(0%, -10%);">
-				<img src="@/assets/img/BGlunch5-3.png">
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-4 pic" style="transform: scale(.17)">
-				<img src="@/assets/img/BGlunch7.jpg" style="transform: translate(-35%, -8%);">
-			</div>
-			<div class="col-4 pic">
-				<img src="@/assets/img/EngagedLearning2-2.png" style="transform: translate(-35%, -45%);">
-			</div>
-			<div class="col-4 pic" style="transform: scale(.17)">
-				<img src="@/assets/img/BGlunch8.jpg" style="transform: translate(-55%, -70%);">
-			</div>
-		</div> -->
 		</Parallax>
 	</div>
-
 </template>
 
 <script>
-	import SkewBox from "@/components/SkewBox.vue";
-	import Parallax from "@/components/Parallax.vue";
-	import "vue3-carousel/dist/carousel.css";
-	import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
+import SkewBox from "@/components/SkewBox.vue";
+import Parallax from "@/components/Parallax.vue";
+import "vue3-carousel/dist/carousel.css";
+import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 
-	export default {
-		components: {
-			SkewBox,
-			Parallax,
-			Carousel,
-			Slide,
-			Pagination,
-			Navigation,
-		},
-	};
+export default {
+	components: {
+		SkewBox,
+		Parallax,
+		Carousel,
+		Slide,
+		Pagination,
+		Navigation,
+	},
+};
 </script>
 
-<style>
-.intro-section {
-	margin-top: 4rem;
-	margin-bottom: 4rem;
+<style scoped>
+/* .gallery {
+    display: flex;
+    flex-direction: row;
+} */
+
+.gallery-pic {
+	padding: 0 1rem;
+	height: 300px;
+	width: 100%;
+	overflow: hidden;
 }
+
+.gallery-pic img {
+	height: 100% !important;
+	width: 100% !important;
+	object-fit: contain;
+}
+
 .info {
-	display: inline-block;
-	border: 2px solid white;
-	background-color: rgba(61, 60, 60, 0.763);
-	font-weight: bold;
-	line-height: 1.5 !important;
-	color: white;
+	height: 150px;
+	backdrop-filter: blur(5px);
 	padding: 1rem;
-	margin: 1rem;
-}
-.pic {
-	display: inline-block;
-	height: 500px;
-	max-width: 100%;
-	width: 33%;
-}
-.pic_text {
-	display: inline-block;
-	text-align: center;
-}
-.background {
-	border: 2px solid black;
-	background-color: rgba(255, 255, 255, 0.968);
+	display: flex;
+	align-items: center;
 }
 .memory_wall {
 	overflow: hidden;
 }
 
-.pic2 {
-	overflow: hidden;
-	margin-top: 0;
-	margin-bottom: 0;
-	margin-left: 10%;
-	margin-right: 10%;
-	max-height: 75%;
+.row {
+	margin: 0 !important;
 }
-
-.pic2 img {
-	width: 100%;
-	height: 100%;
-}
-
 
 /*
 ███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
@@ -296,158 +315,18 @@ BOOTSTRAP BREAKPOINTS:
   xl: 1200px
   xxl: 1400px
 */
-@media (max-width: 1199.9px) {
-	.hero {
-		height: calc(500px * 0.7) !important;
-	}
-
-	.skew {
-		height: calc(700px * 0.7) !important;
-	}
-
-	.car .carousel__prev {
-		left: 10px !important;
-	}
-
-	.car .carousel__next {
-		right: 10px !important;
-	}
-
-	.wall-section {
-		height: 600px !important;
-	}
-
-	.car h1 {
-		font-size: 40px !important;
-	}
-
-	.pic2 {
-		max-height: 75% !important;
-		max-width: 60% !important;
-	}
-
-	.carousel__slide {
-		height: 450px !important;
-	}
-
-
-}
-
-@media (max-width: 991.9px) {
-	.intro-section h3 {
-		font-size: 20px !important;
-		margin: 0 !important;
-	}
-
-	.info {
-		margin: 10px !important;
-	}
-
-	.intro-section h2 {
-		font-size: 26px !important;
-		font-weight: bold;
-	}
-
-
-}
 
 @media (max-width: 767.9px) {
-	.top h1 {
-		font-size: 30px !important;
+	.row {
+		flex-direction: column;
+		gap: 1rem;
+		justify-content: center;
+		width: 100% !important;
+		padding: 0 2rem;
 	}
 
-	.info {
-		width: 90% !important;
+	.col-4 {
+		width: 100%;
 	}
-
-	.box3 {
-		transform: translate(-2%) !important;
-	}
-
-	.car .carousel__prev,
-	.car .carousel__next {
-		scale: 0.65;
-	}
-
-	.car .carousel__prev {
-		left: -10px !important;
-	}
-
-	.car .carousel__next {
-		right: -10px !important;
-	}
-
-	.wall-section {
-		height: 400px !important;
-	}
-
-	.car h1 {
-		font-size: 25px !important;
-	}
-
-	.pic2 {
-		max-height: 75% !important;
-		max-width: 60% !important;
-	}
-
-	.carousel__slide {
-		height: 280px !important;
-	}
-
 }
-
-@media (max-width: 575.9px) {
-	.hero{
-		height: calc(500px * 0.6) !important;
-	}
-
-	.top h1 {
-		font-size: 25px !important;
-	}
-	
-	.intro-section h2 {
-		font-size: 22px !important;
-		font-weight: bold !important;
-	}
-
-	.skew h2 {
-		font-size: 22px;
-	}
-	.skew p {
-		margin-left: 20px !important;
-		margin-right: 20px !important;
-	}
-
-	.carousel__prev,
-	.carousel__next {
-		display: none;
-	}
-
-	.wall-section {
-		height: 350px !important;
-	}
-
-	.car h1 {
-		font-size: 22px !important;
-	}
-
-	.pic2 {
-		margin-top: 10px;
-		max-height: 90% !important;
-		max-width: 100% !important;
-	}
-
-	.carousel__slide {
-		height: 250px !important;
-	}
-
-	.show-576 {
-		display: flex;
-	}
-
-}
-
-@media (max-width: 399.9px) {
-}
-
 </style>

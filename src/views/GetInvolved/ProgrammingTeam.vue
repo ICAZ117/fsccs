@@ -69,7 +69,7 @@
 		:maintainSkewbox="false"
 		:pictureSide="'right'"
 		:invert="false"
-		class="red-section skew"
+		class="red-section"
 	>
 		<template v-slot:left>
 			<div class="h-100 pb-2 vertical-center">

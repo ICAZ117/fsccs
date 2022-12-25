@@ -102,7 +102,6 @@
 		:maintainSkewbox="false"
 		:pictureSide="'right'"
 		:invert="false"
-		class="skew"
 	>
 		<template v-slot:left>
 			<div class="vertical-center">
@@ -129,7 +128,6 @@
 		:pictureSide="'left'"
 		:invert="true"
 		style="transform: scaleY(-1)"
-		class="skew"
 	>
 		<template v-slot:right>
 			<div
@@ -160,7 +158,6 @@
 		:maintainSkewbox="false"
 		:pictureSide="'right'"
 		:invert="false"
-		class="skew"
 	>
 		<template v-slot:left>
 			<div class="vertical-center">
@@ -187,7 +184,6 @@
 		:pictureSide="'left'"
 		:invert="true"
 		style="transform: scaleY(-1)"
-		class="skew"
 	>
 		<template v-slot:right>
 			<div

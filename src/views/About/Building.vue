@@ -279,7 +279,6 @@
 			:pictureSide="'left top'"
 			:invert="true"
 			style="transform: scaleY(-1)"
-			class="skew"
 		>
 			<template v-slot:right>
 				<div
@@ -306,7 +305,6 @@
 			:maintainSkewbox="true"
 			:pictureSide="'right'"
 			:invert="false"
-			class="skew"
 		>
 			<template v-slot:left>
 				<div class="vertical-center white">
@@ -332,7 +330,6 @@
 			:pictureSide="'left'"
 			:invert="true"
 			style="transform: scaleY(-1)"
-			class="skew"
 		>
 			<template v-slot:right>
 				<div
