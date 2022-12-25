@@ -201,6 +201,7 @@
 					:wrapAround="true"
 					:transition="600"
 					:pauseAutoplayOnHover="true"
+                    class="red-arrows"
 				>
 					<Slide :key="0">
 						<div class="gallery-pic">
