@@ -36,31 +36,33 @@
 		<div class="h-100">
 			<center>
 				<div class="m-auto container py-5 h-100">
-					<div
-						class="white"
-					>
+					<div class="white">
 						<h3 class="center">
 							Home of the 2021-2022 All-Sports Champions
 						</h3>
-						<p class="mb-3 justify-large">
-							Yes, you read that correctly! With Dr. Eicholtz
-							leading the way and rallying students each and every
-							week, the Computer Science Department won the
-							2021-2022 All-Sports Championship for Intramural
-							Sports here at FSC. Along with taking home the
-							championship in several individual sports, including
-							Bocce Ball, Bowling, eSports (Apex Legends),
-							Swimming, Trivia, and more, the Computer Science
-							Department beat out all other organizations,
-							fraternities, and sororities, and earned the highest
-							overall points over the 2021-2022 academic year.
-						</p>
-						<p class="justify-large">
-							Our continued success is strictly conditional on
-							YOUR participation and motivation. Join in the fun,
-							and let's keep adding more and more Championship
-							banners to be displayed in the Wellness Center!
-						</p>
+						<Expandable>
+							<p class="mb-3 justify-large">
+								Yes, you read that correctly! With Dr. Eicholtz
+								leading the way and rallying students each and
+								every week, the Computer Science Department won
+								the 2021-2022 All-Sports Championship for
+								Intramural Sports here at FSC. Along with taking
+								home the championship in several individual
+								sports, including Bocce Ball, Bowling, eSports
+								(Apex Legends), Swimming, Trivia, and more, the
+								Computer Science Department beat out all other
+								organizations, fraternities, and sororities, and
+								earned the highest overall points over the
+								2021-2022 academic year.
+							</p>
+							<p class="justify-large">
+								Our continued success is strictly conditional on
+								YOUR participation and motivation. Join in the
+								fun, and let's keep adding more and more
+								Championship banners to be displayed in the
+								Wellness Center!
+							</p>
+						</Expandable>
 					</div>
 				</div>
 			</center>
@@ -153,6 +155,7 @@
 </template>
 
 <script>
+import Expandable from "@/components/Expandable.vue";
 import SkewBox from "@/components/SkewBox.vue";
 import Parallax from "@/components/Parallax.vue";
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
@@ -160,6 +163,7 @@ import "vue3-carousel/dist/carousel.css";
 
 export default {
 	components: {
+		Expandable,
 		SkewBox,
 		Parallax,
 		Carousel,

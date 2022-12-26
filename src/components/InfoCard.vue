@@ -1,10 +1,10 @@
 <template>
 	<div class="card">
 		<div class="card-body">
-			<h5 class="card-title primary">
+			<h5 class="card-title center primary">
 				{{ title }}
 			</h5>
-			<hr class="primary-hr" style="width: 50%" />
+			<hr class="primary-hr mx-auto" style="width: 50%" />
 			<div class="card-text" style="text-align: left">
 				<slot></slot>
 			</div>
