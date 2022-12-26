@@ -99,7 +99,14 @@
 		:overlayColor="'0, 0, 0'"
 		class="red-section"
 	>
-		<div style="height: 70vh">
+		<div
+			style="
+				min-height: 70vh;
+				height: 100%;
+				display: flex;
+				align-items: center;
+			"
+		>
 			<div class="vertical-center">
 				<div class="announcements container my-5">
 					<h1 class="center white bold">Announcements</h1>

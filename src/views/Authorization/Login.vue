@@ -228,7 +228,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .login {
 	width: calc(100vw - 5px);
 	height: 100vh;
@@ -269,5 +269,11 @@ export default {
 .form-control:focus {
 	border-color: var(--FSCred) !important;
 	box-shadow: 0 0 0 0.25rem #d31f31c2 !important;
+}
+
+@media (max-width: 474.9px) {
+    .login-container {
+        width: 300px!important;
+    }
 }
 </style>

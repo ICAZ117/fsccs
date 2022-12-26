@@ -139,4 +139,10 @@ export default {
 	border-color: var(--FSCred) !important;
 	box-shadow: 0 0 0 0.25rem #d31f31c2 !important;
 }
+
+@media (max-width: 474.9px) {
+    .sign-up-container {
+        width: 300px!important;
+    }
+}
 </style>

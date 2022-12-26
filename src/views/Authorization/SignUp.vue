@@ -73,7 +73,7 @@
 	<div class="check-email" v-else>
 		<div class="check-email-container">
 			<h3>Check your email!</h3>
-			<p class="fs-5 lh-lg center">
+			<p class="fs-6 lh-lg center">
 				Thank's for signing up! We've sent a link confirm your email
 				address. If you don't see the email at first, please check your
 				spam box!
@@ -203,6 +203,7 @@ export default {
 
 .sign-up {
 	width: calc(100vw - 5px);
+    min-height: 700px;
 	height: 100vh;
 	background-color: rgb(55, 55, 60);
 	display: flex;
@@ -241,5 +242,17 @@ export default {
 .form-control:focus {
 	border-color: var(--FSCred) !important;
 	box-shadow: 0 0 0 0.25rem #d31f31c2 !important;
+}
+
+@media (max-width: 575.9px) {
+    .check-email-container {
+        width: 400px!important;
+    }
+}
+
+@media (max-width: 474.9px) {
+    .sign-up-container, .check-email-container {
+        width: 300px!important;
+    }
 }
 </style>
