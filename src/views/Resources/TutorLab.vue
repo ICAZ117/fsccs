@@ -10,8 +10,8 @@
 		:leftColor="'transparent'"
 		:rightColor="'var(--grey-gradient-right)'"
 		:height="500"
-		:padding="'120px 0 60px 0'"
-		class="red-section hero"
+		:padding="'60px 0 0 0'"
+		class="red-section"
 	>
 		<template v-slot:right>
 			<div class="center vertical-center">
@@ -24,66 +24,65 @@
 	<Parallax
 		:image="{
 			backgroundImage: `url(${require('@/assets/img/BG7.jpg')}`,
-			'background-position': 'left middle',
+			'background-position': 'center',
 		}"
 		:height="'0'"
-		:opacity="0.2"
+		:opacity="0"
 		:overlayColor="'0, 0, 0'"
-		class="red-section intro"
+		class="red-section"
 	>
-		<div class="h-100 pb-4 pt-4">
-			<center>
-				<div class="container h-100">
-					<div class="col-9 topbackground">
-						<h1 class="white mt-2 mb-2">
-							Need help with your classes?
-						</h1>
-						<h2 class="white mt-2 mb-2 pb-1 bold">
-							Ask a peer tutor!
-						</h2>
-						<h5
-							class="mt-4 mb-2 bold white"
-							style="line-height: 2 !important"
-						>
-							The CS department offers a <i>free</i> tutoring
-							service that you can take advantage of! Peer tutors
-							are available to help with a variety of classes,
-							especially intro classes like CSC 2280 and CSC 2290.
-							This is a great resource to utilize!
-						</h5>
-					</div>
-				</div>
-			</center>
+		<div class="container py-5">
+			<div class="mx-auto blackBox p-4 white">
+				<h3 class="center">
+					Need help with your classes? Ask a peer tutor!
+				</h3>
+				<p class="justify-large">
+					The CS department offers a <i>free</i> tutoring service that
+					you can take advantage of! Peer tutors are available to help
+					with a variety of classes, especially intro classes like CSC
+					2280 and CSC 2290. This is a great resource to utilize!
+				</p>
+			</div>
 		</div>
 	</Parallax>
 
 	<!-- TUTORS -->
 	<Parallax
 		:image="{
-			backgroundImage: `url(${require('@/assets/img/backgrounds/RedCircuit.jpg')}`,
+			backgroundImage: `url(${require('@/assets/img/Matrix6.jpg')}`,
 			'background-position': 'left middle',
 		}"
 		:height="'0'"
-		:opacity="0.4"
+		:opacity="0"
 		:overlayColor="'0, 0, 0'"
 	>
-		<div class="h-100 pb-2">
-			<center>
-				<div class="container py-5">
-					<h1 class="mt-2 mb-4 bold white">This Semester's Tutors</h1>
-					<div
-						class="tutorbackground info-card"
-						style="display:inline-block; margin: 1rem; border-radius: 15px;"
-						v-for="tutor in tutors"
-						:key="tutor"
+		<div class="py-5">
+			<h3 class="white center">This Semester's Tutors</h3>
+			<div class="w-100">
+				<div class="carousel-wrapper">
+					<Carousel
+						:itemsToShow="1"
+						:wrapAround="true"
+						autoplay="5000"
+						class="red-arrows"
 					>
-						<ProfileCard
-							:pfp="tutor.picture"
-							:name="tutor.name"
-						></ProfileCard>
-					</div>
+						<Slide v-for="tutor in tutors" :key="tutor">
+							<div>
+								<ProfileCard
+									:pfp="tutor.picture"
+									:name="tutor.name"
+									class="h-100"
+								></ProfileCard>
+							</div>
+						</Slide>
+
+						<template #addons>
+							<Navigation />
+							<Pagination />
+						</template>
+					</Carousel>
 				</div>
-			</center>
+			</div>
 		</div>
 	</Parallax>
 
@@ -91,22 +90,24 @@
 	<SkewBox
 		:rightBG="{
 			backgroundImage: `url(${require('@/assets/img/Department/meeting.jpg')})`,
-			'background-position': 'left top',
+			'background-position': 'center',
 			'background-size': 'cover',
-			width: '54vw!important',
+			width: '58vw!important',
 		}"
 		:rightColor="'transparent'"
-		:leftColor="'var(--FSCblue)'"
-		:height="500"
-		:padding="'70px 0 60px 0'"
-		:maintainSkewbox="false"
+		:leftColor="'var(--red-gradient-left)'"
+		:height="450"
+		:padding="'0'"
+		:maintainSkewbox="true"
 		:pictureSide="'right'"
 		:invert="false"
 	>
 		<template v-slot:left>
 			<div class="vertical-center">
-				<h1 class="white">Where?</h1>
-				<h5 class="white">Weinstein 120, the conference room</h5>
+				<h3 class="white">Where?</h3>
+				<p class="white center">
+					Weinstein 120/121, the conference room
+				</p>
 			</div>
 		</template>
 	</SkewBox>
@@ -115,85 +116,92 @@
 	<SkewBox
 		:leftBG="{
 			backgroundImage: `url(${require('@/assets/img/Department/PythonCode.jpg')})`,
-			'background-position': 'right top',
+			'background-position': 'center',
 			'background-size': 'cover',
-			width: '54vw!important',
+			width: '58vw!important',
 			transform: 'scaleY(-1)',
 		}"
 		:leftColor="'transparent'"
-		:rightColor="'var(--FSCred)'"
-		:height="500"
-		:padding="'70px 0 60px 0'"
-		:maintainSkewbox="false"
+		:rightColor="'var(--blue-gradient-right)'"
+		:height="450"
+		:padding="'0'"
+		:maintainSkewbox="true"
 		:pictureSide="'left'"
 		:invert="true"
 		style="transform: scaleY(-1)"
 	>
 		<template v-slot:right>
 			<div
-				class="vertical-center"
-				style="transform: scaleY(-1); text-align: justify !important"
+				class="vertical-center center white"
+				style="transform: scaleY(-1); padding: 0 0 0 1rem"
 			>
-				<h1 class="white">What?</h1>
-				<h5 class="white">The classes offered this semester are:</h5>
-				<div v-for="course in tutorInfo.courses" :key="course">
-					<h5 class="white">{{ course }}</h5>
+				<h3>What?</h3>
+				<p>The classes offered this semester are:</p>
+				<div style="display: inline-block">
+					<span
+						v-for="course in tutorInfo.courses"
+						:key="course"
+						class="course"
+					>
+						{{ course }}
+					</span>
 				</div>
 			</div>
 		</template>
 	</SkewBox>
 
-    <!-- WHEN -->
+	<!-- WHEN -->
 	<SkewBox
 		:rightBG="{
 			backgroundImage: `url(https://th.bing.com/th/id/OIP.qeZXtdLfFZVtRdY6shWwawHaEL?w=333&h=187&c=7&r=0&o=5&dpr=1.25&pid=1.7)`,
 			'background-position': 'top',
 			'background-size': 'cover',
-			width: '54vw!important',
+			width: '58vw!important',
 		}"
 		:rightColor="'transparent'"
-		:leftColor="'var(--FSCgrey)'"
-		:height="500"
-		:padding="'70px 0 60px 0'"
-		:maintainSkewbox="false"
+		:leftColor="'var(--red-gradient-left)'"
+		:height="450"
+		:padding="'0'"
+		:maintainSkewbox="true"
 		:pictureSide="'right'"
 		:invert="false"
 	>
 		<template v-slot:left>
-			<div class="vertical-center">
-				<h1 class="white">When?</h1>
-				<div v-for="day in tutorInfo.times" :key="day">
-					<h5 class="white">{{ day.day }}: {{ day.time }}</h5>
+			<div class="vertical-center white">
+				<h3>When?</h3>
+				<div class="justify-large">
+					<p v-for="day in tutorInfo.times" :key="day">
+						{{ day.day }}: {{ day.time }}
+					</p>
 				</div>
 			</div>
 		</template>
 	</SkewBox>
+
+	<!-- WHO -->
 	<SkewBox
 		:leftBG="{
 			backgroundImage: `url(${require('@/assets/img/Department/Tutoring2.jpg')}`,
 			'background-position': 'top',
 			'background-size': 'cover',
-			width: '54vw!important',
+			width: '58vw!important',
 			transform: 'scaleY(-1)',
 		}"
 		:leftColor="'transparent'"
-		:rightColor="'var(--FSCblue)'"
-		:height="500"
-		:padding="'70px 0 60px 0'"
-		:maintainSkewbox="false"
+		:rightColor="'var(--blue-gradient-right)'"
+		:height="450"
+		:padding="'0'"
+		:maintainSkewbox="true"
 		:pictureSide="'left'"
 		:invert="true"
 		style="transform: scaleY(-1)"
 	>
 		<template v-slot:right>
-			<div
-				class="vertical-center"
-				style="transform: scaleY(-1); text-align: justify !important"
-			>
-				<h1 class="white">Who?</h1>
-				<h5 class="white">
+			<div class="vertical-center white" style="transform: scaleY(-1)">
+				<h3>Who?</h3>
+				<p class="center">
 					<i><strong>You!</strong></i> If you need help, come get it.
-				</h5>
+				</p>
 				<h5 class="white">#CSCARES</h5>
 			</div>
 		</template>
@@ -215,7 +223,7 @@ export default {
 		Slide,
 		Pagination,
 		Navigation,
-		ProfileCard
+		ProfileCard,
 	},
 	data() {
 		return {
@@ -245,35 +253,29 @@ export default {
 </script>
 
 <style>
-.topbackground {
-	background-color: rgba(20, 2, 139, 0.54);
-	padding: 2rem;
-	border-radius: 15px;
-	margin-top: 2rem;
-	margin-bottom: 2rem;
+.course {
+	flex: 1;
 }
-.tutor img {
-	border-top-left-radius: 15px !important;
-	border-top-right-radius: 15px !important;
+.course ~ .course::before {
+	content: ", ";
 }
-.tutor {
-	transition: all ease 0.5s;
-	border-radius: 15px !important;
+.blackBox {
+	background-color: rgba(0, 0, 0, 0.7);
+	border-radius: 1rem;
 }
 
-.tutor:hover {
-	transition: all ease 0.5s;
-	transform: scale(1.1);
+.carousel-wrapper {
+	margin: 0 7rem;
+	padding: 0 5rem;
 }
 
-/* .tutorbackground {
-	background-color: rgba(0, 0, 0, 0.308);
-	padding: 1rem;
-	outline: 4px solid var(--FSCblue);
-	display: inline-block;
-	margin: 1rem;
-} */
+.carousel-wrapper :deep(.carousel__prev) {
+	left: -80px !important;
+}
 
+.carousel-wrapper :deep(.carousel__next) {
+	right: -80px !important;
+}
 
 /*
 ███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
@@ -291,70 +293,21 @@ BOOTSTRAP BREAKPOINTS:
   xl: 1200px
   xxl: 1400px
 */
+@media (max-width: 1399.9px) {
+	.carousel-wrapper {
+		padding: 0;
+	}
+}
+
 @media (max-width: 1199.9px) {
-	.hero {
-		height: calc(500px * 0.7) !important;
-	}
-
-}
-
-@media (max-width: 991.9px) {
-	.intro .intro-text {
-		font-size: medium;
-	}
-
-	.community .community-text {
-		font-size: medium;
-	}
-	.community .com-title {
-		font-size: small;
-		margin: 0 !important;
-	}
-}
-
-@media (max-width: 767.9px) {
-	.intro .intro-text {
-		font-size: medium !important;
-	}
-
-	.community .community-text {
-		font-size: small;
-	}
-	.community .com-title {
-		font-size: medium;
-		margin: 0 !important;
-	}
-
-	.info-card {
-		width: 100%;
+	.carousel-wrapper {
+		margin: 0 5rem;
 	}
 }
 
 @media (max-width: 575.9px) {
-	.hero {
-		height: calc(500px * 0.6) !important;
+	.carousel-wrapper {
+		margin: 0;
 	}
-
-	.intro .topbackground {
-		margin: 15px !important;
-		padding: 5px !important;
-	}
-
-	.skew {
-		font-size: 15px;
-	}
-
-	.show-576 {
-		display: flex;
-	}
-
-	.info-card {
-		margin-left: 0 !important;
-	}
-
 }
-
-@media (max-width: 399.9px) {
-}
-
 </style>
