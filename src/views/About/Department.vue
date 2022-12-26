@@ -124,7 +124,7 @@
 						What Makes Our Department Great
 					</h3>
 					<div class="row">
-						<div class="col-6 mb-4 info-card">
+						<div class="col-lg-6 col-12 mb-4">
 							<router-link to="/about/faculty" class="card-link">
 								<InfoCard :title="'Professors that care'">
 									<p class="center card_text">
@@ -140,7 +140,7 @@
 								</InfoCard>
 							</router-link>
 						</div>
-						<div class="col-6 mb-4 info-card">
+						<div class="col-lg-6 col-12 mb-4">
 							<router-link
 								to="/about/degree-and-concentrations"
 								class="card-link"
@@ -159,7 +159,7 @@
 								</InfoCard>
 							</router-link>
 						</div>
-						<div class="col-6 mb-4 info-card">
+						<div class="col-lg-6 col-12 mb-4">
 							<router-link to="/virtual-tour" class="card-link">
 								<InfoCard :title="'Convinient workspaces'">
 									<p class="center card_text">
@@ -177,7 +177,7 @@
 								</InfoCard>
 							</router-link>
 						</div>
-						<div class="col-6 mb-4 info-card">
+						<div class="col-lg-6 col-12 mb-4">
 							<router-link
 								to="/get-involved/cs-club"
 								class="card-link"
@@ -209,8 +209,7 @@
 		:wrapAround="true"
 		:transition="600"
 		:pauseAutoplayOnHover="true"
-		style="height: 499px; overflow: hidden"
-		class="car red-arrows"
+		class="red-arrows"
 	>
 		<Slide key="0">
 			<div
@@ -363,7 +362,7 @@
 		</Slide>
 		<template #addons>
 			<Navigation />
-			<Pagination style="transform: translateY(-40px)" />
+			<Pagination />
 		</template>
 	</Carousel>
 </template>
@@ -405,5 +404,18 @@ export default {
 .card-link {
 	text-decoration: none;
 	color: black;
+}
+
+:deep(.carousel__pagination) {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%) translateY(-30px);
+}
+
+@media (max-width: 991.9px) {
+	:deep(.carousel__next),
+	:deep(.carousel__prev) {
+		display: none;
+	}
 }
 </style>

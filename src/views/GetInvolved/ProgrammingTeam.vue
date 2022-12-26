@@ -102,7 +102,7 @@
 			<div id="rowRef" class="m-0 row g-md-0 g-sm-3 g-xs-3 g-3">
 				<div class="col-xl-9 col-12">
 					<Expandable class="mb-3">
-						<p class="white justify-large">
+						<p class="white justify-large pe-xl-3">
 							Just like in any other contest, success comes by
 							hard work and practice. So how can you prepare?
 							Practice! And then? Practice more! Don't forget:

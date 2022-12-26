@@ -3,19 +3,19 @@
 	<SkewBox
 		:leftBG="{
 			backgroundImage: `url(${require('@/assets/img/Department/Advising-Roberson2.jpg')})`,
-			'background-position': 'top left',
+			'background-position': 'top',
 			'background-size': 'cover',
 			width: '54vw!important',
 		}"
 		:leftColor="'transparent'"
 		:rightColor="'var(--grey-gradient-right)'"
 		:height="500"
-		:padding="'120px 0 60px 0'"
-		class="red-section hero"
+		:padding="'60px 0 0 0'"
+		class="red-section"
 	>
 		<template v-slot:right>
 			<div class="center vertical-center">
-				<h1 class="white">Advising in the CS department</h1>
+				<h1 class="white">Advising</h1>
 			</div>
 		</template>
 	</SkewBox>
@@ -27,38 +27,28 @@
 			'background-position': 'left middle',
 		}"
 		:height="'0'"
-		:opacity="0.2"
+		:opacity="0"
 		:overlayColor="'0, 0, 0'"
 		class="red-section"
 	>
-		<div class="pb-2">
-			<center>
-				<div class="container py-5">
-					<h1 class="mt-2 mb-2 pb-1 bold">
-						Advising...what does that mean?
-					</h1>
-					<h5
-						class="mt-4 mb-2 pb-1 mx-3"
-						style="line-height: 2 !important"
-					>
-						When it's time to sign up for classes each semester, you
-						will need to meet with your advisor! They will send you
-						a message (either through email or Slack) and let you
-						know when they are available. Once you have your
-						meeting, you will be eligible to pick your classes.
-					</h5>
-					<p class="mt-4 mx-3">
-						Look on portal to find your advisor, or find out how to
-						connect
-						<a href="/about/faculty" class="faculty_link"
-							><strong
-								>here<i
-									class="ms-1 fa-solid fa-arrow-right"
-								></i></strong
-						></a>
-					</p>
-				</div>
-			</center>
+		<div class="container py-5">
+			<h3 class="center">What is Advising?</h3>
+			<p class="mb-3 justify-large">
+				When it's time to sign up for classes each semester, you will
+				need to meet with your advisor! They will send you a message
+				(either through email or Slack) and let you know when they are
+				available. Once you have your meeting, you will be eligible to
+				pick your classes.
+			</p>
+			<p class="justify-large">
+				Look on portal to find your advisor, or find out how to connect
+				<router-link to="/about/faculty" class="link">
+					<strong>
+						here
+						<i class="ms-1 fa-solid fa-arrow-right"></i>
+					</strong>
+				</router-link>
+			</p>
 		</div>
 	</Parallax>
 
@@ -71,95 +61,70 @@
 		:height="'0'"
 		:opacity="0.7"
 		:overlayColor="'0, 0, 0'"
-		class="red-section car"
+		class="red-section"
 	>
-		<div class="py-5">
-			<center>
-				<div class="faculty container">
-					<h1 class="center FSCred bold">
-						What should I do to prepare?
-					</h1>
-					<hr class="primary-hr mb-2" style="width: 80%" />
-					<Carousel
-						:wrapAround="true"
-						:transition="600"
-						:pauseAutoplayOnHover="true"
-					>
-						<Slide :key="0">
-							<div class="w-50 white slide">
-								<h3 class="center bold pt-4 pb-1">
-									Know who your advisor is
-								</h3>
-								<center>
-									<h5
-										class="py-1"
-										style="line-height: 1.5 !important"
-									>
-										Do you have multiple majors? Make sure
-										you know who your advisor is for all of
-										them <i>and</i> that you can contact
-										them. Portal will have that information
-										listed.<br /><br />If you don't know how
-										to contact your CS advisor, check out
-										their faculty page!
-									</h5>
-								</center>
-							</div>
-						</Slide>
-						<Slide :key="1">
-							<div class="w-50 mb-4 white slide">
-								<h3 class="center bold pt-4 pb-1">
-									Schedule your advising appointments
-								</h3>
-								<center>
-									<h5
-										class="py-2"
-										style="line-height: 1.5 !important"
-									>
-										When your advisor reaches out, remember
-										to schedule an appointment to meet with
-										them to go over your schedule. Most
-										professors will have a lot of advisees
-										so make sure to make your appointment
-										early!<br /><br />If you have multiple
-										advisors, don't forget to schedule one
-										for each advisor.
-									</h5>
-								</center>
-							</div>
-						</Slide>
-						<Slide :key="2">
-							<div class="w-50 mb-4 white slide">
-								<h3 class="center bold pt-4 pb-1">
-									Start thinking about classes you need
-								</h3>
-								<center>
-									<h5
-										class="py-2"
-										style="line-height: 1.5 !important"
-									>
-										It's a good idea to know what you want
-										to take before your appointment. If you
-										can, look over the classes available the
-										upcoming semester before you see your
-										advisor so they know which ones you
-										want. This will save time and help your
-										advisor map those classes to your
-										remaining requirements.
-									</h5>
-								</center>
-							</div>
-						</Slide>
-						<template #addons>
-							<Navigation />
-							<Pagination />
-						</template>
-					</Carousel>
-				</div>
-			</center>
+		<div class="container py-5">
+			<h3 class="center primary">What should I do to prepare?</h3>
+			<hr class="primary-hr mx-auto" style="width: 80%" />
+			<Carousel
+				:wrapAround="true"
+				:transition="600"
+				:pauseAutoplayOnHover="true"
+			>
+				<Slide :key="0">
+					<div class="container white">
+						<h3 class="center">Know who your advisor is</h3>
+						<p class="mx-auto justify-large">
+							Do you have multiple majors? Make sure you know who
+							your advisor is for all of them
+							<i>and</i> that you can contact them. Portal will
+							have that information listed.<br /><br />If you
+							don't know how to contact your CS advisor, check out
+							their faculty page!
+						</p>
+					</div>
+				</Slide>
+
+				<Slide :key="1">
+					<div class="container white">
+						<h3 class="center">
+							Schedule your advising appointments
+						</h3>
+						<p class="mx-auto justify-large">
+							When your advisor reaches out, remember to schedule
+							an appointment to meet with them to go over your
+							schedule. Most professors will have a lot of
+							advisees so make sure to make your appointment
+							early!<br /><br />If you have multiple advisors,
+							don't forget to schedule one for each advisor.
+						</p>
+					</div>
+				</Slide>
+
+				<Slide :key="2">
+					<div class="container white">
+						<h3 class="center">
+							Start thinking about classes you need
+						</h3>
+						<p class="mx-auto justify-large">
+							It's a good idea to know what you want to take
+							before your appointment. If you can, look over the
+							classes available the upcoming semester before you
+							see your advisor so they know which ones you want.
+							This will save time and help your advisor map those
+							classes to your remaining requirements.
+						</p>
+					</div>
+				</Slide>
+				<template #addons>
+					<Navigation />
+					<Pagination />
+				</template>
+			</Carousel>
 		</div>
 	</Parallax>
 
+	<!-- RESOURCES -->
 	<Parallax
 		:image="{
 			backgroundImage: `url(${require('@/assets/img/Circuit1.jpg')}`,
@@ -169,41 +134,32 @@
 		:overlayColor="'0, 0, 0'"
 		class="red-section"
 	>
-		<div class="h-100 pb-2">
-			<center>
-				<div class="m-auto container py-5 h-100">
-					<h1 class="center mt-2" style="color: white">
-						Important Advising Documents
-					</h1>
-					<div class="m-0 row g-5">
-						<div
-							class="col-6 info-card"
-							v-for="(resource, name) in advisingresources"
-							:key="name"
-						>
-							<a
-								:href="resource.link"
-								style="text-decoration: none !important"
-								target="_blank"
-							>
-								<InfoCard :title="resource.name">
-									<p class="center card_text">
-										{{ resource.description }}
-									</p>
-									<p class="center card_text">
-										Click here to view the document<i
-											class="ms-2 fa-solid fa-arrow-right"
-										></i>
-									</p>
-								</InfoCard>
-							</a>
-						</div>
-					</div>
+		<div class="container py-5">
+			<h3 class="center white">Important Advising Documents</h3>
+			<div class="m-0 row g-5">
+				<div
+					class="col-lg-6 col-12"
+					v-for="(resource, name) in advisingResources"
+					:key="name"
+				>
+					<a :href="resource.link" class="card-link" target="_blank">
+						<InfoCard :title="resource.name">
+							<p class="center card_text">
+								{{ resource.description }}
+							</p>
+							<p class="center card_text">
+								Click here to view the document<i
+									class="ms-2 fa-solid fa-arrow-right"
+								></i>
+							</p>
+						</InfoCard>
+					</a>
 				</div>
-			</center>
+			</div>
 		</div>
 	</Parallax>
 
+	<!-- DEGREE AUDIT -->
 	<Parallax
 		:image="{
 			backgroundImage: `url(https://drscdn.500px.org/photo/1057546414/m%3D900/v2?sig=987f4482e7d6e75bf9aac64fecdbff1d8ed5aef08bcb4ace40d353ef4802f078)`,
@@ -211,9 +167,9 @@
 		}"
 		:opacity="0.5"
 		:overlayColor="'0, 0, 0'"
-		:height="'70vh'"
+		:height="'0'"
 	>
-		<div style="height: 70vh !important">
+		<div class="my-5 py-5">
 			<div class="center vertical-center">
 				<router-link
 					to="/resources/degree-audit"
@@ -247,7 +203,7 @@ export default {
 	},
 	data() {
 		return {
-			advisingresources: {},
+			advisingResources: {},
 		};
 	},
 	async beforeMount() {
@@ -259,184 +215,23 @@ export default {
 
 		// Push each resource's data to the array
 		res.forEach((doc) => {
-			this.advisingresources[doc.id] = doc.data();
+			this.advisingResources[doc.id] = doc.data();
 		});
 	},
 };
 </script>
 
 <style scoped>
-a,
-a:visited,
-a:hover,
-a:active,
-a:focus {
-	color: black !important;
-}
-.faculty_link {
-	color: white !important;
-}
-.faculty_link:hover {
-	color: var(--FSCred) !important;
-}
-.doc_card {
-	display: inline-block;
-}
-.audit_section {
-	position: relative;
-	overflow: hidden;
-	height: 500px;
-}
-.audit_pic {
-	width: 100%;
-	display: block;
-}
-.inner_square {
-	transition: all ease 0.5s;
-	background-color: rgba(186, 12, 47, 0.701);
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	/* color: white; */
-	text-align: center;
-	display: inline;
-	position: absolute;
-	padding: 2%;
-	font-weight: bolder;
+.card-link {
+	text-decoration: none;
 	color: black;
-	border: 4px solid black;
-}
-.inner_square:hover {
-	transition: all ease 0.5s;
-	background-color: rgba(255, 255, 255, 0.826);
-	color: var(--FSCred);
-	border: 4px solid var(--FSCred);
 }
 
-
-/*
-███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
-████  ████ ██      ██   ██ ██ ██   ██     ██    ██ ██    ██ ██      ██   ██ ██ ██      ██      
-██ ████ ██ █████   ██   ██ ██ ███████     ██    ██ ██    ██ █████   ██████  ██ █████   ███████ 
-██  ██  ██ ██      ██   ██ ██ ██   ██     ██ ▄▄ ██ ██    ██ ██      ██   ██ ██ ██           ██ 
-██      ██ ███████ ██████  ██ ██   ██      ██████   ██████  ███████ ██   ██ ██ ███████ ███████ 
-*/
-/* 
-BOOTSTRAP BREAKPOINTS:
-  xs: 475px
-  sm: 576px
-  md: 768px
-  lg: 992px
-  xl: 1200px
-  xxl: 1400px
-*/
-@media (max-width: 1199.9px) {
-	.hero {
-		height: calc(500px * 0.7) !important;
-	}
-
-	.car .carousel__prev,
-	.car .carousel__next {
-		scale: 0.85;
-	}
-
-	.car .carousel__prev {
-		left: 10px !important;
-	}
-
-	.car .carousel__next {
-		right: 10px !important;
-	}
+:deep(.carousel__prev) {
+	left: -50px !important;
 }
 
-@media (max-width: 991.9px) {
-	.intro .intro-text {
-		font-size: medium;
-	}
-
-	.community .community-text {
-		font-size: medium;
-	}
-	.community .com-title {
-		font-size: small;
-		margin: 0 !important;
-	}
-	
+:deep(.carousel__next) {
+	right: -50px !important;
 }
-
-@media (max-width: 767.9px) {
-	
-	.car .carousel__prev,
-	.car .carousel__next {
-		scale: 0.65;
-	}
-
-	.car .carousel__prev {
-		left: -10px !important;
-	}
-
-	.car .carousel__next {
-		right: -10px !important;
-	}
-
-	.car {
-		height: 550px !important;
-	}
-
-	.car {
-		font-size: 15px !important;
-	}
-
-	.carousel__slide {
-		height: 350px !important;
-	}
-
-	.car {
-		height: 480px !important;
-	}
-
-	.info-card {
-		width: 100%;
-	}
-}
-
-@media (max-width: 575.9px) {
-	.hero {
-		height: calc(500px * 0.6) !important;
-	}
-
-	.intro {
-		font-size: small !important;
-	}
-
-	.car .skew {
-		font-size: 15px;
-	}
-
-	.carousel__slide .slide {
-		width: 90% !important;
-	}
-
-	.carousel__prev,
-	.carousel__next {
-		display: none;
-	}
-
-	.show-576 {
-		display: flex;
-	}
-
-	.info-card p {
-		font-size: smaller;
-	}
-
-	.tour-link {
-		padding: 20px !important;
-	}
-
-}
-
-@media (max-width: 399.9px) {
-}
-
 </style>
