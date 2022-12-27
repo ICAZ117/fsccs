@@ -82,10 +82,7 @@
 		<div v-show="showCalendar" class="pb-4">
 			<center>
 				<div class="mx-4">
-					<div
-						data-tockify-component="calendar"
-						data-tockify-calendar="thecubelife"
-					></div>
+					<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%234285F4&ctz=America%2FLos_Angeles&src=Y2MzMGh0cXQzOWRkZXBzYm0wZTUzNThxZ29AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23616161" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 				</div>
 			</center>
 		</div>

@@ -30,7 +30,6 @@
 				>
 					<span
 						v-if="!isOpen"
-						style="transform: translateX(-6px)"
 						class="navbar-toggler-icon"
 					></span>
 					<i
@@ -99,12 +98,6 @@
 									path: '/about/cube-life',
 
 									title: 'About The Cube Life',
-								},
-
-								{
-									path: '/virtual-tour',
-
-									title: 'Virtual Tour',
 								},
 							]"
 						/>
@@ -382,6 +375,16 @@ contrast(86%);
 	.navbar-toggler {
 		float: right;
 		color: var(--FSCred) !important;
+		font-size: 1.25rem;
+		line-height: 1;
+		background-color: transparent;
+		border: 1px solid transparent;
+		border-radius: 0.25rem;
+		transition: box-shadow 0.15s ease-in-out;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+        padding: 0;
 	}
 
 	.navbar-toggler:focus {
@@ -419,8 +422,18 @@ contrast(86%);
 	}
 
 	.nav-link {
-		text-align: unset !important;
+		text-align: left !important;
 		padding-left: 2rem !important;
+		width: 100% !important;
+		justify-content: left;
+	}
+
+	.nav-items .router-link-active {
+		background: linear-gradient(
+			to right,
+			rgba(var(--FSCredRGB), 0.5),
+			transparent
+		);
 	}
 }
 </style>

@@ -148,9 +148,8 @@
 								{{ resource.description }}
 							</p>
 							<p class="center card_text">
-								Click here to view the document<i
-									class="ms-2 fa-solid fa-arrow-right"
-								></i>
+								View Document
+								<i class="ms-2 fa-solid fa-arrow-right"></i>
 							</p>
 						</InfoCard>
 					</a>
@@ -175,9 +174,7 @@
 					to="/resources/degree-audit"
 					class="no-decor link-box"
 				>
-					<h3 class="white bold tour-link">
-						Explore the department degree audit tool
-					</h3>
+					<h3 class="white bold">Go to Degree Audit</h3>
 				</router-link>
 			</div>
 		</div>
@@ -222,6 +219,14 @@ export default {
 </script>
 
 <style scoped>
+.link-box {
+	background-color: rgba(0, 0, 0, 0.7);
+	padding: 3rem 2rem;
+	margin: auto 2rem;
+	border-radius: 2rem;
+	min-width: 60%;
+}
+
 .card-link {
 	text-decoration: none;
 	color: black;
