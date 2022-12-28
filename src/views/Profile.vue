@@ -1,11 +1,7 @@
 <template>
-	<Parallax
-		:image="{
-			'background-color': 'rgb(50, 50, 50)',
-		}"
-		:height="'100vh'"
-		:opacity="0"
-		:overlayColor="'25, 25, 25'"
+	<div
+		style="background-color: rgb(50, 50, 50); min-height: 100vh"
+		class="nav-pad"
 	>
 		<form @submit.prevent autocomplete="off" id="main-form"></form>
 		<form
@@ -13,38 +9,44 @@
 			autocomplete="off"
 			id="change-password-form"
 		></form>
-		<div class="row nav-pad my-5">
-			<div class="col-4 ps-5">
+		<div class="row py-5">
+			<div
+				class="col-xl-4 col-lg-5 col-md-6 col-12 ps-5"
+				id="profile-left-section"
+			>
 				<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 				<!-- <<<<< START LEFT SECTION <<<<< -->
 				<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
-				<div class="largePic mb-3">
-					
-					<CubeImage
-						:pic="
-							authUser.pfp
-								? authUser.pfp
-								: 'https://www.knack.com/images/about/default-profile.png'
-						"
-						class="largePic"
-					></CubeImage>
-				</div>
-				<div class="w-100 px-4">
-					<div class="mb-3">
-						<div class="form-floating mb-3">
-							<input
-								type="text"
-								class="form-control"
-								id="changePFP"
-								v-model="authUser.pfp"
-								form="main-form"
-							/>
-							<label for="changePFP">Profile Picture URL</label>
+				<div>
+					<div class="largePic mb-3">
+						<CubeImage
+							:pic="
+								authUser.pfp
+									? authUser.pfp
+									: 'https://www.knack.com/images/about/default-profile.png'
+							"
+							class="largePic"
+						></CubeImage>
+					</div>
+					<div class="w-100 px-4">
+						<div class="mb-3">
+							<div class="form-floating mb-3">
+								<input
+									type="text"
+									class="form-control"
+									id="changePFP"
+									v-model="authUser.pfp"
+									form="main-form"
+								/>
+								<label for="changePFP"
+									>Profile Picture URL</label
+								>
+							</div>
 						</div>
 					</div>
+					<hr class="primary-hr" />
 				</div>
-				<hr class="primary-hr" />
-				<div class="px-4 mb-2">
+				<div class="px-4  mb-md-2 mb-4">
 					<button
 						class="btn btn-md btn-primary w-100"
 						@click="updateProfile"
@@ -57,7 +59,9 @@
 				<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 			</div>
 
-			<div class="col-8 px-4 ps-5">
+			<div
+				class="col-xl-8 col-lg-7 col-md-6 col-12 px-4 ps-5 pt-md-0 pt-4"
+			>
 				<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 				<!-- >>>>> START RIGHT SECTION >>>>> -->
 				<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
@@ -65,9 +69,9 @@
 				<!-- PROFILE SETTINGS -->
 				<h2 class="white">Profile Settings</h2>
 				<hr class="primary-hr" />
-				<div class="px-3 row g-5 white block-center">
-					<div class="col-6 px-4">
-						<div class="form-floating mb-3">
+				<div class="px-3 row g-5 white block-center pt-xl-0 pt-4">
+					<div class="col-xl-6 col-12 px-4 mt-xl-5 mt-4">
+						<div class="form-floating mb-xl-3">
 							<input
 								type="text"
 								class="form-control"
@@ -78,8 +82,8 @@
 							<label for="username">Username</label>
 						</div>
 					</div>
-					<div class="col-6 px-4">
-						<div class="form-floating mb-3">
+					<div class="col-xl-6 col-12 px-4 mt-xl-5 mt-4">
+						<div class="form-floating mb-xl-3">
 							<input
 								type="text"
 								class="form-control"
@@ -91,8 +95,8 @@
 							<label for="id">Email</label>
 						</div>
 					</div>
-					<div class="col-6 px-4">
-						<div class="form-floating mb-3">
+					<div class="col-xl-6 col-12 px-4 mt-xl-5 mt-4">
+						<div class="form-floating mb-xl-3">
 							<input
 								type="text"
 								class="form-control"
@@ -103,8 +107,8 @@
 							<label for="fname">First Name</label>
 						</div>
 					</div>
-					<div class="col-6 px-4">
-						<div class="form-floating mb-3">
+					<div class="col-xl-6 col-12 px-4 mt-xl-5 mt-4">
+						<div class="form-floating mb-xl-3">
 							<input
 								type="text"
 								class="form-control"
@@ -121,8 +125,8 @@
 				<h2 class="white mt-5">Security Settings</h2>
 				<hr class="primary-hr" />
 				<div class="px-3 row g-5 white block-center">
-					<div class="col-6 px-4">
-						<div class="sub-form">
+					<div class="col-xl-6 col-lg-8 col-12 px-4">
+						<div class="sub-form p-xl-5 p-4">
 							<div class="form-floating mb-3">
 								<input
 									type="password"
@@ -178,12 +182,11 @@
 				<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 			</div>
 		</div>
-	</Parallax>
+	</div>
 </template>
 
 <script>
 import { defineAsyncComponent } from "vue";
-import Parallax from "../components/Parallax.vue";
 import SkewBox from "../components/SkewBox.vue";
 import {
 	getAuth,
@@ -195,7 +198,6 @@ import {
 
 export default {
 	components: {
-		Parallax,
 		SkewBox,
 		CubeImage: defineAsyncComponent(() =>
 			import("@/components/CubeImage.vue")
@@ -312,7 +314,6 @@ export default {
 <style scoped>
 .sub-form {
 	border: 2px solid var(--FSCgrey);
-	padding: 2rem;
 	border-radius: 1rem;
 }
 .form-floating > .form-control:focus,
@@ -368,8 +369,10 @@ label {
 }
 
 .largePic {
-	height: 300px;
-	width: 300px;
+	max-width: 300px;
+	max-height: 300px;
+	width: 100%;
+	height: auto;
 	background-color: var(--FSCgrey);
 	border-radius: 50%;
 	margin: auto;
@@ -399,5 +402,12 @@ img.largePic {
 .picture {
 	display: inline-block;
 	border-radius: 10px;
+}
+
+@media (max-width: 767.9px) {
+	#profile-left-section {
+		display: flex;
+		flex-direction: column-reverse;
+	}
 }
 </style>
