@@ -1,12 +1,16 @@
 <template>
-	<div class="degree-audit nav-pad">
-		<div
-			:class="
-				showOutput
-					? 'h-100 mx-5 px-5'
-					: 'degree-audit-container container'
-			"
-		>
+	<div
+		class="degree-audit nav-pad"
+		:style="
+			'height: ' +
+			(showOutput
+				? '100%'
+				: windowWidth >= 1400
+				? '100vh'
+				: fit - content)
+		"
+	>
+		<div class="degree-audit-container container">
 			<h1 class="center">Degree Audit</h1>
 			<div class="DA-input" v-if="!showOutput">
 				<div id="disclaimer" class="container">
@@ -317,42 +321,40 @@
 				</div>
 			</div>
 
-			<div class="degreeAuditOutput" v-if="showOutput">
-				<div class="container px-5">
-					<div
-						class="px-5 row"
-						style="
-							text-align: center;
-							width: 75% !important;
-							margin: auto !important;
-						"
-					>
-						<div class="col-4">
+			<div class="DA-output" v-else>
+				<!-- SUMMARY ROW -->
+				<div class="px-lg-5">
+					<div class="DA-output-summary px-md-5">
+						<div class="col-md-4 col-12">
 							Name: {{ authUser.fname }} {{ authUser.lname }}
 						</div>
-						<div class="col-4">
+						<div class="col-md-4 col-12">
 							Cumulative GPA:
 							{{ Math.round(cumulativeGPA * 100) / 100 }}
 						</div>
-						<div class="col-4">
+						<div class="col-md-4 col-12">
 							Major GPA:
 							{{ Math.round(majorGPA * 100) / 100 }}
 						</div>
 					</div>
-					<hr class="white-hr w-75 center mx-auto" />
+					<hr class="white-hr" />
 				</div>
+
+				<!-- COMPUTER SCIENCE -->
 				<div id="computerScience" class="mt-4 pt-1">
-					<div style="display: flex; flex-direction: row">
+					<div class="DA-output-section-title">
 						<h3>Computer Science</h3>
-						<div class="ms-4">
+						<div class="ms-xl-4">
 							Required Credits: 66
-							<br />
-							Completed Credits: {{ cs.credits }}
+							<br v-if="windowWidth >= 1200" />
+							<span class="ms-xl-0 ms-3">
+								Completed Credits: {{ cs.credits }}
+							</span>
 						</div>
 					</div>
 					<hr class="primary-hr" />
 					<div class="mx-0 row gy-4">
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Core'"
@@ -360,7 +362,7 @@
 								:credits="34"
 							/>
 						</div>
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Discrete Structures'"
@@ -368,7 +370,7 @@
 								:credits="4"
 							/>
 						</div>
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Calculus'"
@@ -376,7 +378,7 @@
 								:credits="4"
 							/>
 						</div>
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Statistics'"
@@ -384,7 +386,7 @@
 								:credits="4"
 							/>
 						</div>
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Electives'"
@@ -394,7 +396,7 @@
 						</div>
 
 						<h3 class="mt-4 pt-2">Concentrations (Optional)</h3>
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Artificial Intelligence'"
@@ -402,7 +404,7 @@
 								:credits="12"
 							/>
 						</div>
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Web Development'"
@@ -410,7 +412,7 @@
 								:credits="12"
 							/>
 						</div>
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Cyber Security'"
@@ -421,18 +423,21 @@
 					</div>
 				</div>
 
+				<!-- GENEDS -->
 				<div id="geneds" class="mt-5 pt-1">
-					<div style="display: flex; flex-direction: row">
+					<div class="DA-output-section-title">
 						<h3>General Education</h3>
-						<div class="ms-4">
+						<div class="ms-xl-4">
 							Required Credits: 42
-							<br />
-							Completed Credits: {{ geneds.credits }}
+							<br v-if="windowWidth >= 1200" />
+							<span class="ms-xl-0 ms-3">
+								Completed Credits: {{ geneds.credits }}
+							</span>
 						</div>
 					</div>
 					<hr class="primary-hr" />
 					<div class="mx-0 row gy-4">
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Fine Arts'"
@@ -440,7 +445,7 @@
 								:credits="4"
 							/>
 						</div>
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Social World'"
@@ -448,7 +453,7 @@
 								:credits="4"
 							/>
 						</div>
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Meaning & Value'"
@@ -456,7 +461,7 @@
 								:credits="8"
 							/>
 						</div>
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Natural World'"
@@ -464,7 +469,7 @@
 								:credits="4"
 							/>
 						</div>
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Practical Skills (Qual)'"
@@ -472,7 +477,7 @@
 								:credits="4"
 							/>
 						</div>
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Practical Skills (Quan)'"
@@ -480,7 +485,7 @@
 								:credits="4"
 							/>
 						</div>
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Communication A'"
@@ -488,7 +493,7 @@
 								:credits="4"
 							/>
 						</div>
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Communication B'"
@@ -496,7 +501,7 @@
 								:credits="4"
 							/>
 						</div>
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Communication C'"
@@ -504,7 +509,7 @@
 								:credits="4"
 							/>
 						</div>
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Personal Wellness'"
@@ -515,18 +520,21 @@
 					</div>
 				</div>
 
+				<!-- BS -->
 				<div id="bs" class="mt-5 pt-1" v-if="degreeType == 'BS'">
-					<div style="display: flex; flex-direction: row">
+					<div class="DA-output-section-title">
 						<h3>Bachelors of Science</h3>
-						<div class="ms-4">
+						<div class="ms-xl-4">
 							Required Credits: 12
-							<br />
-							Completed Credits: {{ bs.credits }}
+							<br v-if="windowWidth >= 1200" />
+							<span class="ms-xl-0 ms-3">
+								Completed Credits: {{ bs.credits }}
+							</span>
 						</div>
 					</div>
 					<hr class="primary-hr" />
 					<div class="mx-0 row gy-4">
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Quantitative'"
@@ -534,7 +542,7 @@
 								:credits="4"
 							/>
 						</div>
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Natural Science'"
@@ -542,7 +550,7 @@
 								:credits="4"
 							/>
 						</div>
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Social Science'"
@@ -553,18 +561,21 @@
 					</div>
 				</div>
 
+				<!-- BA -->
 				<div id="ba" class="mt-5 pt-1" v-if="degreeType == 'BA'">
-					<div style="display: flex; flex-direction: row">
+					<div class="DA-output-section-title">
 						<h3>Bachelors of Arts</h3>
-						<div class="ms-4">
+						<div class="ms-xl-4">
 							Required Credits: 20
-							<br />
-							Completed Credits: {{ ba.credits }}
+							<br v-if="windowWidth >= 1200" />
+							<span class="ms-xl-0 ms-3">
+								Completed Credits: {{ ba.credits }}
+							</span>
 						</div>
 					</div>
 					<hr class="primary-hr" />
 					<div class="mx-0 row gy-4">
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Foreign Language'"
@@ -575,7 +586,7 @@
 						<h3 class="mt-4 pt-2">
 							Must complete two of the following:
 						</h3>
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Communication'"
@@ -583,7 +594,7 @@
 								:credits="4"
 							/>
 						</div>
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'English'"
@@ -591,7 +602,7 @@
 								:credits="4"
 							/>
 						</div>
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Latin Studies'"
@@ -599,7 +610,7 @@
 								:credits="4"
 							/>
 						</div>
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Humanities'"
@@ -607,7 +618,7 @@
 								:credits="4"
 							/>
 						</div>
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Music'"
@@ -615,7 +626,7 @@
 								:credits="4"
 							/>
 						</div>
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Philosophy'"
@@ -623,7 +634,7 @@
 								:credits="4"
 							/>
 						</div>
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Religion'"
@@ -631,7 +642,7 @@
 								:credits="4"
 							/>
 						</div>
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Theology'"
@@ -642,19 +653,19 @@
 					</div>
 				</div>
 
+				<!-- EXTRA -->
 				<div id="extras" class="mt-5 pt-1">
-					<div style="display: flex; flex-direction: row">
+					<div class="DA-output-section-title">
 						<h3>Extra Courses</h3>
-						<div
-							class="ms-4 mb-2"
-							style="display: flex; align-items: center"
-						>
-							Completed Credits: {{ calcCredits(extras) }}
+						<div class="ms-xl-4">
+							<span>
+								Completed Credits: {{ calcCredits(extras) }}
+							</span>
 						</div>
 					</div>
 					<hr class="primary-hr" />
 					<div class="mx-0 row gy-4">
-						<div class="col-4">
+						<div class="col-xxl-4 col-lg-6 col-12">
 							<Bucket
 								:courses="courses"
 								:title="'Extras'"
@@ -1595,10 +1606,9 @@ export default {
 </script>
 
 <style scoped>
-/* OUTSIDE */
+/* #region GENERAL */
 .degree-audit {
 	width: calc(100vw - 10px);
-	height: 100vh;
 	background-color: rgb(55, 55, 60);
 	color: white;
 }
@@ -1611,10 +1621,12 @@ export default {
 	height: 100%;
 	display: flex;
 	flex-flow: column;
-	padding: 1.5rem 0 3rem 0;
+	padding-top: 1.5rem;
+	padding-bottom: 3rem;
 }
+/* #endregion */
 
-/* INPUT */
+/* #region INPUT */
 .DA-input {
 	display: flex;
 	flex-flow: column;
@@ -1623,8 +1635,7 @@ export default {
 }
 
 #disclaimer {
-	height: 50px;
-	min-height: 50px;
+	height: fit-content;
 }
 
 .DA-input-ui {
@@ -1659,8 +1670,25 @@ export default {
 	max-height: 330px;
 	overflow-y: auto;
 }
+/* #endregion */
 
-/* OUTPUT */
+/* #region OUTPUT */
+.DA-output-summary,
+.DA-output-summary + hr {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	width: 75%;
+	margin: auto;
+	text-align: center;
+}
+
+.DA-output-section-title {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
 .courseTaken ~ .courseTaken::before {
 	content: ", ";
 }
@@ -1710,6 +1738,7 @@ export default {
 	border-color: var(--FSCred) !important;
 	box-shadow: 0 0 0 0.25rem #d31f31c2 !important;
 }
+/* #endregion */
 
 /*
 ███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
@@ -1728,13 +1757,11 @@ BOOTSTRAP BREAKPOINTS:
   xxl: 1400px
 */
 
+/* #region MEDIA QUERIES */
 @media (max-width: 1399.9px) {
-	.degree-audit {
-		height: fit-content;
-	}
-
 	.DA-input-ui {
 		flex-flow: column;
+        padding-top: 10px;
 	}
 
 	.DA-input-section {
@@ -1742,38 +1769,43 @@ BOOTSTRAP BREAKPOINTS:
 	}
 }
 
-@media (max-width: 991.9px) {
-	#disclaimer {
-		height: 75px;
-		min-height: 75px;
+@media (max-width: 1199.9px) {
+	.DA-output-summary,
+	.DA-output-summary + hr {
+		width: 100%;
 	}
+
+	.DA-output-section-title {
+		flex-direction: column;
+	}
+}
+
+@media (max-width: 991.9px) {
+	
 }
 
 @media (max-width: 767.9px) {
-	#disclaimer {
-		height: 100px;
-		min-height: 100px;
+	
+
+	.DA-output-summary {
+		flex-direction: column;
 	}
+}
+
+@media (max-width: 523.9px) {
+	
 }
 
 @media (max-width: 499.9px) {
-	#disclaimer {
-		height: 130px;
-		min-height: 130px;
-	}
+	
 }
 
 @media (max-width: 474.9px) {
-	#disclaimer {
-		height: 85px;
-		min-height: 85px;
-	}
+	
 }
 
-@media (max-width: 424.9px) {
-	#disclaimer {
-		height: 105px;
-		min-height: 105px;
-	}
+@media (max-width: 448.9px) {
+	
 }
+/* #endregion */
 </style>

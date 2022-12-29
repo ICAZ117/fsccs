@@ -20,7 +20,7 @@
 							: 'white'
 					"
 				>
-					{{ creditsTaken }}{{ (credits) ? '/' + credits : '' }}
+					{{ creditsTaken }}{{ credits ? "/" + credits : "" }}
 				</div>
 				<div v-if="creditsTaken < credits">
 					<i
@@ -35,9 +35,14 @@
 					></i>
 				</div>
 			</div>
-			<div class="ps-3 col-3">Code</div>
-			<div class="col-6">Name</div>
-			<div class="col-3" style="display: flex; justify-content: flex-end">
+			<div :class="'ps-3 ' + (windowWidth >= 475 ? 'col-3' : 'col-6')">
+				Code
+			</div>
+			<div class="col-6" v-if="windowWidth >= 475">Name</div>
+			<div
+				:class="windowWidth >= 475 ? 'col-3' : 'col-6'"
+				style="display: flex; justify-content: flex-end"
+			>
 				Credits
 			</div>
 		</div>
@@ -50,15 +55,25 @@
 				style="height: 40px; display: flex; align-items: center"
 			>
 				<div class="row px-3 mx-0">
-					<div class="ps-0 col-3">{{ course }}</div>
+					<div
+						:class="
+							'ps-0 ' + (windowWidth >= 475 ? 'col-3' : 'col-6')
+						"
+					>
+						{{ course }}
+					</div>
 					<div
 						class="ps-0 col-6"
+						v-if="windowWidth >= 475"
 						style="white-space: nowrap; overflow: hidden"
 					>
 						{{ courses[course].name }}
 					</div>
 					<div
-						class="ms-0 ps-0 col-3"
+						:class="
+							'ms-0 ps-0 ' +
+							(windowWidth >= 475 ? 'col-3' : 'col-6')
+						"
 						style="display: flex; justify-content: flex-end"
 					>
 						{{ courses[course].credits }}
@@ -72,6 +87,18 @@
 <script>
 export default {
 	props: ["courses", "coursesTaken", "credits", "title"],
+	data() {
+		return {
+			windowHeight: 0,
+			windowWidth: 0,
+		};
+	},
+	methods: {
+		getWindowSize() {
+			this.windowHeight = window.innerHeight;
+			this.windowWidth = window.innerWidth;
+		},
+	},
 	computed: {
 		creditsTaken() {
 			var sum = 0;
@@ -82,6 +109,16 @@ export default {
 
 			return sum;
 		},
+	},
+	created() {
+		window.addEventListener("resize", this.getWindowSize);
+	},
+	destroyed() {
+		window.removeEventListener("resize", this.getWindowSize);
+	},
+	async beforeMount() {
+		// Get window height
+		this.getWindowSize();
 	},
 };
 </script>
@@ -117,5 +154,12 @@ export default {
 	width: 100%;
 	height: fit-content;
 	overflow: auto;
+}
+
+@media (max-width: 991.9px) {
+	.bucket-body {
+		height: fit-content;
+		max-height: 250px;
+	}
 }
 </style>
