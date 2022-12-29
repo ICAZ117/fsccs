@@ -8,17 +8,73 @@
 			"
 		>
 			<h1 class="center">Degree Audit</h1>
-			<div class="row h-100" v-if="!showOutput">
-				<div class="col-12 mb-4 center px-5">
-					<div class="mx-5 px-5">
+			<div class="DA-input" v-if="!showOutput">
+				<div id="disclaimer" class="container">
+					<div class="px-2 justify-large">
 						Disclaimer: the Degree Audit is not a substitution for
 						academic advising. While this tool may assist you in
 						course planning and degree completion, you should still
 						confirm any and all results with your academic advisor.
 					</div>
 				</div>
-				<div class="col-6 h-100">
-					<div class="h-100">
+
+				<div class="DA-input-ui">
+					<!-- LEFT INPUT SECTION -->
+					<div class="DA-input-section">
+						<!-- HEADER STUFF -->
+						<div
+							class="mb-4 row block-center g-2"
+							style="align-items: center"
+							v-if="windowWidth < 1400"
+						>
+							<div class="col-md-6 col-12">
+								<select
+									class="form-select form-select-sm"
+									aria-label=".form-select-sm example"
+									required
+									form="degreeAuditForm"
+									v-model="degreeType"
+								>
+									<option value="" disabled selected>
+										Select degree...
+									</option>
+									<option value="BS">
+										Bachelors of Science
+									</option>
+									<option value="BA">
+										Bachelors of Arts
+									</option>
+								</select>
+							</div>
+							<div class="col-md-3 col-6">
+								<button
+									@click="saveCourses"
+									:class="
+										'w-100 btn btn-primary ' +
+										(windowWidth >= 768
+											? 'btn-md'
+											: 'btn-sm')
+									"
+								>
+									Save Courses
+								</button>
+							</div>
+							<div class="col-md-3 col-6">
+								<button
+									type="submit"
+									:class="
+										'w-100 btn btn-primary ' +
+										(windowWidth >= 768
+											? 'btn-md'
+											: 'btn-sm')
+									"
+									form="degreeAuditForm"
+								>
+									Launch Audit
+								</button>
+							</div>
+						</div>
+
 						<div class="mb-4">
 							<input
 								type="text"
@@ -27,22 +83,21 @@
 								v-model="search"
 							/>
 						</div>
-						<div class="h-100 degree-aduit-body py-4">
+
+						<!-- BOX -->
+						<div class="DA-input-box py-4">
 							<div
 								class="ms-0 px-3 pb-2 row bold header-row"
 								style="width: calc(100% - 10px) !important"
 							>
-								<div class="col-2">Code</div>
-								<div class="col-7">Name</div>
-								<div class="px-0 col-3">Grade</div>
+								<div class="col-lg-2 col-7">Code</div>
+								<div class="col-7" v-if="windowWidth >= 992">
+									Name
+								</div>
+								<div class="px-0 col-lg-3 col-5">Grade</div>
 							</div>
 							<div
-								class="
-									ms-0
-									row
-									degree-audit-course-list
-									white-scroll-bar
-								"
+								class="ms-0 row DA-input-list white-scroll-bar"
 							>
 								<div
 									class="px-3 py-2 col-12"
@@ -51,14 +106,17 @@
 									style="height: 40px"
 								>
 									<div class="ms-0 row">
-										<div class="col-2">
+										<div class="col-lg-2 col-7">
 											{{ course.code }}
 										</div>
-										<div class="col-7">
+										<div
+											class="col-7"
+											v-if="windowWidth >= 992"
+										>
 											{{ course.name }}
 										</div>
 										<div
-											class="px-0 col-3"
+											class="px-0 col-lg-3 col-5"
 											v-if="
 												coursesTaken.find(
 													({ code }) =>
@@ -95,7 +153,7 @@
 												<option value="F">F</option>
 											</select>
 										</div>
-										<div class="px-0 col-3" v-else>
+										<div class="px-0 col-lg-3 col-5" v-else>
 											<select
 												class="
 													form-select form-select-sm
@@ -133,104 +191,126 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-6 h-100">
-					<form
-						@submit.prevent="launchDegreeAudit()"
-						id="degreeAuditForm"
-					></form>
-					<div
-						style="
-							display: flex;
-							flex-direction: row;
-							align-items: center;
-							align-content: center;
-							height: 46px;
-						"
-						class="mb-4"
-					>
-						<div class="col-6 pe-1">
-							<select
-								class="form-select form-select-sm"
-								aria-label=".form-select-sm example"
-								required
-								form="degreeAuditForm"
-								v-model="degreeType"
-							>
-								<option value="" disabled selected>
-									Select degree...
-								</option>
-								<option value="BS">Bachelors of Science</option>
-								<option value="BA">Bachelors of Arts</option>
-							</select>
-						</div>
-						<div class="col-3 px-1">
-							<button
-								@click="saveCourses"
-								class="w-100 btn btn-md btn-primary"
-							>
-								Save Courses
-							</button>
-						</div>
-						<div class="col-3 ps-1">
-							<button
-								type="submit"
-								class="w-100 btn btn-md btn-primary"
-								form="degreeAuditForm"
-							>
-								Launch Audit
-							</button>
-						</div>
-					</div>
-					<div class="degree-aduit-body py-4">
+
+					<!-- RIGHT INPUT SECTION -->
+					<div class="DA-input-section mt-xxl-0 mt-5">
+						<form
+							@submit.prevent="launchDegreeAudit()"
+							id="degreeAuditForm"
+						></form>
+
+						<!-- HEADER STUFF -->
 						<div
-							class="ms-0 px-3 pb-2 row bold header-row"
-							style="width: calc(100% - 10px) !important"
-						>
-							<div class="px-3 col-12">Courses Taken:</div>
-						</div>
-						<div
-							class="
-								ms-0
-								row
-								degree-audit-course-list
-								white-scroll-bar
-								px-3
+							style="
+								display: flex;
+								flex-direction: row;
+								align-items: center;
+								align-content: center;
+								height: 46px;
 							"
+							class="mb-4"
+							v-if="windowWidth >= 1400"
 						>
-							<div class="px-3 col-12">
-								<div class="mx-0 row">
-									<div
-										class="col-12"
-										v-for="course in coursesTaken.sort(
-											(a, b) =>
-												a.code > b.code
-													? 1
-													: b.code > a.code
-													? -1
-													: 0
-										)"
-										:key="course"
-									>
-										<div class="mx-0 row">
-											<div class="col-2">
-												{{ course.code }}
-											</div>
-											<div class="col-8">
-												{{ courses[course.code].name }}
-											</div>
-											<div class="px-0 col-2">
-												{{ course.grade }}
+							<div class="col-6 pe-1">
+								<select
+									class="form-select form-select-sm"
+									aria-label=".form-select-sm example"
+									required
+									form="degreeAuditForm"
+									v-model="degreeType"
+								>
+									<option value="" disabled selected>
+										Select degree...
+									</option>
+									<option value="BS">
+										Bachelors of Science
+									</option>
+									<option value="BA">
+										Bachelors of Arts
+									</option>
+								</select>
+							</div>
+							<div class="col-3 px-1">
+								<button
+									@click="saveCourses"
+									class="w-100 btn btn-md btn-primary"
+								>
+									Save Courses
+								</button>
+							</div>
+							<div class="col-3 ps-1">
+								<button
+									type="submit"
+									class="w-100 btn btn-md btn-primary"
+									form="degreeAuditForm"
+								>
+									Launch Audit
+								</button>
+							</div>
+						</div>
+
+						<!-- BOX -->
+						<div class="DA-input-box py-4">
+							<div
+								class="row block-center px-4 bold header-row"
+								style="width: calc(100% - 10px) !important"
+							>
+								<div class="px-3 col-12">Courses Taken:</div>
+							</div>
+							<div
+								class="
+									ms-0
+									row
+									block-center
+									DA-input-list
+									white-scroll-bar
+								"
+							>
+								<div class="px-0 col-12">
+									<div class="row px-3">
+										<div
+											class="col-12"
+											v-for="course in coursesTaken.sort(
+												(a, b) =>
+													a.code > b.code
+														? 1
+														: b.code > a.code
+														? -1
+														: 0
+											)"
+											:key="course"
+										>
+											<div class="mx-0 row">
+												<div class="col-lg-2 col-7">
+													{{ course.code }}
+												</div>
+												<div
+													class="col-8"
+													v-if="windowWidth >= 992"
+												>
+													{{
+														courses[course.code]
+															.name
+													}}
+												</div>
+												<div
+													class="col-lg-2 col-5"
+													style="text-align: right"
+												>
+													{{ course.grade }}
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-							<div
-								class="px-3 py-2 col-12 center"
-								v-if="Object.keys(coursesTaken).length === 0"
-							>
-								No courses added!
+								<div
+									class="px-3 py-2 col-12 center"
+									v-if="
+										Object.keys(coursesTaken).length === 0
+									"
+								>
+									No courses added!
+								</div>
 							</div>
 						</div>
 					</div>
@@ -597,6 +677,8 @@ export default {
 	},
 	data() {
 		return {
+			windowHeight: 0,
+			windowWidth: 0,
 			courses: {},
 			search: "",
 			coursesTaken: [],
@@ -1443,6 +1525,10 @@ export default {
 				);
 			}
 		},
+		getWindowSize() {
+			this.windowHeight = window.innerHeight;
+			this.windowWidth = window.innerWidth;
+		},
 	},
 	computed: {
 		filteredCourses() {
@@ -1475,7 +1561,16 @@ export default {
 			}
 		},
 	},
+	created() {
+		window.addEventListener("resize", this.getWindowSize);
+	},
+	destroyed() {
+		window.removeEventListener("resize", this.getWindowSize);
+	},
 	async beforeMount() {
+		// Get window height
+		this.getWindowSize();
+
 		// Fetch courses from firebase
 		await this.$store.dispatch("fetchCourses");
 
@@ -1500,6 +1595,72 @@ export default {
 </script>
 
 <style scoped>
+/* OUTSIDE */
+.degree-audit {
+	width: calc(100vw - 10px);
+	height: 100vh;
+	background-color: rgb(55, 55, 60);
+	color: white;
+}
+
+.degree-audit .btn:hover {
+	background-color: var(--primary-dark);
+}
+
+.degree-audit-container {
+	height: 100%;
+	display: flex;
+	flex-flow: column;
+	padding: 1.5rem 0 3rem 0;
+}
+
+/* INPUT */
+.DA-input {
+	display: flex;
+	flex-flow: column;
+	flex-grow: 1;
+	overflow: hidden;
+}
+
+#disclaimer {
+	height: 50px;
+	min-height: 50px;
+}
+
+.DA-input-ui {
+	display: flex;
+	flex-flow: row;
+	flex-grow: 1;
+	overflow: hidden;
+	padding: 1.5rem 0.25rem;
+}
+
+.DA-input-section {
+	width: 50%;
+	height: 100%;
+	padding: 0 1rem;
+	display: flex;
+	flex-flow: column;
+}
+
+.DA-input-box {
+	flex-grow: 1;
+	overflow: hidden;
+	border: 5px solid var(--FSCred);
+	box-shadow: 0 0 20px var(--FSCred);
+	background-color: rgb(55, 55, 62);
+	border-radius: 20px;
+	padding: 1rem;
+	max-height: 400px;
+}
+
+.DA-input-list {
+	height: 100%;
+	max-height: 330px;
+	overflow-y: auto;
+}
+
+/* OUTPUT */
 .courseTaken ~ .courseTaken::before {
 	content: ", ";
 }
@@ -1507,10 +1668,6 @@ export default {
 .header-row * {
 	display: flex;
 	align-items: center;
-}
-
-.degree-audit-container {
-	height: calc(100vh - 10rem);
 }
 
 .searchBox,
@@ -1537,39 +1694,11 @@ export default {
 	outline: 0 !important;
 }
 
-.degree-audit-course-list {
-	height: fit-content;
-	overflow-y: scroll;
-}
-
 .degree-audit-body .col-12 {
 	transition: all ease-in-out 0.3s;
 }
 .degree-audit-body .col-12:hover {
 	background-color: rgb(98, 98, 106);
-}
-.degree-audit {
-	width: calc(100vw - 5px);
-	height: 100%;
-	background-color: rgb(55, 55, 60);
-	color: white;
-	padding: 5rem 0;
-}
-
-.degree-audit .btn:hover {
-	background-color: var(--primary-dark);
-}
-
-.degree-aduit-body {
-	width: 100%;
-	max-height: calc(100% - 180px);
-	border-radius: 20px;
-	display: flex;
-	flex-direction: column;
-	border: 5px solid var(--FSCred);
-	box-shadow: 0 0 20px var(--FSCred);
-	background-color: rgb(55, 55, 62);
-	overflow: auto;
 }
 
 .submitButton {
@@ -1580,5 +1709,71 @@ export default {
 .form-control:focus {
 	border-color: var(--FSCred) !important;
 	box-shadow: 0 0 0 0.25rem #d31f31c2 !important;
+}
+
+/*
+███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
+████  ████ ██      ██   ██ ██ ██   ██     ██    ██ ██    ██ ██      ██   ██ ██ ██      ██      
+██ ████ ██ █████   ██   ██ ██ ███████     ██    ██ ██    ██ █████   ██████  ██ █████   ███████ 
+██  ██  ██ ██      ██   ██ ██ ██   ██     ██ ▄▄ ██ ██    ██ ██      ██   ██ ██ ██           ██ 
+██      ██ ███████ ██████  ██ ██   ██      ██████   ██████  ███████ ██   ██ ██ ███████ ███████ 
+*/
+/* 
+BOOTSTRAP BREAKPOINTS:
+  xs: 475px
+  sm: 576px
+  md: 768px
+  lg: 992px
+  xl: 1200px
+  xxl: 1400px
+*/
+
+@media (max-width: 1399.9px) {
+	.degree-audit {
+		height: fit-content;
+	}
+
+	.DA-input-ui {
+		flex-flow: column;
+	}
+
+	.DA-input-section {
+		width: 100%;
+	}
+}
+
+@media (max-width: 991.9px) {
+	#disclaimer {
+		height: 75px;
+		min-height: 75px;
+	}
+}
+
+@media (max-width: 767.9px) {
+	#disclaimer {
+		height: 100px;
+		min-height: 100px;
+	}
+}
+
+@media (max-width: 499.9px) {
+	#disclaimer {
+		height: 130px;
+		min-height: 130px;
+	}
+}
+
+@media (max-width: 474.9px) {
+	#disclaimer {
+		height: 85px;
+		min-height: 85px;
+	}
+}
+
+@media (max-width: 424.9px) {
+	#disclaimer {
+		height: 105px;
+		min-height: 105px;
+	}
 }
 </style>
