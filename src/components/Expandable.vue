@@ -2,8 +2,8 @@
 	<div
 		class="expandable"
 		:style="
-			hideText && windowWidth < 768
-				? 'max-height: 200px; overflow: hidden; -webkit-mask-image: linear-gradient(to bottom, white 50%, transparent 100%); mask-image: linear-gradient(to bottom, white 50%, transparent 100%);'
+			hideText && (windowWidth < breakpoint || alwaysCollapse)
+				? `max-height: ${height}; overflow: hidden; -webkit-mask-image: linear-gradient(to bottom, white 50%, transparent 100%); mask-image: linear-gradient(to bottom, white 50%, transparent 100%);`
 				: ''
 		"
 	>
@@ -17,7 +17,7 @@
 				'expandIcon mx-auto btn btn-primary btn-sm ' +
 				(hideText ? '' : 'mt-3')
 			"
-			v-if="windowWidth < 768"
+			v-if="windowWidth < breakpoint || alwaysCollapse"
 			@click="hideText = !hideText"
 		>
 			<span v-if="hideText">
@@ -32,24 +32,38 @@
 
 <script>
 export default {
-    watch: {
-        "$refs.expandableContent": function(newVal, oldVal) {
-            this.slotHeight = this.$refs.expandableContent.offsetHeight;
-            console.log(this.slotHeight);
-        }
-    },
+	props: {
+		breakpoint: {
+			type: Number,
+			required: false,
+			default: 768,
+		},
+		alwaysCollapse: {
+			type: Boolean,
+			required: false,
+			default: false,
+		},
+		height: {
+			type: String,
+			required: false,
+			default: "200px",
+		},
+	},
+	watch: {
+		"$refs.expandableContent": function (newVal, oldVal) {
+			this.slotHeight = this.$refs.expandableContent.offsetHeight;
+			console.log(this.slotHeight);
+		},
+	},
 	data() {
 		return {
-            slotHeight: 0,
+			slotHeight: 0,
 			windowHeight: 0,
 			windowWidth: 0,
 			hideText: true,
 		};
 	},
 	methods: {
-        test() {
-            console.log("HERRRREEE");
-        },
 		getWindowSize() {
 			this.windowHeight = window.innerHeight;
 			this.windowWidth = window.innerWidth;

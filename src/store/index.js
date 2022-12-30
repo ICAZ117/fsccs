@@ -47,6 +47,7 @@ const store = createStore({
         events: [],
         payload: {},
         announcements: {},
+        researchProjects: {},
         officers: {},
         courses: {},
         advisingresources: {},
@@ -57,7 +58,6 @@ const store = createStore({
         showLoader: false,
     },
     mutations: {
-
         setFaculty(state, payload) {
             state.faculty = payload;
         },
@@ -155,6 +155,9 @@ const store = createStore({
         setAnnouncements(state, payload) {
             state.announcements = payload;
         },
+        setResearchProjects(state, payload) {
+            state.researchProjects = payload;
+        },
         setCourses(state, payload) {
             state.courses = payload;
         },
@@ -172,6 +175,7 @@ const store = createStore({
         },
     },
     actions: {
+        // #region FETCH
         async fetchFaculty({ commit }) {
             const data = await getDocs(collection(db, "faculty"));
             commit("setFaculty", data);
@@ -207,45 +211,9 @@ const store = createStore({
                     console.error("SLACK_API_ERROR", error);
                 });
         },
-        async addEvent({ state }) {
-            await addDoc(collection(db, "events"), state.payload);
-        },
-        async addFaculty({ state }, name) {
-            await setDoc(doc(db, "faculty", name), state.payload);
-        },
-        async initUser({ state }) {
-            await setDoc(doc(db, "users", state.auth.email), {
-                registrationComplete: false,
-            });
-        },
-        async updateUserCourses({ state }, courses) {
-            await updateDoc(doc(db, "users", state.authEmail), {
-                coursesTaken: courses,
-            });
-        },
-        async updateUser({ state }) {
-            // Create new user in users table
-            await setDoc(doc(db, "users", state.auth.email), {
-                username: state.auth.username,
-                pfp: state.auth.pfp,
-                privilege: state.auth.privilege,
-                fname: state.auth.fname,
-                lname: state.auth.lname,
-                coursesTaken: state.auth.coursesTaken,
-                registrationComplete: state.auth.registrationComplete,
-            });
-        },
-        async finalizeUser({ state }) {
-            // Create new user in users table
-            await setDoc(doc(db, "users", state.auth.email), {
-                username: state.auth.username,
-                pfp: "https://www.knack.com/images/about/default-profile.png",
-                privilege: 1,
-                fname: state.auth.fname,
-                lname: state.auth.lname,
-                coursesTaken: [],
-                registrationComplete: true,
-            });
+        async fetchResearchProjects({ commit }) {
+            const data = await getDocs(collection(db, "researchProjects"));
+            commit("setResearchProjects", data);
         },
         async fetchUser({ commit, state }) {
             // Get user from users table
@@ -274,10 +242,60 @@ const store = createStore({
             const data = await getDoc(doc(db, "courses", "courses"));
             commit("setCourses", data.data());
         },
+        // #endregion
+
+        // #region ADD
+        async addEvent({ state }) {
+            await addDoc(collection(db, "events"), state.payload);
+        },
+        async addFaculty({ state }, name) {
+            await setDoc(doc(db, "faculty", name), state.payload);
+        },
+        // #endregion
+
+        // #region UPDATE
+        async updateUserCourses({ state }, courses) {
+            await updateDoc(doc(db, "users", state.authEmail), {
+                coursesTaken: courses,
+            });
+        },
+        async updateUser({ state }) {
+            // Create new user in users table
+            await setDoc(doc(db, "users", state.auth.email), {
+                username: state.auth.username,
+                pfp: state.auth.pfp,
+                privilege: state.auth.privilege,
+                fname: state.auth.fname,
+                lname: state.auth.lname,
+                coursesTaken: state.auth.coursesTaken,
+                registrationComplete: state.auth.registrationComplete,
+            });
+        },
         async updateCourses({ commit }, courses) {
             commit("setCourses", courses);
             await setDoc(doc(db, "courses", "courses"), courses);
         },
+        // #endregion
+
+        // #region MISC
+        async initUser({ state }) {
+            await setDoc(doc(db, "users", state.auth.email), {
+                registrationComplete: false,
+            });
+        },
+        async finalizeUser({ state }) {
+            // Create new user in users table
+            await setDoc(doc(db, "users", state.auth.email), {
+                username: state.auth.username,
+                pfp: "https://www.knack.com/images/about/default-profile.png",
+                privilege: 1,
+                fname: state.auth.fname,
+                lname: state.auth.lname,
+                coursesTaken: [],
+                registrationComplete: true,
+            });
+        },
+        // #endregion
     },
     getters: {
         getFaculty(state) {
@@ -288,6 +306,9 @@ const store = createStore({
         },
         getAnnouncements(state) {
             return state.announcements;
+        },
+        getResearchProjects(state) {
+            return state.researchProjects;
         },
         getUser(state) {
             return state.auth;

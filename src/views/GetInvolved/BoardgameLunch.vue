@@ -10,7 +10,7 @@
 		:rightColor="'transparent'"
 		:leftColor="'var(--blue-gradient-left)'"
 		:height="500"
-		:padding="'120px 0 60px 0'"
+		:padding="'60px 0 0 0'"
 		class="red-section hero"
 	>
 		<template v-slot:left>

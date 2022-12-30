@@ -83,22 +83,6 @@ const routes = [
         },
     },
     {
-        path: "/get-involved/cs-club",
-        name: "Computer Science Club",
-        component: () => import("../views/GetInvolved/CSClub.vue"),
-        meta: {
-            title: "CS Club - The Cube Life",
-        },
-    },
-    {
-        path: "/get-involved/programming-team",
-        name: "Programming Team",
-        component: () => import("../views/GetInvolved/ProgrammingTeam.vue"),
-        meta: {
-            title: "Programming Team - The Cube Life",
-        },
-    },
-    {
         path: "/get-involved/boardgame-lunch",
         name: "Boardgame Lunch",
         component: () => import("../views/GetInvolved/BoardgameLunch.vue"),
@@ -107,11 +91,35 @@ const routes = [
         },
     },
     {
+        path: "/get-involved/collaborative-research",
+        name: "Collaborative Research",
+        component: () => import("../views/GetInvolved/CollaborativeResearch.vue"),
+        meta: {
+            title: "Collaborative Research - The Cube Life",
+        },
+    },
+    {
+        path: "/get-involved/cs-club",
+        name: "Computer Science Club",
+        component: () => import("../views/GetInvolved/CSClub.vue"),
+        meta: {
+            title: "CS Club - The Cube Life",
+        },
+    },
+    {
         path: "/get-involved/intramurals",
         name: "Intramurals",
         component: () => import("../views/GetInvolved/Intramurals.vue"),
         meta: {
             title: "Intramural Sports - The Cube Life",
+        },
+    },
+    {
+        path: "/get-involved/programming-team",
+        name: "Programming Team",
+        component: () => import("../views/GetInvolved/ProgrammingTeam.vue"),
+        meta: {
+            title: "Programming Team - The Cube Life",
         },
     },
     {

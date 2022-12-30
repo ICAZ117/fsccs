@@ -28,10 +28,7 @@
 					@click="toggleNav"
 					style="height: 44px !important; width: 44px !important"
 				>
-					<span
-						v-if="!isOpen"
-						class="navbar-toggler-icon"
-					></span>
+					<span v-if="!isOpen" class="navbar-toggler-icon"></span>
 					<i
 						style="
 							font-size: 1.5em !important;
@@ -111,6 +108,10 @@
 								{
 									path: '/get-involved/boardgame-lunch',
 									title: 'Boardgame Lunch',
+								},
+								{
+									path: '/get-involved/collaborative-research',
+									title: 'Collaborative Research',
 								},
 								{
 									path: '/get-involved/cs-club',
@@ -384,7 +385,7 @@ contrast(86%);
 		display: flex;
 		justify-content: center;
 		align-items: center;
-        padding: 0;
+		padding: 0;
 	}
 
 	.navbar-toggler:focus {
