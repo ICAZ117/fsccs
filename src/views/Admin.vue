@@ -1,7 +1,67 @@
 <template>
 	<div class="adminPage">
 		<div class="container py-5">
-			<div id="officers">
+			<div id="researchProjects">
+				<div
+					class=""
+					style="
+						display: flex;
+						align-items: center;
+						flex-direction: row;
+					"
+				>
+					<h2 class="primary">Collaborative Research Projects</h2>
+					<button
+						class="h-75 btn btn-md btn-primary"
+						style="margin-left: auto; order: 2"
+						@click="showAddResearchProjectModal = true"
+					>
+						Add Research Project
+					</button>
+				</div>
+				<hr class="primary-hr" />
+				<div class="mx-0 px-0 row gy-4 block-center">
+					<div
+						class="col-3"
+						v-for="(researchProject, id) in researchProjects"
+						:key="id"
+					>
+						<div
+							class="px-0 card"
+							@click="
+								openEditResearchProjectModal(
+									researchProject,
+									id
+								)
+							"
+						>
+							<div class="card-body">
+								<p>
+									<b>Title: </b>
+									<br />
+									{{ researchProject.title }}
+								</p>
+								<p>
+									<b>Students:</b>
+									<br />
+									<span>
+										{{ researchProject.students }}
+									</span>
+								</p>
+								<p>
+									<b>Faculty:</b>
+									<br />
+									<span>
+										{{ researchProject.faculty }}
+									</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="officers" class="mt-4 pt-2">
 				<div
 					class=""
 					style="
@@ -177,6 +237,277 @@
 			</div>
 		</div>
 	</div>
+
+	<div id="researchProjectModals">
+		<!-- 
+             █████  ██████  ██████      ██████  ███████ ███████ ███████  █████  ██████   ██████ ██   ██ 
+            ██   ██ ██   ██ ██   ██     ██   ██ ██      ██      ██      ██   ██ ██   ██ ██      ██   ██ 
+            ███████ ██   ██ ██   ██     ██████  █████   ███████ █████   ███████ ██████  ██      ███████ 
+            ██   ██ ██   ██ ██   ██     ██   ██ ██           ██ ██      ██   ██ ██   ██ ██      ██   ██ 
+            ██   ██ ██████  ██████      ██   ██ ███████ ███████ ███████ ██   ██ ██   ██  ██████ ██   ██ 
+        -->
+		<VueFinalModal
+			v-model="showAddResearchProjectModal"
+			classes="modal-container"
+			content-class="modal-content"
+		>
+			<button
+				class="modal__close"
+				@click="showAddResearchProjectModal = false"
+			>
+				<i class="fa-solid fa-x"></i>
+			</button>
+			<span class="modal__title ps-1">Add Research Project</span>
+			<div class="modal__content">
+				<form @submit.prevent id="researchProjectForm"></form>
+				<div class="m-0 row">
+					<div class="form-floating p-1 col-12">
+						<input
+							type="text"
+							class="form-control"
+							id="title"
+							v-model="researchProject.title"
+							form="researchProjectForm"
+						/>
+						<label for="title">Title</label>
+					</div>
+					<div class="form-floating p-1 col-12">
+						<input
+							type="text"
+							class="form-control"
+							id="abstract"
+							v-model="researchProject.abstract"
+							form="researchProjectForm"
+						/>
+						<label for="abstract">Abstract</label>
+					</div>
+					<div class="form-floating p-1 col-6">
+						<input
+							type="text"
+							class="form-control"
+							id="students"
+							v-model="researchProject.students"
+							form="researchProjectForm"
+						/>
+						<label for="students">Students</label>
+					</div>
+					<div class="form-floating p-1 col-6">
+						<input
+							type="text"
+							class="form-control"
+							id="faculty"
+							v-model="researchProject.faculty"
+							form="researchProjectForm"
+						/>
+						<label for="faculty">Faculty</label>
+					</div>
+					<div class="form-floating p-1 col-12">
+						<input
+							type="text"
+							class="form-control"
+							id="publications"
+							v-model="researchProject.publications"
+							form="researchProjectForm"
+						/>
+						<label for="publications">Publications</label>
+					</div>
+					<div class="form-floating p-1 col-12">
+						<input
+							type="text"
+							class="form-control"
+							id="github"
+							v-model="researchProject.github"
+							form="researchProjectForm"
+						/>
+						<label for="github">Github Repository</label>
+					</div>
+					<div class="form-floating p-1 col-12">
+						<input
+							type="text"
+							class="form-control"
+							id="poster"
+							v-model="researchProject.poster"
+							form="researchProjectForm"
+						/>
+						<label for="poster">Poster Image Link</label>
+					</div>
+				</div>
+			</div>
+			<div class="modal__action">
+				<button
+					class="btn btn-md btn-primary me-2"
+					@click="addResearchProject"
+				>
+					Save
+				</button>
+				<button
+					class="btn btn-md btn-primary"
+					@click="showAddResearchProjectModal = false"
+				>
+					Cancel
+				</button>
+			</div>
+		</VueFinalModal>
+
+		<!--  
+            ███████ ██████  ██ ████████     ██████  ███████ ███████ ███████  █████  ██████   ██████ ██   ██ 
+            ██      ██   ██ ██    ██        ██   ██ ██      ██      ██      ██   ██ ██   ██ ██      ██   ██ 
+            █████   ██   ██ ██    ██        ██████  █████   ███████ █████   ███████ ██████  ██      ███████ 
+            ██      ██   ██ ██    ██        ██   ██ ██           ██ ██      ██   ██ ██   ██ ██      ██   ██ 
+            ███████ ██████  ██    ██        ██   ██ ███████ ███████ ███████ ██   ██ ██   ██  ██████ ██   ██ 
+        -->
+		<VueFinalModal
+			v-model="showEditResearchProjectModal"
+			classes="modal-container"
+			content-class="modal-content"
+		>
+			<button
+				class="modal__close"
+				@click="showEditResearchProjectModal = false"
+			>
+				<i class="fa-solid fa-x"></i>
+			</button>
+			<span class="modal__title ps-1">Edit Research Project</span>
+			<div class="modal__content">
+				<form @submit.prevent id="editResearchProjectForm"></form>
+				<div class="m-0 row">
+					<div class="form-floating p-1 col-12">
+						<input
+							type="text"
+							class="form-control"
+							id="title"
+							v-model="editResearchProject.title"
+							form="editResearchProjectForm"
+						/>
+						<label for="title">Title</label>
+					</div>
+					<div class="form-floating p-1 col-12">
+						<input
+							type="text"
+							class="form-control"
+							id="abstract"
+							v-model="editResearchProject.abstract"
+							form="editResearchProjectForm"
+						/>
+						<label for="abstract">Abstract</label>
+					</div>
+					<div class="form-floating p-1 col-6">
+						<input
+							type="text"
+							class="form-control"
+							id="students"
+							v-model="editResearchProject.students"
+							form="editResearchProjectForm"
+						/>
+						<label for="students">Students</label>
+					</div>
+					<div class="form-floating p-1 col-6">
+						<input
+							type="text"
+							class="form-control"
+							id="faculty"
+							v-model="editResearchProject.faculty"
+							form="editResearchProjectForm"
+						/>
+						<label for="faculty">Faculty</label>
+					</div>
+					<div class="form-floating p-1 col-12">
+						<input
+							type="text"
+							class="form-control"
+							id="publications"
+							v-model="editResearchProject.publications"
+							form="editResearchProjectForm"
+						/>
+						<label for="publications">Publications</label>
+					</div>
+					<div class="form-floating p-1 col-12">
+						<input
+							type="text"
+							class="form-control"
+							id="github"
+							v-model="editResearchProject.github"
+							form="editResearchProjectForm"
+						/>
+						<label for="github">Github Repository</label>
+					</div>
+					<div class="form-floating p-1 col-12">
+						<input
+							type="text"
+							class="form-control"
+							id="poster"
+							v-model="editResearchProject.poster"
+							form="editResearchProjectForm"
+						/>
+						<label for="poster">Poster Image Link</label>
+					</div>
+				</div>
+			</div>
+			<div class="modal__action">
+				<button
+					class="btn btn-md btn-primary me-2"
+					@click="updateResearchProject"
+				>
+					Save
+				</button>
+				<button
+					class="btn btn-md btn-primary me-2"
+					@click="showDeleteResearchProjectModal = true"
+				>
+					Delete
+				</button>
+				<button
+					class="btn btn-md btn-primary"
+					@click="
+						showEditResearchProjectModal = false;
+						editResearchProject = {};
+					"
+				>
+					Cancel
+				</button>
+			</div>
+		</VueFinalModal>
+
+		<!-- 
+            ██████  ███████ ██      ███████ ████████ ███████     ██████  ███████ ███████ ███████  █████  ██████   ██████ ██   ██ 
+            ██   ██ ██      ██      ██         ██    ██          ██   ██ ██      ██      ██      ██   ██ ██   ██ ██      ██   ██ 
+            ██   ██ █████   ██      █████      ██    █████       ██████  █████   ███████ █████   ███████ ██████  ██      ███████ 
+            ██   ██ ██      ██      ██         ██    ██          ██   ██ ██           ██ ██      ██   ██ ██   ██ ██      ██   ██ 
+            ██████  ███████ ███████ ███████    ██    ███████     ██   ██ ███████ ███████ ███████ ██   ██ ██   ██  ██████ ██   ██ 
+         -->
+		<VueFinalModal
+			v-model="showDeleteResearchProjectModal"
+			classes="modal-container"
+			content-class="modal-content2"
+		>
+			<button
+				class="modal__close"
+				@click="showDeleteResearchProjectModal = false"
+			>
+				<i class="fa-solid fa-x"></i>
+			</button>
+			<span class="modal__title">Caution!</span>
+			<div class="modal__content">
+				Are you sure you want to delete this research project? This
+				action is irreversible!
+			</div>
+			<div class="modal__action">
+				<button
+					class="btn btn-md btn-primary me-2"
+					@click="deleteResearchProject"
+				>
+					Delete
+				</button>
+				<button
+					class="btn btn-md btn-primary"
+					@click="showDeleteResearchProjectModal = false"
+				>
+					Cancel
+				</button>
+			</div>
+		</VueFinalModal>
+	</div>
+
 	<div id="officerModals">
 		<!-- 
              █████  ██████  ██████       ██████  ███████ ███████ ██  ██████ ███████ ██████  
@@ -310,7 +641,7 @@
 				</button>
 				<button
 					class="btn btn-md btn-primary me-2"
-					@click="deleteOfficer"
+					@click="showDeleteOfficerModal = true"
 				>
 					Delete
 				</button>
@@ -320,6 +651,45 @@
 						showEditOfficerModal = false;
 						editOfficer = {};
 					"
+				>
+					Cancel
+				</button>
+			</div>
+		</VueFinalModal>
+
+		<!-- 
+            ██████  ███████ ██      ███████ ████████ ███████      ██████  ███████ ███████ ██  ██████ ███████ ██████  
+            ██   ██ ██      ██      ██         ██    ██          ██    ██ ██      ██      ██ ██      ██      ██   ██ 
+            ██   ██ █████   ██      █████      ██    █████       ██    ██ █████   █████   ██ ██      █████   ██████  
+            ██   ██ ██      ██      ██         ██    ██          ██    ██ ██      ██      ██ ██      ██      ██   ██ 
+            ██████  ███████ ███████ ███████    ██    ███████      ██████  ██      ██      ██  ██████ ███████ ██   ██ 
+         -->
+		<VueFinalModal
+			v-model="showDeleteOfficerModal"
+			classes="modal-container"
+			content-class="modal-content2"
+		>
+			<button
+				class="modal__close"
+				@click="showDeleteOfficerModal = false"
+			>
+				<i class="fa-solid fa-x"></i>
+			</button>
+			<span class="modal__title">Caution!</span>
+			<div class="modal__content">
+				Are you sure you want to delete this officer? This action is
+				irreversible!
+			</div>
+			<div class="modal__action">
+				<button
+					class="btn btn-md btn-primary me-2"
+					@click="deleteOfficer"
+				>
+					Delete
+				</button>
+				<button
+					class="btn btn-md btn-primary"
+					@click="showDeleteOfficerModal = false"
 				>
 					Cancel
 				</button>
@@ -463,7 +833,7 @@
 				</button>
 				<button
 					class="btn btn-md btn-primary me-2"
-					@click="deleteResource"
+					@click="showDeleteResourceModal = true"
 				>
 					Delete
 				</button>
@@ -478,15 +848,54 @@
 				</button>
 			</div>
 		</VueFinalModal>
+
+		<!-- 
+            ██████  ███████ ██      ███████ ████████ ███████     ██████  ███████ ███████  ██████  ██    ██ ██████   ██████ ███████ 
+            ██   ██ ██      ██      ██         ██    ██          ██   ██ ██      ██      ██    ██ ██    ██ ██   ██ ██      ██      
+            ██   ██ █████   ██      █████      ██    █████       ██████  █████   ███████ ██    ██ ██    ██ ██████  ██      █████   
+            ██   ██ ██      ██      ██         ██    ██          ██   ██ ██           ██ ██    ██ ██    ██ ██   ██ ██      ██      
+            ██████  ███████ ███████ ███████    ██    ███████     ██   ██ ███████ ███████  ██████   ██████  ██   ██  ██████ ███████ 
+         -->
+		<VueFinalModal
+			v-model="showDeleteResourceModal"
+			classes="modal-container"
+			content-class="modal-content2"
+		>
+			<button
+				class="modal__close"
+				@click="showDeleteResourceModal = false"
+			>
+				<i class="fa-solid fa-x"></i>
+			</button>
+			<span class="modal__title">Caution!</span>
+			<div class="modal__content">
+				Are you sure you want to delete this resource? This action is
+				irreversible!
+			</div>
+			<div class="modal__action">
+				<button
+					class="btn btn-md btn-primary me-2"
+					@click="deleteResource"
+				>
+					Delete
+				</button>
+				<button
+					class="btn btn-md btn-primary"
+					@click="showDeleteResourceModal = false"
+				>
+					Cancel
+				</button>
+			</div>
+		</VueFinalModal>
 	</div>
 
 	<div id="tutorModals">
 		<!-- 
-             █████  ██████  ██████      ██████  ███████ ███████  ██████  ██    ██ ██████   ██████ ███████ 
-            ██   ██ ██   ██ ██   ██     ██   ██ ██      ██      ██    ██ ██    ██ ██   ██ ██      ██      
-            ███████ ██   ██ ██   ██     ██████  █████   ███████ ██    ██ ██    ██ ██████  ██      █████   
-            ██   ██ ██   ██ ██   ██     ██   ██ ██           ██ ██    ██ ██    ██ ██   ██ ██      ██      
-            ██   ██ ██████  ██████      ██   ██ ███████ ███████  ██████   ██████  ██   ██  ██████ ███████ 
+             █████  ██████  ██████      ████████ ██    ██ ████████  ██████  ██████  
+            ██   ██ ██   ██ ██   ██        ██    ██    ██    ██    ██    ██ ██   ██ 
+            ███████ ██   ██ ██   ██        ██    ██    ██    ██    ██    ██ ██████  
+            ██   ██ ██   ██ ██   ██        ██    ██    ██    ██    ██    ██ ██   ██ 
+            ██   ██ ██████  ██████         ██     ██████     ██     ██████  ██   ██ 
         -->
 		<VueFinalModal
 			v-model="showAddTutorModal"
@@ -544,11 +953,11 @@
 		</VueFinalModal>
 
 		<!--  
-            ███████ ██████  ██ ████████     ██████  ███████ ███████  ██████  ██    ██ ██████   ██████ ███████ 
-            ██      ██   ██ ██    ██        ██   ██ ██      ██      ██    ██ ██    ██ ██   ██ ██      ██      
-            █████   ██   ██ ██    ██        ██████  █████   ███████ ██    ██ ██    ██ ██████  ██      █████   
-            ██      ██   ██ ██    ██        ██   ██ ██           ██ ██    ██ ██    ██ ██   ██ ██      ██      
-            ███████ ██████  ██    ██        ██   ██ ███████ ███████  ██████   ██████  ██   ██  ██████ ███████ 
+            ███████ ██████  ██ ████████     ████████ ██    ██ ████████  ██████  ██████  
+            ██      ██   ██ ██    ██           ██    ██    ██    ██    ██    ██ ██   ██ 
+            █████   ██   ██ ██    ██           ██    ██    ██    ██    ██    ██ ██████  
+            ██      ██   ██ ██    ██           ██    ██    ██    ██    ██    ██ ██   ██ 
+            ███████ ██████  ██    ██           ██     ██████     ██     ██████  ██   ██ 
         -->
 		<VueFinalModal
 			v-model="showEditTutorModal"
@@ -593,7 +1002,7 @@
 				</button>
 				<button
 					class="btn btn-md btn-primary me-2"
-					@click="deleteTutor"
+					@click="showDeleteTutorModal = true"
 				>
 					Delete
 				</button>
@@ -608,15 +1017,51 @@
 				</button>
 			</div>
 		</VueFinalModal>
+
+		<!-- 
+            ██████  ███████ ██      ███████ ████████ ███████     ████████ ██    ██ ████████  ██████  ██████  
+            ██   ██ ██      ██      ██         ██    ██             ██    ██    ██    ██    ██    ██ ██   ██ 
+            ██   ██ █████   ██      █████      ██    █████          ██    ██    ██    ██    ██    ██ ██████  
+            ██   ██ ██      ██      ██         ██    ██             ██    ██    ██    ██    ██    ██ ██   ██ 
+            ██████  ███████ ███████ ███████    ██    ███████        ██     ██████     ██     ██████  ██   ██ 
+         -->
+		<VueFinalModal
+			v-model="showDeleteTutorModal"
+			classes="modal-container"
+			content-class="modal-content2"
+		>
+			<button class="modal__close" @click="showDeleteTutorModal = false">
+				<i class="fa-solid fa-x"></i>
+			</button>
+			<span class="modal__title">Caution!</span>
+			<div class="modal__content">
+				Are you sure you want to delete this tutor? This action is
+				irreversible!
+			</div>
+			<div class="modal__action">
+				<button
+					class="btn btn-md btn-primary me-2"
+					@click="deleteTutor"
+				>
+					Delete
+				</button>
+				<button
+					class="btn btn-md btn-primary"
+					@click="showDeleteTutorModal = false"
+				>
+					Cancel
+				</button>
+			</div>
+		</VueFinalModal>
 	</div>
 
 	<div id="professorModals">
 		<!-- 
-             █████  ██████  ██████      ██████  ███████ ███████  ██████  ██    ██ ██████   ██████ ███████ 
-            ██   ██ ██   ██ ██   ██     ██   ██ ██      ██      ██    ██ ██    ██ ██   ██ ██      ██      
-            ███████ ██   ██ ██   ██     ██████  █████   ███████ ██    ██ ██    ██ ██████  ██      █████   
-            ██   ██ ██   ██ ██   ██     ██   ██ ██           ██ ██    ██ ██    ██ ██   ██ ██      ██      
-            ██   ██ ██████  ██████      ██   ██ ███████ ███████  ██████   ██████  ██   ██  ██████ ███████ 
+             █████  ██████  ██████      ██████  ██████   ██████  ███████ ███████ ███████ ███████  ██████  ██████  
+            ██   ██ ██   ██ ██   ██     ██   ██ ██   ██ ██    ██ ██      ██      ██      ██      ██    ██ ██   ██ 
+            ███████ ██   ██ ██   ██     ██████  ██████  ██    ██ █████   █████   ███████ ███████ ██    ██ ██████  
+            ██   ██ ██   ██ ██   ██     ██      ██   ██ ██    ██ ██      ██           ██      ██ ██    ██ ██   ██ 
+            ██   ██ ██████  ██████      ██      ██   ██  ██████  ██      ███████ ███████ ███████  ██████  ██   ██ 
         -->
 		<VueFinalModal
 			v-model="showAddProfessorModal"
@@ -628,7 +1073,7 @@
 			</button>
 			<span class="modal__title ps-1">Add Professor</span>
 			<div class="modal__content">
-				<form @submit.prevent id="professorForm"></form>
+				<form @submit.prevent="addProfessor" id="professorForm"></form>
 				<div class="m-0 row">
 					<div class="form-floating p-1 col-6">
 						<input
@@ -637,6 +1082,7 @@
 							id="name"
 							v-model="professor.name"
 							form="professorForm"
+							required
 						/>
 						<label for="name">Name</label>
 					</div>
@@ -795,18 +1241,11 @@
 			<div class="modal__action">
 				<button
 					class="btn btn-md btn-primary me-2"
-					@click="addProfessor"
+					form="professorForm"
+					type="submit"
 				>
 					Save
 				</button>
-				<!-- <button
-					class="btn btn-md btn-primary me-2"
-					highlight
-					@click="showConfirmModal = true"
-					v-if="modalCourse.originalCode"
-				>
-					Delete
-				</button> -->
 				<button
 					class="btn btn-md btn-primary"
 					@click="showAddProfessorModal = false"
@@ -817,11 +1256,11 @@
 		</VueFinalModal>
 
 		<!--  
-            ███████ ██████  ██ ████████     ██████  ███████ ███████  ██████  ██    ██ ██████   ██████ ███████ 
-            ██      ██   ██ ██    ██        ██   ██ ██      ██      ██    ██ ██    ██ ██   ██ ██      ██      
-            █████   ██   ██ ██    ██        ██████  █████   ███████ ██    ██ ██    ██ ██████  ██      █████   
-            ██      ██   ██ ██    ██        ██   ██ ██           ██ ██    ██ ██    ██ ██   ██ ██      ██      
-            ███████ ██████  ██    ██        ██   ██ ███████ ███████  ██████   ██████  ██   ██  ██████ ███████ 
+            ███████ ██████  ██ ████████     ██████  ██████   ██████  ███████ ███████ ███████ ███████  ██████  ██████  
+            ██      ██   ██ ██    ██        ██   ██ ██   ██ ██    ██ ██      ██      ██      ██      ██    ██ ██   ██ 
+            █████   ██   ██ ██    ██        ██████  ██████  ██    ██ █████   █████   ███████ ███████ ██    ██ ██████  
+            ██      ██   ██ ██    ██        ██      ██   ██ ██    ██ ██      ██           ██      ██ ██    ██ ██   ██ 
+            ███████ ██████  ██    ██        ██      ██   ██  ██████  ██      ███████ ███████ ███████  ██████  ██   ██ 
         -->
 		<VueFinalModal
 			v-model="showEditProfessorModal"
@@ -1009,7 +1448,7 @@
 				</button>
 				<button
 					class="btn btn-md btn-primary me-2"
-					@click="deleteProfessor"
+					@click="showDeleteProfessorModal = true"
 				>
 					Delete
 				</button>
@@ -1019,6 +1458,45 @@
 						showEditProfessorModal = false;
 						editProfessor = {};
 					"
+				>
+					Cancel
+				</button>
+			</div>
+		</VueFinalModal>
+
+		<!-- 
+            ██████  ███████ ██      ███████ ████████ ███████     ██████  ██████   ██████  ███████ ███████ ███████ ███████  ██████  ██████  
+            ██   ██ ██      ██      ██         ██    ██          ██   ██ ██   ██ ██    ██ ██      ██      ██      ██      ██    ██ ██   ██ 
+            ██   ██ █████   ██      █████      ██    █████       ██████  ██████  ██    ██ █████   █████   ███████ ███████ ██    ██ ██████  
+            ██   ██ ██      ██      ██         ██    ██          ██      ██   ██ ██    ██ ██      ██           ██      ██ ██    ██ ██   ██ 
+            ██████  ███████ ███████ ███████    ██    ███████     ██      ██   ██  ██████  ██      ███████ ███████ ███████  ██████  ██   ██ 
+         -->
+		<VueFinalModal
+			v-model="showDeleteProfessorModal"
+			classes="modal-container"
+			content-class="modal-content2"
+		>
+			<button
+				class="modal__close"
+				@click="showDeleteProfessorModal = false"
+			>
+				<i class="fa-solid fa-x"></i>
+			</button>
+			<span class="modal__title">Caution!</span>
+			<div class="modal__content">
+				Are you sure you want to delete this professor? This action is
+				irreversible!
+			</div>
+			<div class="modal__action">
+				<button
+					class="btn btn-md btn-primary me-2"
+					@click="deleteProfessor"
+				>
+					Delete
+				</button>
+				<button
+					class="btn btn-md btn-primary"
+					@click="showDeleteProfessorModal = false"
 				>
 					Cancel
 				</button>
@@ -1055,32 +1533,125 @@ export default {
 		return {
 			db: {},
 
+			showAddResearchProjectModal: false,
+			showEditResearchProjectModal: false,
+			showDeleteResearchProjectModal: false,
+			researchProjects: {},
+			researchProject: {},
+			editResearchProject: {},
+
 			showAddOfficerModal: false,
 			showEditOfficerModal: false,
+			showDeleteOfficerModal: false,
 			officers: {},
 			officer: {},
 			editOfficer: {},
 
 			showAddResourceModal: false,
 			showEditResourceModal: false,
+			showDeleteResourceModal: false,
 			resources: {},
 			resource: {},
 			editResource: {},
 
 			showAddTutorModal: false,
 			showEditTutorModal: false,
+			showDeleteTutorModal: false,
 			tutors: {},
 			tutor: {},
 			editTutor: {},
 
 			showAddProfessorModal: false,
 			showEditProfessorModal: false,
+			showDeleteProfessorModal: false,
 			professors: {},
 			professor: {},
 			editProfessor: {},
 		};
 	},
 	methods: {
+		async addResearchProject() {
+			this.showAddResearchProjectModal = false;
+			await addDoc(collection(this.db, "researchProjects"), {
+				title: this.researchProject.title
+					? this.researchProject.title
+					: "",
+				abstract: this.researchProject.abstract
+					? this.researchProject.abstract
+					: "",
+				students: this.researchProject.students
+					? this.researchProject.students
+					: "",
+				faculty: this.researchProject.faculty
+					? this.researchProject.faculty
+					: "",
+				publications: this.researchProject.publications
+					? this.researchProject.publications
+					: "",
+				github: this.researchProject.github
+					? this.researchProject.github
+					: "",
+				poster: this.researchProject.poster
+					? this.researchProject.poster
+					: "",
+			});
+			this.researchProject = {};
+			await this.getResearchProjects();
+		},
+		openEditResearchProjectModal(currentResearchProject, id) {
+			this.editResearchProject = currentResearchProject;
+			this.editResearchProject.id = id;
+			this.showEditResearchProjectModal = true;
+		},
+		async updateResearchProject() {
+			this.showEditResearchProjectModal = false;
+			await setDoc(
+				doc(this.db, "researchProjects", this.editResearchProject.id),
+				{
+					title: this.editResearchProject.title
+						? this.editResearchProject.title
+						: "",
+					abstract: this.editResearchProject.abstract
+						? this.editResearchProject.abstract
+						: "",
+					students: this.editResearchProject.students
+						? this.editResearchProject.students
+						: "",
+					faculty: this.editResearchProject.faculty
+						? this.editResearchProject.faculty
+						: "",
+					publications: this.editResearchProject.publications
+						? this.editResearchProject.publications
+						: "",
+					github: this.editResearchProject.github
+						? this.editResearchProject.github
+						: "",
+					poster: this.editResearchProject.poster
+						? this.editResearchProject.poster
+						: "",
+				}
+			);
+			this.editResearchProject = {};
+			await this.getOResearchProject();
+		},
+		async deleteResearchProject() {
+			this.showDeleteResearchProjectModal = false;
+			this.showEditResearchProjectModal = false;
+			await deleteDoc(
+				doc(this.db, "researchProjects", this.editResearchProject.id)
+			);
+			delete this.researchProjects[this.editResearchProject.id];
+			this.editResearchProject = {};
+		},
+		async getResearchProjects() {
+			const data = await getDocs(collection(this.db, "researchProjects"));
+
+			// Push each officer's data to the array
+			data.forEach((doc) => {
+				this.researchProjects[doc.id] = doc.data();
+			});
+		},
+
 		async addOfficer() {
 			this.showAddOfficerModal = false;
 			await addDoc(collection(this.db, "CS-club-officers"), {
@@ -1114,6 +1685,7 @@ export default {
 			await this.getOfficers();
 		},
 		async deleteOfficer() {
+			this.showDeleteOfficerModal = false;
 			this.showEditOfficerModal = false;
 			await deleteDoc(
 				doc(this.db, "CS-club-officers", this.editOfficer.id)
@@ -1163,6 +1735,7 @@ export default {
 			await this.getOResource();
 		},
 		async deleteResource() {
+			this.showDeleteResourceModal = false;
 			this.showEditResourceModal = false;
 			await deleteDoc(
 				doc(this.db, "advising-resources", this.editResource.id)
@@ -1205,6 +1778,7 @@ export default {
 			await this.getOTutor();
 		},
 		async deleteTutor() {
+			this.showDeleteTutorModal = false;
 			this.showEditTutorModal = false;
 			await deleteDoc(doc(this.db, "cs-tutors", this.editTutor.id));
 			delete this.tutors[this.editTutor.id];
@@ -1221,34 +1795,38 @@ export default {
 
 		async addProfessor() {
 			this.showAddProfessorModal = false;
-			await addDoc(collection(this.db, "faculty"), {
-				name: this.professor.name ? this.professor.name : "",
-				title: this.professor.title ? this.professor.title : "",
-				email: this.professor.email ? this.professor.email : "",
-				phone: this.professor.phone ? this.professor.phone : "",
-				office: this.professor.office ? this.professor.office : "",
-				slack: this.professor.slack ? this.professor.slack : "",
-				github: this.professor.github ? this.professor.github : "",
-				linkedin: this.professor.linkedin
-					? this.professor.linkedin
-					: "",
-				pfp: this.professor.pfp ? this.professor.pfp : "",
-				teachingimg: this.professor.teachingimg
-					? this.professor.teachingimg
-					: "",
-				quote: this.professor.quote ? this.professor.quote : "",
-				bio: this.professor.bio ? this.professor.bio : "",
-				interests: this.professor.interests
-					? this.professor.interests
-					: "",
-				education: this.professor.education
-					? this.professor.education
-					: "",
-				awards: this.professor.awards ? this.professor.awards : "",
-				publications: this.professor.publications
-					? this.professor.publications
-					: "",
-			});
+			const names = this.professor.name.split(" ");
+			await setDoc(
+				doc(this.db, "faculty", names[names.length - 1].toLowerCase()),
+				{
+					name: this.professor.name,
+					title: this.professor.title ? this.professor.title : "",
+					email: this.professor.email ? this.professor.email : "",
+					phone: this.professor.phone ? this.professor.phone : "",
+					office: this.professor.office ? this.professor.office : "",
+					slack: this.professor.slack ? this.professor.slack : "",
+					github: this.professor.github ? this.professor.github : "",
+					linkedin: this.professor.linkedin
+						? this.professor.linkedin
+						: "",
+					pfp: this.professor.pfp ? this.professor.pfp : "",
+					teachingimg: this.professor.teachingimg
+						? this.professor.teachingimg
+						: "",
+					quote: this.professor.quote ? this.professor.quote : "",
+					bio: this.professor.bio ? this.professor.bio : "",
+					interests: this.professor.interests
+						? this.professor.interests
+						: "",
+					education: this.professor.education
+						? this.professor.education
+						: "",
+					awards: this.professor.awards ? this.professor.awards : "",
+					publications: this.professor.publications
+						? this.professor.publications
+						: "",
+				}
+			);
 			this.professor = {};
 			await this.getProfessors();
 		},
@@ -1297,6 +1875,7 @@ export default {
 			await this.getOProfessor();
 		},
 		async deleteProfessor() {
+			this.showDeleteProfessorModal = false;
 			this.showEditProfessorModal = false;
 			await deleteDoc(doc(this.db, "faculty", this.editProfessor.id));
 			delete this.professors[this.editProfessor.id];
@@ -1328,6 +1907,7 @@ export default {
 		// Connect to firestore and get database
 		this.db = getFirestore(app);
 
+		await this.getResearchProjects();
 		await this.getOfficers();
 		await this.getResources();
 		await this.getTutors();

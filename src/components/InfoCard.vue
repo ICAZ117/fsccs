@@ -1,5 +1,5 @@
 <template>
-	<div class="card">
+	<div :class="'card ' + (hover ? 'card-hover' : '')">
 		<div class="card-body">
 			<h5 class="card-title center primary">
 				{{ title }}
@@ -14,33 +14,43 @@
 
 <script>
 export default {
-	props: ["title"],
+	props: {
+        title: {
+            type: String,
+            required: true
+        },
+        hover: {
+            type: Boolean,
+            default: true,
+            required: false,
+        }
+    },
 };
 </script>
 
 <style scoped>
-.card,
-.card .primary-hr,
-.card .card-title,
-.card a {
+.card-hover,
+.card-hover .primary-hr,
+.card-hover .card-title,
+.card-hover a {
 	transition: all ease 0.5s;
 }
 
-.card:hover {
+.card-hover:hover {
 	color: white !important;
 	background-color: var(--FSCred);
 	transform: scale(1.05);
 }
 
-.card:hover .primary-hr {
+.card-hover:hover .primary-hr {
 	border-color: white !important;
 }
 
-.card:hover .card-title {
+.card-hover:hover .card-title {
 	color: white !important;
 }
 
-.card:hover a {
+.card-hover:hover a {
 	color: white !important;
 }
 </style>

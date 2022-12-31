@@ -70,7 +70,7 @@
 					v-for="researchProject in researchProjects"
 					:key="researchProject"
 				>
-					<InfoCard :title="researchProject.title">
+					<InfoCard :title="researchProject.title" :hover="false">
 						<Expandable :alwaysCollapse="true">
 							<!-- Abstract -->
 							<div id="abstract">
@@ -84,22 +84,16 @@
 
 							<div id="students">
 								<h6 class="mt-3 bold">Students:</h6>
-								<span
-									v-for="name in researchProject.students"
-									:key="name"
-									class="researchStudent"
-									>{{ name }}</span
-								>
+								<p class="justify-large">
+									{{ researchProject.students }}
+								</p>
 							</div>
 
 							<div id="faculty">
 								<h6 class="mt-3 bold">Faculty:</h6>
-								<span
-									v-for="name in researchProject.faculty"
-									:key="name"
-									class="researchFaculty"
-									>{{ name }}</span
-								>
+								<p class="justify-large">
+									{{ researchProject.faculty }}
+								</p>
 							</div>
 
 							<div
@@ -107,14 +101,11 @@
 								v-if="researchProject.publications"
 							>
 								<h6 class="mt-3 bold">Publications:</h6>
-								<Expandable :alwaysCollapse="true" :height="'100px'">
-									<p
-										class="mb-3"
-										v-for="publication in researchProject.publications"
-										:key="publication"
-									>
-										{{ publication }}
-									</p>
+								<Expandable
+									:alwaysCollapse="true"
+									:height="'100px'"
+								>
+                                <p class="justify-large" v-html="researchProject.publications"></p>
 								</Expandable>
 							</div>
 
