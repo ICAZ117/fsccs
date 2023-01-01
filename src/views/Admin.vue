@@ -154,6 +154,56 @@
 				</div>
 			</div>
 
+			<div id="studentProjects" class="mt-4 pt-2">
+				<div
+					class=""
+					style="
+						display: flex;
+						align-items: center;
+						flex-direction: row;
+					"
+				>
+					<h2 class="primary">Project Repository</h2>
+					<button
+						class="h-75 btn btn-md btn-primary"
+						style="margin-left: auto; order: 2"
+						@click="showAddStudentProjectModal = true"
+					>
+						Add Project
+					</button>
+				</div>
+				<hr class="primary-hr" />
+				<div class="mx-0 px-0 row gy-4 block-center">
+					<div
+						class="col-3"
+						v-for="(studentProject, id) in studentProjects"
+						:key="id"
+					>
+						<div
+							class="px-0 card"
+							@click="
+								openEditStudentProjectModal(studentProject, id)
+							"
+						>
+							<div class="card-body">
+								<p>
+									<b>Title: </b>
+									<br />
+									{{ studentProject.title }}
+								</p>
+								<p>
+									<b>Student(s):</b>
+									<br />
+									<span>
+										{{ studentProject.students }}
+									</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<div id="tutors" class="mt-4 pt-2">
 				<div
 					class=""
@@ -889,6 +939,238 @@
 		</VueFinalModal>
 	</div>
 
+	<div id="studentProjectModals">
+		<!-- 
+             █████  ██████  ██████      ██████  ██████   ██████       ██ ███████  ██████ ████████ 
+            ██   ██ ██   ██ ██   ██     ██   ██ ██   ██ ██    ██      ██ ██      ██         ██    
+            ███████ ██   ██ ██   ██     ██████  ██████  ██    ██      ██ █████   ██         ██    
+            ██   ██ ██   ██ ██   ██     ██      ██   ██ ██    ██ ██   ██ ██      ██         ██    
+            ██   ██ ██████  ██████      ██      ██   ██  ██████   █████  ███████  ██████    ██    
+        -->
+		<VueFinalModal
+			v-model="showAddStudentProjectModal"
+			classes="modal-container"
+			content-class="modal-content"
+		>
+			<button
+				class="modal__close"
+				@click="showAddStudentProjectModal = false"
+			>
+				<i class="fa-solid fa-x"></i>
+			</button>
+			<span class="modal__title ps-1">Add Project</span>
+			<div class="modal__content">
+				<form @submit.prevent id="studentProjectForm"></form>
+				<div class="m-0 row">
+					<div class="form-floating p-1 col-12">
+						<input
+							type="text"
+							class="form-control"
+							id="title"
+							v-model="studentProject.title"
+							form="studentProjectForm"
+						/>
+						<label for="title">Title</label>
+					</div>
+					<div class="form-floating p-1 col-12">
+						<input
+							type="text"
+							class="form-control"
+							id="description"
+							v-model="studentProject.description"
+							form="studentProjectForm"
+						/>
+						<label for="description">Description</label>
+					</div>
+					<div class="form-floating p-1 col-12">
+						<input
+							type="text"
+							class="form-control"
+							id="students"
+							v-model="studentProject.students"
+							form="studentProjectForm"
+						/>
+						<label for="students">Student(s)</label>
+					</div>
+					<div class="form-floating p-1 col-12">
+						<input
+							type="text"
+							class="form-control"
+							id="github"
+							v-model="studentProject.github"
+							form="studentProjectForm"
+						/>
+						<label for="github">Github Repository</label>
+					</div>
+					<div class="p-1 col-12">
+						<input
+							type="checkbox"
+							id="is2280"
+							v-model="studentProject.is2280"
+							form="studentProjectForm"
+						/>
+						<label class="white ms-2" for="is2280">
+							This project is a CSC 2280 final project
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="modal__action">
+				<button
+					class="btn btn-md btn-primary me-2"
+					@click="addStudentProject"
+				>
+					Save
+				</button>
+				<button
+					class="btn btn-md btn-primary"
+					@click="showAddStudentProjectModal = false"
+				>
+					Cancel
+				</button>
+			</div>
+		</VueFinalModal>
+
+		<!--  
+            ███████ ██████  ██ ████████     ██████  ██████   ██████       ██ ███████  ██████ ████████ 
+            ██      ██   ██ ██    ██        ██   ██ ██   ██ ██    ██      ██ ██      ██         ██    
+            █████   ██   ██ ██    ██        ██████  ██████  ██    ██      ██ █████   ██         ██    
+            ██      ██   ██ ██    ██        ██      ██   ██ ██    ██ ██   ██ ██      ██         ██    
+            ███████ ██████  ██    ██        ██      ██   ██  ██████   █████  ███████  ██████    ██    
+        -->
+		<VueFinalModal
+			v-model="showEditStudentProjectModal"
+			classes="modal-container"
+			content-class="modal-content"
+		>
+			<button
+				class="modal__close"
+				@click="showEditStudentProjectModal = false"
+			>
+				<i class="fa-solid fa-x"></i>
+			</button>
+			<span class="modal__title ps-1">Edit Project</span>
+			<div class="modal__content">
+				<form @submit.prevent id="editStudentProjectForm"></form>
+				<div class="m-0 row">
+					<div class="form-floating p-1 col-12">
+						<input
+							type="text"
+							class="form-control"
+							id="title"
+							v-model="editStudentProject.title"
+							form="studentProjectForm"
+						/>
+						<label for="title">Title</label>
+					</div>
+					<div class="form-floating p-1 col-12">
+						<input
+							type="text"
+							class="form-control"
+							id="description"
+							v-model="editStudentProject.description"
+							form="studentProjectForm"
+						/>
+						<label for="description">Description</label>
+					</div>
+					<div class="form-floating p-1 col-12">
+						<input
+							type="text"
+							class="form-control"
+							id="students"
+							v-model="editStudentProject.students"
+							form="studentProjectForm"
+						/>
+						<label for="students">Student(s)</label>
+					</div>
+					<div class="form-floating p-1 col-12">
+						<input
+							type="text"
+							class="form-control"
+							id="github"
+							v-model="editStudentProject.github"
+							form="studentProjectForm"
+						/>
+						<label for="github">Github Repository</label>
+					</div>
+					<div class="p-1 col-12">
+						<input
+							type="checkbox"
+							id="is2280"
+							v-model="editStudentProject.is2280"
+							form="studentProjectForm"
+						/>
+						<label class="white ms-2" for="is2280">
+							This project is a CSC 2280 final project
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="modal__action">
+				<button
+					class="btn btn-md btn-primary me-2"
+					@click="updateStudentProject"
+				>
+					Save
+				</button>
+				<button
+					class="btn btn-md btn-primary me-2"
+					@click="showDeleteStudentProjectModal = true"
+				>
+					Delete
+				</button>
+				<button
+					class="btn btn-md btn-primary"
+					@click="
+						showEditStudentProjectModal = false;
+						editStudentProject = {};
+					"
+				>
+					Cancel
+				</button>
+			</div>
+		</VueFinalModal>
+
+		<!-- 
+            ██████  ███████ ██      ███████ ████████ ███████     ██████  ██████   ██████       ██ ███████  ██████ ████████ 
+            ██   ██ ██      ██      ██         ██    ██          ██   ██ ██   ██ ██    ██      ██ ██      ██         ██    
+            ██   ██ █████   ██      █████      ██    █████       ██████  ██████  ██    ██      ██ █████   ██         ██    
+            ██   ██ ██      ██      ██         ██    ██          ██      ██   ██ ██    ██ ██   ██ ██      ██         ██    
+            ██████  ███████ ███████ ███████    ██    ███████     ██      ██   ██  ██████   █████  ███████  ██████    ██    
+         -->
+		<VueFinalModal
+			v-model="showDeleteStudentProjectModal"
+			classes="modal-container"
+			content-class="modal-content2"
+		>
+			<button
+				class="modal__close"
+				@click="showDeleteStudentProjectModal = false"
+			>
+				<i class="fa-solid fa-x"></i>
+			</button>
+			<span class="modal__title">Caution!</span>
+			<div class="modal__content">
+				Are you sure you want to delete this project? This action is
+				irreversible!
+			</div>
+			<div class="modal__action">
+				<button
+					class="btn btn-md btn-primary me-2"
+					@click="deleteStudentProject"
+				>
+					Delete
+				</button>
+				<button
+					class="btn btn-md btn-primary"
+					@click="showDeleteStudentProjectModal = false"
+				>
+					Cancel
+				</button>
+			</div>
+		</VueFinalModal>
+	</div>
+
 	<div id="tutorModals">
 		<!-- 
              █████  ██████  ██████      ████████ ██    ██ ████████  ██████  ██████  
@@ -1554,6 +1836,13 @@ export default {
 			resource: {},
 			editResource: {},
 
+			showAddStudentProjectModal: false,
+			showEditStudentProjectModal: false,
+			showDeleteStudentProjectModal: false,
+			studentProjects: {},
+			studentProject: {},
+			editStudentProject: {},
+
 			showAddTutorModal: false,
 			showEditTutorModal: false,
 			showDeleteTutorModal: false,
@@ -1754,6 +2043,72 @@ export default {
 			});
 		},
 
+		async addStudentProject() {
+			this.showAddStudentProjectModal = false;
+			await addDoc(collection(this.db, "studentProjects"), {
+				title: this.studentProject.title
+					? this.studentProject.title
+					: "",
+				description: this.studentProject.description
+					? this.studentProject.description
+					: "",
+				students: this.studentProject.students
+					? this.studentProject.students
+					: "",
+				github: this.studentProject.github
+					? this.studentProject.github
+					: "",
+				is2280: this.studentProject.is2280 ? true : false,
+			});
+			this.studentProject = {};
+			await this.getStudentProjects();
+		},
+		openEditStudentProjectModal(currentStudentProject, id) {
+			this.editStudentProject = currentStudentProject;
+			this.editStudentProject.id = id;
+			this.showEditStudentProjectModal = true;
+		},
+		async updateStudentProject() {
+			this.showEditStudentProjectModal = false;
+			await setDoc(
+				doc(this.db, "studentProjects", this.editStudentProject.id),
+				{
+					title: this.editStudentProject.title
+						? this.editStudentProject.title
+						: "",
+					description: this.editStudentProject.description
+						? this.editStudentProject.description
+						: "",
+					students: this.editStudentProject.students
+						? this.editStudentProject.students
+						: "",
+					github: this.editStudentProject.github
+						? this.editStudentProject.github
+						: "",
+					is2280: this.editStudentProject.is2280 ? true : false,
+				}
+			);
+			this.editStudentProject = {};
+			await this.getOStudentProject();
+		},
+		async deleteStudentProject() {
+			this.showDeleteStudentProjectModal = false;
+			this.showEditStudentProjectModal = false;
+			await deleteDoc(
+				doc(this.db, "studentProjects", this.editStudentProject.id)
+			);
+			delete this.studentProjects[this.editStudentProject.id];
+			this.editStudentProject = {};
+		},
+		async getStudentProjects() {
+			const data = await getDocs(collection(this.db, "studentProjects"));
+
+			// Push each officer's data to the array
+			data.forEach((doc) => {
+				this.studentProjects[doc.id] = doc.data();
+			});
+		},
+
 		async addTutor() {
 			this.showAddTutorModal = false;
 			await addDoc(collection(this.db, "cs-tutors"), {
@@ -1910,6 +2265,7 @@ export default {
 		await this.getResearchProjects();
 		await this.getOfficers();
 		await this.getResources();
+		await this.getStudentProjects();
 		await this.getTutors();
 		await this.getProfessors();
 	},

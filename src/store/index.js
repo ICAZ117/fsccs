@@ -51,6 +51,7 @@ const store = createStore({
         officers: {},
         courses: {},
         advisingresources: {},
+        studentProjects: {},
         tutors: {},
         tutorInfo: {},
         authEmail: "",
@@ -164,6 +165,9 @@ const store = createStore({
         setAdvisingResources(state, payload) {
             state.advisingresources = payload;
         },
+        setStudentProjects(state, payload) {
+            state.studentProjects = payload;
+        },
         setTutors(state, payload) {
             state.tutors = payload;
         },
@@ -229,6 +233,10 @@ const store = createStore({
         async fetchAdvisingResources({ commit }) {
             const data = await getDocs(collection(db, "advising-resources"));
             commit("setAdvisingResources", data);
+        },
+        async fetchStudentProjects({ commit }) {
+            const data = await getDocs(collection(db, "studentProjects"));
+            commit("setStudentProjects", data);
         },
         async fetchTutors({ commit }) {
             const data = await getDocs(collection(db, "cs-tutors"));
@@ -321,6 +329,9 @@ const store = createStore({
         },
         getAdvisingResources(state) {
             return state.advisingresources;
+        },
+        getStudentProjects(state) {
+            return state.studentProjects;
         },
         getTutors(state) {
             return state.tutors;

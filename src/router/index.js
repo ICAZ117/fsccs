@@ -131,11 +131,13 @@ const routes = [
         },
     },
     {
-        path: "/resources/tutor-lab",
-        name: "Tutor Lab",
-        component: () => import("../views/Resources/TutorLab.vue"),
+        path: "/resources/degree-audit",
+        name: "Degree Audit",
+        component: () => import("../views/DegreeAudit/DegreeAudit.vue"),
         meta: {
-            title: "Tutor Lab - The Cube Life",
+            title: "Degree Audit - The Cube Life",
+            requiresAuth: true,
+            requiresCompletion: true,
         },
     },
     {
@@ -147,24 +149,19 @@ const routes = [
         },
     },
     {
-        path: "/manage-courses",
-        name: "Manage Courses",
-        component: () => import("../views/DegreeAudit/ManageCourses.vue"),
+        path: "/resources/project-repository",
+        name: "Project Repository",
+        component: () => import("../views/Resources/ProjectRepository.vue"),
         meta: {
-            title: "Manage Courses - The Cube Life",
-            requiresAuth: true,
-            requiresCompletion: true,
-            requiresAdmin: true,
+            title: "Project Repository - The Cube Life",
         },
     },
     {
-        path: "/resources/degree-audit",
-        name: "Degree Audit",
-        component: () => import("../views/DegreeAudit/DegreeAudit.vue"),
+        path: "/resources/tutor-lab",
+        name: "Tutor Lab",
+        component: () => import("../views/Resources/TutorLab.vue"),
         meta: {
-            title: "Degree Audit - The Cube Life",
-            requiresAuth: true,
-            requiresCompletion: true,
+            title: "Tutor Lab - The Cube Life",
         },
     },
     {
@@ -235,6 +232,17 @@ const routes = [
         component: () => import("../views/Admin.vue"),
         meta: {
             title: "Admin - The Cube Life",
+            requiresAuth: true,
+            requiresCompletion: true,
+            requiresAdmin: true,
+        },
+    },
+    {
+        path: "/manage-courses",
+        name: "Manage Courses",
+        component: () => import("../views/DegreeAudit/ManageCourses.vue"),
+        meta: {
+            title: "Manage Courses - The Cube Life",
             requiresAuth: true,
             requiresCompletion: true,
             requiresAdmin: true,

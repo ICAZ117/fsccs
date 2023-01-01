@@ -15,7 +15,7 @@
 	>
 		<template v-slot:left>
 			<div class="center vertical-center">
-				<h1 class="white">Collaborative Research</h1>
+				<h1 class="white customSizing">Collaborative Research</h1>
 			</div>
 		</template>
 	</SkewBox>
@@ -32,23 +32,21 @@
 	>
 		<div class="container my-5">
 			<h3 class="center">What is Collaborative Research?</h3>
-			<p>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit.
-				Veritatis aperiam fuga numquam rerum? Pariatur dignissimos,
-				aspernatur ipsa nemo cum excepturi natus ducimus perferendis
-				rerum deserunt facilis hic eaque voluptatum perspiciatis! Lorem
-				ipsum dolor sit amet consectetur, adipisicing elit. Voluptates
-				quisquam dolores neque voluptate aliquid temporibus quas odio
-				eligendi placeat ex eum pariatur, ullam dicta ad aperiam ut iste
-				qui mollitia. Lorem ipsum dolor sit amet consectetur adipisicing
-				elit. Nesciunt officiis, facilis consectetur doloremque eaque
-				ullam. Quas consequatur ad, ipsam autem nam sapiente consectetur
-				eius, tempore perspiciatis, iste beatae minima eaque. Lorem
-				ipsum dolor sit amet consectetur adipisicing elit. Veritatis ea
-				corrupti error ducimus enim officiis exercitationem laborum
-				deserunt, obcaecati iusto laboriosam. Ab, excepturi earum
-				architecto dolore impedit facilis velit dicta!
-			</p>
+			<Expandable>
+				<p class="justify-large">
+					Faculty/student collaborative research can be an incredibly
+					rewarding experience during one’s undergraduate career.
+					Working closely with a faculty member, students develop
+					critical thinking, creativity, problem-solving, and
+					intellectual independence, all while engaging in a fun
+					opportunity that increases both career and graduate-school
+					preparation. If you are up for the challenge and are looking
+					to invest a summer conducting semi-independent research,
+					reach out to one of the faculty members to see what
+					opportunities are available. Below is a sampling of some of
+					the more recent faculty/student summer collaborations.
+				</p>
+			</Expandable>
 		</div>
 	</Parallax>
 
@@ -105,12 +103,15 @@
 									:alwaysCollapse="true"
 									:height="'100px'"
 								>
-                                <p class="justify-large" v-html="researchProject.publications"></p>
+									<p
+										class="justify-large"
+										v-html="researchProject.publications"
+									></p>
 								</Expandable>
 							</div>
 
 							<div id="github" v-if="researchProject.github">
-								<h6 class="mt-3 bold">Github Repository</h6>
+								<h6 class="mt-3 bold">Github Repository:</h6>
 								<a
 									:href="researchProject.github"
 									target="_blank"
@@ -119,7 +120,7 @@
 							</div>
 
 							<div id="poster">
-								<h6 class="mt-3 bold">Poster</h6>
+								<h6 class="mt-3 bold">Poster:</h6>
 								<a
 									:href="researchProject.poster"
 									target="_blank"
@@ -180,8 +181,9 @@ export default {
 </script>
 
 <style scoped>
-.researchStudent ~ .researchStudent::before,
-.researchFaculty ~ .researchFaculty::before {
-	content: ", ";
+@media (max-width: 474.9px) {
+	.customSizing {
+		font-size: 20pt !important;
+	}
 }
 </style>

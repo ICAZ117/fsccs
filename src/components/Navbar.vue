@@ -139,23 +139,25 @@
 
 									title: 'Advising',
 								},
-
 								{
 									path: '/resources/degree-audit',
 
 									title: 'Degree Audit',
 								},
+                                {
+									path: '/resources/calendar',
 
+									title: 'Department Calendar',
+								},
+                                {
+									path: '/resources/project-repository',
+
+									title: 'Project Repository',
+								},
 								{
 									path: '/resources/tutor-lab',
 
 									title: 'Tutor Lab',
-								},
-
-								{
-									path: '/resources/calendar',
-
-									title: 'Department Calendar',
 								},
 							]"
 						/>
