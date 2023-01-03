@@ -4,6 +4,7 @@
 			<div class="container">
 				<div class="footer-content">
 					<div class="row block-center">
+                        <!-- CUBE -->
 						<div class="col-2">
 							<router-link to="/">
 								<img
@@ -13,7 +14,11 @@
 								/>
 							</router-link>
 						</div>
+
+                        <!-- SPACER -->
 						<div class="col-1"></div>
+
+                        <!-- ABOUT -->
 						<div class="col-3">
 							<h2 class="primary">About</h2>
 							<hr class="primary-hr" />
@@ -52,24 +57,50 @@
 								</li>
 								<li>
 									<router-link
-										to="/virtual-tour"
+										to="/about/cube-life"
 										class="primary link"
 									>
-										Virtual Tour
+										About the Cube Life
 									</router-link>
 								</li>
 							</ul>
 						</div>
+
+                        <!-- GET INVOLVED -->
 						<div class="col-3">
 							<h2 class="primary">Get Involved</h2>
 							<hr class="primary-hr" />
 							<ul style="list-style-type: none">
+                                <li>
+									<router-link
+										to="/get-involved/boardgame-lunch"
+										class="primary link"
+									>
+										Boardgame Lunch
+									</router-link>
+								</li>
+                                <li>
+									<router-link
+										to="/get-involved/collaborative-research"
+										class="primary link"
+									>
+										Collaborative Research
+									</router-link>
+								</li>
 								<li>
 									<router-link
 										to="/get-involved/cs-club"
 										class="primary link"
 									>
 										CS Club
+									</router-link>
+								</li>
+                                <li>
+									<router-link
+										to="/get-involved/intramurals"
+										class="primary link"
+									>
+										Intramural Sports
 									</router-link>
 								</li>
 								<li>
@@ -80,16 +111,10 @@
 										Programming Team
 									</router-link>
 								</li>
-								<li>
-									<router-link
-										to="/get-involved/boardgame-lunch"
-										class="primary link"
-									>
-										Boardgame Lunch
-									</router-link>
-								</li>
 							</ul>
 						</div>
+
+                        <!-- RESOURCES -->
 						<div class="col-3">
 							<h2 class="primary">Resources</h2>
 							<hr class="primary-hr" />
@@ -102,6 +127,30 @@
 										Advising
 									</router-link>
 								</li>
+                                <li>
+									<router-link
+										to="/resources/degree-audit"
+										class="primary link"
+									>
+										Degree Audit
+									</router-link>
+								</li>
+                                <li>
+									<router-link
+										to="/resources/calendar"
+										class="primary link"
+									>
+										Department Calendar
+									</router-link>
+								</li>
+                                <li>
+									<router-link
+										to="/resources/project-repository"
+										class="primary link"
+									>
+										Project Repository
+									</router-link>
+								</li>
 								<li>
 									<router-link
 										to="/resources/tutor-lab"
@@ -110,14 +159,7 @@
 										Tutor Lab
 									</router-link>
 								</li>
-								<li>
-									<router-link
-										to="/resources/calendar"
-										class="primary link"
-									>
-										Department Calendar
-									</router-link>
-								</li>
+								
 							</ul>
 						</div>
 					</div>
@@ -127,7 +169,7 @@
 		<div class="bottom-bg">
 			<div class="container">
 				<hr class="white-hr" />
-				<p class="white">The Cube Life &copy; 2022</p>
+				<p class="white">The Cube Life &copy; {{ new Date().getFullYear() }}</p>
 			</div>
 		</div>
 	</footer>
@@ -148,7 +190,7 @@
 						float: left;
 					"
 				/>
-				<p class="white my-0 py-0 ms-2">The Cube Life &copy; 2022</p>
+				<p class="white my-0 py-0 ms-2">The Cube Life &copy; {{ new Date().getFullYear() }}</p>
 			</div>
 		</div>
 	</footer>

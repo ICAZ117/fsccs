@@ -118,7 +118,7 @@
 		:overlayColor="'0, 0, 0'"
 	>
 		<div class="m-auto container py-5 h-100">
-			<h3 class="center white">Other Projects</h3>
+			<h3 class="center white">Senior Capstone Projects</h3>
 			<div class="m-0 row g-xl-5 g-3">
 				<div
 					class="col-lg-6 col-12"

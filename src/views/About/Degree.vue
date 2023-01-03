@@ -102,57 +102,6 @@
 		<Slide :key="0">
 			<SkewBox
 				:rightBG="{
-					backgroundImage: `url(${require('@/assets/img/Web.jpg')})`,
-					'background-color': 'darkgrey',
-					'background-position': 'left',
-					'background-size': 'cover',
-					width: '55vw!important',
-				}"
-				:leftColor="'var(--FSCred)'"
-				:rightColor="'transparent'"
-				:height="600"
-				:maintainSkewbox="false"
-				:pictureSide="'right'"
-				:invert="false"
-				:mobileColor="'hsla(348, 88%, 39%, 0.5)'"
-				class="w-100"
-			>
-				<template v-slot:left>
-					<div
-						style="display: flex; align-items: center; height: 100%"
-						class="my-5 my-xl-0"
-					>
-						<div class="white">
-							<h1 class="white center">Web & Cloud Computing</h1>
-							<Expandable>
-								<p class="white justify-large mb-3">
-									In-depth examination of a current topic in
-									web development and cloud computing, such as
-									web security, user experience, mobile app
-									development, and web engineering. In this
-									concentration, you'll explore the basic
-									principles of web development, dynamic and
-									responsive page design, development of SPA's
-									through the usage of frameworks, elementary
-									database management, development of a
-									backend API, and more!
-								</p>
-								<b>Concentration specific classes:</b>
-								<ul class="white justify-large">
-									<li>Introduction to Web Development</li>
-									<li>Web Application Architectures</li>
-									<li>Advanced Topics in Web Development</li>
-								</ul>
-							</Expandable>
-						</div>
-					</div>
-				</template>
-			</SkewBox>
-		</Slide>
-
-		<Slide :key="1">
-			<SkewBox
-				:rightBG="{
 					backgroundImage: `url(${require('@/assets/img/ai.jpg')})`,
 					'background-position': 'center',
 					'background-size': 'cover',
@@ -205,7 +154,7 @@
 			</SkewBox>
 		</Slide>
 
-		<Slide :key="2">
+		<Slide :key="1">
 			<SkewBox
 				:rightBG="{
 					backgroundImage: `url(${require('@/assets/img/CySec.jpg')})`,
@@ -252,6 +201,57 @@
 									<li>Principles of Computer Networking</li>
 									<li>Penetration Testing</li>
 									<li>Threat Detection Engineering</li>
+								</ul>
+							</Expandable>
+						</div>
+					</div>
+				</template>
+			</SkewBox>
+		</Slide>
+
+        <Slide :key="2">
+			<SkewBox
+				:rightBG="{
+					backgroundImage: `url(${require('@/assets/img/Web.jpg')})`,
+					'background-color': 'darkgrey',
+					'background-position': 'left',
+					'background-size': 'cover',
+					width: '55vw!important',
+				}"
+				:leftColor="'var(--FSCred)'"
+				:rightColor="'transparent'"
+				:height="600"
+				:maintainSkewbox="false"
+				:pictureSide="'right'"
+				:invert="false"
+				:mobileColor="'hsla(348, 88%, 39%, 0.5)'"
+				class="w-100"
+			>
+				<template v-slot:left>
+					<div
+						style="display: flex; align-items: center; height: 100%"
+						class="my-5 my-xl-0"
+					>
+						<div class="white">
+							<h1 class="white center">Web & Cloud Computing</h1>
+							<Expandable>
+								<p class="white justify-large mb-3">
+									In-depth examination of a current topic in
+									web development and cloud computing, such as
+									web security, user experience, mobile app
+									development, and web engineering. In this
+									concentration, you'll explore the basic
+									principles of web development, dynamic and
+									responsive page design, development of SPA's
+									through the usage of frameworks, elementary
+									database management, development of a
+									backend API, and more!
+								</p>
+								<b>Concentration specific classes:</b>
+								<ul class="white justify-large">
+									<li>Introduction to Web Development</li>
+									<li>Web Application Architectures</li>
+									<li>Advanced Topics in Web Development</li>
 								</ul>
 							</Expandable>
 						</div>
