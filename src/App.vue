@@ -18,7 +18,7 @@
 			<Footer></Footer>
 		</div>
 		<div id="loadingScreen" v-show="!pageLoaded || $store.state.showLoader">
-			<Loader style="scale: 2"></Loader>
+			<Loader></Loader>
 		</div>
 		<div class="small-screen">
 			Why yo screen so smol??????
@@ -138,7 +138,7 @@ export default {
 	--primary: var(--FSCred);
 	--secondary: var(--FSCblue);
 	--primary-dark: #800820 !important;
-    --secondary-dark: hsl(206, 100%, 25%) !important;
+	--secondary-dark: hsl(206, 100%, 25%) !important;
 
 	--red-gradient-left: linear-gradient(
 		to left,
@@ -277,7 +277,7 @@ h6 {
 }
 
 .carousel__pagination {
-    padding: 0!important;
+	padding: 0 !important;
 }
 
 .carousel__icon {
@@ -386,11 +386,11 @@ h6 {
 	hyphens: auto;
 	text-align: justify;
 	text-justify: distribute;
-	text-align-last: left;  
+	text-align-last: left;
 }
 
 p {
-    margin: 0!important;
+	margin: 0 !important;
 }
 
 .page-text {
@@ -420,7 +420,7 @@ p {
 }
 
 .btn-primary:hover {
-	background-color: var(--primary-dark)!important;
+	background-color: var(--primary-dark) !important;
 }
 
 .btn-secondary,
@@ -437,7 +437,7 @@ p {
 }
 
 .btn-secondary:hover {
-	background-color: var(--secondary-dark)!important;
+	background-color: var(--secondary-dark) !important;
 }
 
 .red-section {
@@ -702,9 +702,9 @@ BOOTSTRAP BREAKPOINTS:
 		font-size: 10pt;
 	}
 
-    .justify-large {
-        text-align: left;
-    }
+	.justify-large {
+		text-align: left;
+	}
 }
 
 @media (max-width: 349.9px) {

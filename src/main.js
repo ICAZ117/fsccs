@@ -5,6 +5,7 @@ import store from "./store";
 import { initializeApp } from "firebase/app";
 import Notifications from "@kyvg/vue3-notification";
 import Markdown from 'vue3-markdown-it';
+import { TroisJSVuePlugin } from 'troisjs';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -24,4 +25,5 @@ app.use(store);
 app.use(router);
 app.use(Markdown);
 app.use(Notifications);
+app.use(TroisJSVuePlugin);
 app.mount("#app");
